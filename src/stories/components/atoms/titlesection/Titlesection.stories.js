@@ -10,8 +10,8 @@ export default {
   },
 };
 
-export const H2 = {
+export const H3 = {
   args: {
-      header: 'h2',
+      header: 'h3',
   },
 };

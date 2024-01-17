@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './titlesection.css';
+import './titlecopy.css';
 
-export const TitleSection = ({ header = 'h3', text = 'Me cago en tus muelas', mods = '', styles = {}, ...props }) => {
-    const Header = header;
+export const TitleCopy = ({ title = 'h1', text = 'Rodrigor', mods = '', styles = {}, ...props }) => {
+    const Title = title;
   
     return (
-      <Header
-        className={`text section ${mods}`}
+      <Title
+        className={`text ${mods}`}
         style={styles}
         dangerouslySetInnerHTML={{ __html: text }}
         {...props}
       />
     );
 };
-
-TitleSection.propTypes = {
-    header: PropTypes.string,
+  
+TitleCopy.propTypes = {
+    title: PropTypes.string,
     text: PropTypes.string,
     mods: PropTypes.string,
     styles: PropTypes.objectOf(PropTypes.string),

@@ -13,7 +13,7 @@ const preview = {
     },
     options: {
       storySort: {
-        order: ['Design System', ['Atoms', ['TitleSection','BodyCopy'], 'Molecules', 'Organisms', 'Templates', 'Pages']],
+        order: ['Design System', ['Atoms', ['TitleCopy', 'JobDesc', 'TitleSection','BodyCopy'], 'Molecules', 'Organisms', 'Templates', 'Pages']],
       },
     },
   },
