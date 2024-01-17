@@ -6,6 +6,12 @@ export default {
   component: TitleSection,
   tags: ['autodocs'],
   argTypes: {
-    text: 'Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor',
+    text: 'Me cago en tus muelas',
+  },
+};
+
+export const H2 = {
+  args: {
+      header: 'h2',
   },
 };

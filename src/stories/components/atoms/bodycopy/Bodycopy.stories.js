@@ -22,9 +22,3 @@ export const StrongParagraph = {
         tag: 'strong',
     },
 };
-
-export const H1 = {
-    args: {
-        tag: 'h1',
-    },
-};
