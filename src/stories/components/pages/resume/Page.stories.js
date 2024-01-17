@@ -1,9 +1,9 @@
 import { within, userEvent, expect } from "@storybook/test";
 
-import { Page } from "./Page";
+import { Page } from "../resume/Page";
 
 export default {
-  title: "Example/Page",
+  title: 'Design System/Pages/Resume/Page',
   component: Page,
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout

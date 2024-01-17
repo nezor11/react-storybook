@@ -1,0 +1,7 @@
+.text {
+    word-break: break-word;
+
+    &.p {
+        background-color: blue;
+    }
+}
