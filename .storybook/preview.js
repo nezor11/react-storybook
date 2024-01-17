@@ -1,4 +1,5 @@
 import '../src/index.css';
+import '../src/tailwind.css'; // replace with the name of your tailwind css file
 
 //👇 Configures Storybook to log the actions( onArchiveTask and onPinTask ) in the UI.
 /** @type { import('@storybook/react').Preview } */
