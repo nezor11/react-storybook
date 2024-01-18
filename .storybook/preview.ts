@@ -1,9 +1,9 @@
-import '../src/index.css';
-import '../src/tailwind.css'; // replace with the name of your tailwind css file
+import '../src/styles/global.css';
 
-//👇 Configures Storybook to log the actions( onArchiveTask and onPinTask ) in the UI.
-/** @type { import('@storybook/react').Preview } */
-const preview = {
+// Replace your-renderer with the renderer you are using (e.g., react, vue3)
+import { Preview } from '@storybook/react';
+
+const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {

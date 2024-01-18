@@ -1,7 +1,7 @@
+import { StoryObj, Meta } from '@storybook/react';
 import { Button } from './Button';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Design System/Molecules/Button',
   component: Button,
   tags: ['autodocs'],
@@ -9,6 +9,11 @@ export default {
     backgroundColor: { control: 'color' },
   },
 };
+
+export default meta;
+
+//create a “template” of how args map to rendering (from SB)
+type Template = StoryObj<typeof Button>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary = {
