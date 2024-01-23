@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './titlesection.css';
 
-export const TitleSection = ({ header = 'h3', text = 'Me cago en tus muelas', mods = '', styles = {}, ...props }) => {
+export const TitleSection = ({ header = 'h3', text = 'Me cago en tus muelas', mods = 'text-3xl', styles = {}, ...props }) => {
     const Header = header;
   
     return (

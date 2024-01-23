@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './titlecopy.css';
 
-export const TitleCopy = ({ title = 'h1', text = 'Rodrigor', mods = '', styles = {}, ...props }) => {
+export const TitleCopy = ({ title = 'h1', text = 'Rodrigor', mods = 'text-6xl', styles = {}, ...props }) => {
     const Title = title;
   
     return (

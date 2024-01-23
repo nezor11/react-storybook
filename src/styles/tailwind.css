@@ -560,9 +560,9 @@ video {
   border-width: 1px;
 }
 
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-xl {
@@ -570,10 +570,17 @@ video {
   line-height: 1.75rem;
 }
 
-.outline {
-  outline-style: solid;
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
 }
 
-.outline-pink-500 {
-  outline-color: #ec4899;
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }

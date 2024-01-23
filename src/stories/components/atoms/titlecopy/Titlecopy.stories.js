@@ -7,6 +7,7 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     text: 'Rodrigor',
+    mods: 'text-6xl'
   },
 };
 
@@ -14,5 +15,6 @@ export default {
 export const Title = {
     args: {
         title: 'h1',
+        mods: 'text-6xl'
     },
 };
