@@ -6,11 +6,37 @@ const config: StorybookConfig = {
   staticDirs: ['../public'],
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    "@storybook/addon-essentials",
+    {
+      name: "@storybook/addon-styling",
+      options: {
+        postCss: {
+          implementation: require("postcss"),
+        },
+        sass: {
+          // Require your preprocessor
+          implementation: require("sass"),
+        },
+      },
+    },
     '@storybook/addon-interactions',
     "@storybook/addon-styling-webpack",
     '@storybook/addon-themes',
-    '@storybook/addon-postcss',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        cssLoaderOptions: {
+          // When you have splitted your css over multiple files
+          // and use @import('./other-styles.css')
+          importLoaders: 1,
+        },
+        postcssLoaderOptions: {
+          // When using postCSS 8
+          implementation: require('postcss'),
+        },
+      },
+    },
+    '@storybook/addon-mdx-gfm'
   ],
   framework: {
     name: '@storybook/react-vite',

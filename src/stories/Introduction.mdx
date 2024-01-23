@@ -7,7 +7,7 @@ import Flow from './assets/flow.svg';
 import Plugin from './assets/plugin.svg';
 import Repo from './assets/repo.svg';
 import StackAlt from './assets/stackalt.svg';
-import '../styles/global.css';
+import '../styles/tailwind.css';
 
 <Meta title="Example/Introduction" />
 
@@ -20,9 +20,9 @@ Browse example stories now by navigating to them in the sidebar.
 View their code in the `stories` directory to learn how they work.
 We recommend building UIs with a [**component-driven**](https://componentdriven.org) process starting with atomic components and ending with pages.
 
-<div className="subheading text-6xl">Configure</div>
+<div className="subheading text-xl">Configure</div>
 
-<div className="link-list grid-cols-4">
+<div className="link-list grid grid-cols-4 gap-4">
   <a
     className="link-item"
     href="https://storybook.js.org/docs/react/addons/addon-types"
@@ -71,7 +71,7 @@ We recommend building UIs with a [**component-driven**](https://componentdriven.
 
 <div className="subheading">Learn</div>
 
-<div className="link-list">
+<div className="link-list grid grid-cols-4 gap-4">
   <a className="link-item" href="https://storybook.js.org/docs" target="_blank">
     <img src={Repo} alt="repo" />
     <span>

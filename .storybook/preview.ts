@@ -1,4 +1,4 @@
-import '../src/styles/global.css';
+import '../src/styles/tailwind.css';
 
 // Replace your-renderer with the renderer you are using (e.g., react, vue3)
 import { Preview } from '@storybook/react';
