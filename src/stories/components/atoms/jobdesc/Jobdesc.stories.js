@@ -13,6 +13,6 @@ export default {
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const H2 = {
   args: {
-      header: 'h2',
+    subtitle: 'h2',
   },
 };

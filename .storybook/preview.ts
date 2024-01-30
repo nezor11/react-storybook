@@ -14,7 +14,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Design System', ['Atoms', ['TitleCopy', 'JobDesc', 'TitleSection','BodyCopy'], 'Molecules', 'Organisms', 'Templates', 'Pages']],
+        order: ['System', 'Design System', ['Atoms', ['TitleCopy', 'JobDesc', 'TitleSection','BodyCopy'], 'Molecules', 'Organisms', 'Templates', 'Pages']],
       },
     },
   },
