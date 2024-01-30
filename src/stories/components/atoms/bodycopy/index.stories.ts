@@ -1,5 +1,5 @@
 import { StoryObj, Meta } from '@storybook/react';
-import { BodyCopy } from './BodyCopy';
+import { BodyCopy } from '.';
 
 
 const meta: Meta<typeof BodyCopy> = {

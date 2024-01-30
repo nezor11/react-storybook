@@ -1,5 +1,5 @@
-import { StoryObj, Meta } from '@storybook/react';
-import { Button } from './Button';
+import { Meta, StoryObj } from '@storybook/react';
+import { Button } from '.';
 
 const meta: Meta<typeof Button> = {
   title: 'Design System/Molecules/Button',
@@ -13,7 +13,7 @@ const meta: Meta<typeof Button> = {
 export default meta;
 
 //create a “template” of how args map to rendering (from SB)
-type Template = StoryObj<typeof Button>;
+type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary = {

@@ -1,5 +1,5 @@
 import React , { ReactNode, CSSProperties } from 'react';
-import './bodycopy.css';
+import './index.css';
 
 interface BodyCopyProps {
   tag: string;
