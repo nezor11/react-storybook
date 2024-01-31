@@ -1,44 +1,44 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { Button } from '.';
+import { Meta, StoryObj } from "@storybook/react";
+import { Button } from ".";
 
 const meta: Meta<typeof Button> = {
-  title: 'Design System/Molecules/Button',
+  title: "Design System/Molecules/Button",
   component: Button,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
-    backgroundColor: { control: 'color' },
+    backgroundColor: { control: "color" },
   },
 };
 
 export default meta;
 
 //create a “template” of how args map to rendering (from SB)
-type Story = StoryObj<typeof meta>;
+type Template = StoryObj<typeof Button>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary = {
   args: {
     primary: true,
-    label: 'Button',
+    label: "Button",
   },
 };
 
 export const Secondary = {
   args: {
-    label: 'Button',
+    label: "Button",
   },
 };
 
 export const Large = {
   args: {
-    size: 'large',
-    label: 'Button',
+    size: "large",
+    label: "Button",
   },
 };
 
 export const Small = {
   args: {
-    size: 'small',
-    label: 'Button',
+    size: "small",
+    label: "Button",
   },
 };
