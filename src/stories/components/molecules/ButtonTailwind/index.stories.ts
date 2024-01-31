@@ -13,10 +13,10 @@ const meta: Meta<typeof Button> = {
 export default meta;
 
 //create a “template” of how args map to rendering (from SB)
-type Template = StoryObj<typeof Button>;
+type Story = StoryObj<typeof Button>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Primary = {
+export const Primary: Story = {
   args: {
     primary: true,
     label: "Button",
