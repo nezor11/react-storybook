@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Button } from "../../molecules/ButtonTailwind";
+import { Button } from "../../molecules/Button";
 import "./header.css";
 
 export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
