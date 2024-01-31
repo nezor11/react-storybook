@@ -7,7 +7,6 @@ interface ButtonProps {
   radius?: number; // border radius
   size: "small" | "medium" | "large";
   label: string;
-  onClick: () => void;
 }
 
 export const Button = ({
@@ -16,7 +15,6 @@ export const Button = ({
   radius,
   size = "medium",
   label,
-  onClick,
   ...props
 }: ButtonProps) => {
   const buttonClass = "storybook-button";
@@ -37,7 +35,6 @@ export const Button = ({
       type="button"
       className={buttonClasses.join(" ")}
       style={buttonStyle}
-      onClick={onClick}
       {...props}
     >
       {label}

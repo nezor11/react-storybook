@@ -2,11 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Text } from ".";
 
 const meta: Meta<typeof Text> = {
-  title: "Components/Text",
+  title: "Design System/Atoms/Generic Text",
   component: Text,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
 };
 
@@ -17,6 +14,13 @@ export const Default: Story = {
   args: {
     as: "h1",
     children:
-      "be parts correct potatoes sides donkey extra climate happily freedom relationship tape unit tall hung call cat window steady world front graph particular pick",
+      "Lorem fistrum ese pedazo de se calle ustée quietooor amatomaa papaar papaar ahorarr condemor llevame al sircoo benemeritaar.",
+    size: "base",
+    weight: "normal",
+    emphasis: "low",
+    italic: false,
+    underline: true,
+    align: "left",
+    className: "",
   },
 };
