@@ -71,7 +71,7 @@ const preview: Preview = {
           "Design System",
           [
             "Atoms",
-            ["TitleCopy", "JobDesc", "BodyCopy"],
+            ["TitleCopy", "SubtitleCopy", "BodyCopy", "Text"],
             "Molecules",
             ["Button", "Button Tailwind", "Title Section", "Info Item"],
             "Organisms",

@@ -10,6 +10,7 @@ const textStyles = cva("w-full", {
   variants: {
     emphasis: {
       low: "text-gray-600 font-light",
+      high: "text-red-600 font-extrabold",
     },
     size: {
       sm: "text-sm",

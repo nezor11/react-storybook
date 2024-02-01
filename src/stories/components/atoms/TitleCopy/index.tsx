@@ -1,8 +1,10 @@
 import React, { CSSProperties, ReactNode } from "react";
 import "./index.css";
 
+type AllowedTagValues = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
 interface TitleCopyProps {
-  title: string;
+  title: AllowedTagValues;
   text: string;
   mods: string;
   styles?: CSSProperties;

@@ -7,6 +7,7 @@ const meta: Meta<typeof TitleSection> = {
   component: TitleSection,
   tags: ["autodocs"],
   argTypes: {
+    header: { control: "text", defaultValue: "h3" },
     text: {
       control: "text",
       defaultValue:

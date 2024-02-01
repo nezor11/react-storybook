@@ -1,8 +1,9 @@
 import React, { CSSProperties, ReactNode } from "react";
 import "./index.css";
 
+type AllowedTagValues = "div" | "span" | "p";
 interface BodyCopyProps {
-  tag: string;
+  tag: AllowedTagValues;
   text: string;
   mods: string;
   styles?: CSSProperties;
