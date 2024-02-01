@@ -1,5 +1,5 @@
-import React , { ReactNode, CSSProperties } from 'react';
-import './index.css';
+import React, { CSSProperties, ReactNode } from "react";
+import "./index.css";
 
 interface BodyCopyProps {
   tag: string;
@@ -9,10 +9,10 @@ interface BodyCopyProps {
   children?: ReactNode;
 }
 
-export const BodyCopy : React.FC<BodyCopyProps> = ({
-  tag = 'div',
-  text = 'Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor',
-  mods = 'text-base',
+export const BodyCopy: React.FC<BodyCopyProps> = ({
+  tag = "div",
+  text = "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
+  mods = "text-base",
   styles = {},
   ...props
 }: BodyCopyProps) => {
