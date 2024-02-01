@@ -698,6 +698,10 @@ video {
   font-weight: 100;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .italic {
   font-style: italic;
 }

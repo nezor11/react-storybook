@@ -13,7 +13,7 @@ interface TitleSectionProps {
 export const TitleSection: React.FC<TitleSectionProps> = ({
   header = "h3",
   text = "Me cago en tus muelas",
-  mods = "text-3xl text-uppercase",
+  mods = "text-3xl uppercase",
   styles = {},
   ...props
 }: TitleSectionProps) => {

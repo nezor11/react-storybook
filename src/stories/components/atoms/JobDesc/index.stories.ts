@@ -1,18 +1,18 @@
-import { SubtitleCopy } from './JobDesc';
+import { SubtitleCopy } from ".";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
-  title: 'Design System/Atoms/JobDesc',
+  title: "Design System/Atoms/JobDesc",
   component: SubtitleCopy,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
-    text: 'Papaar papaar',
+    text: "Papaar papaar",
   },
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const H2 = {
   args: {
-    subtitle: 'h2',
+    subtitle: "h2",
   },
 };

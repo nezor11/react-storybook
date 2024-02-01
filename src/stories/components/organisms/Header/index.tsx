@@ -1,4 +1,5 @@
 import React from "react";
+import { TitleCopy } from "../../atoms/TitleCopy";
 
 interface User {
   name: string;
@@ -10,5 +11,15 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ user }) => (
-  <header>{user ? <></> : <></>}</header>
+  <header>
+    {user ? (
+      <>
+        <TitleCopy title="h1" text={user.name} mods="text-6xl" />
+      </>
+    ) : (
+      <>
+        <TitleCopy title="h1" text="Rodrigor" mods="text-6xl" />
+      </>
+    )}
+  </header>
 );

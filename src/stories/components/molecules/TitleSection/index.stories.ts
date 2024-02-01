@@ -12,7 +12,7 @@ const meta: Meta<typeof TitleSection> = {
       defaultValue:
         "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
     },
-    mods: { control: "text", defaultValue: "text-base text-uppercase" },
+    mods: { control: "text", defaultValue: "text-base uppercase" },
   },
 };
 
@@ -21,6 +21,6 @@ export default meta;
 export const H3 = {
   args: {
     header: "h3",
-    mods: "text-3xl text-uppercase",
+    mods: "text-3xl uppercase",
   },
 };
