@@ -1,8 +1,7 @@
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import '../src/styles/tailwind.css';
+import "../src/styles/tailwind.css";
 
 // Replace your-renderer with the renderer you are using (e.g., react, vue3)
-import { Preview } from '@storybook/react';
+import { Preview } from "@storybook/react";
 
 const MY_VIEWPORTS = {
   FHDTV: {
@@ -47,7 +46,7 @@ const MY_VIEWPORTS = {
       height: "667px",
     },
   },
-}
+};
 
 const preview: Preview = {
   parameters: {
@@ -60,18 +59,30 @@ const preview: Preview = {
     },
     backgrounds: {
       values: [
-        { name: "dark", value: "#222"},
-        { name: "white", value: "#FFF"},
-        { name: "ligth", value: "rgba(248, 248, 247, 1)"},
+        { name: "dark", value: "#222" },
+        { name: "white", value: "#FFF" },
+        { name: "ligth", value: "rgba(248, 248, 247, 1)" },
       ],
     },
     options: {
       storySort: {
-        order: ['System', 'Design System', ['Atoms', ['TitleCopy', 'JobDesc', 'TitleSection','BodyCopy'], 'Molecules', 'Organisms', 'Templates', 'Pages']],
+        order: [
+          "System",
+          "Design System",
+          [
+            "Atoms",
+            ["TitleCopy", "JobDesc", "BodyCopy"],
+            "Molecules",
+            ["Button", "Button Tailwind", "Title Section", "Info Item"],
+            "Organisms",
+            "Templates",
+            "Pages",
+          ],
+        ],
       },
     },
     viewport: {
-      viewports: MY_VIEWPORTS
+      viewports: MY_VIEWPORTS,
     },
   },
 };
