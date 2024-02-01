@@ -19,9 +19,11 @@ const meta: Meta<typeof TitleSection> = {
 
 export default meta;
 
-export const H3 = {
+export const Desfault = {
   args: {
     header: "h3",
     mods: "text-3xl uppercase",
+    subtext:
+      "A gramenawer la caidita caballo blanco caballo negroorl la caidita te va a hasé pupitaa de la pradera por la gloria de mi madre.",
   },
 };

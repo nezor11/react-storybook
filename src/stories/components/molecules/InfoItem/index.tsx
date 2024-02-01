@@ -8,7 +8,10 @@ interface InfoItemTexts {
   jobTitle: string;
   jobDesc: string;
 }
-interface InfoItemObject {
+export interface InfoItemObject {
+  icon?: string;
+  title?: string;
+  subtitle?: string;
   info: InfoItemTexts;
 }
 
@@ -17,7 +20,7 @@ type InfoItemProps = ComponentPropsWithRef<"div"> & InfoItemObject;
 export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
   ({ info, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn("grid grid-cols-2 gap-4")} {...props}>
+      <div ref={ref} className={cn("grid grid-cols-2 gap-4 my-10")} {...props}>
         <div>
           {info.company && (
             <>

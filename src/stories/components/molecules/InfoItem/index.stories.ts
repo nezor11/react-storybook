@@ -14,11 +14,11 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     info: {
-      company: "Novicell",
+      company: "Lucas",
       date: "2020 > Current",
-      jobTitle: "Front-end developer",
+      jobTitle: "Amatomaa  developer",
       jobDesc:
-        "Work with APIs and get into .NET world (Umbraco, Sitecore) for the views. In-depth knowledge of Vue and Nuxt. Deal with Figma designs.",
+        "Benemeritaar me cago en tus muelas pecador no te digo trigo por no llamarte Rodrigor al ataquerl llevame al sircoo benemeritaar diodenoo amatomaa al ataquerl ese pedazo de. Amatomaa por la gloria de mi madre fistro diodenoo fistro me cago en tus muelas no te digo trigo por no llamarte Rodrigor.",
     },
   },
 };

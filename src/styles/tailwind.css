@@ -444,6 +444,10 @@ video {
   display: none;
 }
 
+html {
+  font-family: "Charlie Text Regular", system-ui, sans-serif;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -544,14 +548,14 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.mx-10 {
-  margin-left: 2.5rem;
-  margin-right: 2.5rem;
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
-.mx-20 {
-  margin-left: 5rem;
-  margin-right: 5rem;
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .mb-2 {
@@ -759,6 +763,18 @@ video {
 
 .duration-300 {
   transition-duration: 300ms;
+}
+
+@font-face {
+  font-family: "Charlie Display Regular";
+
+  src: url("./src/assets/font/Charlie_Display-Regular.woff2");
+}
+
+@font-face {
+  font-family: "Charlie Text Regular";
+
+  src: url("./src/assets/font/Charlie_Text-Regular.woff2");
 }
 
 .hover\:bg-primary-100:hover {
