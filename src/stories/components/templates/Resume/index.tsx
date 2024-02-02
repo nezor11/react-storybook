@@ -2,8 +2,11 @@ import { cn } from "@/utils";
 import { ComponentPropsWithRef, forwardRef } from "react";
 import { InfoSection, InfoSectionObject } from "../../organisms/InfoSection";
 
-interface ResumeObject {
-  resumeItems: InfoSectionObject[];
+export interface ResumeObject {
+  title?: string;
+  subtitle?: string;
+  sections?: InfoSectionObject[] | null;
+  resumeItems?: InfoSectionObject[] | null;
 }
 
 type ResumeProps = ComponentPropsWithRef<"article"> & ResumeObject;

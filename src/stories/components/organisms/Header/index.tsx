@@ -2,12 +2,12 @@ import React from "react";
 import { SubtitleCopy } from "../../atoms/SubtitleCopy";
 import { TitleCopy } from "../../atoms/TitleCopy";
 
-interface User {
+export interface User {
   name: string;
   jobTitle: string;
 }
 
-interface HeaderProps {
+export interface HeaderProps {
   user: User | null;
 }
 

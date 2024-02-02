@@ -1,12 +1,17 @@
 import { cn } from "@/utils";
 import { ComponentPropsWithRef, forwardRef } from "react";
-import { InfoItem, InfoItemObject } from "../../molecules/InfoItem";
+import {
+  InfoItem,
+  InfoItemObject,
+  InfoItemTexts,
+} from "../../molecules/InfoItem";
 import { TitleSection } from "../../molecules/TitleSection";
 export interface InfoSectionObject {
   icon?: string;
   title?: string;
   subtitle?: string;
   sections: InfoItemObject[];
+  info: InfoItemTexts[];
 }
 
 type InfoSectionProps = ComponentPropsWithRef<"div"> & InfoSectionObject;

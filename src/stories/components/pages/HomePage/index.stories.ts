@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Resume } from ".";
+import { Page } from ".";
 
-const meta: Meta<typeof Resume> = {
-  title: "Design System/Templates/Resume",
-  component: Resume,
+const meta: Meta<typeof Page> = {
+  title: "Design System/Pages/Home Page",
+  component: Page,
   tags: ["autodocs"],
 };
 
@@ -13,7 +13,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    resumeItems: [
+    dataHeaderObject: [],
+    dataResumeObject: [
       {
         title: "Benemeritaar",
         subtitle: "Pecador al ataquerl mamaar a gramenawer.",

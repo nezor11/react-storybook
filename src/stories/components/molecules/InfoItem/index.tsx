@@ -2,7 +2,7 @@ import { cn } from "@/utils";
 import { ComponentPropsWithRef, forwardRef } from "react";
 import { Text } from "../../atoms/Text";
 
-interface InfoItemTexts {
+export interface InfoItemTexts {
   company: string;
   date: string;
   jobTitle: string;
