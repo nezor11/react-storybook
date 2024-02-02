@@ -766,15 +766,79 @@ html {
 }
 
 @font-face {
+  font-weight: normal;
+
   font-family: "Charlie Display Regular";
 
-  src: url("./src/assets/font/Charlie_Display-Regular.woff2");
+  font-style: normal;
+
+  src: url("./src/assets/font/Charlie_Display-Regular.woff2") format("woff2");
+
+  font-display: fallback;
 }
 
 @font-face {
+  font-weight: normal;
+
+  font-family: "Charlie Display Semi Bold";
+
+  font-style: normal;
+
+  src: url("./src/assets/font/Charlie_Display-Semibold.woff2") format("woff2");
+
+  font-display: fallback;
+}
+
+@font-face {
+  font-weight: normal;
+
+  font-family: "Charlie Display Bold";
+
+  font-style: normal;
+
+  src: url("./src/assets/font/Charlie_Display-Bold.woff2") format("woff2");
+
+  font-display: fallback;
+}
+
+@font-face {
+  font-weight: normal;
+
+  font-family: "Charlie Display Black";
+
+  font-style: normal;
+
+  src: url("./src/assets/font/Charlie_Display-Black.woff2") format("woff2");
+
+  font-display: fallback;
+}
+
+@font-face {
+  font-weight: normal;
+
   font-family: "Charlie Text Regular";
 
-  src: url("./src/assets/font/Charlie_Text-Regular.woff2");
+  font-style: normal;
+
+  src: url("./src/assets/font/Charlie_Text-Regular.woff2") format("woff2");
+
+  font-display: fallback;
+}
+
+@font-face {
+  font-weight: normal;
+
+  font-family: "Charlie Text Semi Bold";
+
+  font-style: normal;
+
+  src: url("./src/assets/font/Charlie_Text-Semibold.woff2") format("woff2");
+
+  font-display: fallback;
+}
+
+.visited\:text-purple-600:visited {
+  color: rgb(147 51 234 );
 }
 
 .hover\:bg-primary-100:hover {

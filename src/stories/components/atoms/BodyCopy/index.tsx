@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from "react";
+import React, { CSSProperties } from "react";
 import "./index.css";
 
 type AllowedTagValues = "div" | "span" | "p";
@@ -7,7 +7,6 @@ interface BodyCopyProps {
   text: string;
   mods: string;
   styles?: CSSProperties;
-  children?: ReactNode;
 }
 
 export const BodyCopy: React.FC<BodyCopyProps> = ({
