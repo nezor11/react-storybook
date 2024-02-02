@@ -47,9 +47,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    as: "h1",
+    as: "span",
     children:
-      "Lorem fistrum ese pedazo de se calle ustée quietooor amatomaa papaar papaar ahorarr condemor llevame al sircoo benemeritaar.",
+      'Lorem fistrum ese pedazo de se calle ustée quietooor <a href="#">amatomaa</a> papaar papaar ahorarr condemor llevame al sircoo benemeritaar.',
     size: "base",
     weight: "normal",
     italic: false,

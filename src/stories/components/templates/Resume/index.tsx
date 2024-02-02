@@ -1,17 +1,24 @@
 import { cn } from "@/utils";
 import { ComponentPropsWithRef, forwardRef } from "react";
+import { InfoSection, InfoSectionObject } from "../../organisms/InfoSection";
 
 interface ResumeObject {
-  resume: Object;
+  resumeItems: InfoSectionObject[];
 }
 
 type ResumeProps = ComponentPropsWithRef<"article"> & ResumeObject;
 
 export const Resume = forwardRef<HTMLElement, ResumeProps>(
-  ({ resume, ...props }, ref) => {
+  ({ resumeItems, ...props }, ref) => {
     return (
       <article ref={ref} className={cn("my-10")} {...props}>
-        {resume && <></>}
+        {resumeItems && (
+          <>
+            {resumeItems.map((resumeItem, index) => (
+              <InfoSection key={index} {...resumeItem} />
+            ))}
+          </>
+        )}
       </article>
     );
   }

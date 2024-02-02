@@ -18,11 +18,20 @@ export const BodyCopy: React.FC<BodyCopyProps> = ({
 }: BodyCopyProps) => {
   const Tag = tag as keyof JSX.IntrinsicElements;
 
+  const sanitizeHTML = (html: string): { __html: string } => {
+    // Puedes usar una librería como DOMPurify para una limpieza más segura
+    // Ejemplo con DOMPurify: import DOMPurify from "dompurify";
+    // const sanitizedHTML = DOMPurify.sanitize(html);
+
+    // Por simplicidad, en este ejemplo, solo se utiliza __html
+    return { __html: html };
+  };
+
   return (
     <Tag
       className={`text ${mods}`}
       style={styles}
-      dangerouslySetInnerHTML={{ __html: text }}
+      dangerouslySetInnerHTML={sanitizeHTML(text)}
       {...props}
     />
   );

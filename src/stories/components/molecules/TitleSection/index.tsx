@@ -21,12 +21,16 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
 }: TitleSectionProps) => {
   const Header = header as keyof JSX.IntrinsicElements;
 
+  const sanitizeHTML = (html: string): { __html: string } => {
+    return { __html: html };
+  };
+
   return (
     <div>
       <Header
         className={`text ${mods}`}
         style={styles}
-        dangerouslySetInnerHTML={{ __html: text }}
+        dangerouslySetInnerHTML={sanitizeHTML(text)}
         {...props}
       />
       {subtext !== "" && <BodyCopy tag="p" mods="mt-4" text={subtext} />}

@@ -5,6 +5,7 @@ import {
 } from "@/utils/types";
 import { VariantProps, cva } from "class-variance-authority";
 import { forwardRef } from "react";
+import ReactHtmlParser from "react-html-parser";
 
 const textStyles = cva("w-full", {
   variants: {
@@ -51,11 +52,10 @@ type TextProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
   VariantProps<typeof textStyles>
 >;
 
-type TextComponent = <C extends React.ElementType = "span">(
-  props: TextProps<C>
-) => React.ReactElement | null;
+type TextComponent<C extends React.ElementType = "span"> = React.FC<
+  TextProps<C> & { dangerouslySetInnerHTML?: { __html: string } }
+>;
 
-// @ts-expect-error - unexpected typing errors
 export const Text: TextComponent = forwardRef(
   <C extends React.ElementType = "span">(
     {
@@ -67,8 +67,10 @@ export const Text: TextComponent = forwardRef(
       underline,
       weight,
       className,
+      dangerouslySetInnerHTML,
+      children,
       ...props
-    }: TextProps<C>,
+    }: TextProps<C> & { dangerouslySetInnerHTML?: { __html: string } },
     ref?: PolymorphicRef<C>
   ) => {
     const Component = as || "span";
@@ -88,7 +90,13 @@ export const Text: TextComponent = forwardRef(
           })
         )}
         {...props}
-      />
+      >
+        {dangerouslySetInnerHTML ? (
+          <div dangerouslySetInnerHTML={dangerouslySetInnerHTML}></div>
+        ) : (
+          ReactHtmlParser(children?.toString() || "") // Utilizamos react-html-parser para interpretar HTML
+        )}
+      </Component>
     );
   }
 );
