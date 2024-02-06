@@ -16,6 +16,19 @@ const meta: Meta<typeof TitleCopy> = {
       control: "text",
       defaultValue: "Rodrigor",
     },
+    align: {
+      options: ["left", "center", "right"],
+      control: { type: "radio" },
+      defaultValue: "left",
+    },
+    italic: {
+      control: { type: "boolean" },
+      defaultValue: false,
+    },
+    underline: {
+      control: { type: "boolean" },
+      defaultValue: false,
+    },
     mods: { control: "text", defaultValue: "text-6xl" },
   },
 };

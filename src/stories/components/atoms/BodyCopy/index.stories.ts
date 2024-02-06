@@ -11,6 +11,34 @@ const meta: Meta<typeof BodyCopy> = {
       defaultValue:
         "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
     },
+    size: {
+      options: ["sm", "base", "lg", "xl", "2xl", "3xl"],
+      control: { type: "select" },
+      defaultValue: "base",
+    },
+    weight: {
+      options: ["thin", "normal", "medium", "semibold", "bold", "black"],
+      control: { type: "select" },
+      defaultValue: "normal",
+    },
+    align: {
+      options: ["left", "center", "right"],
+      control: { type: "radio" },
+      defaultValue: "left",
+    },
+    emphasis: {
+      options: ["none", "low", "high"],
+      control: { type: "radio" },
+      defaultValue: "none",
+    },
+    italic: {
+      control: { type: "boolean" },
+      defaultValue: false,
+    },
+    underline: {
+      control: { type: "boolean" },
+      defaultValue: false,
+    },
     mods: { control: "text", defaultValue: "text-base" },
   },
 };

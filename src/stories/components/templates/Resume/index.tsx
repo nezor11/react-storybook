@@ -2,10 +2,7 @@ import { cn } from "@/utils";
 import { ComponentPropsWithRef, forwardRef } from "react";
 import { InfoSection, InfoSectionObject } from "../../organisms/InfoSection";
 
-export interface ResumeObject {
-  title?: string;
-  subtitle?: string;
-  sections?: InfoSectionObject[] | null;
+export interface ResumeObject extends InfoSectionObject {
   resumeItems?: InfoSectionObject[] | null;
 }
 

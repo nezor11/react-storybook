@@ -1,6 +1,7 @@
 import { cn } from "@/utils";
 import { ComponentPropsWithRef, forwardRef } from "react";
-import { Text } from "../../atoms/Text";
+import { BodyCopy } from "../../atoms/BodyCopy";
+import { TitleCopy } from "../../atoms/TitleCopy";
 
 export interface InfoItemTexts {
   company: string;
@@ -8,10 +9,14 @@ export interface InfoItemTexts {
   jobTitle: string;
   jobDesc: string;
 }
-export interface InfoItemObject {
+
+export interface CommonSection {
   icon?: string;
   title?: string;
   subtitle?: string;
+}
+
+export interface InfoItemObject {
   info: InfoItemTexts;
 }
 
@@ -20,40 +25,28 @@ type InfoItemProps = ComponentPropsWithRef<"div"> & InfoItemObject;
 export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
   ({ info, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn("grid grid-cols-2 gap-4 my-10")} {...props}>
-        <div>
+      <div ref={ref} className={cn("grid grid-cols-5 gap-4 my-10")} {...props}>
+        <div className="col-span-2">
           {info.company && (
             <>
-              <Text
-                as="h5"
-                weight={"bold"}
-                size={"xl"}
-                underline
-                className="mb-2"
-              >
-                {info.company}
-              </Text>
+              <TitleCopy title="h5" mods="mb-2" text={info.company} />
             </>
           )}
           {info.date && (
             <>
-              <Text as="h6" size={"sm"}>
-                {info.date}
-              </Text>
+              <TitleCopy title="h6" mods="mb-2" text={info.date} />
             </>
           )}
         </div>
-        <div>
+        <div className="col-span-3">
           {info.jobTitle && (
             <>
-              <Text as="h4" weight={"bold"} size={"xl"} className="mb-2">
-                {info.jobTitle}
-              </Text>
+              <TitleCopy title="h4" mods="mb-2" text={info.jobTitle} />
             </>
           )}
           {info.jobDesc && (
             <>
-              <Text as="p">{info.jobDesc}</Text>
+              <BodyCopy tag="p" text={info.jobDesc} />
             </>
           )}
         </div>
