@@ -1,6 +1,9 @@
+import {
+  InfoSection,
+  InfoSectionObject,
+} from "@/stories/components/organisms/InfoSection";
 import { cn } from "@/utils";
 import { ComponentPropsWithRef, forwardRef } from "react";
-import { InfoSection, InfoSectionObject } from "../../organisms/InfoSection";
 
 export interface ResumeObject extends InfoSectionObject {
   resumeItems?: InfoSectionObject[] | null;

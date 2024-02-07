@@ -1,7 +1,7 @@
+import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
+import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { cn } from "@/utils";
 import { ComponentPropsWithRef, forwardRef } from "react";
-import { BodyCopy } from "../../atoms/BodyCopy";
-import { TitleCopy } from "../../atoms/TitleCopy";
 
 export interface InfoItemTexts {
   company: string;
@@ -29,7 +29,12 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
         <div className="col-span-2">
           {info.company && (
             <>
-              <TitleCopy title="h5" mods="mb-2" text={info.company} />
+              <TitleCopy
+                title="h5"
+                mods="mb-2 font-semibold"
+                underline
+                text={info.company}
+              />
             </>
           )}
           {info.date && (
@@ -41,7 +46,11 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
         <div className="col-span-3">
           {info.jobTitle && (
             <>
-              <TitleCopy title="h4" mods="mb-2" text={info.jobTitle} />
+              <TitleCopy
+                title="h4"
+                mods="mb-2 font-semibold"
+                text={info.jobTitle}
+              />
             </>
           )}
           {info.jobDesc && (

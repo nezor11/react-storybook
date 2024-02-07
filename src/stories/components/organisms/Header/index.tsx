@@ -1,6 +1,6 @@
+import { SubtitleCopy } from "@/stories/components/atoms/SubtitleCopy";
+import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import React from "react";
-import { SubtitleCopy } from "../../atoms/SubtitleCopy";
-import { TitleCopy } from "../../atoms/TitleCopy";
 
 export interface User {
   name: string;

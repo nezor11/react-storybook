@@ -19,4 +19,20 @@ module.exports = {
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
   },
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".vue", ".ts", ".d.ts"],
+      },
+      alias: {
+        extensions: [".vue", ".js", ".ts", ".scss", ".d.ts"],
+        map: [
+          ["@/assets", "./src/assets"],
+          ["@/stories", "./src/stories"],
+          ["@/styles", "./src/styles"],
+          ["@/utils", "./src/utils"],
+        ],
+      },
+    },
+  },
 };

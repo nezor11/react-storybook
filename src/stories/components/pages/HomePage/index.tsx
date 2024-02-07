@@ -1,7 +1,7 @@
+import { Header, User } from "@/stories/components/organisms/Header";
+import { Resume, ResumeObject } from "@/stories/components/templates/Resume";
 import { cn } from "@/utils";
 import { ComponentPropsWithRef, forwardRef } from "react";
-import { Header, User } from "../../organisms/Header";
-import { Resume, ResumeObject } from "../../templates/Resume";
 
 interface PageObject extends ResumeObject {
   dataHeaderObject?: User[];

@@ -1,12 +1,12 @@
-import { cn } from "@/utils";
-import { ComponentPropsWithRef, forwardRef } from "react";
 import {
   CommonSection,
   InfoItem,
   InfoItemObject,
   InfoItemTexts,
-} from "../../molecules/InfoItem";
-import { TitleSection } from "../../molecules/TitleSection";
+} from "@/stories/components/molecules/InfoItem";
+import { TitleSection } from "@/stories/components/molecules/TitleSection";
+import { cn } from "@/utils";
+import { ComponentPropsWithRef, forwardRef } from "react";
 export interface InfoSectionObject extends CommonSection {
   sections?: InfoItemObject[] | null;
   info?: InfoItemTexts[];

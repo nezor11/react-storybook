@@ -1,5 +1,6 @@
+import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
+import TypeScriptIcon from "@/stories/components/atoms/Icons/TypeScriptIcon";
 import React, { CSSProperties, ReactNode } from "react";
-import { BodyCopy } from "../../atoms/BodyCopy";
 import "./index.css";
 
 interface TitleSectionProps {
@@ -27,12 +28,15 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
 
   return (
     <div>
-      <Header
-        className={`text ${mods}`}
-        style={styles}
-        dangerouslySetInnerHTML={sanitizeHTML(text)}
-        {...props}
-      />
+      <div className="flex items-center">
+        <TypeScriptIcon width="2em" height="2em" />
+        <Header
+          className={`text ${mods}`}
+          style={styles}
+          dangerouslySetInnerHTML={sanitizeHTML(text)}
+          {...props}
+        />
+      </div>
       {subtext !== "" && <BodyCopy tag="p" mods="mt-4" text={subtext} />}
     </div>
   );
