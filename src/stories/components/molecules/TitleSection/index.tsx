@@ -1,6 +1,6 @@
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
-import TypeScriptIcon from "@/stories/components/atoms/Icons/TypeScriptIcon";
 import React, { CSSProperties, ReactNode } from "react";
+import { IconGallery } from "../IconGallery";
 import "./index.css";
 
 interface TitleSectionProps {
@@ -29,7 +29,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
   return (
     <div>
       <div className="flex items-center">
-        <TypeScriptIcon width="2em" height="2em" />
+        <IconGallery />
         <Header
           className={`text ${mods}`}
           style={styles}

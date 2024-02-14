@@ -1,55 +1,53 @@
 import { IconProps } from "@/utils/types/icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const importAll = (r: Record<string, any>) => {
-  return Object.keys(r).reduce<{ [key: string]: React.FC<IconProps> }>(
-    (acc, key) => {
-      const iconName = key.replace(/^\.\/Icons\/(.*).tsx$/, "$1");
-      const iconModule = r[key];
-      acc[iconName] = iconModule.default;
-      return acc;
-    },
-    {}
-  );
+type IconGalleryProps = {
+  iconsData?: { name: string; width: string; height: string }[];
 };
 
-const iconsContext = importAll(require.context("./Icons", false, /\.tsx$/));
+export const IconGallery: React.FC<IconGalleryProps> = ({ iconsData = [] }) => {
+  const [icons, setIcons] = useState<React.FC<IconProps>[]>([]);
 
-interface IconGalleryProps {
-  showAll?: boolean;
-  customIcons?: { icon: React.FC<IconProps> }[];
-}
+  useEffect(() => {
+    const loadIcons = async () => {
+      // @ts-ignore
+      const iconModules = await import.meta.globEager("./Icons/*.tsx");
+      const availableIconNames = Object.keys(iconModules).map((path) => {
+        return path.split("/").pop()?.split(".")[0] || "";
+      });
 
-interface IconItemProps {
-  name: string;
-  children: React.ReactNode;
-}
+      let iconsToShow: { name: string; width: string; height: string }[] = [];
+      if (iconsData.length > 0) {
+        iconsToShow = iconsData.filter((iconData) =>
+          availableIconNames.includes(iconData.name)
+        );
+      } else {
+        iconsToShow = availableIconNames.map((name) => ({
+          name,
+          width: "1em",
+          height: "1em",
+        }));
+      }
 
-const IconItem: React.FC<IconItemProps> = ({ name, children }) => (
-  <div>
-    <p>{name}</p>
-    {children}
-  </div>
-);
+      // Importar dinámicamente los íconos seleccionados
+      const importedIcons = iconsToShow.map(({ name }) => {
+        const Icon = React.lazy(() => import(`./Icons/${name}.tsx`));
+        return Icon;
+      });
 
-export const IconGallery: React.FC<IconGalleryProps> = ({
-  showAll = true,
-  customIcons = [],
-}) => {
+      setIcons(importedIcons);
+    };
+
+    loadIcons();
+  }, [iconsData]);
+
   return (
-    <div>
-      {showAll &&
-        Object.entries(icons).map(([name, Icon]) => (
-          <IconItem key={name} name={name}>
-            <Icon />
-          </IconItem>
-        ))}
-      {!showAll &&
-        customIcons.map(({ icon: Icon }, index) => (
-          <IconItem key={index} name={`custom-${index}`}>
-            <Icon />
-          </IconItem>
-        ))}
+    <div className="flex">
+      {icons.map((Icon, index) => (
+        <div className={Icon.name} key={index}>
+          <Icon />
+        </div>
+      ))}
     </div>
   );
 };

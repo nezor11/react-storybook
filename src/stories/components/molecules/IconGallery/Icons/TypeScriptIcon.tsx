@@ -4,19 +4,19 @@ import React, { forwardRef, memo } from "react";
 const TypeScriptIcon: React.FC<IconProps> = forwardRef<
   SVGSVGElement,
   IconProps
->(({ title, desc, width, height, ...props }, ref) => (
+>(({ name, desc, width, height, ...props }, ref) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width ? width : "1em"}
     height={height ? height : "1em"}
     viewBox="0 0 400 400"
     ref={ref}
-    aria-labelledby={title ? "title" : undefined}
+    aria-labelledby={name ? "title" : undefined}
     aria-describedby={desc ? "desc" : undefined}
     {...props}
   >
     {desc && <desc id="desc">{desc}</desc>}
-    {title && <title id="title">{title}</title>}
+    {name && <title id="title">{name}</title>}
     <path
       d="M0 200V0h400v400H0"
       style={{

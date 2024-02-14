@@ -2,7 +2,7 @@ import { IconProps } from "@/utils/types/icons";
 import React, { forwardRef, memo } from "react";
 
 const WebPackIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ title, desc, width, height, ...props }, ref) => (
+  ({ name, desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : "1em"}
@@ -10,12 +10,12 @@ const WebPackIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       preserveAspectRatio="xMidYMid"
       viewBox="-17 0 290 290"
       ref={ref}
-      aria-labelledby={title ? "title" : undefined}
+      aria-labelledby={name ? "title" : undefined}
       aria-describedby={desc ? "desc" : undefined}
       {...props}
     >
       {desc && <desc id="desc">{desc}</desc>}
-      {title && <title id="title">{title}</title>}
+      {name && <title id="title">{name}</title>}
       <path
         fill="#FFF"
         d="m128 .048 128 72.405V217.31l-128 72.405L0 217.31V72.453z"

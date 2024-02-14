@@ -15,3 +15,13 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {},
 };
+
+export const Selected: Story = {
+  args: {
+    iconsData: [
+      { name: "CSS3Icon", width: "120px", height: "120px" },
+      { name: "JavaScriptIcon", width: "100px", height: "100px" },
+      { name: "ReactIcon", width: "80px", height: "80px" },
+    ],
+  },
+};
