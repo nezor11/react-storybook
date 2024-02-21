@@ -27,16 +27,42 @@ function App() {
   }, []);
 
   const mapInfoSection = (section) => {
-    const { titleSection, sections } = section;
+    const { titleSection, subtitleSection, sections } = section;
     return {
       title: titleSection,
+      subtitle: subtitleSection,
       sections: sections.map((infoItem) => {
-        const { company, infoUrl, startDate, finishDate, jobTitle, jobDesc } =
-          infoItem;
+        const {
+          subtitleSection,
+          company,
+          infoUrl,
+          startDate,
+          finishDate,
+          jobTitle,
+          jobDesc,
+        } = infoItem;
+
+        // Parsear las fechas a objetos Date
+        const startDateObj = new Date(startDate);
+        const finishDateObj = finishDate ? new Date(finishDate) : null;
+
+        // Obtener los años
+        const startYear = startDateObj.getFullYear();
+        const finishYear = finishDateObj ? finishDateObj.getFullYear() : null;
+
+        // Determinar el texto para la fecha
+        let dateText = `${startYear}`;
+        if (finishYear && startYear !== finishYear) {
+          dateText += ` > ${finishYear}`;
+        } else if (!finishYear) {
+          dateText += " > Current";
+        }
+
         return {
           info: {
             company,
-            date: `${startDate} > ${finishDate || "Current"}`,
+            infoUrl,
+            date: dateText,
             jobTitle,
             jobDesc: jobDesc[0]?.children[0]?.text || "",
           },
@@ -67,13 +93,13 @@ function App() {
   return (
     <div className="container py-20 mx-auto px-4">
       {latestResume && (
-        <div key={latestResume._id}>
+        <main key={latestResume._id}>
           <p>Title: {latestResume.title}</p>
           {/* <pre>{JSON.stringify(latestResume.pageBuilder, null, 2)}</pre> */}
-          {latestResume.pageBuilder.map((section, index) => (
-            <div key={section._key}>{renderSection(section)}</div>
-          ))}
-        </div>
+          {latestResume.pageBuilder.map((section, index) =>
+            renderSection(section)
+          )}
+        </main>
       )}
     </div>
   );

@@ -23,12 +23,17 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
     return (
       <section ref={ref} className={cn("my-20")} {...props}>
         {titleText !== "" && (
-          <TitleSection
-            header="h3"
-            text={titleText}
-            subtext={subtitleText}
-            mods="uppercase"
-          />
+          <div className="grid grid-cols-5 gap-4 my-10">
+            <div className="col-span-2">
+              <TitleSection
+                header="h3"
+                text={titleText}
+                subtext={subtitleText}
+                mods="uppercase"
+              />
+            </div>
+            <div className="col-span-3"></div>
+          </div>
         )}
         {sections && (
           <>

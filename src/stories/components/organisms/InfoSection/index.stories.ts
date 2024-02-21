@@ -14,7 +14,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: "Benemeritaar",
-    subtitle: "Pecador al ataquerl mamaar a gramenawer.",
+    subtitle:
+      "Te voy a borrar el cerito diodenoo torpedo por la gloria de mi madre pecador qué dise usteer llevame al sircoo a peich se calle ustée. Pecador pupita diodenoo tiene musho peligro pupita te voy a borrar el cerito no puedor ese que llega diodeno mamaar.",
     sections: [
       {
         info: {
