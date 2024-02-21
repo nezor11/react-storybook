@@ -9,6 +9,7 @@ interface TitleSectionProps {
   subtext?: string;
   mods: string;
   styles?: CSSProperties;
+  iconsData?: { name: string; width: string; height: string }[];
   children?: ReactNode;
 }
 
@@ -18,6 +19,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
   subtext = "",
   mods = "text-3xl uppercase",
   styles = {},
+  iconsData = [],
   ...props
 }: TitleSectionProps) => {
   const Header = header as keyof JSX.IntrinsicElements;
@@ -29,7 +31,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
   return (
     <div>
       <div className="flex items-center">
-        <IconGallery />
+        <IconGallery iconsData={iconsData} />
         <Header
           className={`text ${mods}`}
           style={styles}

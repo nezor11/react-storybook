@@ -11,7 +11,7 @@ export interface InfoItemTexts {
 }
 
 export interface CommonSection {
-  icon?: string;
+  icons?: Object;
   title?: string;
   subtitle?: string;
 }
@@ -20,15 +20,23 @@ export interface InfoItemObject {
   info: InfoItemTexts;
 }
 
-type InfoItemProps = ComponentPropsWithRef<"div"> & InfoItemObject;
+type InfoItemProps = ComponentPropsWithRef<"div"> &
+  InfoItemObject & { subtitleEmpty: boolean };
 
 export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
-  ({ info, ...props }, ref) => {
+  ({ info, subtitleEmpty, ...props }, ref) => {
+    const colSpanClass =
+      subtitleEmpty && info.company ? "col-span-3" : "col-span-5";
+
     return (
-      <div ref={ref} className={cn("grid grid-cols-5 gap-4 my-10")} {...props}>
-        <div className="col-span-2">
-          {info.company && (
-            <>
+      <div
+        ref={ref}
+        className={cn("grid grid-cols-5 gap-4 my-10", colSpanClass)}
+        {...props}
+      >
+        {info.company && (
+          <>
+            <div className="col-span-2">
               <TitleCopy
                 title="h5"
                 mods="mb-2 font-semibold"
@@ -38,10 +46,10 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
               {info.date && (
                 <TitleCopy title="h6" mods="mb-2" text={info.date} />
               )}
-            </>
-          )}
-        </div>
-        <div className="col-span-3">
+            </div>
+          </>
+        )}
+        <div className={colSpanClass}>
           {info.jobTitle && (
             <>
               <TitleCopy

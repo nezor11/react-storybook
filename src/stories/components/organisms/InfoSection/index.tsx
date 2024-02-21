@@ -15,15 +15,15 @@ export interface InfoSectionObject extends CommonSection {
 type InfoSectionProps = ComponentPropsWithRef<"div"> & InfoSectionObject;
 
 export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
-  ({ icon, title, subtitle, sections, ...props }, ref) => {
+  ({ icons, title, subtitle, sections, ...props }, ref) => {
     // const iconName = icon || "";
     const titleText = title || "";
     const subtitleText = subtitle || ""; // Si subtitle es null o undefined, asigna una cadena vacía
 
     return (
-      <section ref={ref} className={cn("my-20")} {...props}>
-        {titleText !== "" && (
-          <div className="grid grid-cols-5 gap-4 my-10">
+      <section ref={ref} className={cn("info-section")} {...props}>
+        {titleText !== "" && subtitleText !== "" && (
+          <div className="grid grid-cols-5 gap-4">
             <div className="col-span-2">
               <TitleSection
                 header="h3"
@@ -32,13 +32,35 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
                 mods="uppercase"
               />
             </div>
-            <div className="col-span-3"></div>
+            {sections && (
+              <>
+                <div className="col-span-3">
+                  {sections.map((section, index) => (
+                    <InfoItem
+                      key={index}
+                      info={section.info}
+                      subtitleEmpty={subtitleText === ""}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         )}
-        {sections && (
+        {titleText !== "" && subtitleText === "" && sections && (
           <>
+            <div className="grid grid-cols-5 gap-4">
+              <div className="col-span-2">
+                <TitleSection header="h3" text={titleText} mods="uppercase" />
+              </div>
+              <div className="col-span-3"></div>
+            </div>
             {sections.map((section, index) => (
-              <InfoItem key={index} info={section.info} />
+              <InfoItem
+                key={index}
+                info={section.info}
+                subtitleEmpty={subtitleText === ""}
+              />
             ))}
           </>
         )}

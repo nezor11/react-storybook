@@ -45,7 +45,10 @@ export const IconGallery: React.FC<IconGalleryProps> = ({ iconsData = [] }) => {
     <div className="flex">
       {icons.map((Icon, index) => (
         <div className={Icon.name} key={index}>
-          <Icon />
+          <Icon
+            width={iconsData[index]?.width || "1em"}
+            height={iconsData[index]?.height || "1em"}
+          />
         </div>
       ))}
     </div>

@@ -25,5 +25,6 @@ export const Desfault = {
     mods: "text-3xl uppercase",
     subtext:
       "A gramenawer la caidita caballo blanco caballo negroorl la caidita te va a hasé pupitaa de la pradera por la gloria de mi madre.",
+    iconsData: [{ name: "CSS3Icon", width: "120px", height: "120px" }],
   },
 };
