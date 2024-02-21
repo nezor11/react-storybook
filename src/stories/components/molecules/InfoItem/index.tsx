@@ -35,11 +35,9 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
                 underline
                 text={info.company}
               />
-            </>
-          )}
-          {info.date && (
-            <>
-              <TitleCopy title="h6" mods="mb-2" text={info.date} />
+              {info.date && (
+                <TitleCopy title="h6" mods="mb-2" text={info.date} />
+              )}
             </>
           )}
         </div>

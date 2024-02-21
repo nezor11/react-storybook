@@ -31,6 +31,7 @@
     "init-msw": "msw init public/"
   },
   "devDependencies": {
+    "@sanity/client": "^6.13.3",
     "@storybook/addon-a11y": "^7.6.10",
     "@storybook/addon-essentials": "^7.6.10",
     "@storybook/addon-interactions": "^7.6.10",

@@ -1,35 +1,82 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Header } from "@/stories/components/organisms/Header";
+import { Resume } from "@/stories/components/templates/Resume";
+import { useEffect, useState } from "react";
+import { sanityAPI } from "./sanitySetup";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [resumes, setResumes] = useState(null);
+  const [latestResume, setLatestResume] = useState(null);
+
+  useEffect(() => {
+    sanityAPI
+      .fetch(
+        `*[_type == "resume"]{
+          _id,
+          title,
+          pageBuilder,
+          pdfResume,
+          slug,
+      }`
+      )
+      .then((data) => {
+        setResumes(data);
+        const lastResume = data.shift();
+        setLatestResume(lastResume);
+      })
+      .catch(console.error);
+  }, []);
+
+  const mapInfoSection = (section) => {
+    const { titleSection, sections } = section;
+    return {
+      title: titleSection,
+      sections: sections.map((infoItem) => {
+        const { company, infoUrl, startDate, finishDate, jobTitle, jobDesc } =
+          infoItem;
+        return {
+          info: {
+            company,
+            date: `${startDate} > ${finishDate || "Current"}`,
+            jobTitle,
+            jobDesc: jobDesc[0]?.children[0]?.text || "",
+          },
+        };
+      }),
+    };
+  };
+
+  const renderSection = (section) => {
+    switch (section._type) {
+      case "header":
+        const { name, jobDesc } = section;
+        return (
+          <Header
+            key={section._key}
+            user={{ name: section.name, jobTitle: section.jobDesc }}
+          />
+        );
+      case "infoSection":
+        return (
+          <Resume key={section._key} resumeItems={[mapInfoSection(section)]} />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="container py-20 mx-auto px-4">
+      {latestResume && (
+        <div key={latestResume._id}>
+          <p>Title: {latestResume.title}</p>
+          {/* <pre>{JSON.stringify(latestResume.pageBuilder, null, 2)}</pre> */}
+          {latestResume.pageBuilder.map((section, index) => (
+            <div key={section._key}>{renderSection(section)}</div>
+          ))}
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
