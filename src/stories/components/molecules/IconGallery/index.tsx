@@ -1,9 +1,9 @@
 import { IconProps } from "@/utils/types/icons";
 import React, { useEffect, useState } from "react";
 
-type IconGalleryProps = {
+export interface IconGalleryProps {
   iconsData?: { name: string; width: string; height: string }[];
-};
+}
 
 export const IconGallery: React.FC<IconGalleryProps> = ({ iconsData = [] }) => {
   const [icons, setIcons] = useState<React.FC<IconProps>[]>([]);

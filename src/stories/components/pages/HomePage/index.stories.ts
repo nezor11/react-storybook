@@ -18,6 +18,9 @@ export const Default: Story = {
       {
         title: "Benemeritaar",
         subtitle: "Pecador al ataquerl mamaar a gramenawer.",
+        icons: {
+          iconsData: [{ name: "JavaScriptIcon", width: "1em", height: "1em" }],
+        },
         sections: [
           {
             info: {
@@ -50,6 +53,9 @@ export const Default: Story = {
       },
       {
         title: "Musho peligro",
+        icons: {
+          iconsData: [{ name: "NuxtIcon", width: "1em", height: "1em" }],
+        },
         sections: [
           {
             info: {

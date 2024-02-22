@@ -1,9 +1,8 @@
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import React, { CSSProperties, ReactNode } from "react";
-import { IconGallery } from "../IconGallery";
+import { IconGallery, IconGalleryProps } from "../IconGallery";
 import "./index.css";
-
-interface TitleSectionProps {
+export interface TitleSectionProps extends Omit<IconGalleryProps, "iconsData"> {
   header: string;
   text: string;
   subtext?: string;
@@ -17,7 +16,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
   header = "h3",
   text = "Me cago en tus muelas",
   subtext = "",
-  mods = "text-3xl uppercase",
+  mods = "text-3xl uppercase mb-4",
   styles = {},
   iconsData = [],
   ...props
@@ -30,7 +29,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
 
   return (
     <div>
-      <div className="flex items-center">
+      <div className="flex items-center mb-6">
         <IconGallery iconsData={iconsData} />
         <Header
           className={`text ${mods}`}
@@ -39,7 +38,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
           {...props}
         />
       </div>
-      {subtext !== "" && <BodyCopy tag="p" mods="mt-4" text={subtext} />}
+      {subtext !== "" && <BodyCopy tag="p" mods="" text={subtext} />}
     </div>
   );
 };

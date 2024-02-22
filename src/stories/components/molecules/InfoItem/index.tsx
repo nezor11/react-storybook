@@ -11,7 +11,6 @@ export interface InfoItemTexts {
 }
 
 export interface CommonSection {
-  icons?: Object;
   title?: string;
   subtitle?: string;
 }
@@ -31,7 +30,7 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
     return (
       <div
         ref={ref}
-        className={cn("grid grid-cols-5 gap-4 my-10", colSpanClass)}
+        className={cn("grid grid-cols-5 gap-4 mb-5", colSpanClass)}
         {...props}
       >
         {info.company && (

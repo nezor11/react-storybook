@@ -16,6 +16,9 @@ export const Default: Story = {
     resumeItems: [
       {
         title: "Benemeritaar",
+        icons: {
+          iconsData: [{ name: "WebPackIcon", width: "1em", height: "1em" }],
+        },
         subtitle:
           "Te voy a borrar el cerito diodenoo torpedo por la gloria de mi madre pecador qué dise usteer llevame al sircoo a peich se calle ustée. Pecador pupita diodenoo tiene musho peligro pupita te voy a borrar el cerito no puedor ese que llega diodeno mamaar.",
         sections: [
@@ -50,6 +53,9 @@ export const Default: Story = {
       },
       {
         title: "Musho peligro",
+        icons: {
+          iconsData: [{ name: "JavaScriptIcon", width: "1em", height: "1em" }],
+        },
         sections: [
           {
             info: {

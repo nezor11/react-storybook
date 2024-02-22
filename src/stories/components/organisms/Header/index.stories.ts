@@ -21,6 +21,7 @@ export const Default: Story = {
     user: {
       name: "Jane Doe",
       jobTitle: "Frontender",
+      iconsData: [{ name: "CSS3Icon", width: "1em", height: "1em" }],
     },
   },
 };
