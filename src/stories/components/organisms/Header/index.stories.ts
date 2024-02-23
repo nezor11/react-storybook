@@ -22,6 +22,12 @@ export const Default: Story = {
       name: "Jane Doe",
       jobTitle: "Frontender",
       iconsData: [{ name: "CSS3Icon", width: "1em", height: "1em" }],
+      contactDetail: {
+        title: "Casa Barcelona",
+        phone: "+34609457202",
+        email: "contact@nezort.es",
+        address: "08025 Barcelona",
+      },
     },
   },
 };

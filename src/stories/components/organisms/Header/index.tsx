@@ -1,6 +1,11 @@
 import { SubtitleCopy } from "@/stories/components/atoms/SubtitleCopy";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import {
+  ContactDetail,
+  ContactDetailTexts,
+} from "@/stories/components/molecules/ContactDetails";
+
+import {
   IconGallery,
   IconGalleryProps,
 } from "@/stories/components/molecules/IconGallery";
@@ -9,6 +14,7 @@ import React from "react";
 export interface User extends IconGalleryProps {
   name: string;
   jobTitle?: string;
+  contactDetail?: ContactDetailTexts;
 }
 
 export interface HeaderProps {
@@ -50,5 +56,8 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
         </>
       )}
     </div>
+    {user?.contactDetail && (
+      <ContactDetail contactDetail={user.contactDetail} />
+    )}
   </header>
 );

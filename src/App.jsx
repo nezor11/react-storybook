@@ -31,7 +31,22 @@ function App() {
               width,
               height,
             },
-            iconTitle
+            // Nuevo: Seguir la referencia de contactDetails
+            "contactDetails": contactDetails->{
+              title,
+              phone,
+              email,
+              address
+            },
+            "imageDetails": image.asset->{
+              url,
+              metadata {
+                dimensions
+              }
+              // Suponiendo que alt y title están disponibles en los metadatos o en algún otro campo
+              // alt,
+              // title,
+            }
           },
           pdfResume,
           slug
@@ -59,13 +74,33 @@ function App() {
             height: icon.height ? icon.height + "px" : "1em", // Asume "1em" como valor predeterminado si no está especificado
           }));
 
+        const contactInfo = section.contactDetails
+          ? {
+              title: section.contactDetails.title,
+              phone: section.contactDetails.phone,
+              email: section.contactDetails.email,
+              address: section.contactDetails.address,
+            }
+          : {};
+
+        const imageDetails = section.imageDetails
+          ? {
+              url: section.imageDetails.url,
+              alt: "Descripción alternativa", // Ajusta según tus datos
+              title: "Título de la imagen", // Ajusta según tus datos
+              width: section.imageDetails.metadata.dimensions.width,
+              height: section.imageDetails.metadata.dimensions.height,
+            }
+          : null;
+
         return (
           <Header
             key={section._key}
             user={{
               name: section.name,
               jobTitle: section.jobDesc,
-              iconsData: iconsData, // Pasamos el array transformado
+              iconsData: iconsData,
+              contactDetail: contactInfo,
             }}
           />
         );
@@ -140,7 +175,7 @@ function App() {
   };
 
   return (
-    <div className="container py-20 mx-auto px-4">
+    <div className="container py-10 mx-auto px-4">
       {latestResume && (
         <main key={latestResume._id}>
           <p>Title: {latestResume.title}</p>

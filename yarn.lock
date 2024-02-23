@@ -2136,7 +2136,7 @@
     "@storybook/global" "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-storysource@^7.6.10":
+"@storybook/addon-storysource@^7.6.17":
   version "7.6.17"
   resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-7.6.17.tgz#f88b235f363d9780da76107555076c9db3c8b05e"
   integrity sha512-8SZiIuIkRU9NQM3Y2mmE0m+bqtXQefzW8Z9DkPKwTJSJxVBvMZVMHjRiQcPn8ll6zhqQIaQiBj0ahlR8ZqrnqA==
