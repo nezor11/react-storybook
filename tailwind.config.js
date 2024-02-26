@@ -11,7 +11,8 @@ export default {
     },
     extend: {
       colors: {
-        primary: colors.blue,
+        primary: colors.rose,
+        transparent: "transparent",
       },
     },
   },

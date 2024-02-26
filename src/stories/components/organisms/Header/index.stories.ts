@@ -28,6 +28,15 @@ export const Default: Story = {
         email: "contact@nezort.es",
         address: "08025 Barcelona",
       },
+      imageDetail: {
+        placeholderSrc: "https://placehold.co/600x400",
+        placeholderClassName: "placeholder-image",
+        src: "https://source.unsplash.com/random?blue%20sky",
+        alt: "Alt text",
+        className: "actual-image",
+        width: 150,
+        height: 300,
+      },
     },
   },
 };

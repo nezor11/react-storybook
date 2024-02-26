@@ -17,7 +17,7 @@ export const WithSubtitle: Story = {
     subtitle:
       "Te voy a borrar el cerito diodenoo torpedo por la gloria de mi madre pecador qué dise usteer llevame al sircoo a peich se calle ustée. Pecador pupita diodenoo tiene musho peligro pupita te voy a borrar el cerito no puedor ese que llega diodeno mamaar.",
     icons: {
-      iconsData: [{ name: "ReactIcon", width: "1em", height: "1em" }],
+      iconsData: [{ name: "ReactIcon", width: "25px", height: "25px" }],
     },
     sections: [
       {
@@ -55,7 +55,7 @@ export const WithNoSubtitle: Story = {
   args: {
     title: "Benemeritaar",
     icons: {
-      iconsData: [{ name: "NuxtIcon", width: "1em", height: "1em" }],
+      iconsData: [{ name: "NuxtIcon", width: "25px", height: "25px" }],
     },
     sections: [
       {
@@ -95,7 +95,7 @@ export const WithSubtitleAndCompany: Story = {
     subtitle:
       "Te voy a borrar el cerito diodenoo torpedo por la gloria de mi madre pecador qué dise usteer llevame al sircoo a peich se calle ustée. Pecador pupita diodenoo tiene musho peligro pupita te voy a borrar el cerito no puedor ese que llega diodeno mamaar.",
     icons: {
-      iconsData: [{ name: "JavaScriptIcon", width: "1em", height: "1em" }],
+      iconsData: [{ name: "JavaScriptIcon", width: "25px", height: "25px" }],
     },
     sections: [
       {

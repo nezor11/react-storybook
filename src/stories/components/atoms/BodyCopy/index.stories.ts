@@ -60,5 +60,6 @@ export const StrongParagraph = {
   args: {
     tag: "strong",
     mods: "text-base",
+    text: "Lorem fistrum <strong>ahorarr de la pradera</strong> no te digo trigo por no llamarte Rodrigor",
   },
 };

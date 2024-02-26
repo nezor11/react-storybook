@@ -23,6 +23,7 @@ export const IconGallery: React.FC<IconGalleryProps> = ({ iconsData = [] }) => {
         );
       } else {
         iconsToShow = availableIconNames.map((name) => ({
+          class: "",
           name,
           width: "1em",
           height: "1em",
@@ -42,14 +43,14 @@ export const IconGallery: React.FC<IconGalleryProps> = ({ iconsData = [] }) => {
   }, [iconsData]);
 
   return (
-    <div className="flex">
+    <div className="flex items-center">
       {icons.map((Icon, index) => (
-        <div className={Icon.name} key={index}>
-          <Icon
-            width={iconsData[index]?.width || "1em"}
-            height={iconsData[index]?.height || "1em"}
-          />
-        </div>
+        <Icon
+          className={iconsData[index]?.name}
+          key={index}
+          width={iconsData[index]?.width || "1em"}
+          height={iconsData[index]?.height || "1em"}
+        />
       ))}
     </div>
   );

@@ -25,16 +25,18 @@ export const ContactDetail = forwardRef<HTMLDivElement, ContactDetailProps>(
     const classContactDetail = slugify(contactDetail.title);
 
     return (
-      <div
-        ref={ref}
-        className={(cn("text-center"), classContactDetail)}
-        {...props}
-      >
-        {contactDetail.phone && <p className="mb-2">{contactDetail.phone}</p>}
-        {contactDetail.email && <p className="mb-2">{contactDetail.email}</p>}
-        {contactDetail.address && (
-          <p className="mb-2">{contactDetail.address}</p>
-        )}
+      <div ref={ref} className={(cn("m-0 p-0"), classContactDetail)} {...props}>
+        <ul>
+          {contactDetail.phone && (
+            <li className="mb-1">{contactDetail.phone}</li>
+          )}
+          {contactDetail.email && (
+            <li className="mb-1">{contactDetail.email}</li>
+          )}
+          {contactDetail.address && (
+            <li className="mb-1">{contactDetail.address}</li>
+          )}
+        </ul>
       </div>
     );
   }

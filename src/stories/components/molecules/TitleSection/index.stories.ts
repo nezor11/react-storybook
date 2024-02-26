@@ -13,16 +13,19 @@ const meta: Meta<typeof TitleSection> = {
       defaultValue:
         "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
     },
-    mods: { control: "text", defaultValue: "text-base uppercase" },
+    mods: {
+      control: "text",
+      defaultValue: "text-3xl uppercase text-primary-500 font-bold",
+    },
   },
 };
 
 export default meta;
 
-export const Desfault = {
+export const Default = {
   args: {
     header: "h3",
-    mods: "text-3xl uppercase",
+    mods: "text-3xl uppercase text-primary-500 font-bold",
     subtext:
       "A gramenawer la caidita caballo blanco caballo negroorl la caidita te va a hasé pupitaa de la pradera por la gloria de mi madre.",
     iconsData: [{ name: "CSS3Icon", width: "120px", height: "120px" }],
