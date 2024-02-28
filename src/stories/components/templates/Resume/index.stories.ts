@@ -86,6 +86,40 @@ export const Default: Story = {
           },
         ],
       },
+      {
+        title: "Education",
+        subtitle: undefined,
+        icons: {
+          iconsData: [{ name: "SchoolIcon", width: "1em", height: "1em" }],
+        },
+        sections: [
+          {
+            info: {
+              company: "Universitat de Barcelona",
+              date: "2005 > 2008",
+              jobTitle: "Audiovisual Communication Degree",
+              jobDesc: "<p>Specialized online training center.</p>",
+            },
+          },
+          {
+            info: {
+              company: "Universidad de Belgrano",
+              date: "2008 > Current",
+              jobTitle: "International Mobility Program",
+              jobDesc: "<p>Communication, design, advertising.</p>",
+            },
+          },
+          {
+            info: {
+              company: "Universitat Politècnica de València",
+              date: "2001 > 2005",
+              jobTitle: "First Stage of Audiovisual Communication",
+              jobDesc:
+                "<p>Digital graphic design, multimedia creation, interactive communication.</p>",
+            },
+          },
+        ],
+      },
     ],
   },
 };
