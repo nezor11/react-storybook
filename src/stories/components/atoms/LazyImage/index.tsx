@@ -59,6 +59,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
           ref={placeholderRef}
           width={width}
           height={height}
+          loading="lazy"
         />
       )}
       <img
@@ -69,6 +70,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
         onLoad={() => setIsLoading(false)}
         width={width}
         height={height}
+        loading="lazy"
       />
     </>
   );

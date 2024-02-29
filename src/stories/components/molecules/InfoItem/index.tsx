@@ -60,7 +60,7 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
           )}
           {info.jobDesc && (
             <>
-              <BodyCopy tag="p" text={info.jobDesc} />
+              <BodyCopy tag="div" text={info.jobDesc} />
             </>
           )}
         </div>

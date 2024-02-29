@@ -35,7 +35,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
           </div>
         )}
         <Header
-          className={`text ${mods}`}
+          className={`info-section__text ${mods}`}
           style={styles}
           dangerouslySetInnerHTML={sanitizeHTML(text)}
           {...props}
