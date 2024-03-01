@@ -33,7 +33,7 @@ const meta: Meta<typeof LazyImage> = {
 
 export default meta;
 
-export const Desfault = {
+export const Default = {
   args: {
     placeholderSrc: "https://placehold.co/600x400",
     placeholderClassName: "placeholder-image",

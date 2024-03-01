@@ -1,5 +1,6 @@
 import { cn } from "@/utils";
-import { ComponentPropsWithRef, forwardRef } from "react";
+import React, { ComponentPropsWithRef, forwardRef } from "react";
+import Obfuscate from "react-obfuscate";
 
 export interface ContactDetailTexts {
   title: string;
@@ -23,18 +24,30 @@ export const ContactDetail = forwardRef<HTMLDivElement, ContactDetailProps>(
         .replace(/^-+|-+$/g, "");
 
     const classContactDetail = slugify(contactDetail.title);
+    const addresUrlEncoded = contactDetail.address.replace(/ /g, "+");
 
     return (
       <div ref={ref} className={(cn("m-0 p-0"), classContactDetail)} {...props}>
         <ul>
           {contactDetail.phone && (
-            <li className="mb-1">{contactDetail.phone}</li>
+            <li className="mb-1">
+              <Obfuscate tel={contactDetail.phone} />
+            </li>
           )}
           {contactDetail.email && (
-            <li className="mb-1">{contactDetail.email}</li>
+            <li className="mb-1">
+              <Obfuscate email={contactDetail.email} />
+            </li>
           )}
           {contactDetail.address && (
-            <li className="mb-1">{contactDetail.address}</li>
+            <li className="mb-1">
+              <a
+                href={`https://maps.google.com/maps?q=${addresUrlEncoded}`}
+                target="_blank"
+              >
+                {addresUrlEncoded}
+              </a>
+            </li>
           )}
         </ul>
       </div>

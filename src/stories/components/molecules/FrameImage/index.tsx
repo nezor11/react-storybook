@@ -1,10 +1,53 @@
-import { cn } from "@/utils";
-import { ComponentPropsWithRef, forwardRef } from "react";
+import frameImage from "@/assets/images/js-frame-photo-empty.png";
+import {
+  LazyImage,
+  LazyImageProps,
+} from "@/stories/components/atoms/LazyImage";
+import React from "react";
+import styled from "styled-components";
 
-type FrameImageProps = ComponentPropsWithRef<"div">;
+import "./index.css";
 
-export const FrameImage = forwardRef<HTMLDivElement, FrameImageProps>(
-  ({ ...props }, ref) => {
-    return <div ref={ref} className={cn("m-0 p-0")} {...props}></div>;
-  }
-);
+import maskImage from "@/assets/images/mask-photo.png";
+
+interface StyledImageProps {
+  maskSrc: string;
+}
+
+const StyledImage = styled.img<StyledImageProps>`
+  mask-image: ${(p) => `url("${p.maskSrc}")`};
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+`;
+
+export type FrameImageProps = {
+  image: string;
+  mask?: string;
+  imageDetail?: LazyImageProps;
+};
+
+export const FrameImage: React.FC<FrameImageProps> = ({
+  image: imageURL,
+  mask: maskURL,
+}: FrameImageProps) => {
+  const maskFrameURL = maskURL || maskImage;
+
+  return (
+    <div className="frame-wrapper-image">
+      <LazyImage
+        className="frame-image"
+        placeholderSrc={frameImage}
+        src={frameImage}
+        alt="Frame Image"
+      />
+      <StyledImage
+        className="content-image"
+        src={imageURL}
+        maskSrc={maskFrameURL}
+      />
+    </div>
+  );
+};

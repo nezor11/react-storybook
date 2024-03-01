@@ -7,7 +7,7 @@ import {
 } from "@/stories/components/molecules/InfoItem";
 import { TitleSection } from "@/stories/components/molecules/TitleSection";
 import { cn } from "@/utils";
-import { ComponentPropsWithRef, forwardRef } from "react";
+import React, { ComponentPropsWithRef, forwardRef } from "react";
 export interface InfoSectionObject extends CommonSection {
   sections?: InfoItemObject[] | null;
   info?: InfoItemTexts[];
@@ -36,7 +36,7 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
                 header="h3"
                 text={titleText}
                 subtext={subtitleText}
-                mods="text-3xl uppercase text-primary-500 font-bold"
+                mods="text-3xl uppercase text-primary-500 font-medium"
                 iconsData={iconsData}
               />
             </div>
@@ -62,7 +62,7 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
                 <TitleSection
                   header="h3"
                   text={titleText}
-                  mods="text-3xl uppercase text-primary-500 font-bold"
+                  mods="text-3xl uppercase text-primary-500 font-medium"
                   iconsData={iconsData}
                 />
               </div>

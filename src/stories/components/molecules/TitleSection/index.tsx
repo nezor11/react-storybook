@@ -15,7 +15,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
   header = "h3",
   text = "Me cago en tus muelas",
   subtext = "",
-  mods = "text-3xl uppercase text-primary-500 font-bold",
+  mods = "text-3xl uppercase text-primary-500 font-medium",
   styles = {},
   iconsData = [],
   ...props
@@ -28,9 +28,9 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
 
   return (
     <div>
-      <div className="flex items-strech mb-6">
+      <div className="flex items-center mb-6">
         {iconsData && (
-          <div className="text-3xl flex items-center mr-1">
+          <div className="text-3xl flex mr-1">
             <IconGallery iconsData={iconsData} />
           </div>
         )}

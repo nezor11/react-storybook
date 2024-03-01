@@ -15,7 +15,7 @@ const meta: Meta<typeof TitleSection> = {
     },
     mods: {
       control: "text",
-      defaultValue: "text-3xl uppercase text-primary-500 font-bold",
+      defaultValue: "text-3xl uppercase text-primary-500 font-medium",
     },
   },
 };
@@ -25,7 +25,7 @@ export default meta;
 export const Default = {
   args: {
     header: "h3",
-    mods: "text-3xl uppercase text-primary-500 font-bold",
+    mods: "text-3xl uppercase text-primary-500 font-medium",
     subtext:
       "A gramenawer la caidita caballo blanco caballo negroorl la caidita te va a hasé pupitaa de la pradera por la gloria de mi madre.",
     iconsData: [{ name: "CSS3Icon", width: "120px", height: "120px" }],

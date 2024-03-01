@@ -62,7 +62,7 @@ function App() {
   }, []);
 
   return (
-    <div className="container py-10 mx-auto px-4">
+    <div className="container py-10 mx-auto px-4 max-w-5xl">
       {latestResume && (
         <main key={latestResume._id}>
           {/* <pre>{JSON.stringify(latestResume.pageBuilder, null, 2)}</pre> */}

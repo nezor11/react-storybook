@@ -1,13 +1,13 @@
-import {
-  LazyImage,
-  LazyImageProps,
-} from "@/stories/components/atoms/LazyImage";
 import { SubtitleCopy } from "@/stories/components/atoms/SubtitleCopy";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import {
   ContactDetail,
   ContactDetailTexts,
 } from "@/stories/components/molecules/ContactDetails";
+import {
+  FrameImage,
+  FrameImageProps,
+} from "@/stories/components/molecules/FrameImage";
 
 import {
   IconGallery,
@@ -15,11 +15,13 @@ import {
 } from "@/stories/components/molecules/IconGallery";
 import React from "react";
 
+import "./index.css";
+
 export interface User extends IconGalleryProps {
   name: string;
   jobTitle?: string;
   contactDetail?: ContactDetailTexts;
-  imageDetail?: LazyImageProps;
+  imageDetail?: FrameImageProps;
 }
 
 export interface HeaderProps {
@@ -28,23 +30,31 @@ export interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ user }) => (
   <header className="flex place-content-between">
-    <div className="header__main flex-initial">
+    <div className="header__main flex flex-col items-start justify-center">
       {user ? (
         <>
-          <TitleCopy title="h1" text={user.name} mods="text-6xl" />
+          <TitleCopy
+            title="h1"
+            text={user.name}
+            mods="text-6xl font-medium mb-4"
+          />
         </>
       ) : (
         <>
-          <TitleCopy title="h1" text="Rodrigor" mods="text-6xl" />
+          <TitleCopy
+            title="h1"
+            text="Rodrigor"
+            mods="text-6xl font-medium mb-4"
+          />
         </>
       )}
-      <div className="flex items-baseline text text-xl">
+      <div className="flex items-center">
         {user?.jobTitle ? (
           <>
             <SubtitleCopy
               subtitle="h2"
               text={user?.jobTitle}
-              mods="text-3xl uppercase"
+              mods="text-4xl uppercase text-gray-400"
             />
           </>
         ) : (
@@ -52,25 +62,24 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
             <SubtitleCopy
               subtitle="h2"
               text="Papaar papaar"
-              mods="text-3xl uppercase"
+              mods="text-4xl uppercase text-gray-400"
             />
           </>
         )}
         {user?.iconsData && (
           <>
-            <IconGallery iconsData={user.iconsData} />
+            <div className="header__aux-gallery-details">
+              <IconGallery iconsData={user.iconsData} />
+            </div>
           </>
         )}
       </div>
     </div>
-    <div className="header__aux flex flex-none">
+    <div className="header__aux flex items-center justify-end">
       {user?.imageDetail && (
-        <LazyImage
-          placeholderSrc={user.imageDetail.placeholderSrc}
-          src={user.imageDetail.src}
-          alt={user.imageDetail.alt}
-          className="header__aux-image"
-        />
+        <div className="header__aux-image-details flex items-end justify-end">
+          <FrameImage image={user.imageDetail.image} />
+        </div>
       )}
       {user?.contactDetail && (
         <div className="header__aux-contact-details flex items-center justify-center">

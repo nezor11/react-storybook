@@ -3,7 +3,7 @@ import {
   InfoSectionObject,
 } from "@/stories/components/organisms/InfoSection";
 import { cn } from "@/utils";
-import { ComponentPropsWithRef, forwardRef } from "react";
+import React, { ComponentPropsWithRef, forwardRef } from "react";
 
 export interface ResumeObject extends InfoSectionObject {
   resumeItems?: InfoSectionObject[] | null;

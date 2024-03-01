@@ -1,7 +1,7 @@
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { cn } from "@/utils";
-import { ComponentPropsWithRef, forwardRef } from "react";
+import React, { ComponentPropsWithRef, forwardRef } from "react";
 
 export interface InfoItemTexts {
   company: string;

@@ -1,0 +1,23 @@
+.header__aux-gallery-details {
+  div.flex.items-center {
+    @apply text-4xl;
+  }
+  svg {
+    @apply mx-0.5;
+  }
+}
+
+.header__aux-image-details {
+  .frame-wrapper-image {
+    transform: scale(1);
+  }
+}
+
+.header__aux-contact-details {
+  ul {
+    @apply mt-2;
+    @apply -ml-4;
+    position: relative;
+    z-index: 2;
+  }
+}
