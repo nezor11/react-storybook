@@ -30,22 +30,22 @@ export const ContactDetail = forwardRef<HTMLDivElement, ContactDetailProps>(
       <div ref={ref} className={(cn("m-0 p-0"), classContactDetail)} {...props}>
         <ul>
           {contactDetail.phone && (
-            <li className="mb-1">
+            <li className="mb-0 text-gray-400 text-sm">
               <Obfuscate tel={contactDetail.phone} />
             </li>
           )}
           {contactDetail.email && (
-            <li className="mb-1">
+            <li className="mb-0 text-gray-400 text-sm">
               <Obfuscate email={contactDetail.email} />
             </li>
           )}
           {contactDetail.address && (
-            <li className="mb-1">
+            <li className="mb-0 text-gray-400 text-sm">
               <a
                 href={`https://maps.google.com/maps?q=${addresUrlEncoded}`}
                 target="_blank"
               >
-                {addresUrlEncoded}
+                {contactDetail.address}
               </a>
             </li>
           )}

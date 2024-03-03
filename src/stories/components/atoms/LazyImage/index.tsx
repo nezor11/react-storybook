@@ -1,77 +1,57 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { CSSProperties, useState } from "react";
 
 export interface LazyImageProps {
   placeholderSrc: string;
-  placeholderClassName?: string;
-  placeholderStyle?: React.CSSProperties;
   src: string;
   alt?: string;
-  className?: string;
-  style?: React.CSSProperties;
   width?: number;
   height?: number;
 }
 
 export const LazyImage: React.FC<LazyImageProps> = ({
-  placeholderSrc = "https://placehold.co/600x400",
-  placeholderClassName,
-  placeholderStyle,
+  placeholderSrc,
   src,
   alt,
-  className,
-  style,
-  width = 300,
-  height = 300,
+  width,
+  height,
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [view, setView] = useState("");
-  const placeholderRef = useRef<HTMLImageElement>(null);
+  const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    // Initiating Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-      // Set actual image source && unobserve when intersecting
-      if (entries[0].isIntersecting) {
-        setView(src);
-        observer.unobserve(placeholderRef.current!);
-      }
-    });
+  const handleLoad = () => {
+    setLoaded(true);
+  };
 
-    // observe for a placeholder image
-    if (placeholderRef.current) {
-      observer.observe(placeholderRef.current);
-    }
+  const containerStyles: CSSProperties = {
+    position: "relative",
+    width: width ? `${width}px` : "100%",
+    height: height ? `${height}px` : "100%",
+  };
 
-    // Cleanup Observer on component unmount
-    return () => {
-      observer.disconnect();
-    };
-  }, [src]);
+  const imageStyles: CSSProperties = {
+    width: width ? `${width}px` : "100%",
+    height: height ? `${height}px` : "100%",
+    objectFit: "cover",
+  };
 
   return (
-    <>
-      {isLoading && (
+    <div style={containerStyles}>
+      {!loaded && (
         <img
           src={placeholderSrc}
-          alt=""
-          className={placeholderClassName}
-          style={placeholderStyle}
-          ref={placeholderRef}
-          width={width}
-          height={height}
-          loading="lazy"
+          alt={`${alt}-placeholder`}
+          style={imageStyles}
         />
       )}
       <img
-        src={view} // Gets src only when placeholder intersecting
-        className={className}
-        style={isLoading ? { display: "none" } : style}
+        src={src}
         alt={alt}
-        onLoad={() => setIsLoading(false)}
-        width={width}
-        height={height}
+        style={{
+          ...imageStyles,
+          display: loaded ? "block" : "none",
+        }}
+        onLoad={handleLoad}
         loading="lazy"
       />
-    </>
+    </div>
   );
 };

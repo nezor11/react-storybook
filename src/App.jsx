@@ -1,3 +1,4 @@
+import { Footer } from "@/stories/components/molecules/Footer";
 import { useEffect, useState } from "react";
 import SectionRenderer from "./SectionRenderer";
 import { sanityAPI } from "./sanitySetup";
@@ -47,7 +48,7 @@ function App() {
               // title,
             }
           },
-          pdfResume,
+          "pdfResumeUrl": pdfResume.asset->url,
           slug
         }`
       )
@@ -69,6 +70,7 @@ function App() {
           {latestResume.pageBuilder.map((section, index) => (
             <SectionRenderer key={index} section={section} />
           ))}
+          <Footer href={latestResume.pdfResumeUrl} />
         </main>
       )}
     </div>

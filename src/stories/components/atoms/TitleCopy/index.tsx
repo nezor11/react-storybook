@@ -1,6 +1,6 @@
 import { cn } from "@/utils";
 import { cva } from "class-variance-authority";
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, ReactNode } from "react";
 import "./index.css";
 
 const textStyles = cva("w-full text", {
@@ -24,29 +24,32 @@ const textStyles = cva("w-full text", {
 
 type AllowedTagValues = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 interface TitleCopyProps {
-  title: AllowedTagValues;
-  text: string;
+  as?: AllowedTagValues | React.ComponentType<any>;
+  text?: string;
   align?: "left" | "center" | "right" | null | undefined;
   italic?: boolean;
   underline?: boolean;
   mods?: string;
   styles?: CSSProperties;
+  children?: ReactNode; // Admitir elementos hijos
 }
 
 export const TitleCopy: React.FC<TitleCopyProps> = ({
-  title = "h1",
+  as: Tag = "h1",
   text = "Rodrigor",
   align = "left",
   italic = false,
   underline = false,
   mods = "text-xl",
   styles = {},
+  children,
   ...props
 }: TitleCopyProps) => {
-  const Title = title as keyof JSX.IntrinsicElements;
-
+  const titleContent = children || (
+    <span dangerouslySetInnerHTML={{ __html: text }} />
+  );
   return (
-    <Title
+    <Tag
       className={cn(
         mods,
         textStyles({
@@ -56,8 +59,9 @@ export const TitleCopy: React.FC<TitleCopyProps> = ({
         })
       )}
       style={styles}
-      dangerouslySetInnerHTML={{ __html: text }}
       {...props}
-    />
+    >
+      {titleContent}
+    </Tag>
   );
 };

@@ -112,6 +112,7 @@ export const Default: Story = {
           {
             info: {
               company: "Universitat Politècnica de València",
+              infoUrl: "https://www.google.com",
               date: "2001 > 2005",
               jobTitle: "First Stage of Audiovisual Communication",
               jobDesc:

@@ -25,10 +25,8 @@ const HeaderSection = ({ section }) => {
     ? {
         alt: "Descripción alternativa", // Ajusta según tus datos
         title: "Título de la imagen", // Ajusta según tus datos
-        placeholderSrc: "https://placehold.co/400x400",
-        placeholderClassName: "placeholder-image",
-        src: section.imageDetails.url,
-        className: "actual-image",
+        placeholderSrc: "https://placehold.co/300x300",
+        image: section.imageDetails.url,
         width: section.imageDetails.metadata.dimensions.width,
         height: section.imageDetails.metadata.dimensions.height,
       }

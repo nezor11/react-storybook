@@ -11,11 +11,11 @@ import "./index.css";
 import maskImage from "@/assets/images/mask-photo.png";
 
 interface StyledImageProps {
-  maskSrc: string;
+  masksrc: string;
 }
 
 const StyledImage = styled.img<StyledImageProps>`
-  mask-image: ${(p) => `url("${p.maskSrc}")`};
+  mask-image: ${(p) => `url("${p.masksrc}")`};
   mask-repeat: no-repeat;
   mask-size: contain;
   width: 150px;
@@ -26,6 +26,9 @@ const StyledImage = styled.img<StyledImageProps>`
 export type FrameImageProps = {
   image: string;
   mask?: string;
+  alt?: string;
+  width?: number;
+  height?: number;
   imageDetail?: LazyImageProps;
 };
 
@@ -38,7 +41,6 @@ export const FrameImage: React.FC<FrameImageProps> = ({
   return (
     <div className="frame-wrapper-image">
       <LazyImage
-        className="frame-image"
         placeholderSrc={frameImage}
         src={frameImage}
         alt="Frame Image"
@@ -46,7 +48,7 @@ export const FrameImage: React.FC<FrameImageProps> = ({
       <StyledImage
         className="content-image"
         src={imageURL}
-        maskSrc={maskFrameURL}
+        masksrc={maskFrameURL}
       />
     </div>
   );

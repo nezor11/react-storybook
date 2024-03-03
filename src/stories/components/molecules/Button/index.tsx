@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 
 interface ButtonProps {
-  primary: boolean;
+  primary?: boolean;
   backgroundColor?: string | null;
   radius?: number; // border radius
   size: "small" | "medium" | "large";

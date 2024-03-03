@@ -7,7 +7,7 @@ const meta: Meta<typeof TitleCopy> = {
   component: TitleCopy,
   tags: ["autodocs"],
   argTypes: {
-    title: {
+    as: {
       options: ["h1", "h2", "h3", "h4", "h5", "h6"],
       control: { type: "select" },
       defaultValue: "h1",
@@ -40,7 +40,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Default: Story = {
   args: {
-    title: "h1",
+    as: "h1",
     mods: "text-6xl",
   },
 };

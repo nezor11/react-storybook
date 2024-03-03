@@ -448,6 +448,20 @@ html {
   font-family: "Raleway", system-ui, sans-serif;
 }
 
+body {
+  background-color: rgba(248, 248, 247, 1);
+}
+
+strong {
+  font-weight: 500;
+}
+
+.text a {
+  --tw-text-opacity: 1;
+  color: rgb(225 29 72 / var(--tw-text-opacity));
+  text-decoration: underline;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -582,6 +596,10 @@ html {
   }
 }
 
+.relative {
+  position: relative;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -608,12 +626,16 @@ html {
   margin-bottom: 2.5rem;
 }
 
-.mb-1 {
-  margin-bottom: 0.25rem;
+.mb-0 {
+  margin-bottom: 0px;
 }
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mb-5 {
@@ -628,16 +650,8 @@ html {
   margin-right: 0.25rem;
 }
 
-.mr-2 {
-  margin-right: 0.5rem;
-}
-
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
+.block {
+  display: block;
 }
 
 .flex {
@@ -654,6 +668,10 @@ html {
 
 .max-w-5xl {
   max-width: 64rem;
+}
+
+.grow {
+  flex-grow: 1;
 }
 
 .grid-cols-5 {
@@ -680,16 +698,16 @@ html {
   align-items: center;
 }
 
-.items-baseline {
-  align-items: baseline;
-}
-
 .justify-end {
   justify-content: flex-end;
 }
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .gap-4 {
@@ -706,6 +724,15 @@ html {
 
 .border-2 {
   border-width: 2px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-gray-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity));
 }
 
 .border-primary-500 {
@@ -751,6 +778,10 @@ html {
   padding-bottom: 0.75rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -771,6 +802,11 @@ html {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-6xl {
@@ -796,11 +832,6 @@ html {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 
 .font-black {

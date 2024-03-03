@@ -10,16 +10,10 @@ const meta: Meta<typeof LazyImage> = {
     placeholderSrc: {
       control: "text",
     },
-    placeholderClassName: {
-      control: "text",
-    },
     src: {
       control: "text",
     },
     alt: {
-      control: "text",
-    },
-    className: {
       control: "text",
     },
     width: {
@@ -36,10 +30,8 @@ export default meta;
 export const Default = {
   args: {
     placeholderSrc: "https://placehold.co/600x400",
-    placeholderClassName: "placeholder-image",
-    src: "https://source.unsplash.com/random?blue%20sky",
+    src: "https://source.unsplash.com/random/600x400/?mountain",
     alt: "Alt text",
-    className: "actual-image",
     width: 600,
     height: 400,
   },

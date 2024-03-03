@@ -61,6 +61,7 @@ export const WithNoSubtitle: Story = {
       {
         info: {
           company: "Quietooor",
+          infoUrl: "https://www.google.com",
           date: "2020 > Current",
           jobTitle: "Gloria de mi madre trainner",
           jobDesc:

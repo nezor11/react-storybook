@@ -30,11 +30,7 @@ export const Default: Story = {
       },
       imageDetail: {
         image: "https://source.unsplash.com/random/300x300/?face",
-        placeholderSrc: "https://placehold.co/600x400",
-        placeholderClassName: "placeholder-image",
-        src: "https://source.unsplash.com/random?blue%20sky",
         alt: "Alt text",
-        className: "actual-image",
         width: 300,
         height: 300,
       },

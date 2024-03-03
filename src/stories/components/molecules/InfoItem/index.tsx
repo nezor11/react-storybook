@@ -1,10 +1,12 @@
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
+import { Link } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { cn } from "@/utils";
 import React, { ComponentPropsWithRef, forwardRef } from "react";
 
 export interface InfoItemTexts {
   company: string;
+  infoUrl?: string;
   date: string;
   jobTitle: string;
   jobDesc: string;
@@ -36,26 +38,32 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
         {info.company && (
           <>
             <div className="col-span-2">
-              <TitleCopy
-                title="h5"
-                mods="mb-2 font-semibold"
-                underline
-                text={info.company}
-              />
-              {info.date && (
-                <TitleCopy title="h6" mods="mb-2" text={info.date} />
+              {info.infoUrl ? (
+                <>
+                  <TitleCopy as="h5" mods="mb-2 font-medium">
+                    <Link
+                      href={info.infoUrl}
+                      link_text={info.company}
+                      rel="noreferrer noopener"
+                    />
+                  </TitleCopy>
+                </>
+              ) : (
+                <TitleCopy
+                  as="h5"
+                  mods="mb-2 font-medium"
+                  underline
+                  text={info.company}
+                />
               )}
+              {info.date && <TitleCopy as="h6" mods="mb-2" text={info.date} />}
             </div>
           </>
         )}
         <div className={colSpanClass}>
           {info.jobTitle && (
             <>
-              <TitleCopy
-                title="h4"
-                mods="mb-2 font-semibold"
-                text={info.jobTitle}
-              />
+              <TitleCopy as="h4" mods="mb-2 font-medium" text={info.jobTitle} />
             </>
           )}
           {info.jobDesc && (

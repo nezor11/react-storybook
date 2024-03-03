@@ -25,6 +25,12 @@ export const Page = forwardRef<HTMLElement, PageProps>(
               email: "contact@nezort.es",
               address: "08025 Barcelona",
             },
+            imageDetail: {
+              image: "https://source.unsplash.com/random/300x300/?face",
+              alt: "Alt text",
+              width: 300,
+              height: 300,
+            },
           }}
         />
         <Resume resumeItems={dataResumeObject} />
