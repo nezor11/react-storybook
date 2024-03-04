@@ -41,5 +41,11 @@ export const Default: Story = {
       target: "_blank",
       rel: "noreferrer noopener",
     },
+    contact_details: {
+      title: "Casa Barcelona",
+      phone: "+34609457202",
+      email: "contact@nezor.es",
+      address: "08025 Barcelona",
+    },
   },
 };
