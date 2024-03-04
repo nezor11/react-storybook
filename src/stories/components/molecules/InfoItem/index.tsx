@@ -27,7 +27,7 @@ type InfoItemProps = ComponentPropsWithRef<"div"> &
 export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
   ({ info, subtitleEmpty, ...props }, ref) => {
     const colSpanClass =
-      subtitleEmpty && info.company ? "col-span-3" : "col-span-5";
+      subtitleEmpty && info.company ? "col-span-5 lg:col-span-3" : "col-span-5";
 
     return (
       <div
@@ -37,7 +37,7 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
       >
         {info.company && (
           <>
-            <div className="col-span-2">
+            <div className="col-span-5 lg:col-span-2">
               {info.infoUrl ? (
                 <>
                   <TitleCopy as="h5" mods="mb-2 font-medium">
@@ -51,19 +51,29 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
               ) : (
                 <TitleCopy
                   as="h5"
-                  mods="mb-2 font-medium"
+                  mods="mb-2 font-medium dark:text-white"
                   underline
                   text={info.company}
                 />
               )}
-              {info.date && <TitleCopy as="h6" mods="mb-2" text={info.date} />}
+              {info.date && (
+                <TitleCopy
+                  as="h6"
+                  mods="mb-2 dark:text-white"
+                  text={info.date}
+                />
+              )}
             </div>
           </>
         )}
         <div className={colSpanClass}>
           {info.jobTitle && (
             <>
-              <TitleCopy as="h4" mods="mb-2 font-medium" text={info.jobTitle} />
+              <TitleCopy
+                as="h4"
+                mods="mb-2 font-medium dark:text-white"
+                text={info.jobTitle}
+              />
             </>
           )}
           {info.jobDesc && (

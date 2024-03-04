@@ -1,12 +1,12 @@
 import { cn } from "@/utils";
 import { cva, VariantProps } from "class-variance-authority";
-import { ComponentProps, forwardRef } from "react";
+import React, { ComponentProps, forwardRef } from "react";
 
 const buttonStyles = cva(
   [
     "w-full",
     "rounded-md",
-    "font-semibold",
+    "font-medium",
     "focus:outline-none",
     "disabled:cursor-not-allowed",
   ],

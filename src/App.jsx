@@ -57,7 +57,7 @@ function App() {
         const lastResume = data.shift();
         setLatestResume(lastResume);
 
-        console.log("lastResume ------------------->", lastResume);
+        // console.log("lastResume ------------------->", lastResume);
       })
       .catch(console.error);
   }, []);
@@ -70,7 +70,14 @@ function App() {
           {latestResume.pageBuilder.map((section, index) => (
             <SectionRenderer key={index} section={section} />
           ))}
-          <Footer href={latestResume.pdfResumeUrl} />
+          <Footer
+            copy_right_text={latestResume.title}
+            my_link={{
+              link_text: "Download PDF Resume",
+              href: latestResume.pdfResumeUrl,
+              target: "_blank",
+            }}
+          />
         </main>
       )}
     </div>

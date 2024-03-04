@@ -40,7 +40,7 @@ export const TitleCopy: React.FC<TitleCopyProps> = ({
   align = "left",
   italic = false,
   underline = false,
-  mods = "text-xl",
+  mods = "text-xl dark:text-white",
   styles = {},
   children,
   ...props

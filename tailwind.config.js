@@ -7,14 +7,29 @@ export default {
   darkMode: ["class", '[data-mode="dark"]'],
   theme: {
     fontFamily: {
-      charlie: ["Charlie Text Regular", "sans-serif"],
+      charlie: ["Raleway", "sans-serif"],
     },
     extend: {
       colors: {
         primary: colors.rose,
         transparent: "transparent",
       },
+      screens: {
+        // dark: { raw: "(prefers-color-scheme: dark)" },
+        // => @media (prefers-color-scheme: dark) { ... }
+      },
     },
   },
-  plugins: [],
+  variants: {
+    backgroundColor: [
+      "dark",
+      "dark-hover",
+      "dark-group-hover",
+      "dark-even",
+      "dark-odd",
+    ],
+    borderColor: ["dark", "dark-disabled", "dark-focus", "dark-focus-within"],
+    textColor: ["dark", "dark-hover", "dark-active", "dark-placeholder"],
+  },
+  plugins: [require("tailwindcss-dark-mode")()],
 };

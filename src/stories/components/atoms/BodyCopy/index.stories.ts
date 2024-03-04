@@ -59,7 +59,8 @@ export const Paragraph: Story = {
 export const StrongParagraph = {
   args: {
     tag: "strong",
+    weight: "bold",
     mods: "text-base",
-    text: "Lorem fistrum <strong>ahorarr de la pradera</strong> no te digo trigo por no llamarte Rodrigor",
+    text: "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
   },
 };

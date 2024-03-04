@@ -43,7 +43,7 @@ export const IconGallery: React.FC<IconGalleryProps> = ({ iconsData = [] }) => {
   }, [iconsData]);
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center flex-wrap">
       {icons.map((Icon, index) => (
         <Icon
           className={iconsData[index]?.name}

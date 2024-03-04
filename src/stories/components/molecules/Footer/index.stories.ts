@@ -7,25 +7,22 @@ const meta: Meta<typeof Footer> = {
   component: Footer,
   tags: ["autodocs"],
   argTypes: {
-    link_text: {
+    copy_right_text: {
       control: "text",
-      defaultValue: "Link text",
+      defaultValue: "Google",
     },
     mods: {
       control: "text",
-      defaultValue: "visited:text-purple-600",
+      defaultValue: "",
     },
-    href: {
-      control: "text",
-      defaultValue: "https://carbon.sage.com",
-    },
-    target: {
-      control: "text",
-      defaultValue: "_blank",
-    },
-    rel: {
-      control: "text",
-      defaultValue: "noreferrer noopener",
+    my_link: {
+      control: "object",
+      defaultValue: {
+        link_text: "Link text",
+        href: "https://carbon.sage.com",
+        target: "_blank",
+        rel: "noreferrer noopener",
+      },
     },
   },
 };
@@ -37,9 +34,12 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     mods: "",
-    link_text: "Link text",
-    href: "https://carbon.sage.com",
-    target: "_blank",
-    rel: "noreferrer noopener",
+    copy_right_text: "Google",
+    my_link: {
+      link_text: "Link text",
+      href: "https://carbon.sage.com",
+      target: "_blank",
+      rel: "noreferrer noopener",
+    },
   },
 };

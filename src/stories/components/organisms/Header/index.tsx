@@ -36,21 +36,25 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
           <TitleCopy
             as="h1"
             text={user.name}
-            mods="text-6xl font-medium mb-4"
+            mods="text-3xl lg:text-6xl font-medium mb-4 dark:text-white"
           />
         </>
       ) : (
         <>
-          <TitleCopy as="h1" text="Rodrigor" mods="text-6xl font-medium mb-4" />
+          <TitleCopy
+            as="h1"
+            text="Rodrigor"
+            mods="text-3xl lg:text-6xl font-medium mb-4 dark:text-white"
+          />
         </>
       )}
-      <div className="flex items-center">
+      <div className="flex flex-col lg:flex-row lg:items-center">
         {user?.jobTitle ? (
           <>
             <SubtitleCopy
               subtitle="h2"
               text={user?.jobTitle}
-              mods="text-4xl uppercase text-gray-400"
+              mods="text-xl lg:text-4xl uppercase text-gray-400"
             />
           </>
         ) : (
@@ -58,27 +62,27 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
             <SubtitleCopy
               subtitle="h2"
               text="Papaar papaar"
-              mods="text-4xl uppercase text-gray-400"
+              mods="text-xl lg:text-4xl uppercase text-gray-400"
             />
           </>
         )}
         {user?.iconsData && (
           <>
-            <div className="header__aux-gallery-details">
+            <div className="header__aux-gallery-details mt-4 lg:mt-0">
               <IconGallery iconsData={user.iconsData} />
             </div>
           </>
         )}
       </div>
     </div>
-    <div className="header__aux flex items-center justify-end">
+    <div className="header__aux flex items-start justify-start lg:items-center lg:justify-end">
       {user?.imageDetail && (
         <div className="header__aux-image-details flex items-end justify-end">
           <FrameImage image={user.imageDetail.image} />
         </div>
       )}
       {user?.contactDetail && (
-        <div className="header__aux-contact-details flex items-center justify-center">
+        <div className="header__aux-contact-details items-center justify-center hidden lg:flex">
           <ContactDetail contactDetail={user.contactDetail} />
         </div>
       )}

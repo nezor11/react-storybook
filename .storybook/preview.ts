@@ -48,7 +48,7 @@ const MY_VIEWPORTS = {
   },
 };
 
-const preview: Preview = {
+export const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -56,6 +56,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+    },
+    darkMode: {
+      classTarget: "html",
     },
     backgrounds: {
       values: [
@@ -86,5 +89,3 @@ const preview: Preview = {
     },
   },
 };
-
-export default preview;

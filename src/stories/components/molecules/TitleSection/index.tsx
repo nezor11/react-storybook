@@ -28,9 +28,9 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
 
   return (
     <div>
-      <div className="flex items-center mb-6">
+      <div className="flex items-center mb-0 lg:mb-6">
         {iconsData && (
-          <div className="text-3xl flex mr-1">
+          <div className="text-2xl lg:text-3xl flex mr-1">
             <IconGallery iconsData={iconsData} />
           </div>
         )}
@@ -42,7 +42,14 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
         />
       </div>
       {subtext !== "" && (
-        <BodyCopy tag="p" size="sm" emphasis="low" italic text={subtext} />
+        <BodyCopy
+          tag="p"
+          size="sm"
+          emphasis="low"
+          mods="mt-4 lg:mt-0"
+          italic
+          text={subtext}
+        />
       )}
     </div>
   );

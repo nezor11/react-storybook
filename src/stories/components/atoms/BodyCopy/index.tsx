@@ -8,7 +8,7 @@ import "./index.css";
 const textStyles = cva("w-full text", {
   variants: {
     emphasis: {
-      low: "text-gray-600 font-light",
+      low: "text-gray-600 dark:text-white font-light",
       high: "text-red-600 font-extrabold",
     },
     size: {
@@ -70,7 +70,7 @@ interface BodyCopyProps {
 export const BodyCopy: React.FC<BodyCopyProps> = ({
   tag = "div",
   text = "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
-  mods = "text-base",
+  mods = "text-base dark:text-white",
   styles = {},
   align = "left",
   size = "base",

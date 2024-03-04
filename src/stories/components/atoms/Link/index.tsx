@@ -10,10 +10,10 @@ export interface LinkProps {
 
 export const Link: React.FC<LinkProps> = ({
   link_text = "Link text",
-  href = "https://carbon.sage.com",
+  href = "https://google.com",
   target = "_blank",
   rel = "noreferrer noopener",
-  mods = "visited:text-purple-600",
+  mods = "visited:text-primary-800",
   ...props
 }: LinkProps) => {
   return (

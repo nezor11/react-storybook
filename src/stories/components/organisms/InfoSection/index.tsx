@@ -31,18 +31,18 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
       <section ref={ref} className={cn("info-section")} {...props}>
         {titleText !== "" && subtitleText !== "" && (
           <div className="grid grid-cols-5 gap-4">
-            <div className="col-span-2">
+            <div className="col-span-5 lg:col-span-2">
               <TitleSection
                 header="h3"
                 text={titleText}
                 subtext={subtitleText}
-                mods="text-3xl uppercase text-primary-500 font-medium"
+                mods="text-xl lg:text-3xl uppercase text-primary-500 font-medium"
                 iconsData={iconsData}
               />
             </div>
             {sections && (
               <>
-                <div className="col-span-3">
+                <div className="col-span-5 lg:col-span-3">
                   {sections.map((section, index) => (
                     <InfoItem
                       key={index}
@@ -58,15 +58,15 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
         {titleText !== "" && subtitleText === "" && sections && (
           <>
             <div className="grid grid-cols-5 gap-4">
-              <div className="col-span-2">
+              <div className="col-span-5 lg:col-span-2">
                 <TitleSection
                   header="h3"
                   text={titleText}
-                  mods="text-3xl uppercase text-primary-500 font-medium"
+                  mods="text-xl lg:text-3xl uppercase text-primary-500 font-medium"
                   iconsData={iconsData}
                 />
               </div>
-              <div className="col-span-3"></div>
+              <div className="col-span-5 lg:col-span-3"></div>
             </div>
             {sections.map((section, index) => (
               <InfoItem

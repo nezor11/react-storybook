@@ -1,6 +1,10 @@
 .header__aux-gallery-details {
   div.flex.items-center {
-    @apply text-4xl;
+    @apply text-base;
+
+    @screen lg {
+      @apply text-4xl;
+    }
   }
   svg {
     @apply mx-0.5;
@@ -9,7 +13,10 @@
 
 .header__aux-image-details {
   .frame-wrapper-image {
-    transform: scale(1);
+    transform: scale(0.5);
+    @screen lg {
+      transform: scale(1);
+    }
   }
 }
 
