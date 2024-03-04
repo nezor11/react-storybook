@@ -32,12 +32,12 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
     return (
       <div
         ref={ref}
-        className={cn("grid grid-cols-5 gap-4 mb-5", colSpanClass)}
+        className={cn("grid grid-cols-5 gap-4 mb-8", colSpanClass)}
         {...props}
       >
         {info.company && (
           <>
-            <div className="col-span-5 lg:col-span-2">
+            <div className="col-span-5 lg:col-span-2 flex flex-row lg:flex-col flex-wrap -mb-4">
               {info.infoUrl ? (
                 <>
                   <TitleCopy as="h5" mods="mb-2 font-medium">
@@ -59,7 +59,7 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
               {info.date && (
                 <TitleCopy
                   as="h6"
-                  mods="mb-2 dark:text-white"
+                  mods="text-gray-400 dark:text-white ml-4 lg:ml-0"
                   text={info.date}
                 />
               )}

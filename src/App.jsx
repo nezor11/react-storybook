@@ -13,6 +13,7 @@ function App() {
         `*[_type == "resume"]{
           _id,
           title,
+          _updatedAt,
           "pageBuilder": pageBuilder[]{
             ...,
             // Condición para expandir sólo si el bloque contiene íconos
@@ -72,6 +73,8 @@ function App() {
           ))}
           <Footer
             copy_right_text={latestResume.title}
+            last_updated={latestResume._updatedAt}
+            contact_details={latestResume.pageBuilder[0].contactDetails}
             my_link={{
               link_text: "Download PDF Resume",
               href: latestResume.pdfResumeUrl,

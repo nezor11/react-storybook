@@ -5,7 +5,7 @@ import React, { CSSProperties } from "react";
 import ReactHtmlParser from "react-html-parser";
 import "./index.css";
 
-const textStyles = cva("w-full text", {
+const textStyles = cva("text", {
   variants: {
     emphasis: {
       low: "text-gray-600 dark:text-white font-light",

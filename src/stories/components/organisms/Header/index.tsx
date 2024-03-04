@@ -29,14 +29,14 @@ export interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ user }) => (
-  <header className="flex place-content-between">
-    <div className="header__main flex flex-col items-start justify-center">
+  <header className="flex place-content-between lg:mb-16">
+    <div className="header__main flex flex-col items-start justify-center basis-2/3">
       {user ? (
         <>
           <TitleCopy
             as="h1"
             text={user.name}
-            mods="text-3xl lg:text-6xl font-medium mb-4 dark:text-white"
+            mods="text-header font-medium dark:text-white"
           />
         </>
       ) : (
@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
           <TitleCopy
             as="h1"
             text="Rodrigor"
-            mods="text-3xl lg:text-6xl font-medium mb-4 dark:text-white"
+            mods="text-header font-medium dark:text-white"
           />
         </>
       )}
@@ -54,7 +54,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
             <SubtitleCopy
               subtitle="h2"
               text={user?.jobTitle}
-              mods="text-xl lg:text-4xl uppercase text-gray-400"
+              mods="text-subheader uppercase text-gray-400"
             />
           </>
         ) : (
@@ -62,20 +62,20 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
             <SubtitleCopy
               subtitle="h2"
               text="Papaar papaar"
-              mods="text-xl lg:text-4xl uppercase text-gray-400"
+              mods="text-subheader uppercase text-gray-400"
             />
           </>
         )}
         {user?.iconsData && (
           <>
-            <div className="header__aux-gallery-details mt-4 lg:mt-0">
+            <div className="header__aux-gallery-details">
               <IconGallery iconsData={user.iconsData} />
             </div>
           </>
         )}
       </div>
     </div>
-    <div className="header__aux flex items-start justify-start lg:items-center lg:justify-end">
+    <div className="header__aux flex items-start justify-end basis-1/3 lg:items-center">
       {user?.imageDetail && (
         <div className="header__aux-image-details flex items-end justify-end">
           <FrameImage image={user.imageDetail.image} />

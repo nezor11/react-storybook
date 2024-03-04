@@ -1,3 +1,4 @@
+import { ButtonTailwind } from "@/stories/components/molecules/ButtonTailwind";
 import { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
 import {
   CommonSection,
@@ -7,7 +8,7 @@ import {
 } from "@/stories/components/molecules/InfoItem";
 import { TitleSection } from "@/stories/components/molecules/TitleSection";
 import { cn } from "@/utils";
-import React, { ComponentPropsWithRef, forwardRef } from "react";
+import React, { ComponentPropsWithRef, forwardRef, useState } from "react";
 export interface InfoSectionObject extends CommonSection {
   sections?: InfoItemObject[] | null;
   info?: InfoItemTexts[];
@@ -27,6 +28,13 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
       iconsData = icons.iconsData;
     }
 
+    const initialItemsToShow = 2;
+    const [itemsToShow, setItemsToShow] = useState(initialItemsToShow);
+
+    const handleLoadMore = () => {
+      setItemsToShow(itemsToShow + initialItemsToShow);
+    };
+
     return (
       <section ref={ref} className={cn("info-section")} {...props}>
         {titleText !== "" && subtitleText !== "" && (
@@ -43,7 +51,7 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
             {sections && (
               <>
                 <div className="col-span-5 lg:col-span-3">
-                  {sections.map((section, index) => (
+                  {sections.slice(0, itemsToShow).map((section, index) => (
                     <InfoItem
                       key={index}
                       info={section.info}
@@ -51,6 +59,18 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
                     />
                   ))}
                 </div>
+                {sections.length > itemsToShow && (
+                  <div className="col-span-5 text-right">
+                    <ButtonTailwind
+                      onClick={handleLoadMore}
+                      size="sm"
+                      variant="ghost"
+                      className="w-32"
+                    >
+                      Load More
+                    </ButtonTailwind>
+                  </div>
+                )}
               </>
             )}
           </div>

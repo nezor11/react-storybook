@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import React, { CSSProperties, ReactNode } from "react";
 import "./index.css";
 
-const textStyles = cva("w-full text", {
+const textStyles = cva("text", {
   variants: {
     align: {
       left: "text-left",
