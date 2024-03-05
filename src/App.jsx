@@ -1,5 +1,6 @@
 import { Footer } from "@/stories/components/molecules/Footer";
 import { useEffect, useState } from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import SectionRenderer from "./SectionRenderer";
 import { sanityAPI } from "./sanitySetup";
 
@@ -16,23 +17,18 @@ function App() {
           _updatedAt,
           "pageBuilder": pageBuilder[]{
             ...,
-            // Condición para expandir sólo si el bloque contiene íconos
             icons[] {
-              ...,
               "iconDetails": icons->{
-                // Aquí especificamos los campos que queremos de los íconos
                 name,
                 width,
                 height,
               }
             },
-            // Seguimos la referencia de iconTitle para obtener sus detalles
             "iconTitleDetails": iconTitle->{
               name,
               width,
               height,
             },
-            // Nuevo: Seguir la referencia de contactDetails
             "contactDetails": contactDetails->{
               title,
               phone,
@@ -44,9 +40,6 @@ function App() {
               metadata {
                 dimensions
               }
-              // Suponiendo que alt y title están disponibles en los metadatos o en algún otro campo
-              // alt,
-              // title,
             }
           },
           "pdfResumeUrl": pdfResume.asset->url,
@@ -57,33 +50,72 @@ function App() {
         setResumes(data);
         const lastResume = data.shift();
         setLatestResume(lastResume);
-
-        // console.log("lastResume ------------------->", lastResume);
       })
       .catch(console.error);
   }, []);
 
   return (
-    <div className="container py-10 mx-auto px-4 max-w-5xl">
+    <HelmetProvider>
       {latestResume && (
-        <main key={latestResume._id}>
-          {/* <pre>{JSON.stringify(latestResume.pageBuilder, null, 2)}</pre> */}
-          {latestResume.pageBuilder.map((section, index) => (
-            <SectionRenderer key={index} section={section} />
-          ))}
-          <Footer
-            copy_right_text={latestResume.title}
-            last_updated={latestResume._updatedAt}
-            contact_details={latestResume.pageBuilder[0].contactDetails}
-            my_link={{
-              link_text: "Download PDF Resume",
-              href: latestResume.pdfResumeUrl,
-              target: "_blank",
-            }}
+        <Helmet>
+          <title>
+            Jorge Martínez Ortiz - Frontend Developer, Designer, Creator,
+            Frontender, Trainer
+          </title>
+          <meta
+            name="description"
+            content="Detail-oriented designer, creator, and developer with a passion for usability and frontend. Skilled in content management systems and committed to creating a positive work environment."
           />
-        </main>
+          {/* <!-- Twitter Card --> */}
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:site" content="@JorgeMartinez" />
+          <meta
+            name="twitter:title"
+            content="Jorge Martínez Ortiz - Designer, Creator, Developer, Trainer"
+          />
+          <meta
+            name="twitter:description"
+            content="Detail-oriented designer, creator, and developer with a passion for usability and frontend. Skilled in content management systems and committed to creating a positive work environment."
+          />
+          {/* <!-- Add Twitter Image if available --> */}
+          {/* <!-- <meta name="twitter:image" content="URL_TO_IMAGE"/> --> */}
+
+          {/* <!-- Open Graph (OG) --> */}
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="URL_TO_RESUME" />
+          <meta
+            property="og:title"
+            content="Jorge Martínez Ortiz - Designer, Creator, Developer, Trainer"
+          />
+          <meta
+            property="og:description"
+            content="Detail-oriented designer, creator, and developer with a passion for usability and frontend. Skilled in content management systems and committed to creating a positive work environment."
+          />
+          {/* <!-- Add OG Image if available --> */}
+          {/* <!-- <meta property="og:image" content="URL_TO_IMAGE"/> --></meta> */}
+        </Helmet>
       )}
-    </div>
+
+      <div className="container py-10 mx-auto px-4 max-w-5xl">
+        {latestResume && (
+          <main key={latestResume._id}>
+            {latestResume.pageBuilder.map((section, index) => (
+              <SectionRenderer key={index} section={section} />
+            ))}
+            <Footer
+              copy_right_text={latestResume.title}
+              last_updated={latestResume._updatedAt}
+              contact_details={latestResume.pageBuilder[0].contactDetails}
+              my_link={{
+                link_text: "Download PDF Resume",
+                href: latestResume.pdfResumeUrl,
+                target: "_blank",
+              }}
+            />
+          </main>
+        )}
+      </div>
+    </HelmetProvider>
   );
 }
 

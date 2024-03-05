@@ -69,27 +69,7 @@ export const preview: Preview = {
     },
     options: {
       storySort: {
-        order: [
-          "System",
-          "Design System",
-          [
-            "Atoms",
-            ["TitleCopy", "SubtitleCopy", "BodyCopy", "Link", "Lazy Image"],
-            "Molecules",
-            [
-              "Title Section",
-              "Info Item",
-              "Contact Details",
-              "IconGallery",
-              "Frame Image",
-              "Button",
-              "Button Tailwind",
-            ],
-            "Organisms",
-            "Templates",
-            "Pages",
-          ],
-        ],
+        order: ["System", "Design System"],
       },
     },
     viewport: {

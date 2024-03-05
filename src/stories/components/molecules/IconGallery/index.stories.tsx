@@ -20,6 +20,7 @@ export const Selected: Story = {
   args: {
     iconsData: [
       { name: "CSS3Icon", width: "120px", height: "120px" },
+      { name: "MySQLIcon", width: "120px", height: "120px" },
       { name: "JavaScriptIcon", width: "100px", height: "100px" },
       { name: "ReactIcon", width: "40px", height: "40px" },
     ],

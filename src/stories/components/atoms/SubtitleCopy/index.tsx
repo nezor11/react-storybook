@@ -13,7 +13,7 @@ interface SubtitleCopyProps {
 export const SubtitleCopy: React.FC<SubtitleCopyProps> = ({
   subtitle = "h2",
   text = "Papaar papaar",
-  mods = "text-6xl uppercase",
+  mods = "text-3xl uppercase",
   styles = {},
   ...props
 }: SubtitleCopyProps) => {

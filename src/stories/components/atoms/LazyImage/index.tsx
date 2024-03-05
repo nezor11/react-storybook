@@ -1,4 +1,5 @@
 import React, { CSSProperties, useState } from "react";
+import "./index.css";
 
 export interface LazyImageProps {
   placeholderSrc: string;
@@ -35,23 +36,27 @@ export const LazyImage: React.FC<LazyImageProps> = ({
 
   return (
     <div style={containerStyles}>
-      {!loaded && (
+      <figure className="image-wrapper" style={imageStyles}>
+        {!loaded && (
+          <img
+            src={placeholderSrc}
+            width={width}
+            height={height}
+            alt={`${alt}-placeholder`}
+          />
+        )}
         <img
-          src={placeholderSrc}
-          alt={`${alt}-placeholder`}
-          style={imageStyles}
+          src={src}
+          alt={alt}
+          style={{
+            display: loaded ? "block" : "none",
+          }}
+          onLoad={handleLoad}
+          loading="lazy"
+          width={width}
+          height={height}
         />
-      )}
-      <img
-        src={src}
-        alt={alt}
-        style={{
-          ...imageStyles,
-          display: loaded ? "block" : "none",
-        }}
-        onLoad={handleLoad}
-        loading="lazy"
-      />
+      </figure>
     </div>
   );
 };

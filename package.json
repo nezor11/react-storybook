@@ -22,6 +22,7 @@
     "clsx": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.4",
     "react-obfuscate": "^3.6.9",
     "sharp": "^0.33.2",
     "styled-components": "^6.1.8",

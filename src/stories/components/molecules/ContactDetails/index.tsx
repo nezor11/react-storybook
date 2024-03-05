@@ -1,6 +1,7 @@
 import { cn } from "@/utils";
 import React, { ComponentPropsWithRef, forwardRef } from "react";
 import Obfuscate from "react-obfuscate";
+import "./index.css";
 
 export interface ContactDetailTexts {
   title: string;

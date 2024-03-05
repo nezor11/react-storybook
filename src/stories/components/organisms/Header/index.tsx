@@ -30,7 +30,7 @@ export interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ user }) => (
   <header className="flex place-content-between lg:mb-16">
-    <div className="header__main flex flex-col items-start justify-center basis-2/3">
+    <div className="header__main flex flex-col items-start justify-center basis-2/3 lg:basis-3/4">
       {user ? (
         <>
           <TitleCopy
@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
           />
         </>
       )}
-      <div className="flex flex-col lg:flex-row lg:items-center">
+      <div className="flex flex-col lg:flex-row flex-wrap lg:items-center">
         {user?.jobTitle ? (
           <>
             <SubtitleCopy
@@ -75,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
         )}
       </div>
     </div>
-    <div className="header__aux flex items-start justify-end basis-1/3 lg:items-center">
+    <div className="header__aux flex items-start justify-end basis-1/3 lg:basis-1/4 lg:items-center">
       {user?.imageDetail && (
         <div className="header__aux-image-details flex items-end justify-end">
           <FrameImage image={user.imageDetail.image} />

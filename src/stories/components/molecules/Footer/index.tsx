@@ -40,10 +40,17 @@ export const Footer: React.FC<FooterProps> = ({
   const lastUpdated = last_updated ? formatDate(last_updated.toString()) : null;
 
   return (
-    <div {...props}>
-      <div className="flex items-center pb-10">
+    <footer {...props}>
+      <div className="flex items-center pb-6">
         <div className="grow border-b border-gray-600"></div>
       </div>
+      {contact_details && (
+        <>
+          <div className="contact-wrapper mt-0 mb-6">
+            <ContactDetail contactDetail={contact_details} />{" "}
+          </div>
+        </>
+      )}
       <div className="flex flex-col lg:flex-row lg:items-start justify-between">
         <div className="flex flex-row lg:flex-col items-center lg:items-start justify-between">
           <div>
@@ -58,11 +65,6 @@ export const Footer: React.FC<FooterProps> = ({
               &copy; {currentYear} {copy_right_text}
             </p>
           </div>
-          <div className="mt-0 lg:mt-6">
-            {contact_details && (
-              <ContactDetail contactDetail={contact_details} />
-            )}
-          </div>
         </div>
         <div className="flex-none mt-10 lg:mt-0">
           <ButtonTailwind size="sm" variant="outline">
@@ -70,6 +72,6 @@ export const Footer: React.FC<FooterProps> = ({
           </ButtonTailwind>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };

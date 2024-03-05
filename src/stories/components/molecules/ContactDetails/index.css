@@ -1,0 +1,12 @@
+footer {
+  .contact-wrapper {
+    ul {
+      @apply flex;
+      @apply justify-center;
+
+      li {
+        @apply mx-2;
+      }
+    }
+  }
+}
