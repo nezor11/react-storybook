@@ -13,7 +13,7 @@ export const Link: React.FC<LinkProps> = ({
   href = "https://google.com",
   target = "_blank",
   rel = "noreferrer noopener",
-  mods = "visited:text-primary-800",
+  mods = "visited:text-gray-800 hover:text-primary-500 focus:text-primary-500 active:text-primary-500",
   ...props
 }: LinkProps) => {
   return (

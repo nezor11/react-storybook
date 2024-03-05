@@ -30,9 +30,8 @@ const config: StorybookConfig = {
     {
       name: "@storybook/addon-docs",
       options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: false,
-        },
+        csfPluginOptions: null,
+        mdxPluginOptions: {},
       },
     },
   ],

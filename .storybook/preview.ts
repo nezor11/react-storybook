@@ -67,13 +67,33 @@ export const preview: Preview = {
         { name: "ligth", value: "rgba(248, 248, 247, 1)" },
       ],
     },
-    options: {
-      storySort: {
-        order: ["System", "Design System"],
-      },
-    },
     viewport: {
       viewports: MY_VIEWPORTS,
+    },
+    options: {
+      storySort: {
+        order: [
+          "System",
+          "Design System",
+          [
+            "Atoms",
+            ["TitleCopy", "SubtitleCopy", "BodyCopy", "Link", "Lazy Image"],
+            "Molecules",
+            [
+              "Title Section",
+              "Info Item",
+              "Contact Details",
+              "IconGallery",
+              "Frame Image",
+              "Button",
+              "Button Tailwind",
+            ],
+            "Organisms",
+            "Templates",
+            "Pages",
+          ],
+        ],
+      },
     },
   },
 };

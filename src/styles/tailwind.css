@@ -1279,8 +1279,8 @@ strong {
   font-display: swap;
 }
 
-.visited\:text-primary-800:visited {
-  color: rgb(159 18 57 );
+.visited\:text-gray-800:visited {
+  color: rgb(31 41 55 );
 }
 
 .visited\:text-purple-600:visited {
@@ -1297,9 +1297,24 @@ strong {
   background-color: rgb(225 29 72 / var(--tw-bg-opacity));
 }
 
+.hover\:text-primary-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(244 63 94 / var(--tw-text-opacity));
+}
+
+.focus\:text-primary-500:focus {
+  --tw-text-opacity: 1;
+  color: rgb(244 63 94 / var(--tw-text-opacity));
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.active\:text-primary-500:active {
+  --tw-text-opacity: 1;
+  color: rgb(244 63 94 / var(--tw-text-opacity));
 }
 
 .disabled\:cursor-not-allowed:disabled {
