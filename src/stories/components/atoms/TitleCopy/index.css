@@ -2,7 +2,7 @@
   word-break: break-word;
 
   &.text-header {
-    font-size: calc(1.875rem + 1.2vw);
+    font-size: calc(1.25rem + 1.2vw);
 
     @screen lg {
       font-size: calc(3rem + 1.2vw);

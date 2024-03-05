@@ -2,6 +2,7 @@ footer {
   .contact-wrapper {
     ul {
       @apply flex;
+      @apply flex-wrap;
       @apply justify-center;
 
       li {

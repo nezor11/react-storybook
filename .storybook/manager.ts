@@ -5,7 +5,7 @@ addons.setConfig({
   theme: create({
     base: "light",
     brandTitle: "My Storybook",
-    brandUrl: "https://example.com",
+    brandUrl: "https://martinez.place",
     brandImage: "https://placehold.it/350x150",
     brandTarget: "_blank",
     colorSecondary: "hotpink",

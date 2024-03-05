@@ -2,9 +2,11 @@
   .text {
     &.text-subheader {
       font-size: calc(1rem + 1.2vw);
+      @apply -mt-2;
 
       @screen lg {
         font-size: calc(1.875rem);
+        @apply mt-0;
       }
     }
   }
@@ -20,6 +22,7 @@
   }
   svg {
     @apply mx-0.5;
+    @apply my-0.5;
   }
 }
 
