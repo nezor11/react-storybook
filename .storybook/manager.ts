@@ -6,7 +6,7 @@ addons.setConfig({
     base: "light",
     brandTitle: "My Storybook",
     brandUrl: "https://martinez.place",
-    brandImage: "https://placehold.it/350x150",
+    brandImage: "../public/face.svg",
     brandTarget: "_blank",
     colorSecondary: "hotpink",
     appBg: "#f0f0f0",
