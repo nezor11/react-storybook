@@ -1,7 +1,6 @@
 import { Resume } from "@/stories/components/templates/Resume";
 import blocksToHtml from "@sanity/block-content-to-html";
 import imageUrlBuilder from "@sanity/image-url";
-import React from "react";
 
 // Definir tu projectId y dataset
 const projectId = "6zr8au58";
@@ -50,10 +49,20 @@ const ResumeSection = ({ section }) => {
         const finishDateObj = finishDate ? new Date(finishDate) : null;
         const startYear = startDateObj.getFullYear();
         const finishYear = finishDateObj ? finishDateObj.getFullYear() : null;
-        const dateText =
-          finishYear && startYear !== finishYear
-            ? `${startYear} > ${finishYear}`
-            : `${startYear} > Current`;
+
+        let dateText = `${startYear} > Current`;
+
+        if (finishDateObj) {
+          const finishYear = finishDateObj.getFullYear();
+          dateText =
+            startYear !== finishYear
+              ? `${startYear} > ${finishYear}`
+              : dateText;
+        }
+
+        if (startYear === finishYear) {
+          dateText = startYear;
+        }
 
         const imageUrl =
           imageDetails && imageDetails.url
