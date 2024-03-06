@@ -9,6 +9,7 @@ const PhpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       height={height ? height : "1em"}
       preserveAspectRatio="xMidYMid"
       viewBox="0 -127 512 512"
+      fill="#8993be"
       ref={ref}
       aria-labelledby={name}
       aria-describedby={desc}

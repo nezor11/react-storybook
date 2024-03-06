@@ -10,6 +10,7 @@ const WordpressIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       height={height ? height : "1em"}
       xmlSpace="preserve"
       viewBox="0 0 96.24 96.24"
+      fill="#21759b"
       ref={ref}
       aria-labelledby={name}
       aria-describedby={desc}
