@@ -44,7 +44,7 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
                 header="h3"
                 text={titleText}
                 subtext={subtitleText}
-                mods="text-xl lg:text-3xl uppercase text-primary-500 font-medium"
+                mods="text-2xl lg:text-3xl uppercase text-primary-500 font-medium"
                 iconsData={iconsData}
               />
             </div>
@@ -82,7 +82,7 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
                 <TitleSection
                   header="h3"
                   text={titleText}
-                  mods="text-xl lg:text-3xl uppercase text-primary-500 font-medium"
+                  mods="text-2xl lg:text-3xl uppercase text-primary-500 font-medium"
                   iconsData={iconsData}
                 />
               </div>

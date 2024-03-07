@@ -42,7 +42,7 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
                 <>
                   <TitleCopy
                     as="h5"
-                    mods="mb-2 font-medium text-base lg:text-xl dark:text-white"
+                    mods="mb-2 font-medium text-base lg:text-xl dark:text-white mr-2"
                   >
                     <Link
                       href={info.infoUrl}
@@ -54,7 +54,7 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
               ) : (
                 <TitleCopy
                   as="h5"
-                  mods="mb-2 font-medium text-base lg:text-xl dark:text-white"
+                  mods="mb-2 font-medium text-base lg:text-xl dark:text-white mr-2"
                   underline
                   text={info.company}
                 />
@@ -62,7 +62,7 @@ export const InfoItem = forwardRef<HTMLDivElement, InfoItemProps>(
               {info.date && (
                 <TitleCopy
                   as="h6"
-                  mods="text-gray-400 dark:text-white ml-4 lg:ml-0"
+                  mods="text-gray-400 dark:text-white mb-2"
                   text={info.date}
                 />
               )}
