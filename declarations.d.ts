@@ -22,3 +22,7 @@ declare module "*.svg" {
   const value: any;
   export = value;
 }
+declare module "doctrine" {
+  // Replace `any` with more specific types if possible
+  export function parse(src: string, options?: any): any;
+}

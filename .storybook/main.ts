@@ -39,6 +39,10 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  core: {
+    builder: "@storybook/builder-vite",
+    disableTelemetry: true,
+  },
   typescript: {
     reactDocgen: "react-docgen",
     reactDocgenTypescriptOptions: {
@@ -50,6 +54,9 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: "tag",
+  },
+  features: {
+    versionUpdateCheck: false,
   },
   viteFinal: async (config) => {
     config.plugins?.push(

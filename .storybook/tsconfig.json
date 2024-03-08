@@ -1,0 +1,7 @@
+{
+  "extends": "..",
+  "compilerOptions": {
+    "module": "es2015", // Change this to 'es2015' or later, or to 'preserve'
+    "target": "ES2017"
+  }
+}

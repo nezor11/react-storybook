@@ -14,10 +14,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.4",
     "@portabletext/react": "^3.0.11",
     "@sanity/block-content-to-html": "^2.0.0",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/image-url": "^1.0.2",
+    "@storybook/builder-webpack5": "^7.6.17",
+    "@storybook/manager-api": "^7.6.17",
+    "@storybook/theming": "^7.6.17",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "react": "^18.2.0",
@@ -42,6 +46,7 @@
     "init-msw": "msw init public/"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
@@ -59,8 +64,8 @@
     "@storybook/blocks": "^7.6.10",
     "@storybook/cli": "^7.6.17",
     "@storybook/icons": "^1.2.3",
-    "@storybook/react": "^7.6.10",
-    "@storybook/react-vite": "^7.6.10",
+    "@storybook/react": "^7.6.17",
+    "@storybook/react-vite": "^7.6.17",
     "@storybook/source-loader": "^7.6.17",
     "@storybook/test": "^7.6.10",
     "@types/babel__core": "^7.20.5",
@@ -87,9 +92,12 @@
     "tailwindcss": "^3.4.1",
     "vite": "^4.2.0",
     "vite-plugin-require": "^1.1.14",
-    "vite-tsconfig-paths": "^4.3.1"
+    "vite-tsconfig-paths": "^4.3.1",
+    "webpack": "^5.90.3"
   },
   "resolutions": {
-    "jackspeak": "2.1.1"
+    "jackspeak": "^2.3.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
