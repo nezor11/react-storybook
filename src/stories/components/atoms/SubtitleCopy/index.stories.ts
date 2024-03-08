@@ -3,7 +3,7 @@ import { SubtitleCopy } from ".";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof SubtitleCopy> = {
-  title: "Design System/Atoms/SubtitleCopy",
+  title: "Design System/Atoms/Subtitle Copy",
   component: SubtitleCopy,
   tags: ["autodocs"],
   argTypes: {

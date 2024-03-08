@@ -52,7 +52,7 @@ type Story = StoryObj<typeof BodyCopy>;
 export const Paragraph: Story = {
   args: {
     tag: "p",
-    mods: "text-base",
+    mods: "text-base dark:text-white",
   },
 };
 
@@ -60,7 +60,7 @@ export const StrongParagraph = {
   args: {
     tag: "strong",
     weight: "bold",
-    mods: "text-base",
+    mods: "text-base dark:text-white",
     text: "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
   },
 };

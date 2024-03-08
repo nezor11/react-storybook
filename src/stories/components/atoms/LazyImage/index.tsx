@@ -2,13 +2,19 @@ import React, { CSSProperties, useState } from "react";
 import "./index.css";
 
 export interface LazyImageProps {
+  /** The placeholderSrc property is optional and can be a string. */
   placeholderSrc: string;
+  /** The src property is optional and can be a string. */
   src: string;
+  /** The alt property is optional and can be a string. */
   alt?: string;
+  /** The width property is optional and can be a number. */
   width?: number;
+  /** The height property is optional and can be a number. */
   height?: number;
 }
 
+/** Renders an image component with lazy loading and customizable styles. */
 export const LazyImage: React.FC<LazyImageProps> = ({
   placeholderSrc,
   src,

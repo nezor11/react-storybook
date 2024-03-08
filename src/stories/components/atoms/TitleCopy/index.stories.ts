@@ -3,7 +3,7 @@ import { TitleCopy } from ".";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof TitleCopy> = {
-  title: "Design System/Atoms/TitleCopy",
+  title: "Design System/Atoms/Title Copy",
   component: TitleCopy,
   tags: ["autodocs"],
   argTypes: {
@@ -30,6 +30,11 @@ const meta: Meta<typeof TitleCopy> = {
       defaultValue: false,
     },
     mods: { control: "text", defaultValue: "text-6xl" },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
   },
 };
 

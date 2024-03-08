@@ -1,19 +1,41 @@
+/**
+ * Renders a contact detail component.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * const contactDetail = {
+ *   title: "Contact",
+ *   phone: "123-456-7890",
+ *   email: "example@example.com",
+ *   address: "123 Main St, City, State"
+ * };
+ *
+ * <ContactDetail contactDetail={contactDetail} />
+ * ```
+ */
 import { cn } from "@/utils";
 import React, { ComponentPropsWithRef, forwardRef } from "react";
 import Obfuscate from "react-obfuscate";
 import "./index.css";
 
 export interface ContactDetailTexts {
+  /** The title property is required and can be a string. */
   title: string;
+  /** The phone property is optional and can be a string. */
   phone?: string;
+  /** The email property is optional and can be a string. */
   email?: string;
+  /** The address property is optional and can be a string. */
   address?: string;
 }
 
 type ContactDetailProps = ComponentPropsWithRef<"div"> & {
+  /** The contactDetail property is required and can be a ContactDetailTexts object. */
   contactDetail: ContactDetailTexts;
 };
 
+/** Renders a contact detail component. */
 export const ContactDetail = forwardRef<HTMLDivElement, ContactDetailProps>(
   ({ contactDetail, ...props }, ref) => {
     const slugify = (str: string) =>

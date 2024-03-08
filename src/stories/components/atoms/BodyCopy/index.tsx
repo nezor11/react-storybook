@@ -47,14 +47,22 @@ const textStyles = cva("text", {
 
 type AllowedTagValues = "div" | "span" | "p";
 interface BodyCopyProps {
+  /** The tag property is optional and can be either an AllowedTagValues ("div", "span", "p").  */
   tag: AllowedTagValues;
+  /** The text property is optional and can be a string.  */
   text: string;
+  /** The mods property is optional and can be a string with tailwind or css classes. */
   mods?: string;
+  /** The align property is optional and can be either "left", "center", "right", null, or undefined.  */
   align?: "left" | "center" | "right" | null | undefined;
+  /** The size property is optional and can be either "sm", "base", "lg", "xl", "2xl", "3xl", null, or undefined.  */
   size?: "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | null | undefined;
+  /** The emphasis property is optional and can be either "low", "high", null, or undefined.  */
   emphasis?: "low" | "high" | null | undefined;
+  /** The italic property is optional and can be a boolean.  */
   italic?: boolean;
   underline?: boolean;
+  /** The weight property is optional and can be either "thin", "normal", "medium", "semibold", "bold", "black", null, or undefined.  */
   weight?:
     | "thin"
     | "normal"
@@ -64,9 +72,11 @@ interface BodyCopyProps {
     | "black"
     | null
     | undefined;
+  /** The styles property is optional and can be a CSSProperties object. */
   styles?: CSSProperties;
 }
 
+/** Renders a body copy component with customizable styles and variants. */
 export const BodyCopy: React.FC<BodyCopyProps> = ({
   tag = "div",
   text = "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",

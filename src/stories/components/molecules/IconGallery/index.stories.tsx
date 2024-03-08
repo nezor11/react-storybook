@@ -5,7 +5,12 @@ const meta: Meta<typeof IconGallery> = {
   title: "Design System/Molecules/IconGallery",
   component: IconGallery,
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    iconsData: {
+      control: "object",
+      defaultValue: [],
+    },
+  },
 };
 
 export default meta;
