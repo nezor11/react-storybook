@@ -4,10 +4,10 @@ import { create } from "@storybook/theming";
 addons.setConfig({
   theme: create({
     base: "light",
-    brandTitle: "My Storybook",
-    brandUrl: "https://martinez.place",
-    brandImage: "../public/face.svg",
-    brandTarget: "_blank",
+    brandTitle: "Martinez Storybook",
+    brandUrl: "/",
+    brandImage: "./nezor.svg",
+    brandTarget: "_self",
     colorSecondary: "hotpink",
     appBg: "#f0f0f0",
     appBorderColor: "rgba(0,0,0,0.1)",

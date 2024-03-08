@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { BodyCopy } from ".";
 
 const meta: Meta<typeof BodyCopy> = {
-  title: "Design System/Atoms/BodyCopy",
+  title: "Design System/Atoms/Body Copy",
   component: BodyCopy,
   tags: ["autodocs"],
   argTypes: {
