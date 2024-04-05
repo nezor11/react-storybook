@@ -1,0 +1,10 @@
+import { Section } from "@/utils/types/section";
+
+export interface Resume {
+  _id: string;
+  title: string;
+  _updatedAt: string;
+  pageBuilder: Section[];
+  pdfResumeUrl: string;
+  slug: string;
+}

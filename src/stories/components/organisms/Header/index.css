@@ -1,5 +1,13 @@
 .header__main {
   .text {
+    &.text-header {
+      font-size: calc(1.25rem + 1.2vw);
+
+      @screen lg {
+        font-size: 3.75rem;
+        line-height: 1;
+      }
+    }
     &.text-subheader {
       font-size: calc(1rem + 1.2vw);
       @apply -mt-2;

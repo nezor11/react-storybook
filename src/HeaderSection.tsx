@@ -1,8 +1,18 @@
-// HeaderSection.js
+// HeaderSection.tsx
 import { Header } from "@/stories/components/organisms/Header";
+import {
+  ContactDetails,
+  FrameImageProps,
+  ImageDetails,
+  Section,
+} from "@/utils/types/section";
 import React from "react";
 
-const HeaderSection = ({ section }) => {
+interface Props {
+  section: Section;
+}
+
+const HeaderSection: React.FC<Props> = ({ section }) => {
   // Transformamos los íconos a la estructura esperada
   const iconsData = section.icons
     .map((iconGallery) => iconGallery.iconDetails)
@@ -12,27 +22,35 @@ const HeaderSection = ({ section }) => {
       height: icon.height ? icon.height + "px" : "1em", // Asume "1em" como valor predeterminado si no está especificado
     }));
 
-  const contactInfo = section.contactDetails
+  const contactInfo: ContactDetails = section.contactDetails
     ? {
         title: section.contactDetails.title,
         phone: section.contactDetails.phone,
         email: section.contactDetails.email,
         address: section.contactDetails.address,
       }
-    : {};
+    : {
+        title: "",
+        phone: "",
+        email: "",
+        address: "",
+      };
 
-  const imageDetails = section.imageDetails
+  const imageDetails: ImageDetails | null = section.imageDetails
     ? {
-        alt: "Descripción alternativa", // Ajusta según tus datos
-        title: "Título de la imagen", // Ajusta según tus datos
-        placeholderSrc: "https://placehold.co/300x300",
-        image: section.imageDetails.url,
-        width: section.imageDetails.metadata.dimensions.width,
-        height: section.imageDetails.metadata.dimensions.height,
+        url: section.imageDetails.url,
+        metadata: {
+          dimensions: {
+            width: section.imageDetails.metadata.dimensions.width,
+            height: section.imageDetails.metadata.dimensions.height,
+          },
+        },
       }
     : null;
 
-  //console.log("section -------------->", section);
+  const frameImageProps: FrameImageProps = {
+    image: imageDetails ? imageDetails.url : undefined,
+  };
 
   return (
     <Header
@@ -42,7 +60,7 @@ const HeaderSection = ({ section }) => {
         jobTitle: section.jobDescHeader,
         iconsData: iconsData,
         contactDetail: contactInfo,
-        imageDetail: imageDetails,
+        imageDetail: imageDetails ? { image: imageDetails.url } : null,
       }}
     />
   );

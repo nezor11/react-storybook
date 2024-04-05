@@ -9429,6 +9429,11 @@ store2@^2.14.2:
   resolved "https://registry.npmjs.org/store2/-/store2-2.14.3.tgz"
   integrity sha512-4QcZ+yx7nzEFiV4BMLnr/pRa5HYzNITX2ri0Zh6sT9EyQHbBHacC6YigllUPU9X3D0f/22QCgfokpKs52YRrUg==
 
+storybook-addon-tw-dm-toggle@^7.0.19:
+  version "7.0.19"
+  resolved "https://registry.yarnpkg.com/storybook-addon-tw-dm-toggle/-/storybook-addon-tw-dm-toggle-7.0.19.tgz#4ba51684bd190b60292cc2469c633a483e629427"
+  integrity sha512-PNBN3lDHpnRBFqsKFmlXcI06yXbu7s19E3hjPJsMLRG5ZbbRiLsb0ZaOyeiLclT62ye7bRlRrfuPMLs9h8b83A==
+
 storybook-dark-mode@^3.0.3:
   version "3.0.3"
   resolved "https://registry.npmjs.org/storybook-dark-mode/-/storybook-dark-mode-3.0.3.tgz"

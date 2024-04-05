@@ -1,4 +1,5 @@
 import { css, keyframes } from "@emotion/react";
+import { withThemeByClassName } from "@storybook/addon-themes";
 import { Preview } from "@storybook/react";
 import { Theme } from "@storybook/theming";
 import "../src/styles/tailwind.css";
@@ -407,11 +408,6 @@ export const preview: Preview = {
         date: /Date$/,
       },
     },
-    darkMode: {
-      light: lightTheme,
-      dark: darkTheme,
-      stylePreview: true,
-    },
     viewport: {
       viewports: MY_VIEWPORTS,
     },
@@ -419,8 +415,17 @@ export const preview: Preview = {
       storySort: {
         method: "alphabetical",
         includeNmaes: true,
-        order: ["System", "*"],
+        order: ["Design System", "*"],
       },
     },
   },
+  decorators: [
+    withThemeByClassName({
+      themes: {
+        light: "light",
+        dark: "dark",
+      },
+      defaultTheme: "light",
+    }),
+  ],
 };

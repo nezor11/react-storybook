@@ -33,19 +33,11 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
     <div className="header__main flex flex-col items-start justify-center basis-2/3 lg:basis-3/4">
       {user ? (
         <>
-          <TitleCopy
-            as="h1"
-            text={user.name}
-            mods="text-header font-medium dark:text-white"
-          />
+          <TitleCopy as="h1" text={user.name} mods="font-medium text-header" />
         </>
       ) : (
         <>
-          <TitleCopy
-            as="h1"
-            text="Rodrigor"
-            mods="text-header font-medium dark:text-white"
-          />
+          <TitleCopy as="h1" text="Rodrigor" mods="font-medium text-header" />
         </>
       )}
       <div className="flex flex-col lg:flex-row flex-wrap lg:items-center">

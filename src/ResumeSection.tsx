@@ -1,6 +1,13 @@
+// ResumeSection.tsx
 import { Resume } from "@/stories/components/templates/Resume";
+import { Section } from "@/utils/types/section";
 import blocksToHtml from "@sanity/block-content-to-html";
 import imageUrlBuilder from "@sanity/image-url";
+import React from "react";
+
+interface Props {
+  section: Section;
+}
 
 // Definir tu projectId y dataset
 const projectId = "6zr8au58";
@@ -9,10 +16,10 @@ const dataset = "production";
 // Función para construir la URL de la imagen desde el objeto de imagen de Sanity
 const builder = imageUrlBuilder({ projectId, dataset });
 
-const urlFor = (source) => builder.image(source);
+const urlFor = (source: any) => builder.image(source);
 
-const ResumeSection = ({ section }) => {
-  const mapInfoSection = (section) => {
+const ResumeSection: React.FC<Props> = ({ section }) => {
+  const mapInfoSection = (section: Section) => {
     const { titleSection, subtitleSection, sections, iconTitleDetails } =
       section;
 
@@ -61,7 +68,7 @@ const ResumeSection = ({ section }) => {
         }
 
         if (startYear === finishYear) {
-          dateText = startYear;
+          dateText = startYear.toString();
         }
 
         const imageUrl =
@@ -69,13 +76,11 @@ const ResumeSection = ({ section }) => {
             ? urlFor(imageDetails).width(800).height(600).url()
             : null;
 
-        // console.log("jobDesc Original:", jobDesc);
         const consolidatedJobDescHtml = blocksToHtml({
           blocks: jobDesc,
           projectId: projectId,
           dataset: dataset,
         });
-        // console.log("jobDesc HTML:", consolidatedJobDescHtml);
 
         return {
           info: {
@@ -92,8 +97,6 @@ const ResumeSection = ({ section }) => {
       }),
     };
   };
-
-  // console.log("ResumeSection:", mapInfoSection(section));
 
   return <Resume key={section._key} resumeItems={[mapInfoSection(section)]} />;
 };

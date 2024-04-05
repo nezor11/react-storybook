@@ -14,7 +14,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-themes",
     "@storybook/addon-a11y",
-    "storybook-dark-mode",
+    "storybook-addon-tw-dm-toggle",
     {
       name: "@storybook/addon-storysource",
       options: {
