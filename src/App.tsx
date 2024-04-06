@@ -7,6 +7,32 @@ import SectionRenderer from "./SectionRenderer";
 import { sanityAPI } from "./utils/setup/sanitySetup";
 import { ThemeContextInterface } from "./utils/types/theme";
 
+// Componente para los elementos cargados desde el JSON
+const ResumeContent = ({ latestResume }: { latestResume: Resume }) => {
+  return (
+    <>
+      <main key={latestResume._id}>
+        {latestResume.pageBuilder.map((section, index) => (
+          <SectionRenderer key={index} section={section} />
+        ))}
+        {latestResume.pageBuilder[0] && (
+          <Footer
+            copy_right_text={latestResume.title}
+            last_updated={latestResume._updatedAt}
+            contact_details={latestResume.pageBuilder[0].contactDetails}
+            my_link={{
+              link_text: "Download PDF Resume",
+              href: latestResume.pdfResumeUrl,
+              target: "_blank",
+              rel: "canonical",
+            }}
+          />
+        )}
+      </main>
+    </>
+  );
+};
+
 function App() {
   const [resumes, setResumes] = useState<Resume[] | null>(null);
   const [latestResume, setLatestResume] = useState<Resume | null>(null);
@@ -111,26 +137,8 @@ function App() {
         >
           Toggle
         </button>
-        {latestResume && (
-          <main key={latestResume._id}>
-            {latestResume.pageBuilder.map((section, index) => (
-              <SectionRenderer key={index} section={section} />
-            ))}
-            {latestResume.pageBuilder[0] && ( // Comprobación de que el primer elemento existe
-              <Footer
-                copy_right_text={latestResume.title}
-                last_updated={latestResume._updatedAt}
-                contact_details={latestResume.pageBuilder[0].contactDetails}
-                my_link={{
-                  link_text: "Download PDF Resume",
-                  href: latestResume.pdfResumeUrl,
-                  target: "_blank",
-                  rel: "canonical",
-                }}
-              />
-            )}
-          </main>
-        )}
+        {/* Renderizar los elementos cargados desde el JSON */}
+        {latestResume && <ResumeContent latestResume={latestResume} />}
       </div>
     </HelmetProvider>
   );
