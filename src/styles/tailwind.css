@@ -606,8 +606,20 @@ strong {
   }
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.top-3 {
+  top: 0.75rem;
 }
 
 .col-span-5 {
@@ -1016,6 +1028,14 @@ strong {
 
   .dark\:text-white {
     color: var(--textColor);
+  }
+}
+
+.button-dark {
+  svg {
+    path {
+      fill: var(--textColor);
+    }
   }
 }
 

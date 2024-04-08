@@ -34,6 +34,14 @@
   }
 }
 
+.button-dark {
+  svg {
+    path {
+      fill: var(--textColor);
+    }
+  }
+}
+
 @font-face {
   font-family: "Raleway";
   src: url("./font/hinted-subset-Raleway-ExtraLightItalic.eot");

@@ -38,7 +38,6 @@ const ResumeContent = ({ latestResume }: { latestResume: Resume }) => {
 function App() {
   const [resumes, setResumes] = useState<Resume[] | null>(null);
   const [latestResume, setLatestResume] = useState<Resume | null>(null);
-  const [isSunIconVisible, setIsSunIconVisible] = useState(true);
 
   const { darkTheme, toggleTheme } = useContext(
     ThemeContext
@@ -90,10 +89,6 @@ function App() {
       .catch(console.error);
   }, []);
 
-  const handleToggleIcon = () => {
-    setIsSunIconVisible((prevState) => !prevState);
-  };
-
   return (
     <HelmetProvider>
       {latestResume && (
@@ -136,12 +131,14 @@ function App() {
         </Helmet>
       )}
 
-      <div className="container py-10 mx-auto px-4 max-w-5xl">
+      <div className="container py-10 mx-auto px-4 max-w-5xl relative">
         <button
           onClick={toggleTheme}
-          className={darkTheme ? "button-dark" : "button-light"}
+          className={`absolute right-0 top-3 ${
+            darkTheme ? "button-dark" : "button-light"
+          }`}
         >
-          {isSunIconVisible ? <MemoizedSunIcon /> : <MemoizedMoonIcon />}
+          {darkTheme ? <MemoizedSunIcon /> : <MemoizedMoonIcon />}
         </button>
         {/* Renderizar los elementos cargados desde el JSON */}
         {latestResume && <ResumeContent latestResume={latestResume} />}
