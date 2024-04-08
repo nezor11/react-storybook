@@ -37,6 +37,6 @@ const MySQLIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(MySQLIcon);
+const MemoizedMySQLIcon: React.FC<IconProps> = memo(MySQLIcon);
 
-export default MemoizedIcon;
+export default MemoizedMySQLIcon;

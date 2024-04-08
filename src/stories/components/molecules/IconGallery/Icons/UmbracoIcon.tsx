@@ -22,6 +22,6 @@ const UmbracoIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(UmbracoIcon);
+const MemoizedUmbracoIcon: React.FC<IconProps> = memo(UmbracoIcon);
 
-export default MemoizedIcon;
+export default MemoizedUmbracoIcon;

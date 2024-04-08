@@ -30,6 +30,6 @@ const CSS3Icon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(CSS3Icon);
+const MemoizedCSS3Icon: React.FC<IconProps> = memo(CSS3Icon);
 
-export default MemoizedIcon;
+export default MemoizedCSS3Icon;

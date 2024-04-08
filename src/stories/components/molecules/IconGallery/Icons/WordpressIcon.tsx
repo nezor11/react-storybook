@@ -23,6 +23,6 @@ const WordpressIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(WordpressIcon);
+const MemoizedWordpressIcon: React.FC<IconProps> = memo(WordpressIcon);
 
-export default MemoizedIcon;
+export default MemoizedWordpressIcon;

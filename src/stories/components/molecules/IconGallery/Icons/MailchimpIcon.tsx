@@ -35,6 +35,6 @@ const MailchimpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(MailchimpIcon);
+const MemoizedMailchimpIcon: React.FC<IconProps> = memo(MailchimpIcon);
 
-export default MemoizedIcon;
+export default MemoizedMailchimpIcon;

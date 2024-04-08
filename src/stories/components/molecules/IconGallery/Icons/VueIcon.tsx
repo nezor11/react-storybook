@@ -32,6 +32,6 @@ const VueIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(VueIcon);
+const MemoizedVueIcon: React.FC<IconProps> = memo(VueIcon);
 
-export default MemoizedIcon;
+export default MemoizedVueIcon;

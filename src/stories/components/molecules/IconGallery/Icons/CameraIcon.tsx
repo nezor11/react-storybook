@@ -21,6 +21,6 @@ const CameraIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(CameraIcon);
+const MemoizedCameraIcon: React.FC<IconProps> = memo(CameraIcon);
 
-export default MemoizedIcon;
+export default MemoizedCameraIcon;

@@ -28,6 +28,6 @@ const NodeJSIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(NodeJSIcon);
+const MemoizedNodeJSIcon: React.FC<IconProps> = memo(NodeJSIcon);
 
-export default MemoizedIcon;
+export default MemoizedNodeJSIcon;

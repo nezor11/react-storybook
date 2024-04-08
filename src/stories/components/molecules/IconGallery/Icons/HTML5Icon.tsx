@@ -26,6 +26,6 @@ const HTML5Icon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(HTML5Icon);
+const MemoizedHTML5Icon: React.FC<IconProps> = memo(HTML5Icon);
 
-export default MemoizedIcon;
+export default MemoizedHTML5Icon;

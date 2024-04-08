@@ -36,6 +36,6 @@ const StorybookIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(StorybookIcon);
+const MemoizedStorybookIcon: React.FC<IconProps> = memo(StorybookIcon);
 
-export default MemoizedIcon;
+export default MemoizedStorybookIcon;

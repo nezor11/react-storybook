@@ -27,6 +27,6 @@ const GitBranchIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(GitBranchIcon);
+const MemoizedGitBranchIcon: React.FC<IconProps> = memo(GitBranchIcon);
 
-export default MemoizedIcon;
+export default MemoizedGitBranchIcon;

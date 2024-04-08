@@ -43,6 +43,6 @@ const CsharpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(CsharpIcon);
+const MemoizedCsharpIcon: React.FC<IconProps> = memo(CsharpIcon);
 
-export default MemoizedIcon;
+export default MemoizedCsharpIcon;

@@ -32,6 +32,6 @@ const WebPackIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(WebPackIcon);
+const MemoizedWebPackIcon: React.FC<IconProps> = memo(WebPackIcon);
 
-export default MemoizedIcon;
+export default MemoizedWebPackIcon;

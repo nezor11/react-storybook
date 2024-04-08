@@ -42,6 +42,6 @@ const NuxtIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(NuxtIcon);
+const MemoizedNuxtIcon: React.FC<IconProps> = memo(NuxtIcon);
 
-export default MemoizedIcon;
+export default MemoizedNuxtIcon;

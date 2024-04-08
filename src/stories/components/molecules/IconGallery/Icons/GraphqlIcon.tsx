@@ -80,6 +80,6 @@ const GraphqlIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(GraphqlIcon);
+const MemoizedGraphqlIcon: React.FC<IconProps> = memo(GraphqlIcon);
 
-export default MemoizedIcon;
+export default MemoizedGraphqlIcon;

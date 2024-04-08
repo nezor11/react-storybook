@@ -27,6 +27,6 @@ const LaravelIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(LaravelIcon);
+const MemoizedLaravelIcon: React.FC<IconProps> = memo(LaravelIcon);
 
-export default MemoizedIcon;
+export default MemoizedLaravelIcon;

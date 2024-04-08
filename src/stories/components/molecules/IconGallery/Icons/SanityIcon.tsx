@@ -34,6 +34,6 @@ const SanityIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(SanityIcon);
+const MemoizedSanityIcon: React.FC<IconProps> = memo(SanityIcon);
 
-export default MemoizedIcon;
+export default MemoizedSanityIcon;

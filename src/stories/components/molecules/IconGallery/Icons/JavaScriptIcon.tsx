@@ -23,6 +23,6 @@ const JavaScriptIcon: React.FC<IconProps> = forwardRef<
   </svg>
 ));
 
-const MemoizedIcon: React.FC<IconProps> = memo(JavaScriptIcon);
+const MemoizedJavaScriptIcon: React.FC<IconProps> = memo(JavaScriptIcon);
 
-export default MemoizedIcon;
+export default MemoizedJavaScriptIcon;

@@ -54,6 +54,6 @@ const ViteIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(ViteIcon);
+const MemoizedViteIcon: React.FC<IconProps> = memo(ViteIcon);
 
-export default MemoizedIcon;
+export default MemoizedViteIcon;

@@ -33,6 +33,6 @@ const JQueryIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(JQueryIcon);
+const MemoizedJQueryIcon: React.FC<IconProps> = memo(JQueryIcon);
 
-export default MemoizedIcon;
+export default MemoizedJQueryIcon;

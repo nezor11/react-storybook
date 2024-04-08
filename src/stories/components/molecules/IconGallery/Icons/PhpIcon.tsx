@@ -22,6 +22,6 @@ const PhpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedIcon: React.FC<IconProps> = memo(PhpIcon);
+const MemoizedPhpIcon: React.FC<IconProps> = memo(PhpIcon);
 
-export default MemoizedIcon;
+export default MemoizedPhpIcon;
