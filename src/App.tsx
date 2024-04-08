@@ -136,7 +136,7 @@ function App() {
         </Helmet>
       )}
 
-      <div className="container py-10 mx-auto px-4 max-w-5xl bg-bgColor text-textColor">
+      <div className="container py-10 mx-auto px-4 max-w-5xl">
         <button
           onClick={toggleTheme}
           className={darkTheme ? "button-dark" : "button-light"}

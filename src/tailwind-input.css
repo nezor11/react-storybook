@@ -28,6 +28,10 @@
     background-color: var(--bgColor);
     color: var(--textColor);
   }
+
+  .dark\:text-white {
+    color: var(--textColor);
+  }
 }
 
 @font-face {
