@@ -4,9 +4,13 @@
 
 :root {
   --background: rgba(255, 255, 255, 1);
-  --copy-primary: rgba(0, 0, 0, 0.87);
-  --textColor: rgb(2, 6, 23);
-  --bgColor: rgb(206, 207, 212);
+  --textColor: rgba(0, 0, 0, 0.87);
+  --bgColor: rgba(248, 248, 247, 1);
+}
+
+.theme-ligth {
+  --textColor: rgba(0, 0, 0, 0.87);
+  --bgColor: rgba(248, 248, 247, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,6 +22,11 @@
   .theme-dark {
     --textColor: rgb(206, 207, 212);
     --bgColor: rgb(2, 6, 23);
+  }
+
+  body.theme-dark {
+    background-color: var(--bgColor);
+    color: var(--textColor);
   }
 }
 
@@ -260,10 +269,6 @@
     font-family: "Raleway", system-ui, sans-serif;
   }
 
-  body {
-    background-color: rgba(248, 248, 247, 1);
-  }
-
   strong {
     font-weight: 500;
   }
@@ -271,5 +276,27 @@
   .text a {
     @apply text-primary-600;
     text-decoration: underline;
+  }
+
+  .theme-dark {
+    .text a {
+      color: var(--textColor);
+
+      &:hover {
+        @apply text-primary-600;
+      }
+
+      &:visited {
+        @apply text-primary-600;
+      }
+    }
+  }
+}
+
+.theme-dark {
+  .GitBranchIcon {
+    path {
+      fill: var(--textColor);
+    }
   }
 }

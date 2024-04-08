@@ -1,4 +1,6 @@
 import { Footer } from "@/stories/components/molecules/Footer";
+import MemoizedMoonIcon from "@/stories/components/molecules/IconGallery/Icons/MoonIcon";
+import MemoizedSunIcon from "@/stories/components/molecules/IconGallery/Icons/SunIcon";
 import { Resume } from "@/utils/types/resume";
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -36,6 +38,7 @@ const ResumeContent = ({ latestResume }: { latestResume: Resume }) => {
 function App() {
   const [resumes, setResumes] = useState<Resume[] | null>(null);
   const [latestResume, setLatestResume] = useState<Resume | null>(null);
+  const [isSunIconVisible, setIsSunIconVisible] = useState(true);
 
   const { darkTheme, toggleTheme } = useContext(
     ThemeContext
@@ -87,6 +90,10 @@ function App() {
       .catch(console.error);
   }, []);
 
+  const handleToggleIcon = () => {
+    setIsSunIconVisible((prevState) => !prevState);
+  };
+
   return (
     <HelmetProvider>
       {latestResume && (
@@ -130,12 +137,11 @@ function App() {
       )}
 
       <div className="container py-10 mx-auto px-4 max-w-5xl bg-bgColor text-textColor">
-        <h1 className="text-3xl">Theme {darkTheme ? "dark" : "light"}</h1>
         <button
           onClick={toggleTheme}
-          className="mt-2 w-full rounded-none bg-bgColor p-2 text-center text-2xl uppercase tracking-[3px] text-textColor transition-all duration-300 ease-in-out hover:rounded-lg"
+          className={darkTheme ? "button-dark" : "button-light"}
         >
-          Toggle
+          {isSunIconVisible ? <MemoizedSunIcon /> : <MemoizedMoonIcon />}
         </button>
         {/* Renderizar los elementos cargados desde el JSON */}
         {latestResume && <ResumeContent latestResume={latestResume} />}

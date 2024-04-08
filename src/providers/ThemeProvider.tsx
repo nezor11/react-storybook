@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { startTransition, useEffect, useState } from "react";
 import { ThemeContext } from "../contexts";
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [darkTheme, setDarkTheme] = useState<boolean>(false);
 
   const toggleTheme = () => {
-    setDarkTheme((curr) => !curr);
+    startTransition(() => {
+      setDarkTheme((curr) => !curr);
+    });
   };
 
   useEffect(() => {
