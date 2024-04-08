@@ -614,12 +614,12 @@ strong {
   position: relative;
 }
 
-.right-0 {
-  right: 0px;
+.right-3 {
+  right: 0.75rem;
 }
 
-.top-3 {
-  top: 0.75rem;
+.top-4 {
+  top: 1rem;
 }
 
 .col-span-5 {
@@ -1005,11 +1005,6 @@ strong {
   --bgColor: rgba(248, 248, 247, 1);
 }
 
-.theme-ligth {
-  --textColor: rgba(0, 0, 0, 0.87);
-  --bgColor: rgba(248, 248, 247, 1);
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: rgba(0, 0, 0, 0.87);
@@ -1026,8 +1021,17 @@ strong {
     color: var(--textColor);
   }
 
-  .dark\:text-white {
-    color: var(--textColor);
+  html.dark {
+    body {
+      background-color: rgb(2, 6, 23);
+      color: rgb(206, 207, 212);
+    }
+    .docs-story {
+      background-color: rgb(2, 6, 23);
+    }
+    .dark\:text-white {
+      color: @apply text-white;
+    }
   }
 }
 

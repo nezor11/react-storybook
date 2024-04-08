@@ -14,6 +14,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
     "@storybook/addon-themes",
     "@storybook/addon-a11y",
+    "@storybook/addon-docs",
     "storybook-addon-tw-dm-toggle",
     {
       name: "@storybook/addon-storysource",
@@ -25,13 +26,6 @@ const config: StorybookConfig = {
         loaderOptions: {
           prettierConfig: { printWidth: 80, singleQuote: false },
         },
-      },
-    },
-    {
-      name: "@storybook/addon-docs",
-      options: {
-        csfPluginOptions: null,
-        mdxPluginOptions: {},
       },
     },
   ],

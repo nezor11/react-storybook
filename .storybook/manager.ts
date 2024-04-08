@@ -8,7 +8,7 @@ addons.setConfig({
     brandUrl: "/",
     brandImage: "./nezor.svg",
     brandTarget: "_self",
-    colorSecondary: "hotpink",
+    colorSecondary: "rgba(225, 29, 72, 1)",
     appBg: "#f0f0f0",
     appBorderColor: "rgba(0,0,0,0.1)",
     textColor: "#333",

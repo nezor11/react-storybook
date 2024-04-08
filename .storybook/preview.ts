@@ -1,5 +1,4 @@
 import { css, keyframes } from "@emotion/react";
-import { withThemeByClassName } from "@storybook/addon-themes";
 import { Preview } from "@storybook/react";
 import { Theme } from "@storybook/theming";
 import "../src/styles/tailwind.css";
@@ -419,13 +418,4 @@ export const preview: Preview = {
       },
     },
   },
-  decorators: [
-    withThemeByClassName({
-      themes: {
-        light: "light",
-        dark: "dark",
-      },
-      defaultTheme: "light",
-    }),
-  ],
 };

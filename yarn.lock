@@ -2619,15 +2619,6 @@
   dependencies:
     memoizerific "^1.11.3"
 
-"@storybook/addons@^7.0.0":
-  version "7.6.17"
-  resolved "https://registry.npmjs.org/@storybook/addons/-/addons-7.6.17.tgz"
-  integrity sha512-Ok18Y698Ccyg++MoUNJNHY0cXUvo8ETFIRLJk1g9ElJ70j6kPgNnzW2pAtZkBNmswHtofZ7pT156cj96k/LgfA==
-  dependencies:
-    "@storybook/manager-api" "7.6.17"
-    "@storybook/preview-api" "7.6.17"
-    "@storybook/types" "7.6.17"
-
 "@storybook/api@^7.0.12":
   version "7.6.17"
   resolved "https://registry.npmjs.org/@storybook/api/-/api-7.6.17.tgz"
@@ -2838,7 +2829,7 @@
     prettier "^2.8.0"
     recast "^0.23.1"
 
-"@storybook/components@7.6.17", "@storybook/components@^7.0.0", "@storybook/components@^7.0.12":
+"@storybook/components@7.6.17", "@storybook/components@^7.0.12":
   version "7.6.17"
   resolved "https://registry.npmjs.org/@storybook/components/-/components-7.6.17.tgz"
   integrity sha512-lbh7GynMidA+CZcJnstVku6Nhs+YkqjYaZ+mKPugvlVhGVWv0DaaeQFVuZ8cJtUGJ/5FFU4Y+n+gylYUHkGBMA==
@@ -2891,7 +2882,7 @@
     resolve-from "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/core-events@7.6.17", "@storybook/core-events@^7.0.0", "@storybook/core-events@^7.0.12":
+"@storybook/core-events@7.6.17", "@storybook/core-events@^7.0.12":
   version "7.6.17"
   resolved "https://registry.npmjs.org/@storybook/core-events/-/core-events-7.6.17.tgz"
   integrity sha512-AriWMCm/k1cxlv10f+jZ1wavThTRpLaN3kY019kHWbYT9XgaSuLU67G7GPr3cGnJ6HuA6uhbzu8qtqVCd6OfXA==
@@ -3027,7 +3018,7 @@
     "@vitest/utils" "^0.34.6"
     util "^0.12.4"
 
-"@storybook/manager-api@7.6.17", "@storybook/manager-api@^7.0.0", "@storybook/manager-api@^7.0.12", "@storybook/manager-api@^7.6.17":
+"@storybook/manager-api@7.6.17", "@storybook/manager-api@^7.0.12", "@storybook/manager-api@^7.6.17":
   version "7.6.17"
   resolved "https://registry.yarnpkg.com/@storybook/manager-api/-/manager-api-7.6.17.tgz#cdf0bb8e5bdc3da2559150125b3d6a3ff72f0def"
   integrity sha512-IJIV1Yc6yw1dhCY4tReHCfBnUKDqEBnMyHp3mbXpsaHxnxJZrXO45WjRAZIKlQKhl/Ge1CrnznmHRCmYgqmrWg==
@@ -3189,7 +3180,7 @@
     chai "^4.3.7"
     util "^0.12.4"
 
-"@storybook/theming@7.6.17", "@storybook/theming@^7.0.0", "@storybook/theming@^7.0.12", "@storybook/theming@^7.6.17":
+"@storybook/theming@7.6.17", "@storybook/theming@^7.0.12", "@storybook/theming@^7.6.17":
   version "7.6.17"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-7.6.17.tgz#8170e3e72b921380c51a3970890d4cb479a65c2f"
   integrity sha512-ZbaBt3KAbmBtfjNqgMY7wPMBshhSJlhodyMNQypv+95xLD/R+Az6aBYbpVAOygLaUQaQk4ar7H/Ww6lFIoiFbA==
@@ -9433,25 +9424,6 @@ storybook-addon-tw-dm-toggle@^7.0.19:
   version "7.0.19"
   resolved "https://registry.yarnpkg.com/storybook-addon-tw-dm-toggle/-/storybook-addon-tw-dm-toggle-7.0.19.tgz#4ba51684bd190b60292cc2469c633a483e629427"
   integrity sha512-PNBN3lDHpnRBFqsKFmlXcI06yXbu7s19E3hjPJsMLRG5ZbbRiLsb0ZaOyeiLclT62ye7bRlRrfuPMLs9h8b83A==
-
-storybook-dark-mode@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.npmjs.org/storybook-dark-mode/-/storybook-dark-mode-3.0.3.tgz"
-  integrity sha512-ZLBLVpkuKTdtUv3DTuOjeP/bE7DHhOxVpDROKc0NtEYq9JHLUu6z05LLZinE3v6QPXQZ9TMQPm3Xe/0BcLEZlw==
-  dependencies:
-    "@storybook/addons" "^7.0.0"
-    "@storybook/components" "^7.0.0"
-    "@storybook/core-events" "^7.0.0"
-    "@storybook/global" "^5.0.0"
-    "@storybook/manager-api" "^7.0.0"
-    "@storybook/theming" "^7.0.0"
-    fast-deep-equal "^3.1.3"
-    memoizerific "^1.11.3"
-
-storybook-tailwind-dark-mode@^1.0.22:
-  version "1.0.22"
-  resolved "https://registry.npmjs.org/storybook-tailwind-dark-mode/-/storybook-tailwind-dark-mode-1.0.22.tgz"
-  integrity sha512-I0HSVCuvo3OkaGDnCjLM7V1OYmQccrUCAGZ5ZaJfl9s3e93WA6DKFpQRbuoSidci+PTy+KvgrINgE08rA16bWA==
 
 storybook@^7.6.10:
   version "7.6.17"

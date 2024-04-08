@@ -46,6 +46,7 @@ const textStyles = cva("text", {
 });
 
 type AllowedTagValues = "div" | "span" | "p";
+
 interface BodyCopyProps {
   /** The tag property is optional and can be either an AllowedTagValues ("div", "span", "p").  */
   tag: AllowedTagValues;

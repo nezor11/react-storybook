@@ -134,7 +134,7 @@ function App() {
       <div className="container py-10 mx-auto px-4 max-w-5xl relative">
         <button
           onClick={toggleTheme}
-          className={`absolute right-0 top-3 ${
+          className={`absolute right-3 top-4 ${
             darkTheme ? "button-dark" : "button-light"
           }`}
         >
