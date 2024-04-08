@@ -16,6 +16,7 @@ const config: StorybookConfig = {
     "@storybook/addon-a11y",
     "@storybook/addon-docs",
     "storybook-addon-tw-dm-toggle",
+    "@storybook/addon-viewport",
     {
       name: "@storybook/addon-storysource",
       options: {
@@ -48,9 +49,6 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: "tag",
-  },
-  features: {
-    versionUpdateCheck: false,
   },
   viteFinal: async (config) => {
     config.plugins?.push(
