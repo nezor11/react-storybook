@@ -40,5 +40,6 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+.yarn
 
 storybook-static

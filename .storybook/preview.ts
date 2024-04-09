@@ -55,9 +55,7 @@ const customViewports = {
 export const preview: Preview = {
   parameters: {
     viewport: {
-      viewports: {
-        customViewports,
-      },
+      viewports: customViewports,
     },
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -69,7 +67,7 @@ export const preview: Preview = {
     options: {
       storySort: {
         method: "alphabetical",
-        includeNmaes: true,
+        includeNames: true,
         order: ["Design System", "System"],
       },
     },
