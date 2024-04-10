@@ -83,6 +83,8 @@
     "react-html-parser": "^2.0.2",
     "sass": "^1.70.0",
     "storybook": "^8.0.6",
+    "storybook-addon-tw-dm-toggle": "^7.0.19",
+    "storybook-dark-mode": "^4.0.1",
     "tailwindcss": "^3.4.1",
     "vite": "^4.2.0",
     "vite-plugin-require": "^1.1.14",

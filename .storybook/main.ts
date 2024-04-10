@@ -7,9 +7,12 @@ const config: StorybookConfig = {
   stories: ["../src/**/*.@(mdx|stories.@(js|jsx|mjs|ts|tsx))"],
   staticDirs: ["../public"],
   addons: [
-    "@storybook/addon-docs", // 👈 Also add this
-    "@storybook/addon-storysource",
     "@storybook/addon-essentials",
+    "@storybook/addon-docs",
+    "@storybook/addon-storysource",
+    "@storybook/addon-source-loader",
+    "storybook-addon-tw-dm-toggle",
+    "storybook-dark-mode",
   ],
   framework: {
     name: "@storybook/react-vite",
