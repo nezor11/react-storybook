@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ButtonTailwind } from ".";
 
 const meta: Meta<typeof ButtonTailwind> = {
-  title: "Design System/Molecules/Button Tailwind",
+  title: "Design System/Atoms/Button Tailwind",
   component: ButtonTailwind,
   tags: ["autodocs"],
   parameters: {

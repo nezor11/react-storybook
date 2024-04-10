@@ -1,5 +1,5 @@
+import { ButtonTailwind } from "@/stories/components/atoms/ButtonTailwind";
 import { Link, LinkProps } from "@/stories/components/atoms/Link";
-import { ButtonTailwind } from "@/stories/components/molecules/ButtonTailwind";
 import {
   ContactDetail,
   ContactDetailTexts,

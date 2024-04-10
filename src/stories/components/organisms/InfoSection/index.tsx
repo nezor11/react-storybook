@@ -1,4 +1,4 @@
-import { ButtonTailwind } from "@/stories/components/molecules/ButtonTailwind";
+import { ButtonTailwind } from "@/stories/components/atoms/ButtonTailwind";
 import { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
 import {
   CommonSection,

@@ -8,18 +8,7 @@ const config: StorybookConfig = {
   staticDirs: ["../public"],
   addons: [
     "@storybook/addon-docs", // 👈 Also add this
-    {
-      name: "@storybook/addon-storysource",
-      options: {
-        rule: {
-          test: [/\.stories\.ts?$/],
-          include: [path.resolve(__dirname, "../src")], // You can specify directories
-        },
-        loaderOptions: {
-          prettierConfig: { printWidth: 80, singleQuote: false },
-        },
-      },
-    },
+    "@storybook/addon-storysource",
   ],
   framework: {
     name: "@storybook/react-vite",

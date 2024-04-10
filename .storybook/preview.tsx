@@ -83,10 +83,21 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
-    oprions: {
+    options: {
       storySort: {
         includeNames: true,
-        order: ["Design Sytem", ["Templates", "*"]],
+        order: [
+          "Design System",
+          [
+            "Atoms",
+            ["Title Copy", "Subtitle Copy", "Body Copy", "Link", "*"],
+            "Molecules",
+            ["Title Section", "Info Item", "Footer", "*"],
+            "Organisms",
+            "Templates",
+            "Pages",
+          ],
+        ],
       },
     },
   },
