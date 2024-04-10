@@ -9,7 +9,7 @@ import { Preview } from "@storybook/react";
 import * as React from "react";
 import "../src/styles/tailwind.css";
 
-const customViewports = {
+const MY_VIEWPORTS = {
   FHDTV: {
     name: "1080p Full HD Television",
     styles: {
@@ -73,15 +73,15 @@ const preview: Preview = {
         </>
       ),
     },
-    viewport: {
-      viewports: customViewports,
-    },
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+    },
+    viewport: {
+      viewports: MY_VIEWPORTS,
     },
     options: {
       storySort: {
