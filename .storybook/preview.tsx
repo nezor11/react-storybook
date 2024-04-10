@@ -1,4 +1,12 @@
+import {
+  Controls,
+  Description,
+  Primary,
+  Subtitle,
+  Title,
+} from "@storybook/blocks";
 import { Preview } from "@storybook/react";
+import * as React from "react";
 import "../src/styles/tailwind.css";
 
 const customViewports = {
@@ -52,8 +60,19 @@ const customViewports = {
   },
 };
 
-export const preview: Preview = {
+const preview: Preview = {
   parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <Controls />
+        </>
+      ),
+    },
     viewport: {
       viewports: customViewports,
     },
@@ -64,12 +83,13 @@ export const preview: Preview = {
         date: /Date$/,
       },
     },
-    options: {
+    oprions: {
       storySort: {
-        method: "alphabetical",
         includeNames: true,
-        order: ["Design System", "System"],
+        order: ["Design Sytem", ["Templates", "*"]],
       },
     },
   },
 };
+
+export default preview;

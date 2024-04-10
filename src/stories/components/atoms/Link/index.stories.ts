@@ -5,27 +5,55 @@ import { Link } from ".";
 const meta: Meta<typeof Link> = {
   title: "Design System/Atoms/Link",
   component: Link,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "A link component that can be styled with tailwind classes. It accepts the following props: `link_text`, `mods`, `href`, `target`, `rel`.",
+      },
+    },
+  },
   tags: ["autodocs"],
   argTypes: {
     link_text: {
       control: "text",
-      defaultValue: "Link text",
+      description:
+        "The text of the link element. By default, it is set to 'Link text'.",
+      table: {
+        defaultValue: { summary: "Link text" },
+      },
     },
     mods: {
       control: "text",
-      defaultValue: "visited:text-purple-600",
+      description:
+        "The mods property is optional and can be a string with Tailwind CSS classes. By default, it is set to 'visited:text-purple-600'.",
+      table: {
+        defaultValue: { summary: "visited:text-purple-600" },
+      },
     },
     href: {
       control: "text",
-      defaultValue: "https://carbon.sage.com",
+      description:
+        "The URL of the link element. By default, it is set to 'https://carbon.sage.com'.",
+      table: {
+        defaultValue: { summary: "https://carbon.sage.com" },
+      },
     },
     target: {
       control: "text",
-      defaultValue: "_blank",
+      description:
+        "The target of the link element. By default, it is set to '_blank'.",
+      table: {
+        defaultValue: { summary: "_blank" },
+      },
     },
     rel: {
       control: "text",
-      defaultValue: "noreferrer noopener",
+      description:
+        "The rel of the link element. By default, it is set to 'noreferrer noopener'.",
+      table: {
+        defaultValue: { summary: "noreferrer noopener" },
+      },
     },
   },
 };

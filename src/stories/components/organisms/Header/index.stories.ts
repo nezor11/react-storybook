@@ -7,8 +7,21 @@ const meta: Meta<typeof Header> = {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
   parameters: {
-    // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
-    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Header is a component that renders a header with a user profile. It is used to display a header in a page or section. It accepts the following props: user which is an object containing the user name, job title, icons data, contact details, and image details.",
+      },
+    },
+  },
+  argTypes: {
+    user: {
+      description:
+        "The user object contains the user's name, job title, icons data, contact details, and image details.",
+      control: {
+        type: "object",
+      },
+    },
   },
 };
 

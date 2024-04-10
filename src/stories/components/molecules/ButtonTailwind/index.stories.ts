@@ -4,10 +4,47 @@ import { ButtonTailwind } from ".";
 const meta: Meta<typeof ButtonTailwind> = {
   title: "Design System/Molecules/Button Tailwind",
   component: ButtonTailwind,
-  parameters: {
-    layout: "centered",
-  },
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Button is a component that renders a button with customizable text, size, and styles. It is used to trigger an action when clicked. It accepts the following props: `variant`, `children`, `onClick`.",
+      },
+    },
+  },
+  argTypes: {
+    variant: {
+      control: { type: "select" },
+      options: ["solid", "outline", "ghost"],
+      type: "string",
+      description: "The variant of the button. By default, it is set to solid.",
+      table: {
+        defaultValue: { summary: "solid" },
+      },
+    },
+    size: {
+      control: { type: "select" },
+      options: ["sm", "md", "lg"],
+      type: "string",
+      description: "The size of the button. By default, it is set to md.",
+      table: {
+        defaultValue: { summary: "md" },
+      },
+    },
+    children: {
+      control: "text",
+      type: "string",
+      description: "The text of the button. By default, it is set to Button.",
+      table: {
+        defaultValue: { summary: "Button" },
+      },
+    },
+    onClick: {
+      type: "function",
+      description: "The onClick event of the button.",
+    },
+  },
 };
 
 export default meta;

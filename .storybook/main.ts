@@ -4,12 +4,23 @@ import path from "path";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 const config: StorybookConfig = {
-  stories: [
-    "../src/**/*.mdx",
-    "../src/**/*.@(mdx|stories.@(js|jsx|mjs|ts|tsx))",
-  ],
+  stories: ["../src/**/*.@(mdx|stories.@(js|jsx|mjs|ts|tsx))"],
   staticDirs: ["../public"],
-  addons: [],
+  addons: [
+    "@storybook/addon-docs", // 👈 Also add this
+    {
+      name: "@storybook/addon-storysource",
+      options: {
+        rule: {
+          test: [/\.stories\.ts?$/],
+          include: [path.resolve(__dirname, "../src")], // You can specify directories
+        },
+        loaderOptions: {
+          prettierConfig: { printWidth: 80, singleQuote: false },
+        },
+      },
+    },
+  ],
   framework: {
     name: "@storybook/react-vite",
     options: {},

@@ -4,7 +4,25 @@ import { ContactDetail } from ".";
 const meta: Meta<typeof ContactDetail> = {
   title: "Design System/Molecules/Contact Details",
   component: ContactDetail,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Contact details component with a contactDetail prop that accepts a title, phone, email, and address. It is used to display the contact details of a business or individual.",
+      },
+    },
+  },
   tags: ["autodocs"],
+  argTypes: {
+    contactDetail: {
+      description: "The contact details of a business or individual.",
+      table: {
+        defaultValue: {
+          summary: "contactDetail: {}",
+        },
+      },
+    },
+  },
 };
 
 export default meta;

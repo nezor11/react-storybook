@@ -5,6 +5,40 @@ const meta: Meta<typeof InfoSection> = {
   title: "Design System/Organisms/Info Section",
   component: InfoSection,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "InfoSection is a component that renders a section with a title, subtitle, icons, and sections. It is used to display a section in a page or section. It accepts the following props: title, subtitle, icons, and sections.",
+      },
+    },
+  },
+  argTypes: {
+    title: {
+      control: "text",
+      description:
+        "The title of the section. By default, it is set to Benemeritaar.",
+      default: "Benemeritaar",
+    },
+    subtitle: {
+      control: "text",
+      description:
+        "The subtitle of the section. By default, it is set to empty string.",
+      default: "Benemeritaar",
+    },
+    icons: {
+      control: "object",
+      description:
+        "The icons property is optional and can be an object with iconsData. By default, it is set to an empty object.",
+      defaultValue: {},
+    },
+    sections: {
+      control: "object",
+      description:
+        "The sections property is optional and can be an array of objects with info. By default, it is set to an empty array.",
+      defaultValue: [],
+    },
+  },
 };
 
 export default meta;

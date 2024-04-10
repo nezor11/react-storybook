@@ -5,41 +5,116 @@ const meta: Meta<typeof BodyCopy> = {
   title: "Design System/Atoms/Body Copy",
   component: BodyCopy,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "BodyCopy is a component that renders a text element. It is used to display text in a page or section. It accepts the following props: `tag`, `text`, `size`, `weight`, `align`, `emphasis`, `italic`, `underline`, and `mods`.",
+      },
+    },
+  },
   argTypes: {
+    tag: {
+      options: ["div", "span", "p"],
+      control: { type: "select" },
+      table: {
+        defaultValue: { summary: "p" },
+      },
+      description: "The tag of the text element. By default, it is set to p.",
+    },
+    mods: {
+      control: "text",
+      description:
+        "The mods property is optional and can be a string with Tailwind CSS classes. By default, it is set to text-base dark:text-white.",
+      table: {
+        defaultValue: {
+          summary: "text-base dark:text-white",
+        },
+      },
+    },
     text: {
       control: "text",
-      defaultValue:
-        "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
+      description:
+        "The text of the text element. By default, it is set to empty string.",
+      type: "string",
+      table: {
+        defaultValue: {
+          summary:
+            "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
+        },
+      },
     },
     size: {
       options: ["sm", "base", "lg", "xl", "2xl", "3xl"],
       control: { type: "select" },
-      defaultValue: "base",
+      type: "string",
+      description:
+        "The size of the text element. By default, it is set to base. The options are sm, base, lg, xl, 2xl, and 3xl.",
+      table: {
+        defaultValue: {
+          summary: "base",
+        },
+      },
     },
     weight: {
       options: ["thin", "normal", "medium", "semibold", "bold", "black"],
       control: { type: "select" },
-      defaultValue: "normal",
+      description:
+        "The weight of the text element. By default, it is set to normal. The options are thin, normal, medium, semibold, bold, and black.",
+      type: "string",
+      table: {
+        defaultValue: {
+          summary: "normal",
+        },
+      },
     },
     align: {
       options: ["left", "center", "right"],
       control: { type: "radio" },
-      defaultValue: "left",
+      type: "string",
+      description:
+        "The alignment of the text element. By default, it is set to left. The options are left, center, and right.",
+      table: {
+        defaultValue: {
+          summary: "left",
+        },
+      },
     },
     emphasis: {
       options: ["none", "low", "high"],
       control: { type: "radio" },
       defaultValue: "none",
+      description:
+        "The emphasis of the text element. By default, it is set to none. The options are none, low, and high.",
+      type: "string",
+      table: {
+        defaultValue: {
+          summary: "none",
+        },
+      },
     },
     italic: {
       control: { type: "boolean" },
-      defaultValue: false,
+      description:
+        "The italic property is optional and can be a boolean. By default, it is set to false.",
+      type: "boolean",
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
     underline: {
       control: { type: "boolean" },
-      defaultValue: false,
+      description:
+        "The underline property is optional and can be a boolean. By default, it is set to false.",
+      type: "boolean",
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
-    mods: { control: "text", defaultValue: "text-base" },
   },
 };
 
