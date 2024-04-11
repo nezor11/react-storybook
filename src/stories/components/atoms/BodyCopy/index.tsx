@@ -1,3 +1,4 @@
+// index.tsx
 import { cn } from "@/utils";
 import { cva } from "class-variance-authority";
 import DOMPurify from "dompurify";

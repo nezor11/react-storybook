@@ -1,3 +1,4 @@
+// index.stories.ts
 import { Meta, StoryObj } from "@storybook/react";
 import { BodyCopy } from ".";
 
@@ -120,7 +121,7 @@ const meta: Meta<typeof BodyCopy> = {
 
 export default meta;
 
-//create a “template” of how args map to rendering (from SB)
+// create a “template” of how args map to rendering (from SB)
 type Story = StoryObj<typeof BodyCopy>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
