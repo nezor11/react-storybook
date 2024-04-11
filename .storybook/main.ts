@@ -8,9 +8,26 @@ const config: StorybookConfig = {
   staticDirs: ["../public"],
   addons: [
     "@storybook/addon-essentials",
-    "@storybook/addon-docs",
-    "@storybook/addon-storysource",
-    "@storybook/addon-source-loader",
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: true,
+        },
+      },
+    },
+    {
+      name: "@storybook/addon-storysource",
+      options: {
+        rule: {
+          test: [/\.stories\.tsx?$/],
+          include: [path.resolve(__dirname, "../src/**")], // You can specify directories
+        },
+        loaderOptions: {
+          prettierConfig: { printWidth: 80, singleQuote: false },
+        },
+      },
+    },
     "storybook-addon-tw-dm-toggle",
     "storybook-dark-mode",
   ],
