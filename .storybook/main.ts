@@ -9,21 +9,8 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/addon-essentials",
     "@storybook/addon-docs",
-    {
-      name: "@storybook/addon-storysource",
-      options: {
-        rule: {
-          test: [/\.stories\.tsx?$/],
-          include: [path.resolve(__dirname, "../src/**")], // You can specify directories
-        },
-        loaderOptions: {
-          prettierConfig: { printWidth: 80, singleQuote: false },
-        },
-      },
-    },
     "storybook-addon-tw-dm-toggle",
     "storybook-dark-mode",
-    "@chromatic-com/storybook",
   ],
   framework: {
     name: "@storybook/react-vite",

@@ -27,11 +27,14 @@ export const Default: Story = {
     actions: {
       disable: true,
     },
+    options: {
+      panelPosition: "right",
+    },
   },
   render: () => (
     <>
       <TitleCopy text="Component source code:" mods="text-base" />
-      <Code directoryPath="src/stories/components/system/Code/" />,
+      <Code directoryPath="src/stories/components/system/Code/" />
     </>
   ),
 };
