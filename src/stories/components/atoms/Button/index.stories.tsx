@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Button } from ".";
-import { Code } from "../../Code";
+import { Code } from "../../system/Code";
 
 const meta: Meta<typeof Button> = {
   title: "Design System/Atoms/Button",

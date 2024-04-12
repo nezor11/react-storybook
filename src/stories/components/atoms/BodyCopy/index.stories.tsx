@@ -2,7 +2,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { BodyCopy } from ".";
-import { Code } from "../../../components/Code";
+import { Code } from "../../system/Code";
 
 const meta: Meta<typeof BodyCopy> = {
   title: "Design System/Atoms/Body Copy",
