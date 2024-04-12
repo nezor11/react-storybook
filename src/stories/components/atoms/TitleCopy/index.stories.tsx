@@ -85,7 +85,7 @@ export const Default: Story = {
   },
 };
 
-export const CleanCode: Story = {
+export const SourceCode: Story = {
   parameters: {
     layout: "centered",
     controls: {
@@ -96,6 +96,9 @@ export const CleanCode: Story = {
     },
   },
   render: () => (
-    <Code directoryPath="src/stories/components/atoms/TitleCopy/" />
+    <>
+      <TitleCopy text="Component source code:" mods="text-base" />
+      <Code directoryPath="src/stories/components/atoms/TitleCopy/" />
+    </>
   ),
 };

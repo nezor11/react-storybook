@@ -2,6 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Button } from ".";
 import { Code } from "../../system/Code";
+import { TitleCopy } from "../TitleCopy";
 
 const meta: Meta<typeof Button> = {
   title: "Design System/Atoms/Button",
@@ -90,6 +91,20 @@ export const Small = {
   },
 };
 
-export const CleanCode: Story = {
-  render: () => <Code directoryPath="src/stories/components/atoms/Button/" />,
+export const SourceCode: Story = {
+  parameters: {
+    layout: "centered",
+    controls: {
+      disable: true,
+    },
+    actions: {
+      disable: true,
+    },
+  },
+  render: () => (
+    <>
+      <TitleCopy text="Component source code:" mods="text-base" />
+      <Code directoryPath="src/stories/components/atoms/Button/" />
+    </>
+  ),
 };

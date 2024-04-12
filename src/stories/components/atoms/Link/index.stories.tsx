@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Link } from ".";
 import { Code } from "../../system/Code";
+import { TitleCopy } from "../TitleCopy";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof Link> = {
@@ -74,6 +75,20 @@ export const Default: Story = {
   },
 };
 
-export const CleanCode: Story = {
-  render: () => <Code directoryPath="src/stories/components/atoms/Link/" />,
+export const SourceCode: Story = {
+  parameters: {
+    layout: "centered",
+    controls: {
+      disable: true,
+    },
+    actions: {
+      disable: true,
+    },
+  },
+  render: () => (
+    <>
+      <TitleCopy text="Component source code:" mods="text-base" />
+      <Code directoryPath="src/stories/components/atoms/Link/" />
+    </>
+  ),
 };

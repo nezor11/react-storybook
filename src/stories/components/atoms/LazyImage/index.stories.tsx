@@ -2,6 +2,7 @@ import { Meta } from "@storybook/react";
 import React from "react";
 import { LazyImage } from ".";
 import { Code } from "../../system/Code";
+import { TitleCopy } from "../TitleCopy";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof LazyImage> = {
@@ -78,8 +79,20 @@ export const Default = {
   },
 };
 
-export const CleanCode = {
+export const SourceCode = {
+  parameters: {
+    layout: "centered",
+    controls: {
+      disable: true,
+    },
+    actions: {
+      disable: true,
+    },
+  },
   render: () => (
-    <Code directoryPath="src/stories/components/atoms/Lazyimage/" />
+    <>
+      <TitleCopy text="Component source code:" mods="text-base" />
+      <Code directoryPath="src/stories/components/atoms/Lazyimage/" />
+    </>
   ),
 };
