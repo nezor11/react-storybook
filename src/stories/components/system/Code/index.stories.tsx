@@ -1,9 +1,11 @@
 // index.stories.tsx
 import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { Code } from "."; // Importa tu componente Code desde su archivo correspondiente
+import { TitleCopy } from "../../atoms/TitleCopy"; //
 
 const meta: Meta = {
-  title: "Code System/Code", // Define el título de tu historia
+  title: "Source Code/Code", // Define el título de tu historia
   component: Code, // Especifica el componente asociado a esta historia
   parameters: {
     controls: { expanded: false },
@@ -17,7 +19,19 @@ type Story = StoryObj<typeof Code>;
 
 // Define los argumentos por defecto, si es necesario
 export const Default: Story = {
-  args: {
-    directoryPath: "src/stories/components/system/Code/",
+  parameters: {
+    layout: "centered",
+    controls: {
+      disable: true,
+    },
+    actions: {
+      disable: true,
+    },
   },
+  render: () => (
+    <>
+      <TitleCopy text="Component source code:" mods="text-base" />
+      <Code directoryPath="src/stories/components/system/Code/" />,
+    </>
+  ),
 };

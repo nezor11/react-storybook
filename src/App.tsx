@@ -1,6 +1,6 @@
-import { Footer } from "@/stories/components/molecules/Footer";
 import MemoizedMoonIcon from "@/stories/components/molecules/IconGallery/Icons/MoonIcon";
 import MemoizedSunIcon from "@/stories/components/molecules/IconGallery/Icons/SunIcon";
+import { Footer } from "@/stories/components/organisms/Footer";
 import { Resume } from "@/utils/types/resume";
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
