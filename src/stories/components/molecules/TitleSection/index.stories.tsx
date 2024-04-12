@@ -1,5 +1,7 @@
 import { Meta } from "@storybook/react";
+import React from "react";
 import { TitleSection } from ".";
+import { Code } from "../../Code";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof TitleSection> = {
@@ -30,4 +32,10 @@ export const Default = {
       "A gramenawer la caidita caballo blanco caballo negroorl la caidita te va a hasé pupitaa de la pradera por la gloria de mi madre.",
     iconsData: [{ name: "CSS3Icon", width: "120px", height: "120px" }],
   },
+};
+
+export const CleanCode = {
+  render: () => (
+    <Code directoryPath="src/stories/components/molecules/TitleSection/" />
+  ),
 };

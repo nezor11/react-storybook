@@ -1,6 +1,8 @@
 // index.stories.ts
 import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { BodyCopy } from ".";
+import { Code } from "../../../components/Code";
 
 const meta: Meta<typeof BodyCopy> = {
   title: "Design System/Atoms/Body Copy",
@@ -139,4 +141,8 @@ export const StrongParagraph = {
     mods: "text-base dark:text-white",
     text: "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
   },
+};
+
+export const CleanCode: Story = {
+  render: () => <Code directoryPath="src/stories/components/atoms/BodyCopy/" />,
 };

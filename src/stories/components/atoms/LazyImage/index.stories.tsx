@@ -1,5 +1,7 @@
 import { Meta } from "@storybook/react";
+import React from "react";
 import { LazyImage } from ".";
+import { Code } from "../../Code";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof LazyImage> = {
@@ -74,4 +76,10 @@ export const Default = {
     width: 600,
     height: 400,
   },
+};
+
+export const CleanCode = {
+  render: () => (
+    <Code directoryPath="src/stories/components/atoms/Lazyimage/" />
+  ),
 };

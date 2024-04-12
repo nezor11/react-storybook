@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { Button } from ".";
+import { Code } from "../../Code";
 
 const meta: Meta<typeof Button> = {
   title: "Design System/Atoms/Button",
@@ -86,4 +88,8 @@ export const Small = {
     size: "small",
     label: "Button",
   },
+};
+
+export const CleanCode: Story = {
+  render: () => <Code directoryPath="src/stories/components/atoms/Button/" />,
 };

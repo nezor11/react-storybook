@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { ButtonTailwind } from ".";
+import { Code } from "../../Code";
 
 const meta: Meta<typeof ButtonTailwind> = {
   title: "Design System/Atoms/Button Tailwind",
@@ -70,4 +72,10 @@ export const Ghost: Story = {
     variant: "ghost",
     children: "Button",
   },
+};
+
+export const CleanCode: Story = {
+  render: () => (
+    <Code directoryPath="src/stories/components/atoms/ButtonTailwind/" />
+  ),
 };

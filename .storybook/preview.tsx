@@ -1,5 +1,4 @@
 // preview.tsx
-import { useStorybookState } from "@storybook/api";
 import {
   Controls,
   Description,
@@ -11,7 +10,6 @@ import {
 import { Preview } from "@storybook/react";
 import * as React from "react";
 import "../src/styles/tailwind.css";
-import FileContentDisplay from "../src/utils/FileContentDisplay";
 
 const MY_VIEWPORTS = {
   FHDTV: {
@@ -64,41 +62,20 @@ const MY_VIEWPORTS = {
   },
 };
 
-const DynamicPage = () => {
-  const storybookState = useStorybookState();
-  const storyId = storybookState.storyId;
-
-  console.log("storybookState", storybookState);
-
-  return (
-    <>
-      <div style={{ padding: "20px" }}>
-        <h1>Story {storyId}</h1>
-        {/* Otro contenido dinámico según el ID de la historia */}
-      </div>
-    </>
-  );
-};
-
 const preview: Preview = {
   parameters: {
     docs: {
-      page: ({ id, parameters }) => (
+      page: () => (
         <>
-          <DynamicPage />
           <Title />
           <Subtitle />
           <Description />
           <Primary />
           <Source />
           <Controls />
-          {/* <Story /> */}
-          {/* Pasamos el nombre del archivo al componente FileContentDisplay */}
-          <FileContentDisplay fileName="/src/stories/components/atoms/BodyCopy/README.md" />
         </>
       ),
     },
-    actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,

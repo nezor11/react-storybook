@@ -8,14 +8,7 @@ const config: StorybookConfig = {
   staticDirs: ["../public"],
   addons: [
     "@storybook/addon-essentials",
-    {
-      name: "@storybook/addon-docs",
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: true,
-        },
-      },
-    },
+    "@storybook/addon-docs",
     {
       name: "@storybook/addon-storysource",
       options: {
@@ -30,6 +23,7 @@ const config: StorybookConfig = {
     },
     "storybook-addon-tw-dm-toggle",
     "storybook-dark-mode",
+    "@chromatic-com/storybook",
   ],
   framework: {
     name: "@storybook/react-vite",
