@@ -1,14 +1,5 @@
 // preview.tsx
-import {
-  Controls,
-  Description,
-  Primary,
-  Source,
-  Subtitle,
-  Title,
-} from "@storybook/blocks";
 import { Preview } from "@storybook/react";
-import * as React from "react";
 import "../src/styles/tailwind.css";
 
 const MY_VIEWPORTS = {
@@ -64,18 +55,6 @@ const MY_VIEWPORTS = {
 
 const preview: Preview = {
   parameters: {
-    docs: {
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <Source />
-          <Controls />
-        </>
-      ),
-    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

@@ -1,0 +1,1 @@
+import{j as o}from"./jsx-runtime-9c4ae004.js";const x=({subtitle:t="h2",text:e="Papaar papaar",mods:s="text-3xl uppercase",styles:a={},...r})=>{const n=t;return o.jsx(n,{className:`text ${s}`,style:a,dangerouslySetInnerHTML:{__html:e},...r})};export{x as S};
