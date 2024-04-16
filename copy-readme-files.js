@@ -31,6 +31,6 @@ async function copyReadmeFiles(sourceDir, destinationDir) {
 }
 
 const sourceDirectory = "./src/stories/components/";
-const destinationDirectory = "./storybook-static/src/";
+const destinationDirectory = "./storybook-static/src/stories/components/";
 
 copyReadmeFiles(sourceDirectory, destinationDirectory);
