@@ -27,7 +27,7 @@
     "react-obfuscate": "^3.6.9"
   },
   "scripts": {
-    "build-storybook-and-copy-readme": "npm run build-storybook && node copy-readme-files.js",
+    "build-storybook-and-copy-readme": "npm run build-storybook --docs && node copy-readme-files.js",
     "copy-readme-files": "node copy-readme-files.js",
     "dev": "vite",
     "build": "vite build",
