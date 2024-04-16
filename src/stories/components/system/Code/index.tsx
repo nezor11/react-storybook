@@ -14,6 +14,8 @@ export const Code: React.FC<CodeProps> = ({ directoryPath }) => {
     // Construir la ruta completa al archivo README.md utilizando la ruta del directorio
     const readmePath = `${directoryPath}README.md`;
 
+    console.log(" readmePath ---------------->    ", readmePath);
+
     // Llamar a la función fetch con la ruta proporcionada para obtener el contenido del archivo README.md
     fetch(readmePath)
       .then((response) => {
