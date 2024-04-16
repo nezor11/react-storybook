@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { Page } from ".";
+import { TitleCopy } from "../../atoms/TitleCopy";
+import { Code } from "../../system/Code";
 
 const meta: Meta<typeof Page> = {
   title: "Design System/Pages/Home Page",
@@ -88,4 +91,22 @@ export const Default: Story = {
       },
     ],
   },
+};
+
+export const SourceCode: Story = {
+  parameters: {
+    layout: "centered",
+    controls: {
+      disable: true,
+    },
+    actions: {
+      disable: true,
+    },
+  },
+  render: () => (
+    <>
+      <TitleCopy text="Component source code:" mods="text-base" />
+      <Code directoryPath="src/stories/components/pages/HomePage/" />
+    </>
+  ),
 };

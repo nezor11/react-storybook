@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { ContactDetail } from ".";
+import { TitleCopy } from "../../atoms/TitleCopy";
+import { Code } from "../../system/Code";
 
 const meta: Meta<typeof ContactDetail> = {
   title: "Design System/Molecules/Contact Details",
@@ -38,4 +41,22 @@ export const Default: Story = {
       address: "08025 Barcelona",
     },
   },
+};
+
+export const SourceCode: Story = {
+  parameters: {
+    layout: "centered",
+    controls: {
+      disable: true,
+    },
+    actions: {
+      disable: true,
+    },
+  },
+  render: () => (
+    <>
+      <TitleCopy text="Component source code:" mods="text-base" />
+      <Code directoryPath="src/stories/components/molecules/ContactDetails/" />
+    </>
+  ),
 };

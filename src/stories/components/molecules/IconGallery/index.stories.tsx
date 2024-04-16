@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 import { IconGallery } from ".";
+import { TitleCopy } from "../../atoms/TitleCopy";
+import { Code } from "../../system/Code";
 
 const meta: Meta<typeof IconGallery> = {
   title: "Design System/Molecules/IconGallery",
@@ -30,4 +33,22 @@ export const Selected: Story = {
       { name: "ReactIcon", width: "40px", height: "40px" },
     ],
   },
+};
+
+export const SourceCode: Story = {
+  parameters: {
+    layout: "centered",
+    controls: {
+      disable: true,
+    },
+    actions: {
+      disable: true,
+    },
+  },
+  render: () => (
+    <>
+      <TitleCopy text="Component source code:" mods="text-base" />
+      <Code directoryPath="src/stories/components/molecules/IconGallery/" />
+    </>
+  ),
 };
