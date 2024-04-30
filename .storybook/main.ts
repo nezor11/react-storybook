@@ -11,6 +11,7 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "storybook-addon-tw-dm-toggle",
     "storybook-dark-mode",
+    "@chromatic-com/storybook"
   ],
   framework: {
     name: "@storybook/react-vite",

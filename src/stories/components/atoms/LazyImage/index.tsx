@@ -1,48 +1,60 @@
-import React, { CSSProperties, useState } from "react";
+import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import "./index.css";
 
 export interface LazyImageProps {
-  /** The placeholderSrc property is optional and can be a string. */
   placeholderSrc: string;
-  /** The src property is optional and can be a string. */
   src: string;
-  /** The alt property is optional and can be a string. */
   alt?: string;
-  /** The width property is optional and can be a number. */
   width?: number;
-  /** The height property is optional and can be a number. */
   height?: number;
+  onImageLoad?: () => void;
+  style?: CSSProperties; // Agregar la prop style al tipo de interfaz
 }
 
-/** Renders an image component with lazy loading and customizable styles. */
 export const LazyImage: React.FC<LazyImageProps> = ({
   placeholderSrc,
   src,
   alt,
   width,
   height,
+  onImageLoad,
+  style, // Aceptar la prop style
 }) => {
   const [loaded, setLoaded] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
 
-  const handleLoad = () => {
-    setLoaded(true);
-  };
+  useEffect(() => {
+    const handleLoad = () => {
+      setLoaded(true);
+      onImageLoad?.();
+    };
+
+    if (imageRef.current?.complete) {
+      handleLoad();
+    }
+
+    return () => {
+      imageRef.current?.removeEventListener("load", handleLoad);
+    };
+  }, [onImageLoad]);
 
   const containerStyles: CSSProperties = {
     position: "relative",
     width: width ? `${width}px` : "100%",
     height: height ? `${height}px` : "100%",
+    ...style, // Aplicar la prop style al contenedor
   };
 
   const imageStyles: CSSProperties = {
-    width: width ? `${width}px` : "100%",
-    height: height ? `${height}px` : "100%",
+    width: "100%",
+    height: "100%",
     objectFit: "cover",
+    display: loaded ? "block" : "none",
   };
 
   return (
     <div style={containerStyles}>
-      <figure className="image-wrapper" style={imageStyles}>
+      <figure className="image-wrapper">
         {!loaded && (
           <img
             src={placeholderSrc}
@@ -52,12 +64,11 @@ export const LazyImage: React.FC<LazyImageProps> = ({
           />
         )}
         <img
+          ref={imageRef}
           src={src}
           alt={alt}
-          style={{
-            display: loaded ? "block" : "none",
-          }}
-          onLoad={handleLoad}
+          style={imageStyles}
+          onLoad={onImageLoad}
           loading="lazy"
           width={width}
           height={height}

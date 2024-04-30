@@ -1,0 +1,32 @@
+.card-slide {
+  @apply relative;
+  @apply bg-white;
+  @apply mx-80;
+}
+
+figure.card-slide * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+figure.card-slide img {
+  max-width: 95%;
+  margin: 0 auto;
+  position: relative;
+  border: 3px solid #666666;
+  padding: 15px;
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+figure.card-slide figcaption {
+  position: relative;
+  background-color: transparent;
+  background-color: white;
+  z-index: 99999;
+  position: relative;
+  top: -32px;
+  padding: 0 20px;
+}
