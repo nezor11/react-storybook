@@ -31,6 +31,7 @@
   "scripts": {
     "build-storybook-and-copy-readme": "npm run storybook build --docs && node copy-readme-files.js",
     "copy-readme-files": "node copy-readme-files.js",
+    "delete-readme-files": "node delete-readme-files.js",
     "dev": "vite",
     "build": "vite build",
     "build-storybook-docs": "storybook build --docs",

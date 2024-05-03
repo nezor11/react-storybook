@@ -60,6 +60,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
             src={placeholderSrc}
             width={width}
             height={height}
+            style={imageStyles}
             alt={`${alt}-placeholder`}
           />
         )}

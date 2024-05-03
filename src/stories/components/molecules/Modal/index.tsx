@@ -1,15 +1,24 @@
-import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
-import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { BodyCopy } from "../../atoms/BodyCopy";
+import { LazyImage } from "../../atoms/LazyImage";
+import { TitleCopy } from "../../atoms/TitleCopy";
 
 interface ModalProps {
   onClose: () => void; // Propiedad para cerrar el modal
 }
 
-/**
- * Modal component.
- */
 export const Modal: React.FC<ModalProps> = ({ onClose }) => {
+  const swiperRef = useRef(null); // Usa useRef para mantener una referencia al componente Swiper
+  const [swiperReady, setSwiperReady] = useState(false); // Estado para controlar si Swiper está listo
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.swiper.updateSize(); // Actualiza el tamaño de Swiper
+    }
+  }, [swiperRef]);
+
   const handleClose = () => {
     onClose();
   };
@@ -52,10 +61,14 @@ export const Modal: React.FC<ModalProps> = ({ onClose }) => {
             mods="col-span-full"
           />
         </div>
-        {/* <Swiper
+        <Swiper
+          ref={swiperRef}
           spaceBetween={32}
-          slidesPerView={1}
-          onSwiper={(swiper) => console.log(swiper)}
+          slidesPerView={2}
+          onSwiper={(swiper) => {
+            console.log(swiper);
+            setSwiperReady(true); // Establece swiperReady como true cuando Swiper está listo
+          }}
           onSlideChange={() => console.log("slide change")}
         >
           <SwiperSlide>
@@ -76,7 +89,7 @@ export const Modal: React.FC<ModalProps> = ({ onClose }) => {
               src="https://source.unsplash.com/random/600x400/?web-design"
             />
           </SwiperSlide>
-        </Swiper> */}
+        </Swiper>
       </div>
     </div>
   );

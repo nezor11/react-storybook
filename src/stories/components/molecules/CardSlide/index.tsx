@@ -58,7 +58,7 @@ export const CardSlide: React.FC<CardSlideProps> = () => {
           width={300}
           height={200}
           onImageLoad={handleImageLoad}
-          style={{ paddingBottom: `${paddingBottom}px` }}
+          style={{ paddingBottom: `${paddingBottom + 16}px` }}
         />
         <div className="card-meta -top-8 w-80" ref={figcaptionRef}>
           <BodyCopy
