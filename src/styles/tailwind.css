@@ -628,8 +628,8 @@ strong {
   position: relative;
 }
 
-.-top-14 {
-  top: -3.5rem;
+.-top-10 {
+  top: -2.5rem;
 }
 
 .-top-8 {
@@ -666,10 +666,6 @@ strong {
 
 .top-4 {
   top: 1rem;
-}
-
-.-top-10 {
-  top: -2.5rem;
 }
 
 .z-10 {

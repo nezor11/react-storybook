@@ -18,7 +18,11 @@ export const Page = forwardRef<HTMLElement, PageProps>(
           user={{
             name: "Jane Doe",
             jobTitle: "Frontender",
-            iconsData: [{ name: "CSS3Icon", width: "1em", height: "1em" }],
+            iconsData: [
+              { name: "CSS3Icon", width: "1em", height: "1em" },
+              { name: "ViteIcon", width: "1em", height: "1em" },
+              { name: "GitBranchIcon", width: "1em", height: "1em" },
+            ],
             contactDetail: {
               title: "Casa Barcelona",
               phone: "+3468080202",
