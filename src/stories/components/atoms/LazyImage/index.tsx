@@ -8,7 +8,7 @@ export interface LazyImageProps {
   width?: number;
   height?: number;
   onImageLoad?: () => void;
-  style?: CSSProperties; // Agregar la prop style al tipo de interfaz
+  style?: CSSProperties;
 }
 
 export const LazyImage: React.FC<LazyImageProps> = ({
@@ -18,7 +18,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
   width,
   height,
   onImageLoad,
-  style, // Aceptar la prop style
+  style,
 }) => {
   const [loaded, setLoaded] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -42,7 +42,6 @@ export const LazyImage: React.FC<LazyImageProps> = ({
     position: "relative",
     width: width ? `${width}px` : "100%",
     height: height ? `${height}px` : "100%",
-    ...style, // Aplicar la prop style al contenedor
   };
 
   const imageStyles: CSSProperties = {
@@ -50,6 +49,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
     height: "100%",
     objectFit: "cover",
     display: loaded ? "block" : "none",
+    ...style,
   };
 
   return (

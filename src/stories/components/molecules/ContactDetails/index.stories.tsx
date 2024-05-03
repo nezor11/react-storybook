@@ -36,8 +36,8 @@ export const Default: Story = {
   args: {
     contactDetail: {
       title: "Casa Barcelona",
-      phone: "+34609457202",
-      email: "contact@nezort.es",
+      phone: "+3468080202",
+      email: "hola@micorreo.es",
       address: "08025 Barcelona",
     },
   },

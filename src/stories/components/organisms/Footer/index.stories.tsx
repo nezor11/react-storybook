@@ -46,8 +46,8 @@ export const Default: Story = {
     },
     contact_details: {
       title: "Casa Barcelona",
-      phone: "+34609457202",
-      email: "contact@nezor.es",
+      phone: "+3468080202",
+      email: "hola@micorreo.es",
       address: "08025 Barcelona",
     },
   },

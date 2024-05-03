@@ -1,17 +1,24 @@
 .card-slide {
   @apply relative;
   @apply bg-white;
-  @apply mx-80;
+  @apply mx-auto;
+  @apply max-w-[300px];
+  cursor: pointer;
 }
 
-figure.card-slide * {
+article.card-slide * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-figure.card-slide img {
+article.card-slide h4 {
+  @apply w-[320px];
+  @apply -ml-2;
+}
+
+article.card-slide img {
   max-width: 95%;
   margin: 0 auto;
   position: relative;
@@ -21,12 +28,13 @@ figure.card-slide img {
   transform: translate(0, 0);
 }
 
-figure.card-slide figcaption {
+article.card-slide div.card-meta {
   position: relative;
   background-color: transparent;
-  background-color: white;
-  z-index: 99999;
+  z-index: 9;
   position: relative;
-  top: -32px;
-  padding: 0 20px;
+  padding: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
 }
