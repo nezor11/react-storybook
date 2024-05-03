@@ -11,8 +11,7 @@ interface ModalProps {
  */
 export const Modal: React.FC<ModalProps> = ({ onClose }) => {
   const handleClose = () => {
-    console.log("Closing modal");
-    onClose(); // Llama a la función onClose cuando se hace clic en el botón de cierre
+    onClose();
   };
 
   return (
@@ -36,15 +35,49 @@ export const Modal: React.FC<ModalProps> = ({ onClose }) => {
           />
         </svg>
       </button>
-      <TitleCopy
-        text="Modal"
-        mods="text-3xl uppercase text-primary-500 font-medium"
-      />
-      <BodyCopy
-        tag="div"
-        text="Me cago en tus muelas"
-        mods="text-3xl uppercase text-primary-500 font-medium"
-      />
+      <div className="content-wrapper px-4">
+        <div className="grid grid-cols-1 w-full">
+          <TitleCopy text="AGM Abogados" mods="text-3xl uppercase" />
+        </div>
+        <div className="grid grid-cols-1 w-full justify-start">
+          <div className="flex justify-start">
+            <TitleCopy as="h6" text="Novicell" mods="text-xl" /> -
+            <TitleCopy as="h6" text="2017" mods="text-xl" />
+          </div>
+        </div>
+        <div className="grid grid-cols-4 w-full">
+          <BodyCopy
+            tag="div"
+            text="Me cago en tus muelas"
+            mods="col-span-full"
+          />
+        </div>
+        {/* <Swiper
+          spaceBetween={32}
+          slidesPerView={1}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+        >
+          <SwiperSlide>
+            <LazyImage
+              placeholderSrc="https://placehold.co/600x400"
+              src="https://source.unsplash.com/random/600x400/?web-design"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <LazyImage
+              placeholderSrc="https://placehold.co/600x400"
+              src="https://source.unsplash.com/random/600x400/?web-design"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <LazyImage
+              placeholderSrc="https://placehold.co/600x400"
+              src="https://source.unsplash.com/random/600x400/?web-design"
+            />
+          </SwiperSlide>
+        </Swiper> */}
+      </div>
     </div>
   );
 };

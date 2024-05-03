@@ -53,19 +53,19 @@ export const CardSlide: React.FC<CardSlideProps> = () => {
     <>
       <article className="card-slide" onClick={openModal}>
         <LazyImage
-          placeholderSrc="https://placehold.co/300x400"
-          src="https://source.unsplash.com/random/300x400/?logo"
+          placeholderSrc="https://placehold.co/300x200"
+          src="https://source.unsplash.com/random/300x200/?logo"
           width={300}
-          height={400}
+          height={200}
           onImageLoad={handleImageLoad}
-          style={{ paddingBottom: `${paddingBottom + 50}px` }}
+          style={{ paddingBottom: `${paddingBottom}px` }}
         />
         <div className="card-meta -top-8 w-80" ref={figcaptionRef}>
           <BodyCopy
             tag="span"
             text="2018"
             size="sm"
-            mods="absolute -top-14 left-1/2 transform -translate-x-1/2 bg-gray-50 text-gray-950 px-2 py-1 rounded z-10 opacity-50"
+            mods="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-50 text-gray-950 px-2 py-1 rounded z-10 opacity-50"
           />
           <TitleCopy
             text="Fundació Pasqual Maragall"
