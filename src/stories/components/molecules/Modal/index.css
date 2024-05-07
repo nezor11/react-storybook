@@ -1,0 +1,51 @@
+.text-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.swiper {
+  overflow: visible;
+}
+
+.slider-wrapper {
+  .swiper-initialized {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    @apply max-w-5xl;
+
+    .swiper-slide {
+      max-width: 100%;
+      height: auto;
+
+      .image-container,
+      .image-wrapper,
+      img {
+        width: 100% !important;
+        max-width: 100%;
+        height: auto !important;
+        position: static !important;
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #000;
+    }
+
+    .swiper-button-next {
+      right: 0;
+    }
+
+    .swiper-button-prev {
+      left: 0;
+    }
+
+    .swiper-pagination {
+      bottom: 0;
+    }
+  }
+}

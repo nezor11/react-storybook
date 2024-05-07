@@ -23,7 +23,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    year: "2021",
+    title: "Title",
+    description: "Description",
+    iconsData: [
+      { name: "CSS3Icon", width: "1em", height: "1em" },
+      { name: "ViteIcon", width: "1em", height: "1em" },
+      { name: "GitBranchIcon", width: "1em", height: "1em" },
+    ],
+  },
 };
 
 export const SourceCode: Story = {

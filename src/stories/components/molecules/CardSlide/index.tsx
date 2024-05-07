@@ -8,12 +8,30 @@ import { SuspenseIconGallery } from "../SuspenseIconGallery";
 
 import "./index.css";
 
-interface CardSlideProps {}
+interface IconData {
+  name: string;
+  width: string;
+  height: string;
+}
 
-export const CardSlide: React.FC<CardSlideProps> = () => {
+interface CardSlideProps {
+  year: string;
+  title: string;
+  description: string;
+  iconsData: IconData[];
+}
+
+export const CardSlide: React.FC<CardSlideProps> = ({
+  year,
+  title,
+  description,
+  iconsData,
+}) => {
   const figcaptionRef = useRef<HTMLDivElement>(null);
+  const articleRef = useRef<HTMLDivElement>(null); // Referencia al elemento article
   const [paddingBottom, setPaddingBottom] = useState(0);
-  const [showModal, setShowModal] = useState(false); // Estado para controlar la visibilidad del modal
+  const [showModal, setShowModal] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false); // Estado para controlar si la imagen se ha cargado
 
   useEffect(() => {
     const updatePaddingBottom = () => {
@@ -34,11 +52,13 @@ export const CardSlide: React.FC<CardSlideProps> = () => {
     };
   }, []);
 
+  // Función para manejar la carga de la imagen
   const handleImageLoad = () => {
     if (figcaptionRef.current) {
       const figcaptionHeight = figcaptionRef.current.offsetHeight;
       setPaddingBottom(figcaptionHeight);
     }
+    setImageLoaded(true); // Marcar la imagen como cargada
   };
 
   const openModal = () => {
@@ -49,44 +69,66 @@ export const CardSlide: React.FC<CardSlideProps> = () => {
     setShowModal(false);
   };
 
+  // Función para seleccionar una altura aleatoria del array
+  const getRandomHeight = () => {
+    const heights = [200, 250, 300, 350];
+    const randomIndex = Math.floor(Math.random() * heights.length);
+    return heights[randomIndex];
+  };
+
+  // Función para seleccionar un color aleatorio del array
+  const getRandomColor = () => {
+    const colors = ["#1E6CF8", "#9D415D", "#666666", "#9D9D9D"];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  };
+
+  const randomHeight = getRandomHeight();
+
   return (
     <>
-      <article className="card-slide" onClick={openModal}>
+      <article
+        ref={articleRef}
+        className="card-slide"
+        style={{
+          height: imageLoaded ? `${randomHeight + paddingBottom}px` : "auto",
+        }}
+        onClick={openModal}
+      >
         <LazyImage
-          placeholderSrc="https://placehold.co/300x200"
-          src="https://source.unsplash.com/random/300x200/?logo"
+          placeholderSrc={`https://placehold.co/300x${randomHeight}`}
+          src={`https://source.unsplash.com/random/300x${randomHeight}/?logo`}
           width={300}
-          height={200}
+          height={randomHeight}
           onImageLoad={handleImageLoad}
-          style={{ paddingBottom: `${paddingBottom + 16}px` }}
+          style={{
+            paddingBottom: `${paddingBottom}px`,
+            borderColor: getRandomColor(),
+          }}
         />
-        <div className="card-meta -top-8 w-80" ref={figcaptionRef}>
-          <BodyCopy
-            tag="span"
-            text="2018"
-            size="sm"
-            mods="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-50 text-gray-950 px-2 py-1 rounded z-10 opacity-50"
-          />
+        <div className="card-meta w-80" ref={figcaptionRef}>
+          <div className="card-meta__date-wrapper">
+            <BodyCopy
+              tag="span"
+              text={year}
+              size="sm"
+              mods="relative bg-gray-50 text-gray-950 px-2 py-1 rounded z-10 opacity-50 date-wrapper"
+            />
+          </div>
           <TitleCopy
-            text="Fundació Pasqual Maragall"
+            text={title}
             as="h4"
             align="center"
             mods="text-xl mb-0 uppercase bg-white py-4"
           />
           <BodyCopy
             tag="p"
-            text="Condemor a gramenawer por la gloria de mi madre amatomaa."
+            text={description}
             mods="mb-4 px-8"
             align="center"
           />
           <div className="card-slide__icons-wrapper text-xl mb-4 px-12">
-            <SuspenseIconGallery
-              iconsData={[
-                { name: "CSS3Icon", width: "1em", height: "1em" },
-                { name: "ViteIcon", width: "1em", height: "1em" },
-                { name: "GitBranchIcon", width: "1em", height: "1em" },
-              ]}
-            />
+            <SuspenseIconGallery iconsData={iconsData} />
           </div>
         </div>
       </article>

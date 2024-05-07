@@ -53,7 +53,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
   };
 
   return (
-    <div style={containerStyles}>
+    <div className="image-container" style={containerStyles}>
       <figure className="image-wrapper">
         {!loaded && (
           <img
