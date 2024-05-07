@@ -1,7 +1,7 @@
+import { Code } from "@/stories/components/system/Code";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import { SliderSection } from ".";
-import { Code } from "../../system/Code";
+import SliderSection from ".";
 
 const meta: Meta<typeof SliderSection> = {
   title: "Design System/Organisms/Slider Section",
@@ -23,6 +23,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    title: "Projects",
+    icons: {
+      iconsData: [{ name: "ViteIcon", width: "1em", height: "1em" }],
+    },
     slidesData: [
       {
         year: "2015",

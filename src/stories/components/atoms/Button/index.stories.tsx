@@ -1,7 +1,7 @@
+import { Code } from "@/stories/components/system/Code";
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Button } from ".";
-import { Code } from "../../system/Code";
 
 const meta: Meta<typeof Button> = {
   title: "Design System/Atoms/Button",

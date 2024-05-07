@@ -1,7 +1,7 @@
+import { Code } from "@/stories/components/system/Code";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Resume } from ".";
-import { Code } from "../../system/Code";
 
 const meta: Meta<typeof Resume> = {
   title: "Design System/Templates/Resume",
@@ -17,6 +17,7 @@ export const Default: Story = {
   args: {
     resumeItems: [
       {
+        type: "info",
         title: "Benemeritaar",
         icons: {
           iconsData: [{ name: "WebPackIcon", width: "1em", height: "1em" }],
@@ -54,6 +55,7 @@ export const Default: Story = {
         ],
       },
       {
+        type: "info",
         title: "Musho peligro",
         icons: {
           iconsData: [{ name: "JavaScriptIcon", width: "1em", height: "1em" }],
@@ -89,6 +91,7 @@ export const Default: Story = {
         ],
       },
       {
+        type: "info",
         title: "Education",
         subtitle: undefined,
         icons: {

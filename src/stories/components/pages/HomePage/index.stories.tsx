@@ -1,7 +1,7 @@
+import { Code } from "@/stories/components/system/Code";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Page } from ".";
-import { Code } from "../../system/Code";
 
 const meta: Meta<typeof Page> = {
   title: "Design System/Pages/Home Page",
@@ -15,7 +15,29 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    dataHeaderObject: [],
+    dataHeaderObject: [
+      {
+        name: "Jane Doe",
+        jobTitle: "Frontender",
+        iconsData: [
+          { name: "CSS3Icon", width: "1em", height: "1em" },
+          { name: "ViteIcon", width: "1em", height: "1em" },
+          { name: "GitBranchIcon", width: "1em", height: "1em" },
+        ],
+        contactDetail: {
+          title: "Casa Barcelona",
+          phone: "+3468080202",
+          email: "hola@micorreo.es",
+          address: "08025 Barcelona",
+        },
+        imageDetail: {
+          image: "https://source.unsplash.com/random/300x300/?face",
+          alt: "Alt text",
+          width: 300,
+          height: 300,
+        },
+      },
+    ],
     dataResumeObject: [
       {
         title: "Benemeritaar",
@@ -89,6 +111,22 @@ export const Default: Story = {
         ],
       },
     ],
+    dataFooterObject: {
+      mods: "",
+      copy_right_text: "Google",
+      my_link: {
+        link_text: "Link text",
+        href: "https://carbon.sage.com",
+        target: "_blank",
+        rel: "noreferrer noopener",
+      },
+      contact_details: {
+        title: "Casa Barcelona",
+        phone: "+3468080202",
+        email: "hola@micorreo.es",
+        address: "08025 Barcelona",
+      },
+    },
   },
 };
 

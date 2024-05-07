@@ -1,7 +1,7 @@
+import { Code } from "@/stories/components/system/Code";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { ButtonTailwind } from ".";
-import { Code } from "../../system/Code";
 
 const meta: Meta<typeof ButtonTailwind> = {
   title: "Design System/Atoms/Button Tailwind",

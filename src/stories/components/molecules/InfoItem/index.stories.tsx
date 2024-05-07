@@ -1,7 +1,7 @@
+import { Code } from "@/stories/components/system/Code";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { InfoItem } from ".";
-import { Code } from "../../system/Code";
 
 const meta: Meta<typeof InfoItem> = {
   title: "Design System/Molecules/Info Item",
