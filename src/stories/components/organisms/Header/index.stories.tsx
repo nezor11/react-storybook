@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Header } from ".";
-import { TitleCopy } from "../../atoms/TitleCopy";
 import { Code } from "../../system/Code";
 
 const meta: Meta<typeof Header> = {
@@ -66,7 +65,6 @@ export const SourceCode: Story = {
   },
   render: () => (
     <>
-      <TitleCopy text="Component source code:" mods="text-base" />
       <Code directoryPath="src/stories/components/organisms/Header/" />
     </>
   ),

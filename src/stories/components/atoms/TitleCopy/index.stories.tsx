@@ -97,7 +97,6 @@ export const SourceCode: Story = {
   },
   render: () => (
     <>
-      <TitleCopy text="Component source code:" mods="text-base" />
       <Code directoryPath="src/stories/components/atoms/TitleCopy/" />
     </>
   ),

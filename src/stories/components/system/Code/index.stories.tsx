@@ -2,7 +2,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Code } from "."; // Importa tu componente Code desde su archivo correspondiente
-import { TitleCopy } from "../../atoms/TitleCopy"; //
 
 const meta: Meta = {
   title: "Source Code/Code", // Define el título de tu historia
@@ -33,7 +32,6 @@ export const Default: Story = {
   },
   render: () => (
     <>
-      <TitleCopy text="Component source code:" mods="text-base" />
       <Code directoryPath="src/stories/components/system/Code/" />
     </>
   ),

@@ -20,6 +20,7 @@ interface CardSlideProps {
   company: string;
   summary: string;
   description: string;
+  workType: string;
   iconsData: IconData[];
   images: ImageData[];
 }
@@ -31,6 +32,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   description,
   company,
   iconsData,
+  workType,
   images,
 }) => {
   const figcaptionRef = useRef<HTMLDivElement>(null);
@@ -141,6 +143,8 @@ export const CardSlide: React.FC<CardSlideProps> = ({
             year={year}
             description={description}
             images={images}
+            workType={workType}
+            link={""}
             onClose={closeModal}
           />,
           document.querySelector("body")!

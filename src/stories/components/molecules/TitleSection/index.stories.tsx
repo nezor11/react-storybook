@@ -1,7 +1,6 @@
 import { Meta } from "@storybook/react";
 import React from "react";
 import { TitleSection } from ".";
-import { TitleCopy } from "../../atoms/TitleCopy";
 import { Code } from "../../system/Code";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -47,7 +46,6 @@ export const SourceCode = {
   },
   render: () => (
     <>
-      <TitleCopy text="Component source code:" mods="text-base" />
       <Code directoryPath="src/stories/components/molecules/TitleSection/" />
     </>
   ),

@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { ButtonTailwind } from ".";
 import { Code } from "../../system/Code";
-import { TitleCopy } from "../TitleCopy";
 
 const meta: Meta<typeof ButtonTailwind> = {
   title: "Design System/Atoms/Button Tailwind",
@@ -87,7 +86,6 @@ export const SourceCode: Story = {
   },
   render: () => (
     <>
-      <TitleCopy text="Component source code:" mods="text-base" />
       <Code directoryPath="src/stories/components/atoms/ButtonTailwind/" />
     </>
   ),

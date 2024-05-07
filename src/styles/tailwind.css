@@ -648,8 +648,8 @@ strong {
   right: 0.75rem;
 }
 
-.right-4 {
-  right: 1rem;
+.right-8 {
+  right: 2rem;
 }
 
 .top-0 {
@@ -662,14 +662,6 @@ strong {
 
 .top-4 {
   top: 1rem;
-}
-
-.right-8 {
-  right: 2rem;
-}
-
-.top-8 {
-  top: 2rem;
 }
 
 .z-10 {
@@ -802,12 +794,12 @@ strong {
   max-width: 64rem;
 }
 
-.max-w-xl {
-  max-width: 36rem;
-}
-
 .max-w-full {
   max-width: 100%;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .flex-none {

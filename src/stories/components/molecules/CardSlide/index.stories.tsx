@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { CardSlide } from ".";
-import { TitleCopy } from "../../atoms/TitleCopy";
 import { Code } from "../../system/Code";
 
 const meta: Meta<typeof CardSlide> = {
@@ -70,7 +69,6 @@ export const SourceCode: Story = {
   },
   render: () => (
     <>
-      <TitleCopy text="Component source code:" mods="text-base" />
       <Code directoryPath="src/stories/components/molecules/CardSlide/" />
     </>
   ),

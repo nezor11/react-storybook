@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { SubtitleCopy } from ".";
-import { TitleCopy } from "../../atoms/TitleCopy";
 import { Code } from "../../system/Code";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -71,7 +70,6 @@ export const SourceCode: Story = {
   },
   render: () => (
     <>
-      <TitleCopy text="Component source code:" mods="text-base" />
       <Code directoryPath="src/stories/components/atoms/SubtitleCopy/" />
     </>
   ),
