@@ -23,7 +23,33 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    title: "Title",
+    company: "Company",
+    year: "Year",
+    images: [
+      {
+        src: "https://source.unsplash.com/random/600x400/?web-design",
+        width: 600,
+        height: 400,
+      },
+      {
+        src: "https://source.unsplash.com/random/600x400/?web-development",
+        width: 600,
+        height: 400,
+      },
+      {
+        src: "https://source.unsplash.com/random/600x400/?programming",
+        width: 600,
+        height: 400,
+      },
+      {
+        src: "https://source.unsplash.com/random/600x400/?car",
+        width: 600,
+        height: 400,
+      },
+    ],
+  },
 };
 
 export const SourceCode: Story = {

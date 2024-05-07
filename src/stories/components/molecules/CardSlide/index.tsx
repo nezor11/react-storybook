@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { BodyCopy } from "../../atoms/BodyCopy";
 import { LazyImage } from "../../atoms/LazyImage";
 import { TitleCopy } from "../../atoms/TitleCopy";
-import { Modal } from "../Modal";
+import { ImageData, Modal } from "../Modal";
 import { SuspenseIconGallery } from "../SuspenseIconGallery";
 
 import "./index.css";
@@ -17,15 +17,21 @@ interface IconData {
 interface CardSlideProps {
   year: string;
   title: string;
+  company: string;
+  summary: string;
   description: string;
   iconsData: IconData[];
+  images: ImageData[];
 }
 
 export const CardSlide: React.FC<CardSlideProps> = ({
   year,
   title,
+  summary,
   description,
+  company,
   iconsData,
+  images,
 }) => {
   const figcaptionRef = useRef<HTMLDivElement>(null);
   const articleRef = useRef<HTMLDivElement>(null); // Referencia al elemento article
@@ -121,12 +127,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
             align="center"
             mods="text-xl mb-0 uppercase bg-white py-4"
           />
-          <BodyCopy
-            tag="p"
-            text={description}
-            mods="mb-4 px-8"
-            align="center"
-          />
+          <BodyCopy tag="p" text={summary} mods="mb-4 px-8" align="center" />
           <div className="card-slide__icons-wrapper text-xl mb-4 px-12">
             <SuspenseIconGallery iconsData={iconsData} />
           </div>
@@ -134,7 +135,14 @@ export const CardSlide: React.FC<CardSlideProps> = ({
       </article>
       {showModal &&
         createPortal(
-          <Modal onClose={closeModal} />,
+          <Modal
+            title={title}
+            company={company}
+            year={year}
+            description={description}
+            images={images}
+            onClose={closeModal}
+          />,
           document.querySelector("body")!
         )}
     </>

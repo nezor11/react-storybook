@@ -7,23 +7,35 @@ import { TitleCopy } from "../../atoms/TitleCopy";
 
 import "./index.css";
 
-interface ModalProps {
-  onClose: () => void; // Propiedad para cerrar el modal
+export interface ImageData {
+  src: string;
+  width: number;
+  height: number;
 }
 
-export const Modal: React.FC<ModalProps> = ({ onClose }) => {
-  const swiperRef = useRef(null); // Usa useRef para mantener una referencia al componente Swiper
-  const [swiperReady, setSwiperReady] = useState(false); // Estado para controlar si Swiper está listo
-  const images = [
-    "https://source.unsplash.com/random/600x400/?web-design",
-    "https://source.unsplash.com/random/600x400/?web-development",
-    "https://source.unsplash.com/random/600x400/?programming",
-    "https://source.unsplash.com/random/600x400/?car",
-  ];
+interface ModalProps {
+  onClose: () => void;
+  title: string;
+  company: string;
+  year: string;
+  description: string;
+  images: ImageData[];
+}
+
+export const Modal: React.FC<ModalProps> = ({
+  onClose,
+  title,
+  company,
+  year,
+  description,
+  images,
+}) => {
+  const swiperRef = useRef(null);
+  const [swiperReady, setSwiperReady] = useState(false);
 
   useEffect(() => {
     if (swiperRef.current) {
-      swiperRef.current.swiper.updateSize(); // Actualiza el tamaño de Swiper
+      swiperRef.current.swiper.updateSize();
     }
   }, [swiperRef]);
 
@@ -31,7 +43,6 @@ export const Modal: React.FC<ModalProps> = ({ onClose }) => {
     onClose();
   };
 
-  // Función para obtener una lista aleatoria de imágenes
   const getRandomImages = () => {
     const shuffledImages = images.sort(() => Math.random() - 0.5);
     return shuffledImages;
@@ -39,42 +50,38 @@ export const Modal: React.FC<ModalProps> = ({ onClose }) => {
 
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-white z-50 w-full h-full">
-      <button
-        onClick={handleClose}
-        className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      <div className="modal-content-wrapper relative px-4 min-h-svh max-w-full">
+        <button
+          onClick={handleClose}
+          className="absolute top-4 right-8 text-gray-500 hover:text-gray-700 z-50 bg-white opacity-75 rounded"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-      <div className="content-wrapper px-4">
-        <div className="text-wrapper">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <div className="text-wrapper absolute top-14 left-14 z-10 bg-white opacity-75 p-8 rounded w-full max-w-xl">
           <div className="grid grid-cols-1 w-full">
-            <TitleCopy text="AGM Abogados" mods="text-3xl uppercase" />
+            <TitleCopy text={title} mods="text-3xl uppercase" />
           </div>
           <div className="grid grid-cols-1 w-full justify-start">
             <div className="flex justify-start">
-              <TitleCopy as="h6" text="Novicell" mods="text-xl" /> -
-              <TitleCopy as="h6" text="2017" mods="text-xl" />
+              <TitleCopy as="h6" text={company} mods="text-xl" /> -
+              <TitleCopy as="h6" text={year} mods="text-xl" />
             </div>
           </div>
           <div className="grid grid-cols-4 w-full">
-            <BodyCopy
-              tag="div"
-              text="Me cago en tus muelas"
-              mods="col-span-full"
-            />
+            <BodyCopy tag="div" text={description} mods="col-span-full" />
           </div>
         </div>
         <div className="slider-wrapper">
@@ -84,18 +91,17 @@ export const Modal: React.FC<ModalProps> = ({ onClose }) => {
             slidesPerView={1}
             onSwiper={(swiper) => {
               console.log(swiper);
-              setSwiperReady(true); // Establece swiperReady como true cuando Swiper está listo
+              setSwiperReady(true);
             }}
             onSlideChange={() => console.log("slide change")}
           >
-            {/* Mapea las imágenes aleatorias dentro de SwiperSlide */}
             {getRandomImages().map((image, index) => (
               <SwiperSlide key={index}>
                 <LazyImage
                   placeholderSrc="https://placehold.co/600x400"
-                  src={image}
-                  width={600}
-                  height={400}
+                  src={image.src}
+                  width={image.width}
+                  height={image.height}
                 />
               </SwiperSlide>
             ))}

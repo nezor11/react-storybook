@@ -628,14 +628,6 @@ strong {
   position: relative;
 }
 
-.-top-10 {
-  top: -2.5rem;
-}
-
-.-top-8 {
-  top: -2rem;
-}
-
 .bottom-0 {
   bottom: 0px;
 }
@@ -644,8 +636,8 @@ strong {
   left: 0px;
 }
 
-.left-1\/2 {
-  left: 50%;
+.left-14 {
+  left: 3.5rem;
 }
 
 .right-0 {
@@ -664,12 +656,20 @@ strong {
   top: 0px;
 }
 
+.top-14 {
+  top: 3.5rem;
+}
+
 .top-4 {
   top: 1rem;
 }
 
-.-top-5 {
-  top: -1.25rem;
+.right-8 {
+  right: 2rem;
+}
+
+.top-8 {
+  top: 2rem;
 }
 
 .z-10 {
@@ -778,6 +778,10 @@ strong {
   height: 100%;
 }
 
+.min-h-svh {
+  min-height: 100svh;
+}
+
 .w-32 {
   width: 8rem;
 }
@@ -798,6 +802,14 @@ strong {
   max-width: 64rem;
 }
 
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
 .flex-none {
   flex: none;
 }
@@ -812,11 +824,6 @@ strong {
 
 .basis-2\/3 {
   flex-basis: 66.666667%;
-}
-
-.-translate-x-1\/2 {
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transform {
@@ -938,6 +945,10 @@ strong {
 
 .p-0 {
   padding: 0px;
+}
+
+.p-8 {
+  padding: 2rem;
 }
 
 .px-12 {
@@ -1131,6 +1142,10 @@ strong {
 
 .opacity-50 {
   opacity: 0.5;
+}
+
+.opacity-75 {
+  opacity: 0.75;
 }
 
 .outline {
