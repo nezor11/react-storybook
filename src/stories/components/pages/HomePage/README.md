@@ -1,43 +1,24 @@
+import { Footer, FooterProps } from "@/stories/components/organisms/Footer";
 import { Header, User } from "@/stories/components/organisms/Header";
 import { Resume, ResumeObject } from "@/stories/components/templates/Resume";
 import { cn } from "@/utils";
 import React, { ComponentPropsWithRef, forwardRef } from "react";
 
 interface PageObject extends ResumeObject {
-  dataHeaderObject?: User[];
+  dataHeaderObject?: User[] | null;
   dataResumeObject?: ResumeObject[] | null;
+  dataFooterObject?: FooterProps | null; // Cambiado a un solo objeto, no un array
 }
 
 type PageProps = ComponentPropsWithRef<"div"> & PageObject;
 
-export const Page = forwardRef<HTMLElement, PageProps>(
-  ({ dataHeaderObject, dataResumeObject, ...props }) => {
+export const Page = forwardRef<HTMLDivElement, PageProps>(
+  ({ dataHeaderObject, dataResumeObject, dataFooterObject, ...props }, ref) => {
     return (
-      <div className={cn("container mx-auto px-4")} {...props}>
-        <Header
-          user={{
-            name: "Jane Doe",
-            jobTitle: "Frontender",
-            iconsData: [
-              { name: "CSS3Icon", width: "1em", height: "1em" },
-              { name: "ViteIcon", width: "1em", height: "1em" },
-              { name: "GitBranchIcon", width: "1em", height: "1em" },
-            ],
-            contactDetail: {
-              title: "Casa Barcelona",
-              phone: "+3468080202",
-              email: "hola@micorreo.es",
-              address: "08025 Barcelona",
-            },
-            imageDetail: {
-              image: "https://source.unsplash.com/random/300x300/?face",
-              alt: "Alt text",
-              width: 300,
-              height: 300,
-            },
-          }}
-        />
+      <div className={cn("container mx-auto px-4")} {...props} ref={ref}>
+        <Header user={dataHeaderObject ? dataHeaderObject[0] : undefined} />
         <Resume resumeItems={dataResumeObject} />
+        <Footer {...dataFooterObject} />
       </div>
     );
   }

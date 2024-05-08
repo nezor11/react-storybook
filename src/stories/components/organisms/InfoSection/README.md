@@ -13,6 +13,7 @@ export interface InfoSectionObject extends CommonSection {
   sections?: InfoItemObject[] | null;
   info?: InfoItemTexts[];
   icons?: IconGalleryProps;
+  type?: "info" | "slider";
 }
 
 type InfoSectionProps = ComponentPropsWithRef<"div"> & InfoSectionObject;
