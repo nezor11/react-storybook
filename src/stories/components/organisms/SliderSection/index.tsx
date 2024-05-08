@@ -1,14 +1,17 @@
+import { LinkProps } from "@/stories/components/atoms/Link";
 import { CardSlide } from "@/stories/components/molecules/CardSlide";
 import { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
 import { ImageData } from "@/stories/components/molecules/Modal";
 import { TitleSection } from "@/stories/components/molecules/TitleSection";
 import { cn } from "@/utils";
-import React from "react";
+import React, { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { A11y } from "swiper/modules";
+import { A11y, Keyboard } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import "./index.css";
 
 export interface SlideData {
   year: string;
@@ -17,8 +20,10 @@ export interface SlideData {
   iconsData: { name: string; width: string; height: string }[];
   company: string;
   summary: string;
-  workType: string;
-  images: ImageData[];
+  workDone?: string;
+  workType?: string | undefined;
+  images?: ImageData[] | undefined;
+  link?: LinkProps | undefined;
 }
 
 export interface SliderSectionProps {
@@ -27,11 +32,13 @@ export interface SliderSectionProps {
   title?: string;
 }
 
-const SliderSection: React.FC<SliderSectionProps> = ({
+export const SliderSection: React.FC<SliderSectionProps> = ({
   slidesData,
   icons,
   title,
 }) => {
+  const [swiperRef, setSwiperRef] = useState(null);
+
   const titleText = title || "";
 
   let iconsData: { name: string; width: string; height: string }[] = [];
@@ -57,34 +64,40 @@ const SliderSection: React.FC<SliderSectionProps> = ({
                 iconsData={iconsData}
               />
             </div>
-            <div className="col-span-5 lg:col-span-3"></div>
           </div>
-          <Swiper
-            spaceBetween={30}
-            slidesPerView={3}
-            modules={[A11y]}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
-          >
-            {slidesData.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <CardSlide
-                  year={slide.year}
-                  title={slide.title}
-                  description={slide.description}
-                  iconsData={slide.iconsData}
-                  company={slide.company}
-                  summary={slide.summary}
-                  images={slide.images}
-                  workType={slide.workType}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className="portfolio__slider">
+            <Swiper
+              spaceBetween={32}
+              slidesPerView={"auto"}
+              slidesPerGroupSkip={2}
+              grabCursor={true}
+              keyboard={{
+                enabled: true,
+              }}
+              loop={true}
+              centeredSlides={false}
+              modules={[A11y, Keyboard]}
+              onSwiper={setSwiperRef}
+              onSlideChange={() => console.log("slide change")}
+            >
+              {slidesData.map((slide, index) => (
+                <SwiperSlide key={index}>
+                  <CardSlide
+                    year={slide.year}
+                    title={slide.title}
+                    description={slide.description}
+                    iconsData={slide.iconsData}
+                    company={slide.company}
+                    summary={slide.summary}
+                    images={slide.images}
+                    workType={slide.workType}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </>
       )}
     </section>
   );
 };
-
-export default SliderSection;

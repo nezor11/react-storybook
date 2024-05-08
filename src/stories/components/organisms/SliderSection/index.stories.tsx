@@ -1,7 +1,7 @@
 import { Code } from "@/stories/components/system/Code";
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
-import SliderSection from ".";
+import { SliderSection } from ".";
 
 const meta: Meta<typeof SliderSection> = {
   title: "Design System/Organisms/Slider Section",
@@ -60,6 +60,7 @@ export const Default: Story = {
             height: 400,
           },
         ],
+        workType: "",
       },
       {
         year: "2022",
@@ -90,6 +91,7 @@ export const Default: Story = {
             height: 400,
           },
         ],
+        workType: "",
       },
       {
         year: "2019",
@@ -123,6 +125,7 @@ export const Default: Story = {
             height: 400,
           },
         ],
+        workType: "",
       },
       {
         year: "2023",
@@ -157,6 +160,7 @@ export const Default: Story = {
             height: 400,
           },
         ],
+        workType: "",
       },
     ],
   },

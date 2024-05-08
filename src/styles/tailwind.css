@@ -1185,9 +1185,18 @@ strong {
   }
 
   html.dark {
-    body {
+    body,
+    .card-slide,
+    .card-slide .card-meta h4 {
       background-color: rgb(2, 6, 23);
       color: rgb(206, 207, 212);
+    }
+    .modal-wapper {
+      background-color: var(--background);
+    }
+    .modal-wapper .text,
+    .modal-wapper a {
+      color: rgb(0, 0, 0, 0.87);
     }
     .docs-story {
       background-color: rgb(2, 6, 23);
@@ -1211,7 +1220,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-ExtraLightItalic.eot");
 
-  src: local("Raleway ExtraLight Italic"), local("Raleway-ExtraLightItalic"),
+  src:
+    local("Raleway ExtraLight Italic"),
+    local("Raleway-ExtraLightItalic"),
     url("./font/hinted-subset-Raleway-ExtraLightItalic.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-ExtraLightItalic.woff2") format("woff2"),
@@ -1231,7 +1242,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-ExtraLight.eot");
 
-  src: local("Raleway ExtraLight"), local("Raleway-ExtraLight"),
+  src:
+    local("Raleway ExtraLight"),
+    local("Raleway-ExtraLight"),
     url("./font/hinted-subset-Raleway-ExtraLight.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-ExtraLight.woff2") format("woff2"),
@@ -1251,7 +1264,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-BlackItalic.eot");
 
-  src: local("Raleway Black Italic"), local("Raleway-BlackItalic"),
+  src:
+    local("Raleway Black Italic"),
+    local("Raleway-BlackItalic"),
     url("./font/hinted-subset-Raleway-BlackItalic.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-BlackItalic.woff2") format("woff2"),
@@ -1271,7 +1286,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-Light.eot");
 
-  src: local("Raleway Light"), local("Raleway-Light"),
+  src:
+    local("Raleway Light"),
+    local("Raleway-Light"),
     url("./font/hinted-subset-Raleway-Light.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-Light.woff2") format("woff2"),
@@ -1290,7 +1307,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-Bold.eot");
 
-  src: local("Raleway Bold"), local("Raleway-Bold"),
+  src:
+    local("Raleway Bold"),
+    local("Raleway-Bold"),
     url("./font/hinted-subset-Raleway-Bold.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-Bold.woff2") format("woff2"),
@@ -1309,7 +1328,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-ExtraBoldItalic.eot");
 
-  src: local("Raleway ExtraBold Italic"), local("Raleway-ExtraBoldItalic"),
+  src:
+    local("Raleway ExtraBold Italic"),
+    local("Raleway-ExtraBoldItalic"),
     url("./font/hinted-subset-Raleway-ExtraBoldItalic.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-ExtraBoldItalic.woff2") format("woff2"),
@@ -1329,7 +1350,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-LightItalic.eot");
 
-  src: local("Raleway Light Italic"), local("Raleway-LightItalic"),
+  src:
+    local("Raleway Light Italic"),
+    local("Raleway-LightItalic"),
     url("./font/hinted-subset-Raleway-LightItalic.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-LightItalic.woff2") format("woff2"),
@@ -1349,7 +1372,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-BoldItalic.eot");
 
-  src: local("Raleway Bold Italic"), local("Raleway-BoldItalic"),
+  src:
+    local("Raleway Bold Italic"),
+    local("Raleway-BoldItalic"),
     url("./font/hinted-subset-Raleway-BoldItalic.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-BoldItalic.woff2") format("woff2"),
@@ -1369,7 +1394,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-ExtraBold.eot");
 
-  src: local("Raleway ExtraBold"), local("Raleway-ExtraBold"),
+  src:
+    local("Raleway ExtraBold"),
+    local("Raleway-ExtraBold"),
     url("./font/hinted-subset-Raleway-ExtraBold.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-ExtraBold.woff2") format("woff2"),
@@ -1389,7 +1416,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-Medium.eot");
 
-  src: local("Raleway Medium"), local("Raleway-Medium"),
+  src:
+    local("Raleway Medium"),
+    local("Raleway-Medium"),
     url("./font/hinted-subset-Raleway-Medium.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-Medium.woff2") format("woff2"),
@@ -1408,7 +1437,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-Italic.eot");
 
-  src: local("Raleway Italic"), local("Raleway-Italic"),
+  src:
+    local("Raleway Italic"),
+    local("Raleway-Italic"),
     url("./font/hinted-subset-Raleway-Italic.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-Italic.woff2") format("woff2"),
@@ -1427,7 +1458,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-Black.eot");
 
-  src: local("Raleway Black"), local("Raleway-Black"),
+  src:
+    local("Raleway Black"),
+    local("Raleway-Black"),
     url("./font/hinted-subset-Raleway-Black.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-Black.woff2") format("woff2"),
@@ -1446,7 +1479,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-MediumItalic.eot");
 
-  src: local("Raleway Medium Italic"), local("Raleway-MediumItalic"),
+  src:
+    local("Raleway Medium Italic"),
+    local("Raleway-MediumItalic"),
     url("./font/hinted-subset-Raleway-MediumItalic.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-MediumItalic.woff2") format("woff2"),
@@ -1466,7 +1501,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-Thin.eot");
 
-  src: local("Raleway Thin"), local("Raleway-Thin"),
+  src:
+    local("Raleway Thin"),
+    local("Raleway-Thin"),
     url("./font/hinted-subset-Raleway-Thin.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-Thin.woff2") format("woff2"),
@@ -1485,7 +1522,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-ThinItalic.eot");
 
-  src: local("Raleway Thin Italic"), local("Raleway-ThinItalic"),
+  src:
+    local("Raleway Thin Italic"),
+    local("Raleway-ThinItalic"),
     url("./font/hinted-subset-Raleway-ThinItalic.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-ThinItalic.woff2") format("woff2"),
@@ -1505,7 +1544,9 @@ strong {
 
   src: url("./font/hinted-subset-Raleway-Regular.eot");
 
-  src: local("Raleway"), local("Raleway-Regular"),
+  src:
+    local("Raleway"),
+    local("Raleway-Regular"),
     url("./font/hinted-subset-Raleway-Regular.eot?#iefix")
       format("embedded-opentype"),
     url("./font/hinted-subset-Raleway-Regular.woff2") format("woff2"),
@@ -1573,6 +1614,10 @@ strong {
 
 .disabled\:cursor-not-allowed:disabled {
   cursor: not-allowed;
+}
+
+.dark\:bg-transparent:is([data-mode="dark"] *) {
+  background-color: transparent;
 }
 
 .dark\:text-white:is([data-mode="dark"] *) {

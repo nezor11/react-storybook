@@ -89,7 +89,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
 
   // Función para seleccionar un color aleatorio del array
   const getRandomColor = () => {
-    const colors = ["#1E6CF8", "#9D415D", "#666666", "#9D9D9D"];
+    const colors = ["#569CD6", "#9D415D", "#9D9D9D", "#C19C00"];
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
   };
@@ -100,7 +100,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
     <>
       <article
         ref={articleRef}
-        className="card-slide"
+        className="card-slide portfolio__slide-content"
         style={{
           height: imageLoaded ? `${randomHeight + paddingBottom}px` : "auto",
         }}
@@ -130,9 +130,14 @@ export const CardSlide: React.FC<CardSlideProps> = ({
             text={title}
             as="h4"
             align="center"
-            mods="text-xl mb-0 uppercase bg-white py-4"
+            mods="dark:text-white text-xl mb-0 uppercase py-4 bg:white"
           />
-          <BodyCopy tag="p" text={summary} mods="mb-4 px-8" align="center" />
+          <BodyCopy
+            tag="p"
+            text={summary}
+            mods="dark:text-white mb-4 px-8"
+            align="center"
+          />
           <div className="card-slide__icons-wrapper text-xl mb-4 px-12">
             <SuspenseIconGallery iconsData={iconsData} />
           </div>

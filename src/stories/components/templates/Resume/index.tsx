@@ -2,11 +2,19 @@ import {
   InfoSection,
   InfoSectionObject,
 } from "@/stories/components/organisms/InfoSection";
+import {
+  SlideData,
+  SliderSection,
+} from "@/stories/components/organisms/SliderSection";
 import { cn } from "@/utils";
 import React, { ComponentPropsWithRef, forwardRef } from "react";
 
 export interface ResumeObject extends InfoSectionObject {
-  resumeItems?: InfoSectionObject[] | null;
+  resumeItems?: (InfoSectionObject | SliderSectionObject)[] | null;
+}
+
+interface SliderSectionObject extends InfoSectionObject {
+  slidesData?: SlideData[] | null;
 }
 
 type ResumeProps = ComponentPropsWithRef<"article"> & ResumeObject;
@@ -18,7 +26,14 @@ export const Resume = forwardRef<HTMLElement, ResumeProps>(
         {resumeItems && (
           <>
             {resumeItems.map((resumeItem, index) => (
-              <InfoSection key={index} {...resumeItem} />
+              <React.Fragment key={index}>
+                {resumeItem.type === "info" && (
+                  <InfoSection key={index} {...resumeItem} />
+                )}
+                {resumeItem.type === "slider" && (
+                  <SliderSection slidesData={[]} key={index} {...resumeItem} />
+                )}
+              </React.Fragment>
             ))}
           </>
         )}

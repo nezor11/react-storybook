@@ -40,6 +40,7 @@ export const Default: Story = {
     ],
     dataResumeObject: [
       {
+        type: "info",
         title: "Benemeritaar",
         subtitle: "Pecador al ataquerl mamaar a gramenawer.",
         icons: {
@@ -76,6 +77,7 @@ export const Default: Story = {
         ],
       },
       {
+        type: "info",
         title: "Musho peligro",
         icons: {
           iconsData: [{ name: "NuxtIcon", width: "1em", height: "1em" }],
@@ -106,6 +108,343 @@ export const Default: Story = {
               jobTitle: "Fistro caballo blanco",
               jobDesc:
                 "Va usté muy cargadoo al ataquerl no puedor pecador. Por la gloria de mi madre mamaar fistro caballo blanco caballo negroorl no te digo trigo por no llamarte Rodrigor no puedor papaar papaar condemor. A gramenawer va usté muy cargadoo apetecan se calle ustée.",
+            },
+          },
+        ],
+      },
+      {
+        type: "slider",
+        title: "Projects",
+        icons: {
+          iconsData: [{ name: "ViteIcon", width: "1em", height: "1em" }],
+        },
+        slidesData: [
+          {
+            year: "2015",
+            title: "Fundació Pasqual Maragall",
+            description: "Caballo blanco caballo negroorl",
+            iconsData: [
+              { name: "ViteIcon", width: "1em", height: "1em" },
+              { name: "GitBranchIcon", width: "1em", height: "1em" },
+            ],
+            company: "Pradera",
+            summary: "Diodenoo tiene musho peligro",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+            workType: "",
+          },
+          {
+            year: "2022",
+            title: "Revlon",
+            description: "Quietooor a peich amatomaa la caidita caballo blanco",
+            iconsData: [{ name: "GitBranchIcon", width: "1em", height: "1em" }],
+            company: "Pupita",
+            summary: "La caidita llevame al sircoo",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+            workType: "",
+          },
+          {
+            year: "2019",
+            title: "Vienduet",
+            description: "Por la gloria de mi madre",
+            iconsData: [
+              { name: "CSS3Icon", width: "1em", height: "1em" },
+              { name: "ViteIcon", width: "1em", height: "1em" },
+            ],
+            company: "Pupita",
+            summary: "Está la cosa muy malar",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+            workType: "",
+          },
+          {
+            year: "2023",
+            title: "Tourism of Tenerife",
+            description: "Torpedo al ataquerl hasta luego Lucas",
+            iconsData: [
+              { name: "CSS3Icon", width: "1em", height: "1em" },
+              { name: "ViteIcon", width: "1em", height: "1em" },
+              { name: "GitBranchIcon", width: "1em", height: "1em" },
+            ],
+            company: "Pradera",
+            summary: "Torpedo fistro llevame al sircoo mamaar",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+            workType: "",
+          },
+          {
+            year: "2016",
+            title: "Adamo",
+            description: "Torpedo al ataquerl hasta luego Lucas",
+            iconsData: [
+              { name: "JQueryIcon", width: "1em", height: "1em" },
+              { name: "NuxtIcon", width: "1em", height: "1em" },
+            ],
+            company: "Pradera",
+            summary: "Torpedo fistro llevame al sircoo mamaar",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+            workType: "",
+          },
+          {
+            year: "2016",
+            title: "Adamo",
+            description: "Gramenawer amatomaa ese hombree",
+            iconsData: [
+              { name: "JQueryIcon", width: "1em", height: "1em" },
+              { name: "NuxtIcon", width: "1em", height: "1em" },
+            ],
+            company: "Pradera",
+            summary: "Torpedo fistro llevame al sircoo mamaar",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+            workType: "fresh",
+            link: {
+              href: "https://ondho.com/proyecto/decathlon-email-marketing",
+              target: "_blank",
+              rel: "noreferrer noopener",
+              link_text: "Link text",
+            },
+          },
+          {
+            year: "2017",
+            title: "Adamo",
+            description: "Gramenawer amatomaa ese hombree",
+            iconsData: [
+              { name: "JQueryIcon", width: "1em", height: "1em" },
+              { name: "NuxtIcon", width: "1em", height: "1em" },
+            ],
+            company: "Pradera",
+            summary: "Torpedo fistro llevame al sircoo mamaar",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+            workType: "fresh",
+            link: {
+              href: "https://ondho.com/proyecto/decathlon-email-marketing",
+              target: "_blank",
+              rel: "noreferrer noopener",
+              link_text: "Link text",
+            },
+          },
+          {
+            year: "2020",
+            title: "Festival de Clipmetrajes",
+            description: "Gramenawer amatomaa ese hombree",
+            iconsData: [
+              { name: "JQueryIcon", width: "1em", height: "1em" },
+              { name: "NuxtIcon", width: "1em", height: "1em" },
+            ],
+            company: "Pradera",
+            summary: "Torpedo fistro llevame al sircoo mamaar",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+            workType: "fresh",
+            link: {
+              href: "https://ondho.com/proyecto/decathlon-email-marketing",
+              target: "_blank",
+              rel: "noreferrer noopener",
+              link_text: "Link text",
+            },
+          },
+          {
+            year: "2021",
+            title: "Faborit",
+            description: "Gramenawer amatomaa ese hombree",
+            iconsData: [
+              { name: "JQueryIcon", width: "1em", height: "1em" },
+              { name: "NuxtIcon", width: "1em", height: "1em" },
+            ],
+            company: "Pradera",
+            summary: "Torpedo fistro llevame al sircoo mamaar",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+            workType: "fresh",
+            link: {
+              href: "https://ondho.com/proyecto/decathlon-email-marketing",
+              target: "_blank",
+              rel: "noreferrer noopener",
+              link_text: "Link text",
             },
           },
         ],
