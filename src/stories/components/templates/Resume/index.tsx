@@ -31,7 +31,7 @@ export const Resume = forwardRef<HTMLElement, ResumeProps>(
                   <InfoSection key={index} {...resumeItem} />
                 )}
                 {resumeItem.type === "sliderSection" && (
-                  <SliderSection slidesData={[]} key={index} {...resumeItem} />
+                  <SliderSection key={index} {...resumeItem} />
                 )}
               </React.Fragment>
             ))}

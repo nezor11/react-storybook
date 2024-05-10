@@ -44,6 +44,14 @@ export const LazyImage: React.FC<LazyImageProps> = ({
     height: height ? `${height}px` : "100%",
   };
 
+  const imageStylesPlaceHolder: CSSProperties = {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    display: "block",
+    ...style,
+  };
+
   const imageStyles: CSSProperties = {
     width: "100%",
     height: "100%",
@@ -60,7 +68,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
             src={placeholderSrc}
             width={width}
             height={height}
-            style={imageStyles}
+            style={imageStylesPlaceHolder}
             alt={`${alt}-placeholder`}
           />
         )}

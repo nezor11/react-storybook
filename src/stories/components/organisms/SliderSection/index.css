@@ -22,7 +22,14 @@
 
 .portfolio__slider
   .swiper-slide-next
-  ~ .swiper-slide
+  ~ .swiper-slide:odd
+  .portfolio__slide-content {
+  transform: scale(0.91) translateY(1.8125rem) !important;
+}
+
+.portfolio__slider
+  .swiper-slide.swiper-slide-next
+  + .swiper-slide
   .portfolio__slide-content {
   transform: scale(0.93) translateY(-3.75rem) !important;
 }
