@@ -46,7 +46,7 @@ function App() {
   useEffect(() => {
     sanityAPI
       .fetch<Resume[]>(
-        `*[_type == "resume"]{
+        `*[_type == "resume" && !(_id in path('drafts.**'))]{
           _id,
           title,
           _updatedAt,
@@ -74,6 +74,38 @@ function App() {
               url,
               metadata {
                 dimensions
+              }
+            },
+            "sliderDetails": sliderDetails->{
+              name,
+              slides[] {
+                "slideDetails": slides->{
+                  _id,
+                  name,
+                  company,
+                  type,
+                  infoUrl,
+                  workDate,
+                  slideTitle,
+                  "imageUrl": slideImage.asset->url,
+                  "imageAltText": slideImage.asset->metadata.alt,
+                  slideSummary,
+                  slideDesc,
+                  workDone,
+                  icons[] {
+                    "icon": icons-> {
+                      name,
+                      width,
+                      height
+                    }
+                  },
+                 "images": images[] {
+                    "src": asset->url,
+                    "width": asset->metadata.dimensions.width,
+                    "height": asset->metadata.dimensions.height,
+                    "alt": alt
+                  }
+                }
               }
             }
           },

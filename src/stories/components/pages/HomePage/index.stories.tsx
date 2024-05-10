@@ -40,7 +40,7 @@ export const Default: Story = {
     ],
     dataResumeObject: [
       {
-        type: "info",
+        type: "infoSection",
         title: "Benemeritaar",
         subtitle: "Pecador al ataquerl mamaar a gramenawer.",
         icons: {
@@ -77,7 +77,7 @@ export const Default: Story = {
         ],
       },
       {
-        type: "info",
+        type: "infoSection",
         title: "Musho peligro",
         icons: {
           iconsData: [{ name: "NuxtIcon", width: "1em", height: "1em" }],
@@ -113,7 +113,7 @@ export const Default: Story = {
         ],
       },
       {
-        type: "slider",
+        type: "sliderSection",
         title: "Projects",
         icons: {
           iconsData: [{ name: "ViteIcon", width: "1em", height: "1em" }],

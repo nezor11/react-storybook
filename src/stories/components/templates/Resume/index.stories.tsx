@@ -17,7 +17,7 @@ export const Default: Story = {
   args: {
     resumeItems: [
       {
-        type: "info",
+        type: "infoSection",
         title: "Benemeritaar",
         icons: {
           iconsData: [{ name: "WebPackIcon", width: "1em", height: "1em" }],
@@ -55,7 +55,7 @@ export const Default: Story = {
         ],
       },
       {
-        type: "info",
+        type: "infoSection",
         title: "Musho peligro",
         icons: {
           iconsData: [{ name: "JavaScriptIcon", width: "1em", height: "1em" }],
@@ -91,7 +91,7 @@ export const Default: Story = {
         ],
       },
       {
-        type: "info",
+        type: "infoSection",
         title: "Education",
         subtitle: undefined,
         icons: {
@@ -127,7 +127,7 @@ export const Default: Story = {
         ],
       },
       {
-        type: "slider",
+        type: "sliderSection",
         title: "Projects",
         icons: {
           iconsData: [{ name: "ViteIcon", width: "1em", height: "1em" }],

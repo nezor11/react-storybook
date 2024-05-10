@@ -42,8 +42,34 @@ interface InfoItem {
   imageDetails: { url: string } | null;
 }
 
+interface InfoSlide {
+  workDate: string;
+  imageUrl?: string;
+  name: string;
+  slideSumary?: string;
+  type?: string;
+  slideTitle?: string;
+  slideDesc?: any;
+  workDone?: string;
+  icons?: {
+    name: string;
+    width?: number;
+    height?: number;
+  } | null;
+  company?: string;
+  infoUrl?: string;
+  imageAltText?: string | null;
+  imageDetails: { url: string } | null;
+  images?: {
+    src: string;
+    width: number;
+    height: number;
+    alt?: string;
+  } | null;
+}
+
 export interface Section {
-  _type: any;
+  _type: string;
   _key: string;
   icons?: { iconDetails: IconDetails }[];
   contactDetails?: ContactDetails;
@@ -58,4 +84,18 @@ export interface Section {
     width?: number;
     height?: number;
   } | null;
+}
+
+export interface Slide {
+  _type: string;
+  _key: string;
+  icons?: { iconDetails: IconDetails }[];
+  name?: string;
+  titleSection?: string;
+  iconTitleDetails?: {
+    name: string;
+    width?: number;
+    height?: number;
+  } | null;
+  sliderDetails?: InfoSlide[];
 }

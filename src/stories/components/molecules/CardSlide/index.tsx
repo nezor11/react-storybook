@@ -82,7 +82,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
 
   // Función para seleccionar una altura aleatoria del array
   const getRandomHeight = () => {
-    const heights = [200, 250, 300, 350];
+    const heights = [200, 250, 300];
     const randomIndex = Math.floor(Math.random() * heights.length);
     return heights[randomIndex];
   };
@@ -94,7 +94,8 @@ export const CardSlide: React.FC<CardSlideProps> = ({
     return colors[randomIndex];
   };
 
-  const randomHeight = getRandomHeight();
+  let randomHeight = 0;
+  randomHeight = getRandomHeight();
 
   return (
     <>
@@ -113,7 +114,8 @@ export const CardSlide: React.FC<CardSlideProps> = ({
           height={randomHeight}
           onImageLoad={handleImageLoad}
           style={{
-            paddingBottom: `${paddingBottom}px`,
+            height: "auto",
+            paddingBottom: `${paddingBottom + 20}px`,
             borderColor: getRandomColor(),
           }}
         />

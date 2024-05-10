@@ -27,10 +27,10 @@ export const Resume = forwardRef<HTMLElement, ResumeProps>(
           <>
             {resumeItems.map((resumeItem, index) => (
               <React.Fragment key={index}>
-                {resumeItem.type === "info" && (
+                {resumeItem.type === "infoSection" && (
                   <InfoSection key={index} {...resumeItem} />
                 )}
-                {resumeItem.type === "slider" && (
+                {resumeItem.type === "sliderSection" && (
                   <SliderSection slidesData={[]} key={index} {...resumeItem} />
                 )}
               </React.Fragment>
