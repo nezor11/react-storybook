@@ -61,7 +61,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
   return (
     <div>
       <div className="flex items-center mb-0 lg:mb-6">
-        {iconsData && (
+        {iconsData && iconsData.length > 0 && (
           <div className="text-2xl lg:text-3xl flex mr-1">
             <IconGallery iconsData={iconsData} />
           </div>

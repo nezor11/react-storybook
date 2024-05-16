@@ -10,9 +10,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./index.css";
 
 export interface ImageData {
-  src: string;
-  width: number;
-  height: number;
+  src?: string;
+  width?: number;
+  height?: number;
 }
 
 interface ModalProps {

@@ -4543,6 +4543,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/webpack-env@npm:^1.18.5":
+  version: 1.18.5
+  resolution: "@types/webpack-env@npm:1.18.5"
+  checksum: 10c0/b9e4876e8c7cae419896249f9ed795db283c008fe1d38efa679cbbf05194fc2eea2a5bfb4ff4393d109e3a9895416dadf5f3ddd5c22931b678062230f860454e
+  languageName: node
+  linkType: hard
+
 "@ungap/structured-clone@npm:^1.0.0":
   version: 1.2.0
   resolution: "@ungap/structured-clone@npm:1.2.0"
@@ -8289,6 +8296,7 @@ __metadata:
     "@types/react-dom": "npm:^18.3.0"
     "@types/react-html-parser": "npm:^2.0.6"
     "@types/react-syntax-highlighter": "npm:^15.5.11"
+    "@types/webpack-env": "npm:^1.18.5"
     "@vitejs/plugin-react": "npm:^3.1.0"
     autoprefixer: "npm:^10.4.17"
     babel-plugin-named-exports-order: "npm:^0.0.2"
