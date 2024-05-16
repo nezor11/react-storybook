@@ -9,19 +9,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "./index.css";
 
-export interface ImageData {
+export interface SanityImageData {
   src?: string;
   width?: number;
   height?: number;
+  alt?: string;
 }
 
 interface ModalProps {
   onClose: () => void;
   title: string;
-  company: string;
-  year: string;
-  description: string;
-  images: ImageData[];
+  company?: string;
+  year?: string;
+  description?: string;
+  images?: SanityImageData[];
   workDone?: string;
   workType?: string;
   link?: LinkProps;
@@ -85,20 +86,36 @@ export const Modal: React.FC<ModalProps> = ({
             </div>
             <div className="grid grid-cols-1 w-full justify-start">
               <div className="flex justify-start">
-                <TitleCopy as="h6" text={company} mods="text-xl" /> -
+                <TitleCopy as="h6" text={company} mods="text-xl capitalize" />
+                <span className="mx-2 relative top-1">/</span>
                 <TitleCopy as="h6" text={year} mods="text-xl" />
               </div>
             </div>
             <div className="grid grid-cols-4 w-full">
-              <BodyCopy tag="div" text={description} mods="col-span-full" />
+              <BodyCopy
+                tag="div"
+                text={description}
+                mods="col-span-full text-description"
+              />
             </div>
             <div className="grid grid-cols-4 w-full">
-              <BodyCopy tag="div" text={workDone} mods="col-span-full" />
+              <BodyCopy
+                tag="div"
+                text={workDone}
+                mods="col-span-full text-workdone"
+              />
+            </div>
+            <div className="grid grid-cols-4 w-full">
+              <BodyCopy
+                tag="div"
+                text={`${workType} - Project`}
+                mods="col-span-full capitalize text-worktype"
+              />
             </div>
             <div className="grid grid-cols-4 w-full">
               <Link
-                href={link?.href || "javascript:void(0)"}
-                link_text={link?.link_text || ""}
+                href={link.href || "#!"}
+                link_text={`More info at: ${link.link_text}`}
                 target="_blank"
                 rel="noreferrer noopener"
               />
@@ -116,7 +133,7 @@ export const Modal: React.FC<ModalProps> = ({
               disableOnInteraction: true,
             }}
             onSwiper={(swiper) => {
-              // console.log("MODAL SWIPPERRRRRRRR ------------> ", swiper);
+              console.log("MODAL SWIPPERRRRRRRR ------------> ", swiper);
               setSwiperReady(true);
             }}
             onSlideChange={() => console.log("slide change")}

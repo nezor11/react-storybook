@@ -656,6 +656,10 @@ strong {
   top: 0px;
 }
 
+.top-1 {
+  top: 0.25rem;
+}
+
 .top-14 {
   top: 3.5rem;
 }
@@ -682,6 +686,11 @@ strong {
 
 .m-0 {
   margin: 0px;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .mx-auto {
@@ -1080,6 +1089,10 @@ strong {
   text-transform: uppercase;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .italic {
   font-style: italic;
 }
@@ -1182,6 +1195,20 @@ strong {
   body.theme-dark {
     background-color: var(--bgColor);
     color: var(--textColor);
+    .portfolio__slider .swiper-slide .portfolio__slide-content {
+      background-color: var(--bgColor);
+    }
+    .card-slide h4 {
+      background-color: var(--bgColor);
+      color: var(--textColor);
+    }
+    .modal-wapper {
+      background-color: var(--background);
+    }
+    .modal-wapper .text,
+    .modal-wapper a {
+      color: rgb(0, 0, 0, 0.87);
+    }
   }
 
   html.dark {

@@ -37,4 +37,11 @@
       position: relative;
     }
   }
+
+  .card-slide__icons-wrapper {
+    svg {
+      @apply mx-1;
+      @apply mb-1;
+    }
+  }
 }

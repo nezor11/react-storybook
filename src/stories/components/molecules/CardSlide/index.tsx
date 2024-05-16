@@ -4,7 +4,7 @@ import { LinkProps } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import React, { startTransition, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { ImageData, Modal } from "../Modal";
+import { Modal, SanityImageData } from "../Modal";
 import { SuspenseIconGallery } from "../SuspenseIconGallery";
 
 import "./index.css";
@@ -18,18 +18,21 @@ interface IconData {
 interface CardSlideProps {
   year: string;
   title: string;
+  cardImage?: string;
+  infoUrl?: string;
   company?: string;
   summary?: string;
   description?: string;
   workType?: string;
   link?: LinkProps;
   iconsData?: IconData[];
-  images?: ImageData[];
+  images?: SanityImageData[];
 }
 
 export const CardSlide: React.FC<CardSlideProps> = ({
   year,
   title,
+  cardImage,
   summary,
   description,
   company,
@@ -97,6 +100,10 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   let randomHeight = 0;
   randomHeight = getRandomHeight();
 
+  console.log("imageUrl ------------>", cardImage);
+
+  cardImage = cardImage || `https://placehold.co/300x${randomHeight}`;
+
   return (
     <>
       <article
@@ -109,7 +116,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
       >
         <LazyImage
           placeholderSrc={`https://placehold.co/300x${randomHeight}`}
-          src={`https://source.unsplash.com/random/300x${randomHeight}/?logo`}
+          src={cardImage}
           width={300}
           height={randomHeight}
           onImageLoad={handleImageLoad}

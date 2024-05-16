@@ -1,6 +1,9 @@
 // ResumeSlider.tsx
-import { Resume } from "@/stories/components/templates/Resume";
-import { Slide } from "@/utils/types/section";
+import {
+  Resume,
+  SliderSectionObject,
+} from "@/stories/components/templates/Resume";
+import { InfoSlide, Slide } from "@/utils/types/section";
 import imageUrlBuilder from "@sanity/image-url";
 import React from "react";
 
@@ -17,9 +20,10 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 const urlFor = (source: any) => builder.image(source);
 
-// Mueve la exportación de la función mapInfoSection aquí
 export const mapSliderSection = (slider: Slide) => {
   const { titleSection, sliderDetails, iconTitleDetails } = slider;
+
+  console.log("sliderDetails ***************** ", sliderDetails);
 
   let icons = null;
   if (iconTitleDetails) {
@@ -36,44 +40,60 @@ export const mapSliderSection = (slider: Slide) => {
     };
   }
 
+  // Asegurarse de que sliderDetails es un array
+  const slides = Array.isArray(sliderDetails?.slides)
+    ? sliderDetails.slides
+    : [];
+
+  console.log("slides before map: ", slides);
+
+  const slidesData = slides.map((slide: InfoSlide) => {
+    // Verificar la estructura de cada slide antes de retornarlo
+    const slideData = {
+      imageUrl: slide.slideDetails.slideImage?.src || null,
+      imageWidth: slide.slideDetails.slideImage?.width || null,
+      imageHeight: slide.slideDetails.slideImage?.height || null,
+      imageAltText: slide.slideDetails.slideImage?.alt || null,
+      year:
+        new Date(slide.slideDetails.workDate).getFullYear().toString() || "",
+      title: slide.slideDetails.slideTitle || "",
+      name: slide.slideDetails.name || "",
+      description: slide.slideDetails.slideDesc || "",
+      iconsData: slide.slideDetails.icons
+        ? slide.slideDetails.icons.map((icon) => ({
+            name: icon.icon.name || "",
+            width: icon.icon.width || "",
+            height: icon.icon.height || "",
+          }))
+        : [],
+      company: slide.slideDetails.company || "",
+      summary: slide.slideDetails.slideSummary || "",
+      workDone: slide.slideDetails.workDone || [],
+      workType: slide.slideDetails.type || "",
+      images: slide.slideDetails.images || [],
+      link: { url: slide.slideDetails.infoUrl || "", text: "Learn more" },
+    };
+
+    console.log("slideData: ", slideData);
+    return slideData;
+  });
+
   return {
     title: titleSection,
     icons: icons,
-    slidesData: Array.isArray(sliderDetails)
-      ? sliderDetails.map((slide) => ({
-          ...slide,
-          imageUrl: slide.imageUrl,
-          imageAltText: slide.imageAltText,
-          year: slide.workDate,
-          title: slide.slideTitle,
-          description: slide.slideDesc,
-          iconsData: slide.icons
-            ? [
-                {
-                  name: slide.icons.name,
-                  width: slide.icons.width
-                    ? `${slide.icons.width}px`
-                    : undefined,
-                  height: slide.icons.height
-                    ? `${slide.icons.height}px`
-                    : undefined,
-                },
-              ]
-            : [],
-          company: slide.company,
-          summary: slide.slideSumary,
-          workDone: slide.workDone,
-          workType: slide.type,
-          images: slide.images,
-          link: { url: slide.infoUrl, text: "Learn more" },
-        }))
-      : [],
+    slidesData: slidesData,
   };
 };
 
 const ResumeSlider: React.FC<Props> = ({ slider }) => {
-  const formattedSliderData = [mapSliderSection(slider)];
-  return <Resume resumeItems={formattedSliderData} />;
+  const formattedSliderData: SliderSectionObject = {
+    ...mapSliderSection(slider),
+    type: "sliderSection",
+  };
+
+  console.log("formattedSliderData --------------->", formattedSliderData);
+
+  return <Resume resumeItems={[formattedSliderData]} />;
 };
 
 export default ResumeSlider;

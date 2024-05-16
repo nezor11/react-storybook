@@ -22,6 +22,24 @@
   body.theme-dark {
     background-color: var(--bgColor);
     color: var(--textColor);
+
+    .portfolio__slider .swiper-slide .portfolio__slide-content {
+      background-color: var(--bgColor);
+    }
+
+    .card-slide h4 {
+      background-color: var(--bgColor);
+      color: var(--textColor);
+    }
+
+    .modal-wapper {
+      background-color: var(--background);
+    }
+
+    .modal-wapper .text,
+    .modal-wapper a {
+      color: rgb(0, 0, 0, 0.87);
+    }
   }
 
   html.dark {

@@ -14,16 +14,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./index.css";
 
 export interface SlideData {
-  year: string;
+  alt?: string;
+  year?: string;
   title: string;
-  description: string;
+  description?: string;
   iconsData?: { name: string; width: string; height: string }[];
-  company: string;
-  summary: string;
+  company?: string;
+  summary?: string;
   workDone?: string;
   workType?: string | undefined;
-  images?: ImageData[] | undefined;
+  images: { src: string; width: number; height: number; alt?: string }[];
   link?: LinkProps | undefined;
+  imageDetails?: any;
+  cardImage?: string;
+  imageUrl?: string;
 }
 
 export interface SliderSectionProps {
@@ -80,7 +84,7 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
                 enabled: true,
               }}
               loop={true}
-              centeredSlides={false}
+              centeredSlides={true}
               modules={[A11y, Keyboard]}
               onSwiper={setSwiperRef}
               onSlideChange={() => console.log("slide change")}
@@ -96,6 +100,7 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
                     summary={slide.summary}
                     images={slide.images}
                     workType={slide.workType}
+                    cardImage={slide.imageUrl}
                   />
                 </SwiperSlide>
               ))}

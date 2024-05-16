@@ -1,18 +1,15 @@
-import { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
 import {
   InfoSection,
   InfoSectionObject,
 } from "@/stories/components/organisms/InfoSection";
-import {
-  SlideData,
-  SliderSection,
-} from "@/stories/components/organisms/SliderSection";
+import { SliderSection } from "@/stories/components/organisms/SliderSection";
 import { cn } from "@/utils";
 import React, { ComponentPropsWithRef, forwardRef } from "react";
 
-interface SliderSectionObject extends InfoSectionObject {
-  slidesData?: SlideData[] | null;
-  icons?: IconGalleryProps;
+export interface SliderSectionObject extends InfoSectionObject {
+  type: "sliderSection";
+  slidesData: any[];
+  slides?: any[];
 }
 
 export interface ResumeObject extends InfoSectionObject {

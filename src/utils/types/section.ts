@@ -21,7 +21,6 @@ export interface ImageDetails {
     };
   };
 }
-
 export interface FrameImageProps {
   image?: string;
   metadata?: {
@@ -32,40 +31,18 @@ export interface FrameImageProps {
   };
 }
 
+interface JobDescription {
+  description: string;
+}
+
 interface InfoItem {
   company: string;
   infoUrl: string;
   startDate: string;
   finishDate: string | null;
   jobTitle: string;
-  jobDesc: any;
+  jobDesc: JobDescription;
   imageDetails: { url: string } | null;
-}
-
-interface InfoSlide {
-  workDate: string;
-  imageUrl?: string;
-  name: string;
-  slideSumary?: string;
-  type?: string;
-  slideTitle?: string;
-  slideDesc?: any;
-  workDone?: string;
-  icons?: {
-    name: string;
-    width?: number;
-    height?: number;
-  } | null;
-  company?: string;
-  infoUrl?: string;
-  imageAltText?: string | null;
-  imageDetails: { url: string } | null;
-  images?: {
-    src: string;
-    width: number;
-    height: number;
-    alt?: string;
-  } | null;
 }
 
 export interface Section {
@@ -86,6 +63,44 @@ export interface Section {
   } | null;
 }
 
+export interface SlideDetails {
+  slideImage?: {
+    src: string;
+    width: number;
+    height: number;
+    alt?: string | null;
+  } | null;
+  slideDesc?: any;
+  workDone?: string[];
+  name: string;
+  company: string;
+  type: string;
+  workDate: string;
+  slideTitle: string;
+  _id: string;
+  infoUrl: string;
+  slideSummary?: string | null;
+  icons?: {
+    icon: {
+      name: string;
+      width?: number;
+      height?: number;
+    };
+  }[];
+  images?:
+    | {
+        src: string;
+        width: number;
+        height: number;
+        alt?: string;
+      }[]
+    | null;
+}
+
+export interface InfoSlide {
+  slideDetails: SlideDetails;
+}
+
 export interface Slide {
   _type: string;
   _key: string;
@@ -97,5 +112,9 @@ export interface Slide {
     width?: number;
     height?: number;
   } | null;
-  sliderDetails?: InfoSlide[];
+  sliderDetails?: {
+    name: string;
+    slides: InfoSlide[];
+  } | null;
+  slides?: InfoSlide[];
 }

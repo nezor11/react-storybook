@@ -92,7 +92,12 @@ export const mapInfoSection = (section: Section) => {
 };
 
 const ResumeSection: React.FC<Props> = ({ section }) => {
-  return <Resume key={section._key} resumeItems={[mapInfoSection(section)]} />;
+  return (
+    <Resume
+      key={section._key}
+      resumeItems={[{ ...mapInfoSection(section), type: "infoSection" }]}
+    />
+  );
 };
 
 export default ResumeSection;

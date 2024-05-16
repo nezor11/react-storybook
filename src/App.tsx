@@ -87,8 +87,12 @@ function App() {
                   infoUrl,
                   workDate,
                   slideTitle,
-                  "imageUrl": slideImage.asset->url,
-                  "imageAltText": slideImage.asset->metadata.alt,
+                  "slideImage": slideImage.asset->{
+                    "src": url,
+                    "width": metadata.dimensions.width,
+                    "height": metadata.dimensions.height,
+                    "alt": alt
+                  },
                   slideSummary,
                   slideDesc,
                   workDone,
