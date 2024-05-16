@@ -10,6 +10,7 @@ const UmbracoIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       height={height ? height : "1em"}
       aria-hidden="true"
       viewBox="0 0 14 14"
+      fill="#3341ab"
       ref={ref}
       aria-labelledby={name}
       aria-describedby={desc}
