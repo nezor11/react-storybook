@@ -1,7 +1,7 @@
+// SliderSection.tsx
 import { LinkProps } from "@/stories/components/atoms/Link";
 import { CardSlide } from "@/stories/components/molecules/CardSlide";
 import { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
-import { ImageData } from "@/stories/components/molecules/Modal";
 import { TitleSection } from "@/stories/components/molecules/TitleSection";
 import { cn } from "@/utils";
 import React, { useState } from "react";
@@ -17,7 +17,7 @@ export interface SlideData {
   year: string;
   title: string;
   description: string;
-  iconsData: { name: string; width: string; height: string }[];
+  iconsData?: { name: string; width: string; height: string }[];
   company: string;
   summary: string;
   workDone?: string;
@@ -37,6 +37,11 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
   icons,
   title,
 }) => {
+  if (!slidesData) {
+    console.error("SliderSection requires slidesData prop");
+    return null; // Retorna null o un componente de error/placerholder
+  }
+
   const [swiperRef, setSwiperRef] = useState(null);
 
   const titleText = title || "";

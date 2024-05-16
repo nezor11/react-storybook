@@ -11,11 +11,11 @@ interface Props {
 const SectionRenderer: React.FC<Props> = ({ section }) => {
   switch (section._type) {
     case "header":
-      return <HeaderSection section={section as Section} />;
+      return <HeaderSection section={section} />;
     case "infoSection":
-      return <ResumeSection section={section as Section} />;
+      return <ResumeSection section={section} />;
     case "sliderSection":
-      return <ResumeSlider slider={section as Slide} />;
+      return <ResumeSlider slider={section} />;
     default:
       return null;
   }

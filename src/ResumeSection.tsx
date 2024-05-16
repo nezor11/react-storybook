@@ -1,4 +1,3 @@
-// ResumeSection.tsx
 import { Resume } from "@/stories/components/templates/Resume";
 import { Section } from "@/utils/types/section";
 import blocksToHtml from "@sanity/block-content-to-html";
@@ -18,86 +17,81 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 const urlFor = (source: any) => builder.image(source);
 
-const ResumeSection: React.FC<Props> = ({ section }) => {
-  const mapInfoSection = (section: Section) => {
-    const { titleSection, subtitleSection, sections, iconTitleDetails } =
-      section;
+// Exporta la función mapInfoSection aquí
+export const mapInfoSection = (section: Section) => {
+  const { titleSection, subtitleSection, sections, iconTitleDetails } = section;
 
-    return {
-      title: titleSection,
-      subtitle: subtitleSection,
-      icons: iconTitleDetails
-        ? {
-            iconsData: [
-              {
-                name: iconTitleDetails.name,
-                width: iconTitleDetails.width
-                  ? iconTitleDetails.width + "px"
-                  : "1em",
-                height: iconTitleDetails.height
-                  ? iconTitleDetails.height + "px"
-                  : "1em",
-              },
-            ],
-          }
-        : {},
-      sections: sections.map((infoItem) => {
-        const {
+  let icons = null;
+
+  if (iconTitleDetails) {
+    icons = {
+      name: iconTitleDetails.name,
+      width: iconTitleDetails.width ? `${iconTitleDetails.width}px` : "1em",
+      height: iconTitleDetails.height ? `${iconTitleDetails.height}px` : "1em",
+      iconsData: [iconTitleDetails], // Ensure iconsData is an array
+    };
+  }
+
+  return {
+    title: titleSection,
+    subtitle: subtitleSection,
+    icons: icons,
+    sections: sections.map((infoItem) => {
+      const {
+        company,
+        infoUrl,
+        startDate,
+        finishDate,
+        jobTitle,
+        jobDesc,
+        imageDetails,
+      } = infoItem;
+
+      const startDateObj = new Date(startDate);
+      const finishDateObj = finishDate ? new Date(finishDate) : null;
+      const startYear = startDateObj.getFullYear();
+      const finishYear = finishDateObj ? finishDateObj.getFullYear() : null;
+
+      let dateText = `${startYear} > Current`;
+
+      if (finishDateObj) {
+        const finishYear = finishDateObj.getFullYear();
+        dateText =
+          startYear !== finishYear ? `${startYear} > ${finishYear}` : dateText;
+      }
+
+      if (startYear === finishYear) {
+        dateText = startYear.toString();
+      }
+
+      const imageUrl =
+        imageDetails && imageDetails.url
+          ? urlFor(imageDetails).width(800).height(600).url()
+          : null;
+
+      const consolidatedJobDescHtml = blocksToHtml({
+        blocks: jobDesc,
+        projectId: projectId,
+        dataset: dataset,
+      });
+
+      return {
+        info: {
           company,
           infoUrl,
-          startDate,
-          finishDate,
+          date: dateText,
           jobTitle,
-          jobDesc,
-          imageDetails,
-        } = infoItem;
-
-        const startDateObj = new Date(startDate);
-        const finishDateObj = finishDate ? new Date(finishDate) : null;
-        const startYear = startDateObj.getFullYear();
-        const finishYear = finishDateObj ? finishDateObj.getFullYear() : null;
-
-        let dateText = `${startYear} > Current`;
-
-        if (finishDateObj) {
-          const finishYear = finishDateObj.getFullYear();
-          dateText =
-            startYear !== finishYear
-              ? `${startYear} > ${finishYear}`
-              : dateText;
-        }
-
-        if (startYear === finishYear) {
-          dateText = startYear.toString();
-        }
-
-        const imageUrl =
-          imageDetails && imageDetails.url
-            ? urlFor(imageDetails).width(800).height(600).url()
-            : null;
-
-        const consolidatedJobDescHtml = blocksToHtml({
-          blocks: jobDesc,
-          projectId: projectId,
-          dataset: dataset,
-        });
-
-        return {
-          info: {
-            company,
-            infoUrl,
-            date: dateText,
-            jobTitle,
-            jobDesc: consolidatedJobDescHtml,
-            imageDetails: imageUrl
-              ? { src: imageUrl, alt: "Image Alt Text" }
-              : null,
-          },
-        };
-      }),
-    };
+          jobDesc: consolidatedJobDescHtml,
+          imageDetails: imageUrl
+            ? { src: imageUrl, alt: "Image Alt Text" }
+            : null,
+        },
+      };
+    }),
   };
+};
 
+const ResumeSection: React.FC<Props> = ({ section }) => {
   return <Resume key={section._key} resumeItems={[mapInfoSection(section)]} />;
 };
 

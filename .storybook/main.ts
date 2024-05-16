@@ -29,9 +29,7 @@ const config: StorybookConfig = {
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
-  docs: {
-    autodocs: "tag",
-  },
+  docs: {},
   viteFinal: async (config) => {
     config.plugins?.push(
       /** @see https://github.com/aleclarson/vite-tsconfig-paths */

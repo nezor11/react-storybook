@@ -17,35 +17,63 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 const urlFor = (source: any) => builder.image(source);
 
-const ResumeSlider: React.FC<Props> = ({ slider }) => {
-  const mapInfoSection = (slider: Slide) => {
-    const { titleSection, sliderDetails, iconTitleDetails } = slider;
+// Mueve la exportación de la función mapInfoSection aquí
+export const mapSliderSection = (slider: Slide) => {
+  const { titleSection, sliderDetails, iconTitleDetails } = slider;
 
-    return {
-      title: titleSection,
-      icons: iconTitleDetails
-        ? [
-            {
-              name: slider.iconTitleDetails.name,
-              width: slider.iconTitleDetails.width
-                ? slider.iconTitleDetails.width + "px"
-                : "1em",
-              height: slider.iconTitleDetails.height
-                ? slider.iconTitleDetails.height + "px"
-                : "1em",
-            },
-          ]
-        : [],
-      slidesData:
-        sliderDetails?.map((slide) => ({
+  let icons = null;
+  if (iconTitleDetails) {
+    icons = {
+      iconsData: [
+        {
+          name: iconTitleDetails.name,
+          width: iconTitleDetails.width ? `${iconTitleDetails.width}px` : "1em",
+          height: iconTitleDetails.height
+            ? `${iconTitleDetails.height}px`
+            : "1em",
+        },
+      ],
+    };
+  }
+
+  return {
+    title: titleSection,
+    icons: icons,
+    slidesData: Array.isArray(sliderDetails)
+      ? sliderDetails.map((slide) => ({
           ...slide,
           imageUrl: slide.imageUrl,
           imageAltText: slide.imageAltText,
-        })) || [],
-    };
+          year: slide.workDate,
+          title: slide.slideTitle,
+          description: slide.slideDesc,
+          iconsData: slide.icons
+            ? [
+                {
+                  name: slide.icons.name,
+                  width: slide.icons.width
+                    ? `${slide.icons.width}px`
+                    : undefined,
+                  height: slide.icons.height
+                    ? `${slide.icons.height}px`
+                    : undefined,
+                },
+              ]
+            : [],
+          company: slide.company,
+          summary: slide.slideSumary,
+          workDone: slide.workDone,
+          workType: slide.type,
+          images: slide.images,
+          link: { url: slide.infoUrl, text: "Learn more" },
+        }))
+      : [],
   };
+};
 
-  return <Resume key={slider._key} resumeItems={[mapInfoSection(slider)]} />;
+const ResumeSlider: React.FC<Props> = ({ slider }) => {
+  const formattedSliderData = [mapSliderSection(slider)];
+  return <Resume resumeItems={formattedSliderData} />;
 };
 
 export default ResumeSlider;
