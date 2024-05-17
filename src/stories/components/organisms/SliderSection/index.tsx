@@ -21,10 +21,10 @@ export interface SlideData {
   iconsData?: { name: string; width: string; height: string }[];
   company?: string;
   summary?: string;
-  workDone?: string;
+  workDone?: string[];
   workType?: string | undefined;
   images: { src: string; width: number; height: number; alt?: string }[];
-  link?: LinkProps | undefined;
+  link?: LinkProps;
   imageDetails?: any;
   cardImageAlt?: string;
   cardImageWidth?: number;
@@ -89,8 +89,8 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
                   enabled: true,
                 }}
                 loop={true}
-                centeredSlides={true}
-                slidesOffsetBefore={300}
+                centeredSlides={false}
+                slidesOffsetBefore={0}
                 modules={[A11y, Keyboard]}
                 onSwiper={setSwiperRef}
                 mousewheel={{
@@ -98,6 +98,12 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
                   forceToAxis: true,
                 }}
                 freeMode={true}
+                breakpoints={{
+                  769: {
+                    slidesOffsetBefore: 300,
+                    centeredSlides: true,
+                  },
+                }}
                 // onSlideChange={() => console.log("slide change")}
               >
                 {slidesData.map((slide, index) => (
@@ -111,9 +117,11 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
                       summary={slide.summary}
                       images={slide.images}
                       workType={slide.workType}
+                      workDone={slide.workDone}
                       cardImage={slide.imageUrl}
                       cardImageAlt={slide.alt}
                       cardImageHeight={slide.imageDetails?.height}
+                      link={slide.link}
                     />
                   </SwiperSlide>
                 ))}

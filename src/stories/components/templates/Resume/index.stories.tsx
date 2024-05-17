@@ -263,6 +263,40 @@ export const Default: Story = {
               },
             ],
           },
+          {
+            year: "2023",
+            title: "Llevant UE",
+            description: "Hasta luego Lucas",
+            iconsData: [
+              { name: "CSS3Icon", width: "1em", height: "1em" },
+              { name: "ViteIcon", width: "1em", height: "1em" },
+              { name: "GitBranchIcon", width: "1em", height: "1em" },
+            ],
+            company: "Pradera",
+            summary: "Torpedo fistro llevame al sircoo mamaar",
+            images: [
+              {
+                src: "https://source.unsplash.com/random/600x400/?programming",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-design",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?web-development",
+                width: 600,
+                height: 400,
+              },
+              {
+                src: "https://source.unsplash.com/random/600x400/?car",
+                width: 600,
+                height: 400,
+              },
+            ],
+          },
         ],
       },
     ],

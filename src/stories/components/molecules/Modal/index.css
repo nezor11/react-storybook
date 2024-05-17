@@ -3,6 +3,10 @@
 }
 
 .modal-wapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
   .slider-wrapper {
     position: absolute;
     top: 50%;
@@ -48,6 +52,16 @@
 
     .swiper-pagination {
       bottom: 0;
+    }
+  }
+}
+
+.logos-wrapper {
+  & > div {
+    @apply text-3xl;
+
+    svg {
+      @apply mx-2;
     }
   }
 }

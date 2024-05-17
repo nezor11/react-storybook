@@ -1,5 +1,10 @@
 .portfolio__slider .swiper-slide {
   width: auto;
+  @apply mt-8;
+
+  @media screen(sm) {
+    @apply mt-0;
+  }
 }
 
 .portfolio__slider .swiper-slide-active .portfolio__slide-content:after,

@@ -35,6 +35,10 @@ interface JobDescription {
   description: string;
 }
 
+interface SlideDescription {
+  description: string;
+}
+
 interface InfoItem {
   company: string;
   infoUrl: string;
@@ -70,7 +74,7 @@ export interface SlideDetails {
     height: number;
     alt?: string | null;
   } | null;
-  slideDesc?: any;
+  slideDesc?: SlideDescription;
   workDone?: string[];
   name: string;
   company: string;

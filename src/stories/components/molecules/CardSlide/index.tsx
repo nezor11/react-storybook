@@ -9,7 +9,7 @@ import { createPortal } from "react-dom";
 
 import "./index.css";
 
-interface IconData {
+export interface IconData {
   name: string;
   width: string;
   height: string;
@@ -30,6 +30,7 @@ interface CardSlideProps {
   link?: LinkProps;
   iconsData?: IconData[];
   images?: SanityImageData[];
+  workDone?: string[];
 }
 
 // Función para seleccionar una altura aleatoria del array
@@ -60,6 +61,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   workType,
   link,
   images,
+  workDone,
 }) => {
   const figcaptionRef = useRef<HTMLDivElement>(null);
   const articleRef = useRef<HTMLDivElement>(null); // Referencia al elemento article
@@ -87,6 +89,19 @@ export const CardSlide: React.FC<CardSlideProps> = ({
       window.removeEventListener("resize", updatePaddingBottom);
     };
   }, []);
+
+  useEffect(() => {
+    if (showModal) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+
+    // Cleanup when component unmounts
+    return () => {
+      document.body.classList.remove("modal-open");
+    };
+  }, [showModal]);
 
   // Función para manejar la carga de la imagen
   const handleImageLoad = () => {
@@ -116,7 +131,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
     cardImageAlt = cardImageAlt || "Card image";
   }
 
-  // console.log("cardImageHeight ------------>", cardImageHeight);
+  console.log("CardSlide render link", link);
 
   return (
     <>
@@ -124,7 +139,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
         ref={articleRef}
         className="card-slide portfolio__slide-content"
         style={{
-          height: `${cardImageHeight + paddingBottom}px`, // Elimina el +20 adicional
+          height: `${cardImageHeight + paddingBottom}px`,
         }}
         onClick={openModal}
       >
@@ -176,7 +191,9 @@ export const CardSlide: React.FC<CardSlideProps> = ({
             description={description}
             images={images}
             workType={workType}
+            workDone={workDone}
             link={link}
+            iconsData={iconsData}
             onClose={closeModal}
           />,
           document.querySelector("body")!

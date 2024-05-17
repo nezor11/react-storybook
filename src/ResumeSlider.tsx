@@ -4,6 +4,7 @@ import {
   SliderSectionObject,
 } from "@/stories/components/templates/Resume";
 import { InfoSlide, Slide } from "@/utils/types/section";
+import blocksToHtml from "@sanity/block-content-to-html";
 import imageUrlBuilder from "@sanity/image-url";
 import React from "react";
 
@@ -23,7 +24,7 @@ const urlFor = (source: any) => builder.image(source);
 export const mapSliderSection = (slider: Slide) => {
   const { titleSection, sliderDetails, iconTitleDetails } = slider;
 
-  console.log("sliderDetails ***************** ", sliderDetails);
+  // console.log("sliderDetails ***************** ", sliderDetails);
 
   let icons = null;
   if (iconTitleDetails) {
@@ -48,6 +49,15 @@ export const mapSliderSection = (slider: Slide) => {
   console.log("slides before map: ", slides);
 
   const slidesData = slides.map((slide: InfoSlide) => {
+    // Verificar que slideDesc no es null o undefined
+    const slideDesc = slide.slideDetails.slideDesc ?? [];
+
+    const consolidatedJobDescHtml = blocksToHtml({
+      blocks: slideDesc,
+      projectId: projectId,
+      dataset: dataset,
+    });
+
     // Verificar la estructura de cada slide antes de retornarlo
     const slideData = {
       imageUrl: slide.slideDetails.slideImage?.src || null,
@@ -67,14 +77,14 @@ export const mapSliderSection = (slider: Slide) => {
         : [],
       company: slide.slideDetails.company || "",
       summary: slide.slideDetails.slideSummary || "",
-      description: slide.slideDetails.slideDesc || "",
+      description: consolidatedJobDescHtml || "",
       workDone: slide.slideDetails.workDone || [],
       workType: slide.slideDetails.type || "",
       images: slide.slideDetails.images || [],
-      link: { url: slide.slideDetails.infoUrl || "", text: "Learn more" },
+      link: { href: slide.slideDetails.infoUrl || "", text: "Learn more" },
     };
 
-    console.log("slideData: ", slideData);
+    // console.log("slideData: ", slideData.workDone);
     return slideData;
   });
 
@@ -91,7 +101,7 @@ const ResumeSlider: React.FC<Props> = ({ slider }) => {
     type: "sliderSection",
   };
 
-  console.log("formattedSliderData --------------->", formattedSliderData);
+  // console.log("formattedSliderData --------------->", formattedSliderData);
 
   return <Resume resumeItems={[formattedSliderData]} />;
 };
