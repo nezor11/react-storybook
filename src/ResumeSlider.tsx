@@ -58,7 +58,6 @@ export const mapSliderSection = (slider: Slide) => {
         new Date(slide.slideDetails.workDate).getFullYear().toString() || "",
       title: slide.slideDetails.slideTitle || "",
       name: slide.slideDetails.name || "",
-      description: slide.slideDetails.slideDesc || "",
       iconsData: slide.slideDetails.icons
         ? slide.slideDetails.icons.map((icon) => ({
             name: icon.icon.name || "",
@@ -68,6 +67,7 @@ export const mapSliderSection = (slider: Slide) => {
         : [],
       company: slide.slideDetails.company || "",
       summary: slide.slideDetails.slideSummary || "",
+      description: slide.slideDetails.slideDesc || "",
       workDone: slide.slideDetails.workDone || [],
       workType: slide.slideDetails.type || "",
       images: slide.slideDetails.images || [],

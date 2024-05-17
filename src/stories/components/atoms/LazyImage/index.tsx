@@ -29,12 +29,15 @@ export const LazyImage: React.FC<LazyImageProps> = ({
       onImageLoad?.();
     };
 
-    if (imageRef.current?.complete) {
+    const currentImageRef = imageRef.current;
+    currentImageRef?.addEventListener("load", handleLoad);
+
+    if (currentImageRef?.complete) {
       handleLoad();
     }
 
     return () => {
-      imageRef.current?.removeEventListener("load", handleLoad);
+      currentImageRef?.removeEventListener("load", handleLoad);
     };
   }, [onImageLoad]);
 

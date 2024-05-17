@@ -2,10 +2,10 @@ import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import { LazyImage } from "@/stories/components/atoms/LazyImage";
 import { LinkProps } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
-import React, { startTransition, useEffect, useRef, useState } from "react";
+import { Modal, SanityImageData } from "@/stories/components/molecules/Modal";
+import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
+import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { Modal, SanityImageData } from "../Modal";
-import { SuspenseIconGallery } from "../SuspenseIconGallery";
 
 import "./index.css";
 
@@ -19,6 +19,9 @@ interface CardSlideProps {
   year: string;
   title: string;
   cardImage?: string;
+  cardImageAlt?: string;
+  cardImageWidht?: number;
+  cardImageHeight?: number;
   infoUrl?: string;
   company?: string;
   summary?: string;
@@ -29,10 +32,27 @@ interface CardSlideProps {
   images?: SanityImageData[];
 }
 
+// Función para seleccionar una altura aleatoria del array
+const getRandomHeight = () => {
+  const heights = [200, 250, 300, 350];
+  const randomIndex = Math.floor(Math.random() * heights.length);
+  return heights[randomIndex];
+};
+
+// Función para seleccionar un color aleatorio del array
+const getRandomColor = () => {
+  const colors = ["#569CD6", "#9D415D", "#9D9D9D", "#C19C00"];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+};
+
 export const CardSlide: React.FC<CardSlideProps> = ({
   year,
   title,
   cardImage,
+  cardImageAlt,
+  cardImageWidht,
+  cardImageHeight,
   summary,
   description,
   company,
@@ -47,6 +67,10 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   const [showModal, setShowModal] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false); // Estado para controlar si la imagen se ha cargado
 
+  // Generar altura y color aleatorio solo una vez
+  const randomHeight = useRef(getRandomHeight());
+  const randomColor = useRef(getRandomColor());
+
   useEffect(() => {
     const updatePaddingBottom = () => {
       if (figcaptionRef.current) {
@@ -55,9 +79,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
       }
     };
 
-    startTransition(() => {
-      updatePaddingBottom();
-    });
+    updatePaddingBottom(); // Calcular la altura inicialmente
 
     window.addEventListener("resize", updatePaddingBottom);
 
@@ -83,26 +105,18 @@ export const CardSlide: React.FC<CardSlideProps> = ({
     setShowModal(false);
   };
 
-  // Función para seleccionar una altura aleatoria del array
-  const getRandomHeight = () => {
-    const heights = [200, 250, 300];
-    const randomIndex = Math.floor(Math.random() * heights.length);
-    return heights[randomIndex];
-  };
+  if (!cardImage) {
+    cardImageHeight = randomHeight.current;
+    cardImage = `https://placehold.co/300x${cardImageHeight}`;
+    cardImageWidht = 300;
+    cardImageAlt = "Card image";
+  } else {
+    cardImageHeight = cardImageHeight - paddingBottom || randomHeight.current;
+    cardImageWidht = cardImageWidht || 300;
+    cardImageAlt = cardImageAlt || "Card image";
+  }
 
-  // Función para seleccionar un color aleatorio del array
-  const getRandomColor = () => {
-    const colors = ["#569CD6", "#9D415D", "#9D9D9D", "#C19C00"];
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-  };
-
-  let randomHeight = 0;
-  randomHeight = getRandomHeight();
-
-  console.log("imageUrl ------------>", cardImage);
-
-  cardImage = cardImage || `https://placehold.co/300x${randomHeight}`;
+  // console.log("cardImageHeight ------------>", cardImageHeight);
 
   return (
     <>
@@ -110,21 +124,22 @@ export const CardSlide: React.FC<CardSlideProps> = ({
         ref={articleRef}
         className="card-slide portfolio__slide-content"
         style={{
-          height: imageLoaded ? `${randomHeight + paddingBottom}px` : "auto",
+          height: `${cardImageHeight + paddingBottom}px`, // Elimina el +20 adicional
         }}
         onClick={openModal}
       >
         <LazyImage
-          placeholderSrc={`https://placehold.co/300x${randomHeight}`}
+          placeholderSrc={`https://placehold.co/300x${cardImageHeight}`}
           src={cardImage}
-          width={300}
-          height={randomHeight}
+          width={cardImageWidht}
+          height={cardImageHeight} // Pasar la altura total calculada
           onImageLoad={handleImageLoad}
           style={{
-            height: "auto",
-            paddingBottom: `${paddingBottom + 20}px`,
-            borderColor: getRandomColor(),
+            height: `${cardImageHeight + paddingBottom}px`,
+            borderColor: randomColor.current,
+            paddingBottom: `${paddingBottom}px`,
           }}
+          alt={cardImageAlt}
         />
         <div className="card-meta w-80" ref={figcaptionRef}>
           <div className="card-meta__date-wrapper">

@@ -34,7 +34,7 @@ export const Modal: React.FC<ModalProps> = ({
   company,
   year,
   description,
-  images,
+  images = [], // Default to an empty array to avoid undefined issues
   workDone,
   workType,
   link,
@@ -52,13 +52,14 @@ export const Modal: React.FC<ModalProps> = ({
     onClose();
   };
 
+  // Function to shuffle and get random images
   const getRandomImages = () => {
     const shuffledImages = images.sort(() => Math.random() - 0.5);
     return shuffledImages;
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center modal-wapper z-50 w-full h-full bg-white">
+    <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center modal-wrapper z-50 w-full h-full bg-white">
       <div className="modal-content-wrapper relative px-4 min-h-svh w-full max-w-full">
         <div className="meta-data-wrapper mx-auto w-full max-w-5xl">
           <button
@@ -112,14 +113,17 @@ export const Modal: React.FC<ModalProps> = ({
                 mods="col-span-full capitalize text-worktype"
               />
             </div>
-            <div className="grid grid-cols-4 w-full">
-              <Link
-                href={link.href || "#!"}
-                link_text={`More info at: ${link.link_text}`}
-                target="_blank"
-                rel="noreferrer noopener"
-              />
-            </div>
+            {/* Check if link is defined before rendering the Link component */}
+            {link && (
+              <div className="grid grid-cols-4 w-full">
+                <Link
+                  href={link.href || "#!"}
+                  link_text={`More info at: ${link.link_text}`}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                />
+              </div>
+            )}
           </div>
         </div>
         <div className="slider-wrapper">
@@ -133,7 +137,7 @@ export const Modal: React.FC<ModalProps> = ({
               disableOnInteraction: true,
             }}
             onSwiper={(swiper) => {
-              console.log("MODAL SWIPPERRRRRRRR ------------> ", swiper);
+              console.log("MODAL SWIPER ------------> ", swiper);
               setSwiperReady(true);
             }}
             onSlideChange={() => console.log("slide change")}
@@ -146,6 +150,7 @@ export const Modal: React.FC<ModalProps> = ({
                   src={image.src}
                   width={image.width}
                   height={image.height}
+                  alt={image.alt}
                 />
               </SwiperSlide>
             ))}

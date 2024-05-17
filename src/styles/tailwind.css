@@ -1157,6 +1157,11 @@ strong {
   outline-style: solid;
 }
 
+.invert {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -1181,6 +1186,10 @@ strong {
   --bgColor: rgba(248, 248, 247, 1);
 }
 
+body {
+  overflow-x: hidden;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: rgba(0, 0, 0, 0.87);
@@ -1202,8 +1211,8 @@ strong {
       background-color: var(--bgColor);
       color: var(--textColor);
     }
-    .modal-wapper {
-      background-color: var(--background);
+    .modal-wapper.bg-white {
+      background-color: var(--bgColor);
     }
     .modal-wapper .text,
     .modal-wapper a {

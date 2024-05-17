@@ -1,8 +1,8 @@
 .card-slide {
   @apply relative;
   @apply bg-white;
-  /* @apply mx-auto;
-  @apply max-w-[33.33333%]; */
+  /* @apply mx-auto; */
+  @apply max-w-[300px];
   text-align: center;
   cursor: pointer;
 
@@ -30,6 +30,8 @@
     left: 0;
     width: 100%;
     top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
     @apply max-w-[300px];
 
     div.card-meta__date-wrapper {

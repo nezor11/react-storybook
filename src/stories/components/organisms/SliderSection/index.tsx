@@ -26,7 +26,9 @@ export interface SlideData {
   images: { src: string; width: number; height: number; alt?: string }[];
   link?: LinkProps | undefined;
   imageDetails?: any;
-  cardImage?: string;
+  cardImageAlt?: string;
+  cardImageWidth?: number;
+  cardImageHeight?: number;
   imageUrl?: string;
 }
 
@@ -75,36 +77,48 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
             </div>
           </div>
           <div className="portfolio__slider">
-            <Swiper
-              spaceBetween={32}
-              slidesPerView={"auto"}
-              slidesPerGroupSkip={2}
-              grabCursor={true}
-              keyboard={{
-                enabled: true,
-              }}
-              loop={true}
-              centeredSlides={true}
-              modules={[A11y, Keyboard]}
-              onSwiper={setSwiperRef}
-              onSlideChange={() => console.log("slide change")}
-            >
-              {slidesData.map((slide, index) => (
-                <SwiperSlide key={index}>
-                  <CardSlide
-                    year={slide.year}
-                    title={slide.title}
-                    description={slide.description}
-                    iconsData={slide.iconsData}
-                    company={slide.company}
-                    summary={slide.summary}
-                    images={slide.images}
-                    workType={slide.workType}
-                    cardImage={slide.imageUrl}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <div className="swiper-wrapper-portfolio">
+              <Swiper
+                direction="horizontal"
+                width={100}
+                spaceBetween={32}
+                slidesPerView={"auto"}
+                slidesPerGroupSkip={2}
+                grabCursor={true}
+                keyboard={{
+                  enabled: true,
+                }}
+                loop={true}
+                centeredSlides={true}
+                slidesOffsetBefore={300}
+                modules={[A11y, Keyboard]}
+                onSwiper={setSwiperRef}
+                mousewheel={{
+                  invert: true,
+                  forceToAxis: true,
+                }}
+                freeMode={true}
+                // onSlideChange={() => console.log("slide change")}
+              >
+                {slidesData.map((slide, index) => (
+                  <SwiperSlide key={index}>
+                    <CardSlide
+                      year={slide.year}
+                      title={slide.title}
+                      description={slide.description}
+                      iconsData={slide.iconsData}
+                      company={slide.company}
+                      summary={slide.summary}
+                      images={slide.images}
+                      workType={slide.workType}
+                      cardImage={slide.imageUrl}
+                      cardImageAlt={slide.alt}
+                      cardImageHeight={slide.imageDetails?.height}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
         </>
       )}

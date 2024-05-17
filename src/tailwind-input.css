@@ -8,6 +8,10 @@
   --bgColor: rgba(248, 248, 247, 1);
 }
 
+body {
+  overflow-x: hidden;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: rgba(0, 0, 0, 0.87);
@@ -32,8 +36,8 @@
       color: var(--textColor);
     }
 
-    .modal-wapper {
-      background-color: var(--background);
+    .modal-wapper.bg-white {
+      background-color: var(--bgColor);
     }
 
     .modal-wapper .text,
