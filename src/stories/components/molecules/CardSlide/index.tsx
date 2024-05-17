@@ -42,7 +42,7 @@ const getRandomHeight = () => {
 
 // Función para seleccionar un color aleatorio del array
 const getRandomColor = () => {
-  const colors = ["#569CD6", "#9D415D", "#9D9D9D", "#C19C00"];
+  const colors = ["#569CD6", "#9D415D", "#9D9D9D", "#C19C00", "#69C33B"];
   const randomIndex = Math.floor(Math.random() * colors.length);
   return colors[randomIndex];
 };

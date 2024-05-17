@@ -83,10 +83,11 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
                 width={100}
                 spaceBetween={32}
                 slidesPerView={"auto"}
-                slidesPerGroupSkip={2}
+                slidesPerGroupSkip={3}
                 grabCursor={true}
                 keyboard={{
                   enabled: true,
+                  onlyInViewport: true,
                 }}
                 loop={true}
                 centeredSlides={false}

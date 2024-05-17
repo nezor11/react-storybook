@@ -80,7 +80,9 @@ export const Modal: React.FC<ModalProps> = ({
 
   const mappedWorkDone = workDone.map((item) => nameMapping[item] || item);
 
-  console.log("Modal render link", link);
+  // console.log("Modal render link", link);
+
+  const domain = link.href.match(/https?:\/\/(www\.)?([^\/]+)/)[2];
 
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center modal-wrapper z-50 bg-white dark:bg-slate-950">
@@ -105,7 +107,7 @@ export const Modal: React.FC<ModalProps> = ({
               />
             </svg>
           </button>
-          <div className="text-wrapper absolute top-14 left-14 z-10 bg-white opacity-75 p-8 rounded max-w-xl overflow-y-scroll">
+          <div className="text-wrapper absolute top-14 left-14 z-10 bg-white opacity-75 p-8 rounded max-w-xl">
             <div className="grid grid-cols-1 w-full">
               <TitleCopy text={title} mods="text-3xl uppercase" />
             </div>
@@ -129,7 +131,7 @@ export const Modal: React.FC<ModalProps> = ({
               <div className="mt-8 w-full">
                 <Link
                   href={link.href}
-                  link_text={`More info at: ${link.href}`}
+                  link_text={`More info at: ${domain}`}
                   mods="text-link"
                   rel="noreferrer noopener"
                 />
