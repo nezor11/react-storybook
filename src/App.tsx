@@ -96,6 +96,7 @@ function App() {
                   slideSummary,
                   slideDesc,
                   workDone,
+                  videoUrl,
                   icons[] {
                     "icon": icons-> {
                       name,

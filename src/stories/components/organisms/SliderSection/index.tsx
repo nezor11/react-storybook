@@ -22,6 +22,7 @@ export interface SlideData {
   company?: string;
   summary?: string;
   workDone?: string[];
+  videoUrl?: string;
   workType?: string | undefined;
   images: { src: string; width: number; height: number; alt?: string }[];
   link?: LinkProps;
@@ -119,6 +120,7 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
                       images={slide.images}
                       workType={slide.workType}
                       workDone={slide.workDone}
+                      videoUrl={slide.videoUrl}
                       cardImage={slide.imageUrl}
                       cardImageAlt={slide.alt}
                       cardImageHeight={slide.imageDetails?.height}

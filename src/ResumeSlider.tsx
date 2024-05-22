@@ -46,7 +46,7 @@ export const mapSliderSection = (slider: Slide) => {
     ? sliderDetails.slides
     : [];
 
-  console.log("slides before map: ", slides);
+  // console.log("slides before map: ", slides);
 
   const slidesData = slides.map((slide: InfoSlide) => {
     // Verificar que slideDesc no es null o undefined
@@ -80,11 +80,12 @@ export const mapSliderSection = (slider: Slide) => {
       description: consolidatedJobDescHtml || "",
       workDone: slide.slideDetails.workDone || [],
       workType: slide.slideDetails.type || "",
+      videoUrl: slide.slideDetails.videoUrl || "",
       images: slide.slideDetails.images || [],
-      link: { href: slide.slideDetails.infoUrl || "", text: "Learn more" },
+      link: { href: slide.slideDetails.infoUrl || "", text: "More Info" },
     };
 
-    // console.log("slideData: ", slideData.workDone);
+    // console.log("slideData: ", slideData.videoUrl);
     return slideData;
   });
 

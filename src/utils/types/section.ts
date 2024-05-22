@@ -77,12 +77,13 @@ export interface SlideDetails {
   slideDesc?: SlideDescription;
   workDone?: string[];
   name: string;
-  company: string;
+  company?: string;
   type: string;
   workDate: string;
   slideTitle: string;
+  videoUrl?: string;
   _id: string;
-  infoUrl: string;
+  infoUrl?: string;
   slideSummary?: string | null;
   icons?: {
     icon: {

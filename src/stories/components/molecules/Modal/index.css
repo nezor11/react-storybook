@@ -6,16 +6,41 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+}
 
-  .slider-wrapper {
+.video-wrapper {
+  @media screen(sm) {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .player-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+  }
+
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 
 .slider-wrapper {
+  @apply mt-8;
+  @apply rounded;
+  @apply overflow-hidden;
+
+  @media screen(lg) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @apply mt-0;
+  }
+
   .swiper-initialized {
     width: 100%;
     height: 100%;

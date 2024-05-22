@@ -27,6 +27,7 @@ interface CardSlideProps {
   summary?: string;
   description?: string;
   workType?: string;
+  videoUrl?: string;
   link?: LinkProps;
   iconsData?: IconData[];
   images?: SanityImageData[];
@@ -62,6 +63,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   link,
   images,
   workDone,
+  videoUrl,
 }) => {
   const figcaptionRef = useRef<HTMLDivElement>(null);
   const articleRef = useRef<HTMLDivElement>(null); // Referencia al elemento article
@@ -131,7 +133,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
     cardImageAlt = cardImageAlt || "Card image";
   }
 
-  console.log("CardSlide render link", link);
+  // console.log("CardSlide render videoUrl", videoUrl);
 
   return (
     <>
@@ -194,6 +196,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
             workDone={workDone}
             link={link}
             iconsData={iconsData}
+            videoUrl={videoUrl}
             onClose={closeModal}
           />,
           document.querySelector("body")!

@@ -1,3 +1,7 @@
+body..modal-open {
+  overflow: hidden;
+}
+
 .card-slide {
   @apply relative;
   @apply bg-white;
@@ -46,8 +50,4 @@
       @apply mb-1;
     }
   }
-}
-
-.modal-open {
-  overflow: hidden;
 }
