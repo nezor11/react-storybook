@@ -803,8 +803,8 @@ strong {
   height: 2rem;
 }
 
-.min-h-svh {
-  min-height: 100svh;
+.h-full {
+  height: 100%;
 }
 
 .w-32 {
@@ -913,6 +913,10 @@ strong {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .rounded {

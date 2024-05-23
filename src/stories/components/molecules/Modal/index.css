@@ -81,7 +81,6 @@ ul.list-arrows {
 .slider-wrapper {
   @apply mt-8;
   @apply rounded;
-  @apply overflow-hidden;
 
   @media screen(lg) {
     position: absolute;
@@ -89,6 +88,18 @@ ul.list-arrows {
     left: 50%;
     transform: translate(-50%, -50%);
     @apply mt-0;
+    width: 600px;
+    height: 400px;
+  }
+
+  @media screen(xl) {
+    width: 900px;
+    height: 600px;
+  }
+
+  @media screen(2xl) {
+    width: 1200px;
+    height: 800px;
   }
 
   .swiper-initialized {
@@ -111,23 +122,6 @@ ul.list-arrows {
         position: static !important;
       }
     }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #000;
-    }
-
-    .swiper-button-next {
-      right: 0;
-    }
-
-    .swiper-button-prev {
-      left: 0;
-    }
-
-    .swiper-pagination {
-      bottom: 0;
-    }
   }
 }
 
@@ -139,4 +133,15 @@ ul.list-arrows {
       @apply mx-2;
     }
   }
+}
+
+.absolute-element {
+  transition:
+    z-index,
+    opacity 0.3s ease;
+}
+
+.absolute-element.hovered {
+  z-index: 999;
+  opacity: 1;
 }

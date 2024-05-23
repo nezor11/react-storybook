@@ -104,9 +104,17 @@ export const Modal: React.FC<ModalProps> = ({
 
   const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)[2];
 
+  const handleMouseEnter = (e: React.MouseEvent) => {
+    (e.currentTarget as HTMLElement).classList.add("hovered");
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent) => {
+    (e.currentTarget as HTMLElement).classList.remove("hovered");
+  };
+
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center modal-wrapper z-50 bg-white dark:bg-slate-950">
-      <div className="modal-content-wrapper relative px-4 min-h-svh w-full max-w-full">
+    <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center modal-wrapper z-50 bg-white dark:bg-slate-950 overflow-y-auto">
+      <div className="modal-content-wrapper relative px-4 w-full h-full">
         <button
           onClick={handleClose}
           className="absolute top-2 right-2 text-gray-500 dark:text-white hover:text-gray-700 z-50 dark:bg-transparent opacity-75 rounded"
@@ -126,8 +134,12 @@ export const Modal: React.FC<ModalProps> = ({
             />
           </svg>
         </button>
-        <div className="meta-data-wrapper mx-auto mt-14 w-full lg:max-w-5xl">
-          <div className="text-wrapper lg:absolute top-14 left-14 z-10 bg-white dark:bg-[#C0C1C5] p-8 rounded lg:max-w-xl">
+        <div
+          className="meta-data-wrapper mt-14 w-full lg:absolute top-14 left-14 z-10 bg-white opacity-75 p-8 rounded lg:max-w-xl absolute-element"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="text-wrapper">
             <div className="grid grid-cols-1 w-full">
               <TitleCopy text={title} mods="text-3xl uppercase" />
             </div>
@@ -165,7 +177,11 @@ export const Modal: React.FC<ModalProps> = ({
           </div>
         </div>
         {videoUrl && (
-          <div className="video-wrapper">
+          <div
+            className="video-wrapper absolute-element opacity-75"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <div className="player-wrapper">
               <ReactPlayer
                 className="react-player"
@@ -186,7 +202,11 @@ export const Modal: React.FC<ModalProps> = ({
           </div>
         )}
         {!videoUrl && images.length > 0 && (
-          <div className="slider-wrapper">
+          <div
+            className="slider-wrapper absolute-element opacity-75"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <Swiper
               ref={swiperRef}
               spaceBetween={0}
@@ -200,7 +220,11 @@ export const Modal: React.FC<ModalProps> = ({
                 setSwiperReady(true);
               }}
               modules={[A11y, Autoplay, Navigation]}
-              navigation={true}
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }}
+              pagination={{ el: ".custom- pagination", clickable: true }}
             >
               {getRandomImages().map((image, index) => (
                 <SwiperSlide key={index}>
@@ -214,10 +238,18 @@ export const Modal: React.FC<ModalProps> = ({
                 </SwiperSlide>
               ))}
             </Swiper>
+            <div className="custom-pagination">
+              <div className="swiper-button-prev"></div>
+              <div className="swiper-button-next"></div>
+            </div>
           </div>
         )}
         {mappedWorkDone.length > 0 && (
-          <div className="workdone-wrapper mt-8 lg:absolute top-32 right-14 z-10 bg-white opacity-75 p-8 rounded">
+          <div
+            className="workdone-wrapper mt-8 lg:absolute top-32 right-14 z-10 bg-white opacity-75 p-8 rounded absolute-element"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <TitleCopy text="What I did" mods="text-xl" />
             <ul className="col-span-full text-workdone mt-4 mb-2 list-arrows">
               {mappedWorkDone.map((item, index) => (
@@ -229,7 +261,11 @@ export const Modal: React.FC<ModalProps> = ({
           </div>
         )}
         {workType && (
-          <div className="worktype-wrapper mt-8 lg:absolute bottom-32 right-14 z-10 bg-white opacity-75 p-4 rounded lg:max-w-xl">
+          <div
+            className="worktype-wrapper mt-8 lg:absolute bottom-32 right-14 z-10 bg-white opacity-75 p-4 rounded lg:max-w-xl absolute-element"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <BodyCopy
               tag="div"
               text={`${workType} - Project`}
@@ -238,7 +274,11 @@ export const Modal: React.FC<ModalProps> = ({
             />
           </div>
         )}
-        <div className="logos-wrapper mt-8 lg:absolute bottom-14 right-14 z-10 bg-white opacity-75 p-4 rounded">
+        <div
+          className="logos-wrapper mt-8 lg:absolute bottom-14 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <SuspenseIconGallery iconsData={iconsData} />
         </div>
       </div>
