@@ -1,14 +1,15 @@
+import React, { useEffect, useRef, useState } from "react";
+import ReactPlayer from "react-player";
+import "swiper/css";
+import { A11y, Autoplay, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import { LazyImage } from "@/stories/components/atoms/LazyImage";
 import { Link, LinkProps } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { IconData } from "@/stories/components/molecules/CardSlide";
 import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
-import React, { useEffect, useRef, useState } from "react";
-import ReactPlayer from "react-player";
-import "swiper/css";
-import { A11y, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import "./index.css";
 
@@ -59,7 +60,10 @@ export const Modal: React.FC<ModalProps> = ({
     onClose();
   };
 
-  // Function to shuffle and get random images
+  const formatCompanyName = (name: string) => {
+    return name.replace(/_/g, " ");
+  };
+
   const getRandomImages = () => {
     const shuffledImages = images.sort(() => Math.random() - 0.5);
     return shuffledImages;
@@ -91,16 +95,14 @@ export const Modal: React.FC<ModalProps> = ({
     performance_optimization: "Performance Optimization",
     responsive_design: "Responsive Design",
     ux_ui_design: "UX/UI Consultancy",
-    seo: "SEO",
+    seo: "SEO Support",
     analytics_metrics: "Analytics & Metrics",
     security: "Security",
   };
 
   const mappedWorkDone = workDone.map((item) => nameMapping[item] || item);
 
-  // console.log("Modal render videoUrl", videoUrl);
-
-  const domain = link.href.match(/https?:\/\/(www\.)?([^\/]+)/)[2];
+  const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)[2];
 
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center modal-wrapper z-50 bg-white dark:bg-slate-950">
@@ -125,13 +127,17 @@ export const Modal: React.FC<ModalProps> = ({
           </svg>
         </button>
         <div className="meta-data-wrapper mx-auto mt-14 w-full lg:max-w-5xl">
-          <div className="text-wrapper lg:absolute top-14 left-14 z-10 bg-[#C0C1C5] p-8 rounded lg:max-w-xl">
+          <div className="text-wrapper lg:absolute top-14 left-14 z-10 bg-white dark:bg-[#C0C1C5] p-8 rounded lg:max-w-xl">
             <div className="grid grid-cols-1 w-full">
               <TitleCopy text={title} mods="text-3xl uppercase" />
             </div>
             <div className="grid grid-cols-1 w-full justify-start">
               <div className="flex justify-start">
-                <TitleCopy as="h6" text={company} mods="text-xl capitalize" />
+                <TitleCopy
+                  as="h6"
+                  text={formatCompanyName(company)}
+                  mods="text-xl capitalize"
+                />
                 <span className="mx-2 relative top-1">/</span>
                 <TitleCopy as="h6" text={year} mods="text-xl" />
               </div>
@@ -146,11 +152,12 @@ export const Modal: React.FC<ModalProps> = ({
               </div>
             )}
             {link?.href && (
-              <div className="mt-8 w-full">
+              <div className="mt-8 w-full link-text">
+                <BodyCopy tag="span" text="More info at: " />
                 <Link
                   href={link.href}
-                  link_text={`More info at: ${domain}`}
-                  mods="text-link"
+                  link_text={`${domain}`}
+                  target="_blank"
                   rel="noreferrer noopener"
                 />
               </div>
@@ -162,12 +169,16 @@ export const Modal: React.FC<ModalProps> = ({
             <div className="player-wrapper">
               <ReactPlayer
                 className="react-player"
+                url={videoUrl}
                 width="100%"
                 height="100%"
-                url={videoUrl}
                 config={{
                   youtube: {
-                    playerVars: { origin: "https://www.youtube.com" },
+                    playerVars: {
+                      origin: "https://www.youtube.com",
+                      showinfo: 0,
+                      controls: 1,
+                    },
                   },
                 }}
               />
@@ -188,7 +199,8 @@ export const Modal: React.FC<ModalProps> = ({
               onSwiper={(swiper) => {
                 setSwiperReady(true);
               }}
-              modules={[A11y, Autoplay]}
+              modules={[A11y, Autoplay, Navigation]}
+              navigation={true}
             >
               {getRandomImages().map((image, index) => (
                 <SwiperSlide key={index}>
@@ -207,7 +219,7 @@ export const Modal: React.FC<ModalProps> = ({
         {mappedWorkDone.length > 0 && (
           <div className="workdone-wrapper mt-8 lg:absolute top-32 right-14 z-10 bg-white opacity-75 p-8 rounded">
             <TitleCopy text="What I did" mods="text-xl" />
-            <ul className="col-span-full text-workdone mt-4 mb-2">
+            <ul className="col-span-full text-workdone mt-4 mb-2 list-arrows">
               {mappedWorkDone.map((item, index) => (
                 <li key={index} className="text-sm">
                   {item}

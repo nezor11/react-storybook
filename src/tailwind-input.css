@@ -10,6 +10,10 @@
 
 body {
   overflow-x: hidden;
+
+  &.modal-open {
+    overflow: hidden;
+  }
 }
 
 body.theme-dark.modal-open {

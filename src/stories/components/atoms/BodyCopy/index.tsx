@@ -1,9 +1,11 @@
-// index.tsx
 import { cn } from "@/utils";
 import { cva } from "class-variance-authority";
 import DOMPurify from "dompurify";
 import React, { CSSProperties } from "react";
-import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser, {
+  convertNodeToElement,
+  Transform,
+} from "react-html-parser";
 import "./index.css";
 
 const textStyles = cva("text", {
@@ -96,6 +98,17 @@ export const BodyCopy: React.FC<BodyCopyProps> = ({
 
   const sanitizedHTML = DOMPurify.sanitize(text);
 
+  const addTargetBlank: Transform = (node, index) => {
+    if (node.type === "tag" && node.name === "a") {
+      node.attribs = {
+        ...node.attribs,
+        target: "_blank",
+        rel: "noreferrer noopener",
+      };
+      return convertNodeToElement(node, index, addTargetBlank);
+    }
+  };
+
   const classes = cn(
     mods,
     textStyles({
@@ -108,12 +121,9 @@ export const BodyCopy: React.FC<BodyCopyProps> = ({
     })
   );
 
-  // console.log("mods:", mods);
-  // console.log("classes:", classes);
-
   return (
     <Tag className={classes} style={styles} {...props}>
-      {ReactHtmlParser(sanitizedHTML)}
+      {ReactHtmlParser(sanitizedHTML, { transform: addTargetBlank })}
     </Tag>
   );
 };
