@@ -136,7 +136,9 @@ ul.list-arrows {
 }
 
 .absolute-element {
+  cursor: grab;
   transition:
+    transform,
     z-index,
     opacity 0.3s ease;
 }
@@ -144,4 +146,9 @@ ul.list-arrows {
 .absolute-element.hovered {
   z-index: 999;
   opacity: 1;
+}
+
+.absolute-element.dragging {
+  cursor: grabbing;
+  z-index: 999;
 }

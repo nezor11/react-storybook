@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { A11y, Keyboard } from "swiper/modules";
+import { A11y, Keyboard, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "./index.css";
@@ -80,26 +80,37 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
           <div className="portfolio__slider">
             <div className="swiper-wrapper-portfolio">
               <Swiper
-                direction="horizontal"
+                loopAdditionalSlides={8}
+                loopPreventsSliding={true}
                 width={100}
                 spaceBetween={32}
                 slidesPerView={"auto"}
                 slidesPerGroupSkip={2}
-                grabCursor={true}
+                grabCursor={false}
+                direction={"horizontal"}
                 keyboard={{
                   enabled: true,
-                  onlyInViewport: true,
+                  onlyInViewport: false,
                 }}
                 loop={true}
                 centeredSlides={false}
                 slidesOffsetBefore={0}
-                modules={[A11y, Keyboard]}
+                modules={[A11y, Keyboard, Mousewheel]}
                 onSwiper={setSwiperRef}
-                mousewheel={{
-                  invert: true,
-                  forceToAxis: true,
+                freeMode={{
+                  enabled: true,
+                  sticky: true,
+                  momentum: true,
+                  momentumRatio: 0.5,
+                  momentumVelocityRatio: 0.5,
+                  momentumBounce: true,
+                  momentumBounceRatio: 1,
                 }}
-                freeMode={true}
+                mousewheel={{
+                  enabled: true,
+                  releaseOnEdges: true,
+                  sensitivity: 2,
+                }}
                 breakpoints={{
                   769: {
                     slidesOffsetBefore: 300,

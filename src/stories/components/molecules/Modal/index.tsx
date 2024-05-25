@@ -49,12 +49,43 @@ export const Modal: React.FC<ModalProps> = ({
 }) => {
   const swiperRef = useRef(null);
   const [swiperReady, setSwiperReady] = useState(false);
+  const [draggingElement, setDraggingElement] = useState<HTMLElement | null>(
+    null
+  );
 
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.swiper.updateSize();
     }
   }, [swiperRef]);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    const element = e.currentTarget as HTMLElement;
+    setDraggingElement(element);
+    element.classList.add("dragging");
+
+    const initialX = e.clientX - element.offsetLeft;
+    const initialY = e.clientY - element.offsetTop;
+
+    const handleMouseMove = (moveEvent: MouseEvent) => {
+      if (draggingElement) {
+        draggingElement.style.left = `${moveEvent.clientX - initialX}px`;
+        draggingElement.style.top = `${moveEvent.clientY - initialY}px`;
+      }
+    };
+
+    const handleMouseUp = () => {
+      if (draggingElement) {
+        draggingElement.classList.remove("dragging");
+        setDraggingElement(null);
+      }
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+  };
 
   const handleClose = () => {
     onClose();
@@ -135,9 +166,10 @@ export const Modal: React.FC<ModalProps> = ({
           </svg>
         </button>
         <div
-          className="meta-data-wrapper mt-14 w-full lg:absolute top-14 left-14 z-10 bg-white opacity-75 p-8 rounded lg:max-w-xl absolute-element"
+          className="meta-data-wrapper mt-14 lg:mt-0 w-full lg:absolute top-14 left-14 z-10 bg-white opacity-75 p-8 rounded lg:max-w-xl max-h-fit absolute-element"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onMouseDown={handleMouseDown}
         >
           <div className="text-wrapper">
             <div className="grid grid-cols-1 w-full">
@@ -155,7 +187,7 @@ export const Modal: React.FC<ModalProps> = ({
               </div>
             </div>
             {description && (
-              <div className="grid grid-cols-4 w-full mt-8">
+              <div className="grid grid-cols-4 w-full mt-8 max-h-60 overflow-y-scroll">
                 <BodyCopy
                   tag="div"
                   text={description}
@@ -181,6 +213,7 @@ export const Modal: React.FC<ModalProps> = ({
             className="video-wrapper absolute-element opacity-75"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onMouseDown={handleMouseDown}
           >
             <div className="player-wrapper">
               <ReactPlayer
@@ -206,6 +239,7 @@ export const Modal: React.FC<ModalProps> = ({
             className="slider-wrapper absolute-element opacity-75"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onMouseDown={handleMouseDown}
           >
             <Swiper
               ref={swiperRef}
@@ -246,9 +280,10 @@ export const Modal: React.FC<ModalProps> = ({
         )}
         {mappedWorkDone.length > 0 && (
           <div
-            className="workdone-wrapper mt-8 lg:absolute top-32 right-14 z-10 bg-white opacity-75 p-8 rounded absolute-element"
+            className="workdone-wrapper mt-8 lg:absolute top-[10%] right-14 z-10 bg-white opacity-75 p-8 rounded absolute-element lg:max-w-max"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onMouseDown={handleMouseDown}
           >
             <TitleCopy text="What I did" mods="text-xl" />
             <ul className="col-span-full text-workdone mt-4 mb-2 list-arrows">
@@ -262,9 +297,10 @@ export const Modal: React.FC<ModalProps> = ({
         )}
         {workType && (
           <div
-            className="worktype-wrapper mt-8 lg:absolute bottom-32 right-14 z-10 bg-white opacity-75 p-4 rounded lg:max-w-xl absolute-element"
+            className="worktype-wrapper mt-8 lg:absolute bottom-32 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element lg:max-w-max lg:max-h-14"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onMouseDown={handleMouseDown}
           >
             <BodyCopy
               tag="div"
@@ -275,9 +311,10 @@ export const Modal: React.FC<ModalProps> = ({
           </div>
         )}
         <div
-          className="logos-wrapper mt-8 lg:absolute bottom-14 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element"
+          className="logos-wrapper mt-8 lg:absolute bottom-14 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element lg:max-w-max lg:max-h-16"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onMouseDown={handleMouseDown}
         >
           <SuspenseIconGallery iconsData={iconsData} />
         </div>
