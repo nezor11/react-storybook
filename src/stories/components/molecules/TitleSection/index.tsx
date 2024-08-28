@@ -74,14 +74,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
         />
       </div>
       {subtext !== "" && (
-        <BodyCopy
-          tag="p"
-          size="sm"
-          emphasis="low"
-          mods="mt-4 lg:mt-0"
-          italic
-          text={subtext}
-        />
+        <BodyCopy tag="p" size="sm" mods="mt-4 lg:mt-0" italic text={subtext} />
       )}
     </div>
   );

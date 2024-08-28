@@ -11,7 +11,7 @@ import "./index.css";
 const textStyles = cva("text", {
   variants: {
     emphasis: {
-      low: "text-gray-600 font-light",
+      low: "text-gray-600 dark:text-gray-400 font-light",
       high: "text-red-600 font-extrabold",
     },
     size: {
