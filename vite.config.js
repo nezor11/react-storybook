@@ -6,6 +6,14 @@ import vitePluginRequire from "vite-plugin-require";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  publicDir: "public",
+  assetsInclude: [
+    "**/*.woff",
+    "**/*.woff2",
+    "**/*.eot",
+    "**/*.ttf",
+    "**/*.svg",
+  ],
   plugins: [
     react(),
     vitePluginRequire.default(),
@@ -76,6 +84,27 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          if (/\.woff2?$/.test(assetInfo.name)) {
+            return "fonts/[name][extname]";
+          }
+          if (/\.eot$/.test(assetInfo.name)) {
+            return "fonts/[name][extname]";
+          }
+          if (/\.ttf$/.test(assetInfo.name)) {
+            return "fonts/[name][extname]";
+          }
+          if (/\.svg$/.test(assetInfo.name)) {
+            return "images/[name][extname]";
+          }
+          return "[name][extname]";
+        },
+      },
     },
   },
 });
