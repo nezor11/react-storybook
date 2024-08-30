@@ -224,7 +224,7 @@ export const Modal: React.FC<ModalProps> = ({
         </div>
 
         {videoUrl && (
-          <div className="video-wrapper mt-8 rounded-lg overflow-hidden relative w-full lg:w-[600px] xl:w-[900px] 2xl:w-[1200px]">
+          <div className="video-wrapper absolute-element mt-8 rounded-lg overflow-hidden relative w-full lg:w-[600px] xl:w-[900px] 2xl:w-[1200px]">
             <div className="player-wrapper relative pt-[56.25%]">
               <ReactPlayer
                 className="absolute top-0 left-0 w-full h-full"
@@ -314,7 +314,7 @@ export const Modal: React.FC<ModalProps> = ({
 
         {mappedWorkDone.length > 0 && (
           <div
-            className="workdone-wrapper mt-8 lg:absolute top-[10%] right-14 z-10 bg-white opacity-75 p-8 rounded absolute-element lg:max-w-max"
+            className="workdone-wrapper w-full mt-8 lg:absolute top-[10%] right-14 z-10 bg-white opacity-75 p-8 rounded absolute-element lg:max-w-max"
             onMouseDown={handleMouseDown}
           >
             <TitleCopy text="What I did" mods="text-xl" />
@@ -330,7 +330,7 @@ export const Modal: React.FC<ModalProps> = ({
 
         {workType && (
           <div
-            className="worktype-wrapper mt-8 lg:absolute bottom-32 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-14"
+            className="worktype-wrapper w-full mt-8 lg:absolute bottom-32 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-14"
             onMouseDown={handleMouseDown}
           >
             <BodyCopy
@@ -343,7 +343,7 @@ export const Modal: React.FC<ModalProps> = ({
         )}
 
         <div
-          className="logos-wrapper mt-8 lg:absolute bottom-14 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-14"
+          className="logos-wrapper w-full mt-8 lg:absolute bottom-14 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-14"
           onMouseDown={handleMouseDown}
         >
           <SuspenseIconGallery iconsData={iconsData} />

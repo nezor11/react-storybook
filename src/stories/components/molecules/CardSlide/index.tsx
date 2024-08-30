@@ -1,5 +1,4 @@
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
-import { LazyImage } from "@/stories/components/atoms/LazyImage";
 import { LinkProps } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { Modal, SanityImageData } from "@/stories/components/molecules/Modal";
@@ -20,7 +19,7 @@ interface CardSlideProps {
   title: string;
   cardImage?: string;
   cardImageAlt?: string;
-  cardImageWidht?: number;
+  cardImageWidth?: number;
   cardImageHeight?: number;
   infoUrl?: string;
   company?: string;
@@ -34,13 +33,6 @@ interface CardSlideProps {
   workDone?: string[];
 }
 
-// Función para seleccionar una altura aleatoria del array
-const getRandomHeight = () => {
-  const heights = [200, 250, 300, 350];
-  const randomIndex = Math.floor(Math.random() * heights.length);
-  return heights[randomIndex];
-};
-
 // Función para seleccionar un color aleatorio del array
 const getRandomColor = () => {
   const colors = ["#569CD6", "#9D415D", "#9D9D9D", "#C19C00", "#69C33B"];
@@ -53,8 +45,8 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   title,
   cardImage,
   cardImageAlt,
-  cardImageWidht,
-  cardImageHeight,
+  cardImageWidth = 300, // Valor por defecto para el ancho
+  cardImageHeight = 200, // Valor por defecto para la altura si no se proporciona
   summary,
   description,
   company,
@@ -66,31 +58,9 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   videoUrl,
 }) => {
   const figcaptionRef = useRef<HTMLDivElement>(null);
-  const articleRef = useRef<HTMLDivElement>(null); // Referencia al elemento article
-  const [paddingBottom, setPaddingBottom] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false); // Estado para controlar si la imagen se ha cargado
-
-  // Generar altura y color aleatorio solo una vez
-  const randomHeight = useRef(getRandomHeight());
-  const randomColor = useRef(getRandomColor());
-
-  useEffect(() => {
-    const updatePaddingBottom = () => {
-      if (figcaptionRef.current) {
-        const figcaptionHeight = figcaptionRef.current.offsetHeight;
-        setPaddingBottom(figcaptionHeight);
-      }
-    };
-
-    updatePaddingBottom(); // Calcular la altura inicialmente
-
-    window.addEventListener("resize", updatePaddingBottom);
-
-    return () => {
-      window.removeEventListener("resize", updatePaddingBottom);
-    };
-  }, []);
+  const [containerHeight, setContainerHeight] = useState(cardImageHeight);
+  const borderColor = useRef(getRandomColor()); // Usar un color aleatorio para cada card
 
   useEffect(() => {
     if (showModal) {
@@ -99,19 +69,14 @@ export const CardSlide: React.FC<CardSlideProps> = ({
       document.body.classList.remove("modal-open");
     }
 
-    // Cleanup when component unmounts
     return () => {
       document.body.classList.remove("modal-open");
     };
   }, [showModal]);
 
-  // Función para manejar la carga de la imagen
-  const handleImageLoad = () => {
-    if (figcaptionRef.current) {
-      const figcaptionHeight = figcaptionRef.current.offsetHeight;
-      setPaddingBottom(figcaptionHeight);
-    }
-    setImageLoaded(true); // Marcar la imagen como cargada
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const { naturalHeight } = e.currentTarget;
+    setContainerHeight(naturalHeight);
   };
 
   const openModal = () => {
@@ -122,41 +87,25 @@ export const CardSlide: React.FC<CardSlideProps> = ({
     setShowModal(false);
   };
 
-  if (!cardImage) {
-    cardImageHeight = randomHeight.current;
-    cardImage = `https://placehold.co/300x${cardImageHeight}`;
-    cardImageWidht = 300;
-    cardImageAlt = "Card image";
-  } else {
-    cardImageHeight = cardImageHeight - paddingBottom || randomHeight.current;
-    cardImageWidht = cardImageWidht || 300;
-    cardImageAlt = cardImageAlt || "Card image";
-  }
-
-  // console.log("CardSlide render videoUrl", videoUrl);
-
   return (
     <>
       <article
-        ref={articleRef}
         className="card-slide portfolio__slide-content"
-        style={{
-          height: `${cardImageHeight + paddingBottom}px`,
-        }}
         onClick={openModal}
+        style={{
+          border: `3px solid ${borderColor.current}`, // Aplicar el color del borde
+        }}
       >
-        <LazyImage
-          placeholderSrc={`https://placehold.co/300x${cardImageHeight}`}
-          src={cardImage}
-          width={cardImageWidht}
-          height={cardImageHeight} // Pasar la altura total calculada
-          onImageLoad={handleImageLoad}
+        <img
+          src={cardImage || `https://placehold.co/300x${Math.round(cardImageHeight)}`}
+          width={cardImageWidth}
+          height={cardImageHeight}
+          onLoad={handleImageLoad}
           style={{
-            height: `${cardImageHeight + paddingBottom}px`,
-            borderColor: randomColor.current,
-            paddingBottom: `${paddingBottom}px`,
+            height: `${containerHeight}px`,
+            objectFit: "cover",
           }}
-          alt={cardImageAlt}
+          alt={cardImageAlt || "Card image"}
         />
         <div className="card-meta w-80" ref={figcaptionRef}>
           <div className="card-meta__date-wrapper">
@@ -179,7 +128,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
             mods="dark:text-white mb-4 px-8"
             align="center"
           />
-          <div className="card-slide__icons-wrapper text-xl mb-4 px-12">
+          <div className="card-slide__icons-wrapper text-xl mb-0 px-12">
             <SuspenseIconGallery iconsData={iconsData} />
           </div>
         </div>
