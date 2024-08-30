@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 import "swiper/css";
-import { A11y, Autoplay, Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css/controller";
+import "swiper/css/parallax";
 
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
-import { LazyImage } from "@/stories/components/atoms/LazyImage";
 import { Link, LinkProps } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { IconData } from "@/stories/components/molecules/CardSlide";
 import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
+
+import createTripleSlider from "@/stories/assets/scripts/triple-slider";
 
 import "./index.css";
 
@@ -51,16 +52,50 @@ export const Modal: React.FC<ModalProps> = ({
   const dragOffset = useRef({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const [isLgScreen, setIsLgScreen] = useState(false);
+  const sliderRef = useRef<HTMLDivElement | null>(null);
+
+  const nameMapping: { [key: string]: string } = {
+    front_end: "Frontend Development",
+    front_end_frameworks: "Deal with Frontend Frameworks",
+    back_end: "Backend Development",
+    back_end_frameworks: "Backend Frameworks",
+    full_stack: "Full Stack Development",
+    databases: "Databases",
+    cms: "CMS",
+    ecommerce: "E-commerce",
+    mobile_app: "Mobile App Development",
+    game_dev: "Game Development",
+    machine_learning: "Machine Learning",
+    data_science: "Data Science",
+    artificial_intelligence: "Artificial Intelligence",
+    cloud_computing: "Cloud Computing",
+    dev_ops: "DevOps",
+    blockchain: "Blockchain",
+    iot: "Internet of Things",
+    cybersecurity: "Cybersecurity",
+    servers_hosting: "Servers & Hosting",
+    testing_debugging: "Testing & Debugging",
+    version_control: "Version Control",
+    maintenance_updates: "Maintenance & Updates",
+    performance_optimization: "Performance Optimization",
+    responsive_design: "Responsive Design",
+    ux_ui_design: "UX/UI Consultancy",
+    seo: "SEO Support",
+    analytics_metrics: "Analytics & Metrics",
+    security: "Security",
+  };
+
+  const mappedWorkDone = workDone.map((item) => nameMapping[item] || item);
+
+  const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)[2];
 
   // Detect screen size
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1024px)"); // lg breakpoint in Tailwind (1024px)
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
     const handleMediaQueryChange = () => setIsLgScreen(mediaQuery.matches);
 
-    // Set the initial state
     setIsLgScreen(mediaQuery.matches);
 
-    // Listen for changes in the media query
     mediaQuery.addEventListener("change", handleMediaQueryChange);
 
     return () => {
@@ -68,12 +103,18 @@ export const Modal: React.FC<ModalProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (images.length > 0 && sliderRef.current) {
+      createTripleSlider(sliderRef.current);
+    }
+  }, [images]);
+
   const handleClose = () => {
     onClose();
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isLgScreen) return; // Only enable drag on lg screens and above
+    if (!isLgScreen) return;
     const element = e.currentTarget;
     dragItemRef.current = element;
     dragOffset.current = {
@@ -115,48 +156,10 @@ export const Modal: React.FC<ModalProps> = ({
     return name.replace(/_/g, " ");
   };
 
-  const getRandomImages = () => {
-    const shuffledImages = images.sort(() => Math.random() - 0.5);
-    return shuffledImages;
-  };
-
-  const nameMapping: { [key: string]: string } = {
-    front_end: "Frontend Development",
-    front_end_frameworks: "Deal with Frontend Frameworks",
-    back_end: "Backend Development",
-    back_end_frameworks: "Backend Frameworks",
-    full_stack: "Full Stack Development",
-    databases: "Databases",
-    cms: "CMS",
-    ecommerce: "E-commerce",
-    mobile_app: "Mobile App Development",
-    game_dev: "Game Development",
-    machine_learning: "Machine Learning",
-    data_science: "Data Science",
-    artificial_intelligence: "Artificial Intelligence",
-    cloud_computing: "Cloud Computing",
-    dev_ops: "DevOps",
-    blockchain: "Blockchain",
-    iot: "Internet of Things",
-    cybersecurity: "Cybersecurity",
-    servers_hosting: "Servers & Hosting",
-    testing_debugging: "Testing & Debugging",
-    version_control: "Version Control",
-    maintenance_updates: "Maintenance & Updates",
-    performance_optimization: "Performance Optimization",
-    responsive_design: "Responsive Design",
-    ux_ui_design: "UX/UI Consultancy",
-    seo: "SEO Support",
-    analytics_metrics: "Analytics & Metrics",
-    security: "Security",
-  };
-
-  const mappedWorkDone = workDone.map((item) => nameMapping[item] || item);
-
-  const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)[2];
+  const randomizedImages = images.sort(() => Math.random() - 0.5);
 
   return (
-    <div className="min-h-screen min-w-screen">
+    <div className="min-h-screen min-w-screen overflow-hidden">
       <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950 overflow-y-auto">
         <button
           onClick={handleClose}
@@ -243,38 +246,68 @@ export const Modal: React.FC<ModalProps> = ({
         )}
 
         {!videoUrl && images.length > 0 && (
-          <div className="slider-wrapper opacity-75">
-            <Swiper
-              spaceBetween={0}
-              slidesPerView={1}
-              centeredSlides={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: true,
-              }}
-              modules={[A11y, Autoplay, Navigation]}
-              navigation={{
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              }}
-              pagination={{ el: ".custom-pagination", clickable: true }}
-              className="relative"
-            >
-              {getRandomImages().map((image, index) => (
-                <SwiperSlide key={index}>
-                  <LazyImage
-                    placeholderSrc="https://placehold.co/600x400"
-                    src={image.src}
-                    width={image.width}
-                    height={image.height}
-                    alt={image.alt}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <div className="custom-pagination">
-              <div className="swiper-button-prev"></div>
-              <div className="swiper-button-next"></div>
+          <div
+            className="slider-wrapper triple-slider opacity-75"
+            ref={sliderRef}
+          >
+            <div className="swiper swiper-prev">
+              <div className="swiper-wrapper">
+                {randomizedImages.map((image, index) => (
+                  <div key={index} className="swiper-slide">
+                    <img
+                      src={image.src}
+                      width={image.width}
+                      height={image.height}
+                      alt={image.alt}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="swiper swiper-main">
+              <div className="swiper-wrapper">
+                {randomizedImages.map((image, index) => (
+                  <div key={index} className="swiper-slide">
+                    <img
+                      src={image.src}
+                      width={image.width}
+                      height={image.height}
+                      alt={image.alt}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="swiper swiper-next">
+              <div className="swiper-wrapper">
+                {randomizedImages.map((image, index) => (
+                  <div key={index} className="swiper-slide">
+                    <img
+                      src={image.src}
+                      width={image.width}
+                      height={image.height}
+                      alt={image.alt}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

@@ -9,6 +9,7 @@ export interface LazyImageProps {
   height?: number;
   onImageLoad?: () => void;
   style?: CSSProperties;
+  lazy?: boolean; // Nuevo prop para controlar el lazy loading
 }
 
 export const LazyImage: React.FC<LazyImageProps> = ({
@@ -24,22 +25,20 @@ export const LazyImage: React.FC<LazyImageProps> = ({
   const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const handleLoad = () => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
       setLoaded(true);
-      onImageLoad?.();
+      if (imageRef.current) {
+        imageRef.current.src = src; // Actualizar el src manualmente
+        onImageLoad?.();
+      }
     };
-
-    const currentImageRef = imageRef.current;
-    currentImageRef?.addEventListener("load", handleLoad);
-
-    if (currentImageRef?.complete) {
-      handleLoad();
-    }
 
     return () => {
-      currentImageRef?.removeEventListener("load", handleLoad);
+      img.onload = null;
     };
-  }, [onImageLoad]);
+  }, [src, onImageLoad]);
 
   const containerStyles: CSSProperties = {
     position: "relative",
@@ -51,7 +50,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    display: "block",
+    display: loaded ? "none" : "block", // Ocultar placeholder cuando la imagen está cargada
     ...style,
   };
 
@@ -59,29 +58,26 @@ export const LazyImage: React.FC<LazyImageProps> = ({
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    display: loaded ? "block" : "none",
+    display: loaded ? "block" : "none", // Mostrar imagen solo cuando está cargada
     ...style,
   };
 
   return (
     <div className="image-container" style={containerStyles}>
       <figure className="image-wrapper">
-        {!loaded && (
-          <img
-            src={placeholderSrc}
-            width={width}
-            height={height}
-            style={imageStylesPlaceHolder}
-            alt={`${alt}-placeholder`}
-          />
-        )}
+        <img
+          src={placeholderSrc}
+          width={width}
+          height={height}
+          style={imageStylesPlaceHolder}
+          alt={`${alt}-placeholder`}
+        />
         <img
           ref={imageRef}
-          src={src}
+          src={placeholderSrc} // Inicialmente usa el placeholder
           alt={alt}
           style={imageStyles}
-          onLoad={onImageLoad}
-          loading="lazy"
+          loading="eager"
           width={width}
           height={height}
         />
