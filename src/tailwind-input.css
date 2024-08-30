@@ -20,6 +20,13 @@ body.theme-dark.modal-open {
   --textColor: rgba(0, 0, 0, 0.87);
 }
 
+.container {
+  overflow-x: hidden;
+  @screen lg {
+    overflow-x: visible;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: rgba(0, 0, 0, 0.87);

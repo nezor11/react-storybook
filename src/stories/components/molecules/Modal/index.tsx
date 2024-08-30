@@ -122,7 +122,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   const nameMapping: { [key: string]: string } = {
     front_end: "Frontend Development",
-    front_end_frameworks: "Frontend Frameworks",
+    front_end_frameworks: "Deal with Frontend Frameworks",
     back_end: "Backend Development",
     back_end_frameworks: "Backend Frameworks",
     full_stack: "Full Stack Development",
@@ -221,10 +221,10 @@ export const Modal: React.FC<ModalProps> = ({
         </div>
 
         {videoUrl && (
-          <div className="video-wrapper opacity-75">
-            <div className="player-wrapper">
+          <div className="video-wrapper mt-8 rounded-lg overflow-hidden relative w-full lg:w-[600px] xl:w-[900px] 2xl:w-[1200px]">
+            <div className="player-wrapper relative pt-[56.25%]">
               <ReactPlayer
-                className="react-player"
+                className="absolute top-0 left-0 w-full h-full"
                 url={videoUrl}
                 width="100%"
                 height="100%"
@@ -258,6 +258,7 @@ export const Modal: React.FC<ModalProps> = ({
                 prevEl: ".swiper-button-prev",
               }}
               pagination={{ el: ".custom-pagination", clickable: true }}
+              className="relative"
             >
               {getRandomImages().map((image, index) => (
                 <SwiperSlide key={index}>

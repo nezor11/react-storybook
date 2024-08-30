@@ -803,6 +803,10 @@ strong {
   height: 2rem;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .max-h-60 {
   max-height: 15rem;
 }
@@ -834,11 +838,6 @@ strong {
 
 .max-w-5xl {
   max-width: 64rem;
-}
-
-.max-w-fit {
-  max-width: -moz-fit-content;
-  max-width: fit-content;
 }
 
 .flex-none {
@@ -933,10 +932,6 @@ strong {
   overflow-y: auto;
 }
 
-.overflow-x-hidden {
-  overflow-x: hidden;
-}
-
 .overflow-y-scroll {
   overflow-y: scroll;
 }
@@ -947,6 +942,10 @@ strong {
 
 .rounded-md {
   border-radius: 0.375rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
 }
 
 .border {
@@ -990,11 +989,6 @@ strong {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-cyan-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(6 182 212 / var(--tw-bg-opacity));
-}
-
 .p-0 {
   padding: 0px;
 }
@@ -1003,12 +997,12 @@ strong {
   padding: 1rem;
 }
 
-.p-8 {
-  padding: 2rem;
-}
-
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-8 {
+  padding: 2rem;
 }
 
 .px-12 {
@@ -1063,6 +1057,10 @@ strong {
 
 .pb-6 {
   padding-bottom: 1.5rem;
+}
+
+.pt-\[56\.25\%\] {
+  padding-top: 56.25%;
 }
 
 .text-left {
@@ -1275,6 +1273,13 @@ body.theme-dark.modal-open {
   --textColor: rgba(0, 0, 0, 0.87);
 }
 
+.container {
+  overflow-x: hidden;
+  @media (min-width: 1024px) {
+    overflow-x: visible;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: rgba(0, 0, 0, 0.87);
@@ -1342,16 +1347,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-ExtraLightItalic.eot");
+  src: url("/font/hinted-subset-Raleway-ExtraLightItalic.eot");
 
   src:
     local("Raleway ExtraLight Italic"),
     local("Raleway-ExtraLightItalic"),
-    url("./font/hinted-subset-Raleway-ExtraLightItalic.eot?#iefix")
+    url("/font/hinted-subset-Raleway-ExtraLightItalic.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-ExtraLightItalic.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-ExtraLightItalic.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-ExtraLightItalic.svg#Raleway-ExtraLightItalic")
+    url("/font/hinted-subset-Raleway-ExtraLightItalic.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-ExtraLightItalic.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-ExtraLightItalic.svg#Raleway-ExtraLightItalic")
       format("svg");
 
   font-weight: 200;
@@ -1364,16 +1369,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-ExtraLight.eot");
+  src: url("/font/hinted-subset-Raleway-ExtraLight.eot");
 
   src:
     local("Raleway ExtraLight"),
     local("Raleway-ExtraLight"),
-    url("./font/hinted-subset-Raleway-ExtraLight.eot?#iefix")
+    url("/font/hinted-subset-Raleway-ExtraLight.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-ExtraLight.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-ExtraLight.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-ExtraLight.svg#Raleway-ExtraLight")
+    url("/font/hinted-subset-Raleway-ExtraLight.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-ExtraLight.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-ExtraLight.svg#Raleway-ExtraLight")
       format("svg");
 
   font-weight: 200;
@@ -1386,16 +1391,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-BlackItalic.eot");
+  src: url("/font/hinted-subset-Raleway-BlackItalic.eot");
 
   src:
     local("Raleway Black Italic"),
     local("Raleway-BlackItalic"),
-    url("./font/hinted-subset-Raleway-BlackItalic.eot?#iefix")
+    url("/font/hinted-subset-Raleway-BlackItalic.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-BlackItalic.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-BlackItalic.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-BlackItalic.svg#Raleway-BlackItalic")
+    url("/font/hinted-subset-Raleway-BlackItalic.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-BlackItalic.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-BlackItalic.svg#Raleway-BlackItalic")
       format("svg");
 
   font-weight: 900;
@@ -1408,16 +1413,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-Light.eot");
+  src: url("/font/hinted-subset-Raleway-Light.eot");
 
   src:
     local("Raleway Light"),
     local("Raleway-Light"),
-    url("./font/hinted-subset-Raleway-Light.eot?#iefix")
+    url("/font/hinted-subset-Raleway-Light.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-Light.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-Light.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-Light.svg#Raleway-Light") format("svg");
+    url("/font/hinted-subset-Raleway-Light.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-Light.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-Light.svg#Raleway-Light") format("svg");
 
   font-weight: 300;
 
@@ -1429,16 +1434,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-Bold.eot");
+  src: url("/font/hinted-subset-Raleway-Bold.eot");
 
   src:
     local("Raleway Bold"),
     local("Raleway-Bold"),
-    url("./font/hinted-subset-Raleway-Bold.eot?#iefix")
+    url("/font/hinted-subset-Raleway-Bold.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-Bold.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-Bold.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-Bold.svg#Raleway-Bold") format("svg");
+    url("/font/hinted-subset-Raleway-Bold.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-Bold.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-Bold.svg#Raleway-Bold") format("svg");
 
   font-weight: bold;
 
@@ -1450,16 +1455,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-ExtraBoldItalic.eot");
+  src: url("/font/hinted-subset-Raleway-ExtraBoldItalic.eot");
 
   src:
     local("Raleway ExtraBold Italic"),
     local("Raleway-ExtraBoldItalic"),
-    url("./font/hinted-subset-Raleway-ExtraBoldItalic.eot?#iefix")
+    url("/font/hinted-subset-Raleway-ExtraBoldItalic.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-ExtraBoldItalic.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-ExtraBoldItalic.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-ExtraBoldItalic.svg#Raleway-ExtraBoldItalic")
+    url("/font/hinted-subset-Raleway-ExtraBoldItalic.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-ExtraBoldItalic.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-ExtraBoldItalic.svg#Raleway-ExtraBoldItalic")
       format("svg");
 
   font-weight: bold;
@@ -1472,16 +1477,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-LightItalic.eot");
+  src: url("/font/hinted-subset-Raleway-LightItalic.eot");
 
   src:
     local("Raleway Light Italic"),
     local("Raleway-LightItalic"),
-    url("./font/hinted-subset-Raleway-LightItalic.eot?#iefix")
+    url("/font/hinted-subset-Raleway-LightItalic.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-LightItalic.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-LightItalic.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-LightItalic.svg#Raleway-LightItalic")
+    url("/font/hinted-subset-Raleway-LightItalic.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-LightItalic.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-LightItalic.svg#Raleway-LightItalic")
       format("svg");
 
   font-weight: 300;
@@ -1494,16 +1499,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-BoldItalic.eot");
+  src: url("/font/hinted-subset-Raleway-BoldItalic.eot");
 
   src:
     local("Raleway Bold Italic"),
     local("Raleway-BoldItalic"),
-    url("./font/hinted-subset-Raleway-BoldItalic.eot?#iefix")
+    url("/font/hinted-subset-Raleway-BoldItalic.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-BoldItalic.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-BoldItalic.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-BoldItalic.svg#Raleway-BoldItalic")
+    url("/font/hinted-subset-Raleway-BoldItalic.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-BoldItalic.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-BoldItalic.svg#Raleway-BoldItalic")
       format("svg");
 
   font-weight: bold;
@@ -1516,16 +1521,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-ExtraBold.eot");
+  src: url("/font/hinted-subset-Raleway-ExtraBold.eot");
 
   src:
     local("Raleway ExtraBold"),
     local("Raleway-ExtraBold"),
-    url("./font/hinted-subset-Raleway-ExtraBold.eot?#iefix")
+    url("/font/hinted-subset-Raleway-ExtraBold.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-ExtraBold.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-ExtraBold.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-ExtraBold.svg#Raleway-ExtraBold")
+    url("/font/hinted-subset-Raleway-ExtraBold.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-ExtraBold.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-ExtraBold.svg#Raleway-ExtraBold")
       format("svg");
 
   font-weight: bold;
@@ -1538,16 +1543,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-Medium.eot");
+  src: url("/font/hinted-subset-Raleway-Medium.eot");
 
   src:
     local("Raleway Medium"),
     local("Raleway-Medium"),
-    url("./font/hinted-subset-Raleway-Medium.eot?#iefix")
+    url("/font/hinted-subset-Raleway-Medium.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-Medium.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-Medium.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-Medium.svg#Raleway-Medium") format("svg");
+    url("/font/hinted-subset-Raleway-Medium.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-Medium.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-Medium.svg#Raleway-Medium") format("svg");
 
   font-weight: 500;
 
@@ -1559,16 +1564,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-Italic.eot");
+  src: url("/font/hinted-subset-Raleway-Italic.eot");
 
   src:
     local("Raleway Italic"),
     local("Raleway-Italic"),
-    url("./font/hinted-subset-Raleway-Italic.eot?#iefix")
+    url("/font/hinted-subset-Raleway-Italic.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-Italic.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-Italic.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-Italic.svg#Raleway-Italic") format("svg");
+    url("/font/hinted-subset-Raleway-Italic.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-Italic.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-Italic.svg#Raleway-Italic") format("svg");
 
   font-weight: normal;
 
@@ -1580,16 +1585,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-Black.eot");
+  src: url("/font/hinted-subset-Raleway-Black.eot");
 
   src:
     local("Raleway Black"),
     local("Raleway-Black"),
-    url("./font/hinted-subset-Raleway-Black.eot?#iefix")
+    url("/font/hinted-subset-Raleway-Black.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-Black.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-Black.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-Black.svg#Raleway-Black") format("svg");
+    url("/font/hinted-subset-Raleway-Black.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-Black.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-Black.svg#Raleway-Black") format("svg");
 
   font-weight: 900;
 
@@ -1601,16 +1606,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-MediumItalic.eot");
+  src: url("/font/hinted-subset-Raleway-MediumItalic.eot");
 
   src:
     local("Raleway Medium Italic"),
     local("Raleway-MediumItalic"),
-    url("./font/hinted-subset-Raleway-MediumItalic.eot?#iefix")
+    url("/font/hinted-subset-Raleway-MediumItalic.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-MediumItalic.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-MediumItalic.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-MediumItalic.svg#Raleway-MediumItalic")
+    url("/font/hinted-subset-Raleway-MediumItalic.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-MediumItalic.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-MediumItalic.svg#Raleway-MediumItalic")
       format("svg");
 
   font-weight: 500;
@@ -1623,16 +1628,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-Thin.eot");
+  src: url("/font/hinted-subset-Raleway-Thin.eot");
 
   src:
     local("Raleway Thin"),
     local("Raleway-Thin"),
-    url("./font/hinted-subset-Raleway-Thin.eot?#iefix")
+    url("/font/hinted-subset-Raleway-Thin.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-Thin.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-Thin.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-Thin.svg#Raleway-Thin") format("svg");
+    url("/font/hinted-subset-Raleway-Thin.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-Thin.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-Thin.svg#Raleway-Thin") format("svg");
 
   font-weight: 100;
 
@@ -1644,16 +1649,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-ThinItalic.eot");
+  src: url("/font/hinted-subset-Raleway-ThinItalic.eot");
 
   src:
     local("Raleway Thin Italic"),
     local("Raleway-ThinItalic"),
-    url("./font/hinted-subset-Raleway-ThinItalic.eot?#iefix")
+    url("/font/hinted-subset-Raleway-ThinItalic.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-ThinItalic.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-ThinItalic.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-ThinItalic.svg#Raleway-ThinItalic")
+    url("/font/hinted-subset-Raleway-ThinItalic.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-ThinItalic.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-ThinItalic.svg#Raleway-ThinItalic")
       format("svg");
 
   font-weight: 100;
@@ -1666,17 +1671,16 @@ body.theme-dark.modal-open {
 @font-face {
   font-family: "Raleway";
 
-  src: url("./font/hinted-subset-Raleway-Regular.eot");
+  src: url("/font/hinted-subset-Raleway-Regular.eot");
 
   src:
     local("Raleway"),
     local("Raleway-Regular"),
-    url("./font/hinted-subset-Raleway-Regular.eot?#iefix")
+    url("/font/hinted-subset-Raleway-Regular.eot?#iefix")
       format("embedded-opentype"),
-    url("./font/hinted-subset-Raleway-Regular.woff2") format("woff2"),
-    url("./font/hinted-subset-Raleway-Regular.woff") format("woff"),
-    url("./font/hinted-subset-Raleway-Regular.svg#Raleway-Regular")
-      format("svg");
+    url("/font/hinted-subset-Raleway-Regular.woff2") format("woff2"),
+    url("/font/hinted-subset-Raleway-Regular.woff") format("woff"),
+    url("/font/hinted-subset-Raleway-Regular.svg#Raleway-Regular") format("svg");
 
   font-weight: normal;
 
@@ -1811,6 +1815,10 @@ body.theme-dark.modal-open {
     min-height: 3.5rem;
   }
 
+  .lg\:w-\[600px\] {
+    width: 600px;
+  }
+
   .lg\:max-w-max {
     max-width: -moz-max-content;
     max-width: max-content;
@@ -1860,5 +1868,17 @@ body.theme-dark.modal-open {
   .lg\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:w-\[900px\] {
+    width: 900px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:w-\[1200px\] {
+    width: 1200px;
   }
 }

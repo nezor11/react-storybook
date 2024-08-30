@@ -23,6 +23,7 @@
 .header__aux-gallery-details {
   div.flex.items-center {
     @apply text-base;
+    @apply justify-start;
 
     @screen lg {
       @apply text-4xl;
