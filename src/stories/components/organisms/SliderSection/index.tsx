@@ -97,20 +97,20 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
                 slidesOffsetBefore={0}
                 modules={[A11y, Keyboard, Mousewheel]}
                 onSwiper={setSwiperRef}
-                // freeMode={{
-                //   enabled: true,
-                //   sticky: true,
-                //   momentum: true,
-                //   momentumRatio: 0.5,
-                //   momentumVelocityRatio: 0.5,
-                //   momentumBounce: true,
-                //   momentumBounceRatio: 1,
-                // }}
-                // mousewheel={{
-                //   enabled: true,
-                //   releaseOnEdges: true,
-                //   sensitivity: 2,
-                // }}
+                freeMode={{
+                  enabled: true,
+                  sticky: true,
+                  momentum: true,
+                  momentumRatio: 4,
+                  momentumVelocityRatio: 4,
+                  momentumBounce: true,
+                  momentumBounceRatio: 1,
+                }}
+                mousewheel={{
+                  enabled: true,
+                  releaseOnEdges: true,
+                  sensitivity: 4,
+                }}
                 breakpoints={{
                   769: {
                     slidesOffsetBefore: 300,
