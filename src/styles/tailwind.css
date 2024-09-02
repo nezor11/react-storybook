@@ -1206,6 +1206,18 @@ strong {
   opacity: 0.75;
 }
 
+.opacity-15 {
+  opacity: 0.15;
+}
+
+.opacity-45 {
+  opacity: 0.45;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
 .outline {
   outline-style: solid;
 }

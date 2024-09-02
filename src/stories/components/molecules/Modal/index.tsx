@@ -52,6 +52,7 @@ export const Modal: React.FC<ModalProps> = ({
   const dragOffset = useRef({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const [isLgScreen, setIsLgScreen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const nameMapping: { [key: string]: string } = {
@@ -158,12 +159,20 @@ export const Modal: React.FC<ModalProps> = ({
 
   const randomizedImages = images.sort(() => Math.random() - 0.5);
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
-    <div className="min-h-screen min-w-screen overflow-hidden">
+    <div className="min-h-screen min-w-screen overflow-hidden moda-content">
       <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950 overflow-y-auto">
         <button
           onClick={handleClose}
-          className="absolute top-2 right-2 text-gray-500 dark:text-white hover:text-gray-700 z-50 dark:bg-transparent opacity-75 rounded"
+          className="absolute top-2 right-2 text-gray-500 dark:text-white hover:text-gray-700 z-50 dark:bg-transparent  rounded"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -181,50 +190,8 @@ export const Modal: React.FC<ModalProps> = ({
           </svg>
         </button>
 
-        <div
-          className="meta-data-wrapper mt-0 lg:mt-0 w-full lg:absolute top-14 left-14 z-10 bg-white opacity-75 p-8 rounded lg:max-w-xl max-h-fit absolute-element"
-          onMouseDown={handleMouseDown}
-        >
-          <div className="text-wrapper">
-            <div className="grid grid-cols-1 w-full">
-              <TitleCopy text={title} mods="text-3xl uppercase" />
-            </div>
-            <div className="grid grid-cols-1 w-full justify-start">
-              <div className="flex justify-start">
-                <TitleCopy
-                  as="h6"
-                  text={formatCompanyName(company)}
-                  mods="text-xl capitalize"
-                />
-                <span className="mx-2 relative top-1">/</span>
-                <TitleCopy as="h6" text={year} mods="text-xl" />
-              </div>
-            </div>
-            {description && (
-              <div className="grid grid-cols-4 w-full mt-8 max-h-60 overflow-y-scroll custom-scrollbar">
-                <BodyCopy
-                  tag="div"
-                  text={description}
-                  mods="col-span-full text-description"
-                />
-              </div>
-            )}
-            {link?.href && (
-              <div className="mt-8 w-full link-text">
-                <BodyCopy tag="span" text="More info at: " />
-                <Link
-                  href={link.href}
-                  link_text={`${domain}`}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                />
-              </div>
-            )}
-          </div>
-        </div>
-
         {videoUrl && (
-          <div className="video-wrapper absolute-element mt-8 rounded-lg overflow-hidden relative w-full lg:w-[600px] xl:w-[900px] 2xl:w-[1200px]">
+          <div className="video-wrapper mt-8 rounded-lg overflow-hidden relative w-full lg:w-[600px] xl:w-[900px] 2xl:w-[1200px] absolute-element">
             <div className="player-wrapper relative pt-[56.25%]">
               <ReactPlayer
                 className="absolute top-0 left-0 w-full h-full"
@@ -247,7 +214,7 @@ export const Modal: React.FC<ModalProps> = ({
 
         {!videoUrl && images.length > 0 && (
           <div
-            className="slider-wrapper triple-slider opacity-75"
+            className="slider-wrapper triple-slider absolute-element"
             ref={sliderRef}
           >
             <div className="swiper swiper-prev">
@@ -312,10 +279,56 @@ export const Modal: React.FC<ModalProps> = ({
           </div>
         )}
 
+        <div
+          className="meta-data-wrapper mt-0 lg:mt-0 w-full lg:absolute top-14 left-14 z-10 bg-white p-8 rounded lg:max-w-xl max-h-fit absolute-element"
+          onMouseDown={handleMouseDown}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="text-wrapper">
+            <div className="grid grid-cols-1 w-full">
+              <TitleCopy text={title} mods="text-xl lg:text-3xl uppercase" />
+            </div>
+            <div className="grid grid-cols-1 w-full justify-start">
+              <div className="flex justify-start">
+                <TitleCopy
+                  as="h6"
+                  text={formatCompanyName(company)}
+                  mods="text-xl capitalize"
+                />
+                <span className="mx-2 relative top-1">/</span>
+                <TitleCopy as="h6" text={year} mods="text-xl" />
+              </div>
+            </div>
+            {description && (
+              <div className="grid grid-cols-4 w-full mt-8 max-h-60 overflow-y-scroll custom-scrollbar">
+                <BodyCopy
+                  tag="div"
+                  text={description}
+                  mods="col-span-full text-description"
+                />
+              </div>
+            )}
+            {link?.href && (
+              <div className="mt-8 w-full link-text">
+                <BodyCopy tag="span" text="More info at: " />
+                <Link
+                  href={link.href}
+                  link_text={`${domain}`}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
         {mappedWorkDone.length > 0 && (
           <div
-            className="workdone-wrapper w-full mt-8 lg:absolute top-[10%] right-14 z-10 bg-white opacity-75 p-8 rounded absolute-element lg:max-w-max"
+            className="workdone-wrapper w-full mt-8 lg:absolute top-[10%] right-14 z-10 bg-white p-8 rounded absolute-element lg:max-w-max"
             onMouseDown={handleMouseDown}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             <TitleCopy text="What I did" mods="text-xl" />
             <ul className="col-span-full text-workdone mt-4 mb-2 list-arrows">
@@ -330,8 +343,10 @@ export const Modal: React.FC<ModalProps> = ({
 
         {workType && (
           <div
-            className="worktype-wrapper w-full mt-8 lg:absolute bottom-32 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-14"
+            className="worktype-wrapper w-full mt-8 lg:absolute bottom-32 right-14 z-10 bg-white p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-14"
             onMouseDown={handleMouseDown}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             <BodyCopy
               tag="div"
@@ -343,8 +358,10 @@ export const Modal: React.FC<ModalProps> = ({
         )}
 
         <div
-          className="logos-wrapper w-full mt-8 lg:absolute bottom-14 right-14 z-10 bg-white opacity-75 p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-14"
+          className="logos-wrapper w-full mt-8 lg:absolute bottom-14 right-14 z-10 bg-white p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-14"
           onMouseDown={handleMouseDown}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <SuspenseIconGallery iconsData={iconsData} />
         </div>

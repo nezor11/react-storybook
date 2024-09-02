@@ -48,21 +48,15 @@ ul.list-arrows {
 }
 
 .absolute-element {
-  cursor: grab;
-  transition:
-    transform,
-    z-index,
-    opacity 0.3s ease;
+  @apply cursor-grab transition-opacity duration-300 ease-in-out opacity-15;
 }
 
 .absolute-element:hover {
-  z-index: 999;
-  opacity: 1;
+  @apply z-[999] opacity-100;
 }
 
 .absolute-element.dragging {
-  cursor: grabbing;
-  z-index: 999;
+  @apply cursor-grabbing z-[999];
 }
 
 .slider-wrapper {
@@ -71,6 +65,10 @@ ul.list-arrows {
   &:hover {
     opacity: 1;
     z-index: 999;
+  }
+
+  &:hover ~ .absolute-element {
+    @apply z-[1] opacity-15;
   }
 
   @media screen(lg) {
