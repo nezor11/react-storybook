@@ -5,7 +5,6 @@ import { Modal, SanityImageData } from "@/stories/components/molecules/Modal";
 import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-
 import "./index.css";
 
 export interface IconData {
@@ -45,8 +44,8 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   title,
   cardImage,
   cardImageAlt,
-  cardImageWidth = 300, // Valor por defecto para el ancho
-  cardImageHeight = 200, // Valor por defecto para la altura si no se proporciona
+  cardImageWidth = 300,
+  cardImageHeight,
   summary,
   description,
   company,
@@ -57,10 +56,18 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   workDone,
   videoUrl,
 }) => {
+  const getRandomHeight = () => {
+    const heights = [200, 250, 300, 350];
+    const randomIndex = Math.floor(Math.random() * heights.length);
+    return heights[randomIndex];
+  };
+
+  cardImageHeight = getRandomHeight();
+
   const figcaptionRef = useRef<HTMLDivElement>(null);
   const [showModal, setShowModal] = useState(false);
   const [containerHeight, setContainerHeight] = useState(cardImageHeight);
-  const borderColor = useRef(getRandomColor()); // Usar un color aleatorio para cada card
+  const borderColor = useRef(getRandomColor());
 
   useEffect(() => {
     if (showModal) {
@@ -74,18 +81,15 @@ export const CardSlide: React.FC<CardSlideProps> = ({
     };
   }, [showModal]);
 
-  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const handleImageLoad = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
     const { naturalHeight } = e.currentTarget;
     setContainerHeight(naturalHeight);
   };
 
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   return (
     <>
@@ -93,11 +97,14 @@ export const CardSlide: React.FC<CardSlideProps> = ({
         className="card-slide portfolio__slide-content"
         onClick={openModal}
         style={{
-          border: `3px solid ${borderColor.current}`, // Aplicar el color del borde
+          border: `3px solid ${borderColor.current}`,
         }}
       >
         <img
-          src={cardImage || `https://placehold.co/300x${Math.round(cardImageHeight)}`}
+          src={
+            cardImage ||
+            `https://placehold.co/300x${Math.round(cardImageHeight)}`
+          }
           width={cardImageWidth}
           height={cardImageHeight}
           onLoad={handleImageLoad}
