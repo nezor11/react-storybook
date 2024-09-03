@@ -53,6 +53,7 @@ export const Modal: React.FC<ModalProps> = ({
   const [dragging, setDragging] = useState(false);
   const [isLgScreen, setIsLgScreen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [loading, setLoading] = useState(true);
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const nameMapping: { [key: string]: string } = {
@@ -90,13 +91,10 @@ export const Modal: React.FC<ModalProps> = ({
 
   const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)[2];
 
-  // Detect screen size
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 1024px)");
     const handleMediaQueryChange = () => setIsLgScreen(mediaQuery.matches);
-
     setIsLgScreen(mediaQuery.matches);
-
     mediaQuery.addEventListener("change", handleMediaQueryChange);
 
     return () => {
@@ -109,6 +107,32 @@ export const Modal: React.FC<ModalProps> = ({
       createTripleSlider(sliderRef.current);
     }
   }, [images]);
+
+  // IntersectionObserver to highlight elements in view
+  useEffect(() => {
+    if (isLgScreen) return; // Only apply on mobile
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const element = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            element.classList.add("highlighted");
+          } else {
+            element.classList.remove("highlighted");
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when 50% of the element is visible
+    );
+
+    const elements = document.querySelectorAll(".absolute-element");
+    elements.forEach((element) => observer.observe(element));
+
+    return () => {
+      elements.forEach((element) => observer.unobserve(element));
+    };
+  }, [isLgScreen]);
 
   const handleClose = () => {
     onClose();
@@ -167,12 +191,16 @@ export const Modal: React.FC<ModalProps> = ({
     setIsHovered(false);
   };
 
+  const handleReady = () => {
+    setLoading(false);
+  };
+
   return (
-    <div className="min-h-screen min-w-screen overflow-hidden moda-content">
+    <div className="min-h-screen min-w-screen overflow-hidden modal-content">
       <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950 overflow-y-auto">
         <button
           onClick={handleClose}
-          className="absolute top-2 right-2 text-gray-500 dark:text-white hover:text-gray-700 z-50 dark:bg-transparent  rounded"
+          className="absolute top-2 right-2 text-gray-500 dark:text-white hover:text-gray-700 z-50 dark:bg-transparent rounded"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -189,95 +217,6 @@ export const Modal: React.FC<ModalProps> = ({
             />
           </svg>
         </button>
-
-        {videoUrl && (
-          <div className="video-wrapper mt-8 rounded-lg overflow-hidden relative w-full lg:w-[600px] xl:w-[900px] 2xl:w-[1200px] absolute-element">
-            <div className="player-wrapper relative pt-[56.25%]">
-              <ReactPlayer
-                className="absolute top-0 left-0 w-full h-full"
-                url={videoUrl}
-                width="100%"
-                height="100%"
-                config={{
-                  youtube: {
-                    playerVars: {
-                      origin: "https://www.youtube.com",
-                      showinfo: 0,
-                      controls: 1,
-                    },
-                  },
-                }}
-              />
-            </div>
-          </div>
-        )}
-
-        {!videoUrl && images.length > 0 && (
-          <div
-            className="slider-wrapper triple-slider absolute-element"
-            ref={sliderRef}
-          >
-            <div className="swiper swiper-prev">
-              <div className="swiper-wrapper">
-                {randomizedImages.map((image, index) => (
-                  <div key={index} className="swiper-slide">
-                    <img
-                      src={image.src}
-                      width={image.width}
-                      height={image.height}
-                      alt={image.alt}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="swiper swiper-main">
-              <div className="swiper-wrapper">
-                {randomizedImages.map((image, index) => (
-                  <div key={index} className="swiper-slide">
-                    <img
-                      src={image.src}
-                      width={image.width}
-                      height={image.height}
-                      alt={image.alt}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="swiper swiper-next">
-              <div className="swiper-wrapper">
-                {randomizedImages.map((image, index) => (
-                  <div key={index} className="swiper-slide">
-                    <img
-                      src={image.src}
-                      width={image.width}
-                      height={image.height}
-                      alt={image.alt}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
 
         <div
           className="meta-data-wrapper mt-0 lg:mt-0 w-full lg:absolute top-14 left-14 z-10 bg-white p-8 rounded lg:max-w-xl max-h-fit absolute-element"
@@ -365,6 +304,110 @@ export const Modal: React.FC<ModalProps> = ({
         >
           <SuspenseIconGallery iconsData={iconsData} />
         </div>
+
+        {videoUrl && (
+          <div className="video-wrapper mt-8 rounded-lg overflow-hidden relative w-full lg:w-[600px] xl:w-[900px] 2xl:w-[1200px] mb-8">
+            <div
+              className={`player-wrapper ${loading ? "loading" : ""} relative pt-[56.25%]`}
+            >
+              {loading && (
+                <div className="loader">
+                  <svg className="circular-loader" viewBox="25 25 50 50">
+                    <circle
+                      className="loader-path"
+                      cx="50"
+                      cy="50"
+                      r="20"
+                      fill="none"
+                      stroke="#FF0000"
+                      strokeWidth="2"
+                    />
+                  </svg>
+                </div>
+              )}
+              <ReactPlayer
+                className="absolute top-0 left-0 w-full h-full"
+                url={videoUrl}
+                width="100%"
+                height="100%"
+                config={{
+                  youtube: {
+                    playerVars: {
+                      origin: "https://www.youtube.com",
+                      showinfo: 0,
+                      controls: 1,
+                    },
+                  },
+                }}
+                onReady={handleReady}
+              />
+            </div>
+          </div>
+        )}
+
+        {!videoUrl && images.length > 0 && (
+          <div className="slider-wrapper triple-slider" ref={sliderRef}>
+            <div className="swiper swiper-prev">
+              <div className="swiper-wrapper">
+                {randomizedImages.map((image, index) => (
+                  <div key={index} className="swiper-slide">
+                    <img
+                      src={image.src}
+                      width={image.width}
+                      height={image.height}
+                      alt={image.alt}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="swiper swiper-main">
+              <div className="swiper-wrapper">
+                {randomizedImages.map((image, index) => (
+                  <div key={index} className="swiper-slide">
+                    <img
+                      src={image.src}
+                      width={image.width}
+                      height={image.height}
+                      alt={image.alt}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="swiper swiper-next">
+              <div className="swiper-wrapper">
+                {randomizedImages.map((image, index) => (
+                  <div key={index} className="swiper-slide">
+                    <img
+                      src={image.src}
+                      width={image.width}
+                      height={image.height}
+                      alt={image.alt}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
