@@ -150,11 +150,14 @@ function App() {
             content="Detail-oriented designer, creator, and developer with a passion for usability and frontend. Skilled in content management systems and committed to creating a positive work environment."
           />
           {/* <!-- Add Twitter Image if available --> */}
-          {/* <!-- <meta name="twitter:image" content="URL_TO_IMAGE"/> --> */}
+          <meta
+            name="twitter:image"
+            content="https://cdn.sanity.io/images/6zr8au58/production/a67a4d8f26a8bb3762c578d7dbf46e52e0a9b402-555x555.jpg"
+          />
 
           {/* <!-- Open Graph (OG) --> */}
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="URL_TO_RESUME" />
+          <meta property="og:url" content="https://martinez.place/" />
           <meta
             property="og:title"
             content="Jorge Martínez Ortiz - Designer, Creator, Developer, Trainer"
@@ -164,7 +167,10 @@ function App() {
             content="Detail-oriented designer, creator, and developer with a passion for usability and frontend. Skilled in content management systems and committed to creating a positive work environment."
           />
           {/* <!-- Add OG Image if available --> */}
-          {/* <!-- <meta property="og:image" content="URL_TO_IMAGE"/> --></meta> */}
+          <meta
+            property="og:image"
+            content="https://cdn.sanity.io/images/6zr8au58/production/a67a4d8f26a8bb3762c578d7dbf46e52e0a9b402-555x555.jpg"
+          />
         </Helmet>
       )}
 
