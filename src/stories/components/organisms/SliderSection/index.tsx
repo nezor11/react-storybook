@@ -81,7 +81,7 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
           loop={true}
           modules={[A11y, Keyboard, Mousewheel]}
           onSwiper={setSwiperRef}
-          {...(!isTouch && {
+          {...(isTouch && {
             freeMode: {
               enabled: false,
               sticky: false,

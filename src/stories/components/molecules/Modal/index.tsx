@@ -54,6 +54,9 @@ export const Modal: React.FC<ModalProps> = ({
   const [isLgScreen, setIsLgScreen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [highlightedElements, setHighlightedElements] = useState<Set<Element>>(
+    new Set()
+  );
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const nameMapping: { [key: string]: string } = {
@@ -116,10 +119,9 @@ export const Modal: React.FC<ModalProps> = ({
       (entries) => {
         entries.forEach((entry) => {
           const element = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !highlightedElements.has(element)) {
             element.classList.add("highlighted");
-          } else {
-            element.classList.remove("highlighted");
+            setHighlightedElements((prev) => new Set(prev).add(element));
           }
         });
       },
@@ -132,7 +134,7 @@ export const Modal: React.FC<ModalProps> = ({
     return () => {
       elements.forEach((element) => observer.unobserve(element));
     };
-  }, [isLgScreen]);
+  }, [isLgScreen, highlightedElements]);
 
   const handleClose = () => {
     onClose();
@@ -226,7 +228,10 @@ export const Modal: React.FC<ModalProps> = ({
         >
           <div className="text-wrapper">
             <div className="grid grid-cols-1 w-full">
-              <TitleCopy text={title} mods="text-xl lg:text-3xl uppercase" />
+              <TitleCopy
+                text={title}
+                mods="text-xl font-semibold lg:text-3xl uppercase"
+              />
             </div>
             <div className="grid grid-cols-1 w-full justify-start">
               <div className="flex justify-start">
@@ -240,12 +245,14 @@ export const Modal: React.FC<ModalProps> = ({
               </div>
             </div>
             {description && (
-              <div className="grid grid-cols-4 w-full mt-8 max-h-60 overflow-y-scroll custom-scrollbar">
-                <BodyCopy
-                  tag="div"
-                  text={description}
-                  mods="col-span-full text-description"
-                />
+              <div className="custom-scrollbar overflow-y-scroll">
+                <div className="grid grid-cols-4 w-full mt-8 max-h-60">
+                  <BodyCopy
+                    tag="div"
+                    text={description}
+                    mods="col-span-full text-description"
+                  />
+                </div>
               </div>
             )}
             {link?.href && (

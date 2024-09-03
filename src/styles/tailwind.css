@@ -704,18 +704,6 @@ strong {
   z-index: 50;
 }
 
-.order-1 {
-  order: 1;
-}
-
-.order-2 {
-  order: 2;
-}
-
-.-order-1 {
-  order: -1;
-}
-
 .col-span-5 {
   grid-column: span 5 / span 5;
 }
@@ -823,10 +811,6 @@ strong {
   height: 100%;
 }
 
-.h-\[100vh\] {
-  height: 100vh;
-}
-
 .max-h-60 {
   max-height: 15rem;
 }
@@ -854,10 +838,6 @@ strong {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[100vw\] {
-  width: 100vw;
 }
 
 .max-w-5xl {
@@ -1251,7 +1231,9 @@ strong {
 .custom-scrollbar {
   padding-right: 1rem;
   scrollbar-width: thin;
-  /* Puede ser auto, thin o none */
+  position: relative;
+  left: 15px;
+  margin-left: -15px;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -1797,10 +1779,6 @@ body.theme-dark.modal-open {
 @media (min-width: 1024px) {
   .lg\:absolute {
     position: absolute;
-  }
-
-  .lg\:relative {
-    position: relative;
   }
 
   .lg\:col-span-2 {

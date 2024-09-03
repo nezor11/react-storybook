@@ -396,7 +396,10 @@ body.theme-dark.modal-open {
 @layer utilities {
   .custom-scrollbar {
     @apply pr-4;
-    scrollbar-width: thin; /* Puede ser auto, thin o none */
+    scrollbar-width: thin;
+    position: relative;
+    left: 15px;
+    margin-left: -15px;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
