@@ -1,0 +1,61 @@
+/* Definimos la animación de rotación */
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Definimos la animación del dash */
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}
+
+/* Definimos la animación del color */
+@keyframes color {
+  0% {
+    stroke: rgba(159, 18, 57, 1);
+  }
+  40% {
+    stroke: rgba(159, 18, 57, 1);
+  }
+  66% {
+    stroke: rgba(159, 18, 57, 1);
+  }
+  80%,
+  90% {
+    stroke: rgba(159, 18, 57, 1);
+  }
+}
+
+/* Estilos personalizados */
+.loader:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.circular-loader {
+  @apply h-full w-full absolute top-0 left-0 m-auto;
+  animation: rotate 2s linear infinite;
+  transform-origin: center center;
+}
+
+.loader-path {
+  stroke-dasharray: 150, 200;
+  stroke-dashoffset: -10;
+  stroke-linecap: round;
+  animation:
+    dash 1.5s ease-in-out infinite,
+    color 6s ease-in-out infinite;
+}

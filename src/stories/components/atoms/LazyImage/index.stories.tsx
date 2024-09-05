@@ -1,9 +1,8 @@
 import { Code } from "@/stories/components/system/Code";
 import { Meta } from "@storybook/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LazyImage } from ".";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof LazyImage> = {
   title: "Design System/Atoms/Lazy Image",
   component: LazyImage,
@@ -19,16 +18,14 @@ const meta: Meta<typeof LazyImage> = {
   argTypes: {
     placeholderSrc: {
       control: "text",
-      description:
-        "The placeholder image source. By default, it is set to a placeholder image from placehold.co.",
+      description: "The placeholder image source.",
       table: {
         defaultValue: { summary: "https://placehold.co/600x400" },
       },
     },
     src: {
       control: "text",
-      description:
-        "The image source. By default, it is set to a random image from unsplash.com.",
+      description: "The image source from Unsplash.",
       table: {
         defaultValue: {
           summary: "https://source.unsplash.com/random/600x400/?mountain",
@@ -37,8 +34,7 @@ const meta: Meta<typeof LazyImage> = {
     },
     alt: {
       control: "text",
-      description:
-        "The alt text of the image. By default, it is set to Alt text string.",
+      description: "The alt text of the image.",
       table: {
         defaultValue: {
           summary: "Alt text",
@@ -47,19 +43,19 @@ const meta: Meta<typeof LazyImage> = {
     },
     width: {
       control: "number",
-      description: "The width of the image. By default, it is set to 600.",
+      description: "The width of the image.",
       table: {
         defaultValue: {
-          summary: 600,
+          summary: "600",
         },
       },
     },
     height: {
       control: "number",
-      description: "The height of the image. By default, it is set to 400.",
+      description: "The height of the image.",
       table: {
         defaultValue: {
-          summary: 400,
+          summary: "400",
         },
       },
     },
@@ -68,14 +64,46 @@ const meta: Meta<typeof LazyImage> = {
 
 export default meta;
 
-export const Default = {
-  args: {
-    placeholderSrc: "https://placehold.co/600x400",
-    src: "https://source.unsplash.com/random/600x400/?mountain",
-    alt: "Alt text",
-    width: 600,
-    height: 400,
-  },
+// Función para buscar una imagen de montaña utilizando el endpoint correcto de búsqueda
+const fetchMountainImage = async () => {
+  const response = await fetch(
+    `https://api.unsplash.com/search/photos?query=mountain&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc&per_page=1`
+  );
+  const data = await response.json();
+
+  // Verifica si hay resultados y retorna la URL regular
+  if (data.results && data.results.length > 0) {
+    return data.results[0].urls.regular; // Retorna la URL de la imagen
+  } else {
+    throw new Error("No se encontró ninguna imagen de montaña.");
+  }
+};
+
+export const Default = () => {
+  const [imageSrc, setImageSrc] = useState("");
+
+  useEffect(() => {
+    const loadImage = async () => {
+      try {
+        const imgSrc = await fetchMountainImage();
+        setImageSrc(imgSrc);
+      } catch (error) {
+        console.error("Error al cargar la imagen de Unsplash:", error.message);
+        setImageSrc("https://placehold.co/600x400"); // Imagen de reemplazo
+      }
+    };
+    loadImage();
+  }, []);
+
+  return (
+    <LazyImage
+      placeholderSrc="https://placehold.co/600x400"
+      src={imageSrc}
+      alt="Mountain Image from Unsplash"
+      width={600}
+      height={400}
+    />
+  );
 };
 
 export const SourceCode = {
@@ -90,7 +118,7 @@ export const SourceCode = {
   },
   render: () => (
     <>
-      <Code directoryPath="src/stories/components/atoms/Lazyimage/" />
+      <Code directoryPath="src/stories/components/atoms/LazyImage/" />
     </>
   ),
 };

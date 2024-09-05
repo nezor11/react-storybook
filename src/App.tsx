@@ -1,3 +1,4 @@
+import Loader from "@/stories/components/atoms/Loader";
 import MemoizedMoonIcon from "@/stories/components/molecules/IconGallery/Icons/MoonIcon";
 import MemoizedSunIcon from "@/stories/components/molecules/IconGallery/Icons/SunIcon";
 import { Footer } from "@/stories/components/organisms/Footer";
@@ -178,7 +179,11 @@ function App() {
   );
 
   if (!latestResume) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 
   return (
