@@ -1,16 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import ReactPlayer from "react-player";
-import "swiper/css";
-import "swiper/css/controller";
-import "swiper/css/parallax";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
+import { ImageSlider } from "@/stories/components/atoms/ImageSlider";
 import { Link, LinkProps } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
+import { VideoPlayer } from "@/stories/components/atoms/VideoPlayer";
 import { IconData } from "@/stories/components/molecules/CardSlide";
 import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
-
-import createTripleSlider from "@/stories/assets/scripts/triple-slider";
 
 import "./index.css";
 
@@ -33,6 +29,7 @@ interface ModalProps {
   videoUrl?: string;
   link?: LinkProps;
   iconsData?: IconData[];
+  ButtonCloseComponent: React.FC<{ onClick: () => void }>; // Propiedad para pasar el componente del botón de cierre
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -47,6 +44,7 @@ export const Modal: React.FC<ModalProps> = ({
   link,
   iconsData,
   videoUrl,
+  ButtonCloseComponent,
 }) => {
   const dragItemRef = useRef<HTMLDivElement | null>(null);
   const dragOffset = useRef({ x: 0, y: 0 });
@@ -57,7 +55,6 @@ export const Modal: React.FC<ModalProps> = ({
   const [highlightedElements, setHighlightedElements] = useState<Set<Element>>(
     new Set()
   );
-  const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const nameMapping: { [key: string]: string } = {
     front_end: "Frontend Development",
@@ -90,9 +87,12 @@ export const Modal: React.FC<ModalProps> = ({
     security: "Security",
   };
 
-  const mappedWorkDone = workDone.map((item) => nameMapping[item] || item);
+  const mappedWorkDone = useMemo(
+    () => workDone.map((item) => nameMapping[item] || item),
+    [workDone]
+  );
 
-  const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)[2];
+  const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)?.[2] || "";
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 1024px)");
@@ -106,39 +106,30 @@ export const Modal: React.FC<ModalProps> = ({
   }, []);
 
   useEffect(() => {
-    if (images.length > 0 && sliderRef.current) {
-      createTripleSlider(sliderRef.current);
+    if (!isLgScreen) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const element = entry.target as HTMLElement;
+            if (entry.isIntersecting && !highlightedElements.has(element)) {
+              element.classList.add("highlighted");
+              setHighlightedElements((prev) => new Set(prev).add(element));
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      const elements = document.querySelectorAll(".absolute-element");
+      elements.forEach((element) => observer.observe(element));
+
+      return () => {
+        elements.forEach((element) => observer.unobserve(element));
+      };
     }
-  }, [images]);
-
-  // IntersectionObserver to highlight elements in view
-  useEffect(() => {
-    if (isLgScreen) return; // Only apply on mobile
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const element = entry.target as HTMLElement;
-          if (entry.isIntersecting && !highlightedElements.has(element)) {
-            element.classList.add("highlighted");
-            setHighlightedElements((prev) => new Set(prev).add(element));
-          }
-        });
-      },
-      { threshold: 0.5 } // Trigger when 50% of the element is visible
-    );
-
-    const elements = document.querySelectorAll(".absolute-element");
-    elements.forEach((element) => observer.observe(element));
-
-    return () => {
-      elements.forEach((element) => observer.unobserve(element));
-    };
   }, [isLgScreen, highlightedElements]);
 
-  const handleClose = () => {
-    onClose();
-  };
+  const handleClose = () => onClose();
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isLgScreen) return;
@@ -179,46 +170,21 @@ export const Modal: React.FC<ModalProps> = ({
     };
   }, [dragging]);
 
-  const formatCompanyName = (name: string) => {
-    return name.replace(/_/g, " ");
-  };
+  const formatCompanyName = (name: string) => name.replace(/_/g, " ");
 
-  const randomizedImages = images.sort(() => Math.random() - 0.5);
+  const randomizedImages = useMemo(
+    () => images.sort(() => Math.random() - 0.5),
+    [images]
+  );
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  const handleReady = () => {
-    setLoading(false);
-  };
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+  const handleReady = () => setLoading(false);
 
   return (
     <div className="min-h-screen min-w-screen overflow-hidden modal-content">
       <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950 overflow-y-auto">
-        <button
-          onClick={handleClose}
-          className="absolute top-2 right-2 text-gray-500 dark:text-white hover:text-gray-700 z-50 dark:bg-transparent rounded"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+        <ButtonCloseComponent onClick={handleClose} />
 
         <div
           className="meta-data-wrapper mt-0 lg:mt-0 w-full lg:absolute top-14 left-14 z-10 bg-white p-8 rounded lg:max-w-xl max-h-fit absolute-element"
@@ -260,7 +226,7 @@ export const Modal: React.FC<ModalProps> = ({
                 <BodyCopy tag="span" text="More info at: " />
                 <Link
                   href={link.href}
-                  link_text={`${domain}`}
+                  link_text={domain}
                   target="_blank"
                   rel="noreferrer noopener"
                 />
@@ -304,7 +270,7 @@ export const Modal: React.FC<ModalProps> = ({
         )}
 
         <div
-          className="logos-wrapper w-full mt-8 lg:absolute bottom-14 right-14 z-10 bg-white p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-14"
+          className="logos-wrapper w-full mt-8 lg:absolute bottom-14 right-14 z-10 bg-white p-4 rounded absolute-element lg:max-w-max lg:min-h-14 lg:max-h-16"
           onMouseDown={handleMouseDown}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -312,108 +278,10 @@ export const Modal: React.FC<ModalProps> = ({
           <SuspenseIconGallery iconsData={iconsData} />
         </div>
 
-        {videoUrl && (
-          <div className="video-wrapper mt-8 rounded-lg overflow-hidden relative w-full lg:w-[600px] xl:w-[900px] 2xl:w-[1200px] mb-8">
-            <div
-              className={`player-wrapper ${loading ? "loading" : ""} relative pt-[56.25%]`}
-            >
-              {loading && (
-                <div className="loader">
-                  <svg className="circular-loader" viewBox="25 25 50 50">
-                    <circle
-                      className="loader-path"
-                      cx="50"
-                      cy="50"
-                      r="20"
-                      fill="none"
-                      stroke="#FF0000"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
-              )}
-              <ReactPlayer
-                className="absolute top-0 left-0 w-full h-full"
-                url={videoUrl}
-                width="100%"
-                height="100%"
-                config={{
-                  youtube: {
-                    playerVars: {
-                      origin: "https://www.youtube.com",
-                      showinfo: 0,
-                      controls: 1,
-                    },
-                  },
-                }}
-                onReady={handleReady}
-              />
-            </div>
-          </div>
-        )}
+        {videoUrl && <VideoPlayer videoUrl={videoUrl} onReady={handleReady} />}
 
         {!videoUrl && images.length > 0 && (
-          <div className="slider-wrapper triple-slider" ref={sliderRef}>
-            <div className="swiper swiper-prev">
-              <div className="swiper-wrapper">
-                {randomizedImages.map((image, index) => (
-                  <div key={index} className="swiper-slide">
-                    <img
-                      src={image.src}
-                      width={image.width}
-                      height={image.height}
-                      alt={image.alt}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="swiper swiper-main">
-              <div className="swiper-wrapper">
-                {randomizedImages.map((image, index) => (
-                  <div key={index} className="swiper-slide">
-                    <img
-                      src={image.src}
-                      width={image.width}
-                      height={image.height}
-                      alt={image.alt}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="swiper swiper-next">
-              <div className="swiper-wrapper">
-                {randomizedImages.map((image, index) => (
-                  <div key={index} className="swiper-slide">
-                    <img
-                      src={image.src}
-                      width={image.width}
-                      height={image.height}
-                      alt={image.alt}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <ImageSlider className="slider-wrapper" images={images} />
         )}
       </div>
     </div>

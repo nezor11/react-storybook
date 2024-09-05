@@ -1,3 +1,9 @@
+.slider-section {
+  .swiper {
+    @apply overflow-visible;
+  }
+}
+
 .portfolio__slider .swiper-slide {
   width: auto;
   @apply mt-8;

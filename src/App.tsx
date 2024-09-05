@@ -2,51 +2,21 @@ import MemoizedMoonIcon from "@/stories/components/molecules/IconGallery/Icons/M
 import MemoizedSunIcon from "@/stories/components/molecules/IconGallery/Icons/SunIcon";
 import { Footer } from "@/stories/components/organisms/Footer";
 import { Resume } from "@/utils/types/resume";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { ThemeContext } from "./contexts";
 import SectionRenderer from "./SectionRenderer";
 import { sanityAPI } from "./utils/setup/sanitySetup";
 import { ThemeContextInterface } from "./utils/types/theme";
 
-// Componente para los elementos cargados desde el JSON
-const ResumeContent = ({ latestResume }: { latestResume: Resume }) => {
-  return (
-    <>
-      <main key={latestResume._id}>
-        {latestResume.pageBuilder.map((section, index) => (
-          <SectionRenderer key={index} section={section} />
-        ))}
-        {latestResume.pageBuilder[0] && (
-          <Footer
-            copy_right_text={latestResume.title}
-            last_updated={latestResume._updatedAt}
-            contact_details={latestResume.pageBuilder[0].contactDetails}
-            my_link={{
-              link_text: "Download PDF Resume",
-              href: latestResume.pdfResumeUrl,
-              target: "_blank",
-              rel: "canonical",
-            }}
-          />
-        )}
-      </main>
-    </>
-  );
-};
-
-function App() {
-  const [resumes, setResumes] = useState<Resume[] | null>(null);
+// Hook personalizado para obtener el último resume
+const useLatestResume = () => {
   const [latestResume, setLatestResume] = useState<Resume | null>(null);
-
-  const { darkTheme, toggleTheme } = useContext(
-    ThemeContext
-  ) as ThemeContextInterface;
 
   useEffect(() => {
     sanityAPI
-      .fetch<Resume[]>(
-        `*[_type == "resume" && !(_id in path('drafts.**'))]{
+      .fetch<Resume>(
+        `*[_type == "resume" && !(_id in path('drafts.**'))] | order(_updatedAt desc)[0]{
           _id,
           title,
           _updatedAt,
@@ -118,27 +88,60 @@ function App() {
           slug
         }`
       )
-      .then((data: Resume[]) => {
-        setResumes(data);
-        const lastResume = data.shift();
-        setLatestResume(lastResume);
-      })
+      .then((data: Resume) => setLatestResume(data))
       .catch(console.error);
   }, []);
 
+  return latestResume;
+};
+
+// Hook personalizado para el manejo del tema
+const useTheme = () => {
+  const { darkTheme, toggleTheme } = useContext(
+    ThemeContext
+  ) as ThemeContextInterface;
+  return { darkTheme, toggleTheme };
+};
+
+// Componente para los elementos cargados desde el JSON
+const ResumeContent = ({ latestResume }: { latestResume: Resume }) => {
   return (
-    <HelmetProvider>
-      {latestResume && (
+    <main key={latestResume._id}>
+      {latestResume.pageBuilder.map((section, index) => (
+        <SectionRenderer key={index} section={section} />
+      ))}
+      {latestResume.pageBuilder[0] && (
+        <Footer
+          copy_right_text={latestResume.title}
+          last_updated={latestResume._updatedAt}
+          contact_details={latestResume.pageBuilder[0].contactDetails}
+          my_link={{
+            link_text: "Download PDF Resume",
+            href: latestResume.pdfResumeUrl,
+            target: "_blank",
+            rel: "canonical",
+          }}
+        />
+      )}
+    </main>
+  );
+};
+
+function App() {
+  const latestResume = useLatestResume();
+  const { darkTheme, toggleTheme } = useTheme();
+
+  // Memoriza el contenido de Helmet para evitar renderizados innecesarios
+  const helmetContent = useMemo(
+    () =>
+      latestResume && (
         <Helmet>
-          <title>
-            Jorge Martínez Ortiz - Frontend Developer, Designer, Creator,
-            Frontender, Trainer
-          </title>
+          <title>{`Jorge Martínez Ortiz - Frontend Developer, Designer, Creator, Frontender, Trainer`}</title>
           <meta
             name="description"
             content="Detail-oriented designer, creator, and developer with a passion for usability and frontend. Skilled in content management systems and committed to creating a positive work environment."
           />
-          {/* <!-- Twitter Card --> */}
+          {/* Twitter Card */}
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@JorgeMartinez" />
           <meta
@@ -149,13 +152,12 @@ function App() {
             name="twitter:description"
             content="Detail-oriented designer, creator, and developer with a passion for usability and frontend. Skilled in content management systems and committed to creating a positive work environment."
           />
-          {/* <!-- Add Twitter Image if available --> */}
           <meta
             name="twitter:image"
             content="https://cdn.sanity.io/images/6zr8au58/production/a67a4d8f26a8bb3762c578d7dbf46e52e0a9b402-555x555.jpg"
           />
 
-          {/* <!-- Open Graph (OG) --> */}
+          {/* Open Graph (OG) */}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://martinez.place/" />
           <meta
@@ -166,25 +168,30 @@ function App() {
             property="og:description"
             content="Detail-oriented designer, creator, and developer with a passion for usability and frontend. Skilled in content management systems and committed to creating a positive work environment."
           />
-          {/* <!-- Add OG Image if available --> */}
           <meta
             property="og:image"
             content="https://cdn.sanity.io/images/6zr8au58/production/a67a4d8f26a8bb3762c578d7dbf46e52e0a9b402-555x555.jpg"
           />
         </Helmet>
-      )}
+      ),
+    [latestResume]
+  );
 
+  if (!latestResume) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <HelmetProvider>
+      {helmetContent}
       <div className="container py-10 mx-auto px-4 max-w-5xl relative">
         <button
           onClick={toggleTheme}
-          className={`absolute right-3 top-4 ${
-            darkTheme ? "button-dark" : "button-light"
-          }`}
+          className={`absolute right-3 top-4 ${darkTheme ? "button-dark" : "button-light"}`}
         >
           {darkTheme ? <MemoizedSunIcon /> : <MemoizedMoonIcon />}
         </button>
-        {/* Renderizar los elementos cargados desde el JSON */}
-        {latestResume && <ResumeContent latestResume={latestResume} />}
+        <ResumeContent latestResume={latestResume} />
       </div>
     </HelmetProvider>
   );

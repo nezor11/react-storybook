@@ -1,6 +1,5 @@
-// eslint-disable-next-line
 import Swiper from "swiper";
-import { Controller, Parallax } from "swiper/modules";
+// eslint-disable-next-line
 
 export default function createTripleSlider(el) {
   // main swiper el
@@ -31,7 +30,6 @@ export default function createTripleSlider(el) {
 
   // common params for all swipers
   const commonParams = {
-    modules: [Controller, Parallax],
     speed: 600,
     loop: true,
     parallax: true,

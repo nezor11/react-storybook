@@ -616,10 +616,6 @@ strong {
   }
 }
 
-.visible {
-  visibility: visible;
-}
-
 .fixed {
   position: fixed;
 }
@@ -1807,6 +1803,10 @@ body.theme-dark.modal-open {
 
   .lg\:max-h-14 {
     max-height: 3.5rem;
+  }
+
+  .lg\:max-h-16 {
+    max-height: 4rem;
   }
 
   .lg\:min-h-14 {

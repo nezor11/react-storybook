@@ -1,111 +1,26 @@
-@-webkit-keyframes rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35;
-  }
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124;
-  }
-}
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35;
-  }
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124;
-  }
-}
-
-@-webkit-keyframes color {
-  0% {
-    stroke: rgba(159, 18, 57, 1);
-  }
-  40% {
-    stroke: rgba(159, 18, 57, 1);
-  }
-  66% {
-    stroke: rgba(159, 18, 57, 1);
-  }
-  80%,
-  90% {
-    stroke: rgba(159, 18, 57, 1);
-  }
-}
-
-@keyframes color {
-  0% {
-    stroke: rgba(159, 18, 57, 1);
-  }
-  40% {
-    stroke: rgba(159, 18, 57, 1);
-  }
-  66% {
-    stroke: rgba(159, 18, 57, 1);
-  }
-  80%,
-  90% {
-    stroke: rgba(159, 18, 57, 1);
-  }
-}
-
-.swiper {
-  overflow: visible;
-}
-
 .meta-data-wrapper {
   .text-description {
     img {
-      width: 100%;
-      height: auto;
+      @apply w-full h-auto;
     }
   }
 
   .link-text {
     & > a {
-      @apply underline;
-      @apply text-primary-800;
+      @apply underline text-primary-800;
     }
   }
 }
 
 ul.list-arrows {
   & li {
-    position: relative;
-    padding-left: 18px;
+    @apply relative pl-[18px];
     &:before {
       content: "";
-      position: absolute;
-      border-right: 1px solid black;
-      border-bottom: 1px solid black;
+      @apply absolute border-r border-b border-black;
       width: 6px;
       height: 6px;
-      top: calc(50% - 1px);
+      top: 50%;
       left: 0;
       transform: translateY(-50%) rotate(-45deg);
     }
@@ -115,194 +30,30 @@ ul.list-arrows {
 .logos-wrapper {
   & > div {
     @apply text-3xl;
-    @apply justify-start;
 
     svg {
-      @apply mx-2;
+      @apply mx-2 my-1;
     }
   }
 }
 
 .absolute-element {
-  @apply transition-opacity duration-300 ease-in-out opacity-15;
-  transform: scale(0.85);
-
-  @media screen(lg) {
-    transform: scale(1);
+  @apply transition-opacity duration-300 ease-in-out opacity-[0.15] transform scale-[0.85];
+  @screen lg {
+    @apply transform scale-[1];
   }
-}
 
-.absolute-element:hover {
-  @apply z-[999] opacity-100;
-}
-
-.absolute-element.dragging {
-  @apply cursor-grabbing z-[999];
-}
-
-.highlighted {
-  opacity: 1;
-  transition:
-    opacity 0.3s ease-in-out,
-    transform 0.3s ease-in-out;
-  transform: scale(1); /* Example effect, you can adjust */
+  &:hover {
+    @apply z-[999] opacity-100;
+  }
 }
 
 .slider-wrapper {
-  @apply mt-8;
-
   &:hover {
-    opacity: 1;
-    z-index: 999;
-  }
-
-  &:hover ~ .absolute-element {
-    @apply z-[1] opacity-15;
-  }
-
-  @media screen(lg) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.75);
-    @apply mt-0;
-    width: 600px;
-    height: 400px;
-  }
-
-  @media screen(xl) {
-    width: 900px;
-    height: 600px;
-  }
-
-  @media screen(2xl) {
-    width: 1200px;
-  }
-
-  .triple-slider-main {
-    @apply rounded-lg;
-    @apply overflow-hidden;
-  }
-
-  .swiper-initialized {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    @apply max-w-5xl;
-
-    .swiper-slide {
-      max-width: 100%;
-      height: auto;
-
-      .image-container,
-      .image-wrapper,
-      img {
-        width: 100% !important;
-        max-width: 100%;
-        height: auto !important;
-        position: static !important;
-      }
-    }
-  }
-
-  &.triple-slider {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    perspective: 1200px;
-
-    @media screen(lg) {
-      position: absolute;
-    }
-
-    .triple-slider-main {
-      position: relative;
-      z-index: 10;
-      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .swiper.swiper-main,
-    .swiper.swiper-next {
-      display: none;
-      @media screen(lg) {
-        display: block;
-      }
-    }
-
-    .triple-slider-prev,
-    .triple-slider-next {
-      display: none;
-    }
-
-    @media screen(lg) {
-      .triple-slider-prev,
-      .triple-slider-next {
-        display: block;
-        opacity: 0.25;
-        position: absolute;
-        top: 50%;
-        user-select: none;
-        cursor: pointer;
-      }
-      .triple-slider-prev {
-        right: 50%;
-        transform: translateY(-50%) scale(0.75) rotateY(10deg);
-      }
-      .triple-slider-next {
-        left: 50%;
-        transform: translateY(-50%) scale(0.75) rotateY(-10deg);
-      }
-    }
+    @apply opacity-100;
   }
 }
 
-.video-wrapper {
-  @apply opacity-100 z-[98];
-
-  .player-wrapper .loader {
-    position: relative;
-    margin: 0px auto;
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    margin: 0px auto;
-    width: 200px;
-    height: 200px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .player-wrapper .loader:before {
-    content: "";
-    display: block;
-    padding-top: 100%;
-  }
-
-  .circular-loader {
-    -webkit-animation: rotate 2s linear infinite;
-    animation: rotate 2s linear infinite;
-    height: 100%;
-    -webkit-transform-origin: center center;
-    -ms-transform-origin: center center;
-    transform-origin: center center;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: auto;
-  }
-
-  .loader-path {
-    stroke-dasharray: 150, 200;
-    stroke-dashoffset: -10;
-    -webkit-animation:
-      dash 1.5s ease-in-out infinite,
-      color 6s ease-in-out infinite;
-    animation:
-      dash 1.5s ease-in-out infinite,
-      color 6s ease-in-out infinite;
-    stroke-linecap: round;
-  }
+.highlighted {
+  @apply opacity-100 transition-opacity duration-300 ease-in-out transform scale-[1];
 }

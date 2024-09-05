@@ -1,4 +1,5 @@
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
+import ButtonClose from "@/stories/components/atoms/ButtonClose";
 import { LinkProps } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { Modal, SanityImageData } from "@/stories/components/molecules/Modal";
@@ -32,7 +33,6 @@ interface CardSlideProps {
   workDone?: string[];
 }
 
-// Función para seleccionar un color aleatorio del array
 const getRandomColor = () => {
   const colors = ["#569CD6", "#9D415D", "#9D9D9D", "#C19C00", "#69C33B"];
   const randomIndex = Math.floor(Math.random() * colors.length);
@@ -154,6 +154,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
             iconsData={iconsData}
             videoUrl={videoUrl}
             onClose={closeModal}
+            ButtonCloseComponent={ButtonClose}
           />,
           document.querySelector("body")!
         )}
