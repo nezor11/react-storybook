@@ -19,7 +19,7 @@ type Story = StoryObj<typeof Code>;
 // Define los argumentos por defecto, si es necesario
 export const Default: Story = {
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
     controls: {
       disable: true,
     },

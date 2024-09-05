@@ -25,7 +25,7 @@ export const Default = {
 
 export const SourceCode = {
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
     controls: {
       disable: true,
     },

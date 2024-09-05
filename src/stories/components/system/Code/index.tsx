@@ -35,8 +35,10 @@ export const Code: React.FC<CodeProps> = ({ directoryPath }) => {
   }
 
   return (
-    <SyntaxHighlighter language="tsx" style={vscDarkPlus}>
-      {markdownContent}
-    </SyntaxHighlighter>
+    <div className="px-[6.5px]">
+      <SyntaxHighlighter language="tsx" style={vscDarkPlus}>
+        {markdownContent}
+      </SyntaxHighlighter>
+    </div>
   );
 };

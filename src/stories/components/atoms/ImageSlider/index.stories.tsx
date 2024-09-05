@@ -9,7 +9,8 @@ const meta: Meta<typeof ImageSlider> = {
   parameters: {
     docs: {
       description: {
-        component: "",
+        component:
+          "ImageSlider is a component that renders a slider with images. It is used to display a set of images in a page or section. It accepts the following props: `images`.",
       },
     },
   },
@@ -17,6 +18,26 @@ const meta: Meta<typeof ImageSlider> = {
     images: {
       control: {
         type: "object",
+        images: [
+          {
+            src: "https://via.placeholder.com/1200x800",
+            width: 1200,
+            height: 800,
+            alt: "Image 1",
+          },
+          {
+            src: "https://via.placeholder.com/1200x800",
+            width: 1200,
+            height: 800,
+            alt: "Image 2",
+          },
+          {
+            src: "https://via.placeholder.com/1200x800",
+            width: 1200,
+            height: 800,
+            alt: "Image 3",
+          },
+        ],
       },
       description: "Array of images to display in the slider",
       table: {

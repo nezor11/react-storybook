@@ -1,12 +1,11 @@
 import { Code } from "@/stories/components/system/Code";
-import { Meta, StoryObj } from "@storybook/react";
-import React from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import React, { useEffect, useState } from "react";
 import { Header } from ".";
 
 const meta: Meta<typeof Header> = {
   title: "Design System/Organisms/Header",
   component: Header,
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
   parameters: {
     docs: {
@@ -29,43 +28,59 @@ const meta: Meta<typeof Header> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-  args: {
-    user: {
-      name: "Jane Doe",
-      jobTitle: "Frontender",
-      iconsData: [{ name: "CSS3Icon", width: "1em", height: "1em" }],
-      contactDetail: {
-        title: "Casa Barcelona",
-        phone: "+3468080202",
-        email: "hola@micorreo.es",
-        address: "08025 Barcelona",
-      },
-      imageDetail: {
-        image: "https://source.unsplash.com/random/300x300/?face",
-        alt: "Alt text",
-        width: 300,
-        height: 300,
-      },
-    },
-  },
+// Función para obtener una imagen aleatoria de rostro desde la API de Unsplash
+const fetchFaceImage = async () => {
+  try {
+    const response = await fetch(
+      `https://api.unsplash.com/photos/random?query=face&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc`
+    );
+    const data = await response.json();
+    return {
+      image: `${data.urls.raw}&w=300&h=300&fit=crop`, // Forzamos el tamaño de la imagen
+      alt: data.alt_description || "Face image",
+      width: 300,
+      height: 300,
+    };
+  } catch (error) {
+    console.error("Error al obtener la imagen de Unsplash:", error.message);
+    // Retornamos una imagen por defecto en caso de error
+    return {
+      image: "https://via.placeholder.com/300x300",
+      alt: "Placeholder image",
+      width: 300,
+      height: 300,
+    };
+  }
 };
 
-export const SourceCode: Story = {
-  parameters: {
-    layout: "centered",
-    controls: {
-      disable: true,
-    },
-    actions: {
-      disable: true,
-    },
-  },
-  render: () => (
-    <>
-      <Code directoryPath="src/stories/components/organisms/Header/" />
-    </>
-  ),
+export const Default: StoryFn = (args) => {
+  const [imageDetail, setImageDetail] = useState({
+    image: "https://via.placeholder.com/300x300", // Valor inicial placeholder
+    alt: "Alt text",
+    width: 300,
+    height: 300,
+  });
+
+  useEffect(() => {
+    const loadImage = async () => {
+      const fetchedImage = await fetchFaceImage();
+      setImageDetail(fetchedImage);
+    };
+    loadImage();
+  }, []);
+
+  return (
+    <Header
+      user={{
+        ...args.user,
+        imageDetail: imageDetail, // Actualizamos el detalle de la imagen dinámicamente
+      }}
+    />
+  );
 };
+
+export const SourceCode: StoryFn = () => (
+  <>
+    <Code directoryPath="src/stories/components/organisms/Header/" />
+  </>
+);

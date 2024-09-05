@@ -648,6 +648,10 @@ strong {
   left: 0px;
 }
 
+.left-1\/2 {
+  left: 50%;
+}
+
 .left-14 {
   left: 3.5rem;
 }
@@ -674,6 +678,10 @@ strong {
 
 .top-1 {
   top: 0.25rem;
+}
+
+.top-1\/2 {
+  top: 50%;
 }
 
 .top-14 {
@@ -803,6 +811,10 @@ strong {
   height: 2rem;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
 .h-full {
   height: 100%;
 }
@@ -832,6 +844,10 @@ strong {
   width: 20rem;
 }
 
+.w-\[200px\] {
+  width: 200px;
+}
+
 .w-full {
   width: 100%;
 }
@@ -858,6 +874,16 @@ strong {
 
 .basis-2\/3 {
   flex-basis: 66.666667%;
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-y-1\/2 {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transform {
@@ -1028,6 +1054,11 @@ strong {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.px-\[6\.5px\] {
+  padding-left: 6.5px;
+  padding-right: 6.5px;
 }
 
 .py-1 {

@@ -1,6 +1,6 @@
 import { Code } from "@/stories/components/system/Code";
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CardSlide } from ".";
 
 const meta: Meta<typeof CardSlide> = {
@@ -14,12 +14,96 @@ const meta: Meta<typeof CardSlide> = {
     },
   },
   tags: ["autodocs"],
-  argTypes: {},
+  argTypes: {
+    year: {
+      control: "text",
+      description: "The year of the project.",
+      table: {
+        category: "Content",
+      },
+    },
+    title: {
+      control: "text",
+      description: "The title of the project.",
+      table: {
+        category: "Content",
+      },
+    },
+    summary: {
+      control: "text",
+      description: "The summary of the project.",
+      table: {
+        category: "Content",
+      },
+    },
+    cardImage: {
+      control: "text",
+      description: "The image of the project.",
+      table: {
+        category: "Content",
+      },
+    },
+    description: {
+      control: "text",
+      description: "The description of the project.",
+      table: {
+        category: "Content",
+      },
+    },
+    iconsData: {
+      control: "object",
+      description: "The icons data of the project.",
+      table: {
+        category: "Content",
+      },
+    },
+    workDone: {
+      control: "object",
+      description: "The work done in the project.",
+      table: {
+        category: "Content",
+      },
+    },
+    workType: {
+      control: "text",
+      description: "The type of work.",
+      table: {
+        category: "Content",
+      },
+    },
+    company: {
+      control: "text",
+      description: "The name of the company.",
+      table: {
+        category: "Content",
+      },
+    },
+    link: {
+      control: "object",
+      description: "The link of the project.",
+      table: {
+        category: "Content",
+      },
+    },
+  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+// Función para obtener imágenes de Unsplash con un tema específico
+const fetchImageByTheme = async (theme: string) => {
+  const response = await fetch(
+    `https://api.unsplash.com/photos/random?query=${theme}&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc`
+  );
+  const data = await response.json();
+  return {
+    src: `${data.urls.raw}&w=1200&h=800&fit=crop`,
+    width: 1200,
+    height: 800,
+  };
+};
 
 export const Default: Story = {
   args: {
@@ -27,40 +111,55 @@ export const Default: Story = {
     title: "Fistro quietooor diodenoo",
     summary: "A gramenawer a peich a gramenawer pecador",
     description:
-      "<p>Lorem fistrum mamaar no te digo trigo por no llamarte Rodrigor va usté muy cargadoo por la gloria de mi madre hasta luego Lucas se calle ustée mamaar la caidita de la pradera. Está la cosa muy malar la caidita ahorarr fistro apetecan diodeno caballo blanco caballo negroorl a gramenawer a peich a gramenawer pecador. Te voy a borrar el cerito benemeritaar pupita por la gloria de mi madre. Diodenoo tiene musho peligro ahorarr llevame al sircoo benemeritaar apetecan te va a hasé pupitaa condemor no puedor. Torpedo por la gloria de mi madre pupita apetecan al ataquerl amatomaa tiene musho peligro pecador a gramenawer me cago en tus muelas. Torpedo fistro llevame al sircoo mamaar. Está la cosa muy malar va usté muy cargadoo te va a hasé pupitaa sexuarl a wan ese hombree qué dise usteer benemeritaar sexuarl torpedo de la pradera. </p>",
+      "<p>Lorem fistrum mamaar no te digo trigo por no llamarte Rodrigor...</p>",
     iconsData: [
       { name: "CSS3Icon", width: "1em", height: "1em" },
       { name: "ViteIcon", width: "1em", height: "1em" },
       { name: "GitBranchIcon", width: "1em", height: "1em" },
     ],
-    images: [
-      {
-        src: "https://source.unsplash.com/random/600x400/?web-design",
-        width: 600,
-        height: 400,
-      },
-      {
-        src: "https://source.unsplash.com/random/600x400/?web-development",
-        width: 600,
-        height: 400,
-      },
-      {
-        src: "https://source.unsplash.com/random/600x400/?programming",
-        width: 600,
-        height: 400,
-      },
-      {
-        src: "https://source.unsplash.com/random/600x400/?car",
-        width: 600,
-        height: 400,
-      },
+    workDone: [
+      "Maecenas sit amet justo sit amet tellus tincidunt efficitur.",
+      "Nullam nec turpis nec justo aliquam suscipit.",
+      "Pellentesque habitant morbi tristique sen",
     ],
+    workType: "Frontend",
+    company: "Company Name",
+    link: {
+      href: "https://www.youtube.com/watch?v=nAEvmGK5KRs",
+      link_text: "Watch on YouTube",
+      rel: "",
+    },
+  },
+  render: (args) => {
+    const [images, setImages] = useState([
+      {
+        src: "https://via.placeholder.com/1200x800",
+        width: 1200,
+        height: 800,
+      },
+    ]);
+
+    useEffect(() => {
+      // Temas que quieres usar para las imágenes
+      const themes = ["web-design", "web-development", "programming", "car"];
+
+      const fetchImages = async () => {
+        const fetchedImages = await Promise.all(
+          themes.map((theme) => fetchImageByTheme(theme))
+        );
+        setImages(fetchedImages);
+      };
+
+      fetchImages();
+    }, []);
+
+    return <CardSlide {...args} images={images} />;
   },
 };
 
 export const SourceCode: Story = {
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
     controls: {
       disable: true,
     },

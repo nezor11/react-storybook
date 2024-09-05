@@ -145,7 +145,7 @@ export const StrongParagraph = {
 
 export const SourceCode: Story = {
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
     controls: {
       disable: true,
     },

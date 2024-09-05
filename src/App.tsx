@@ -180,7 +180,7 @@ function App() {
 
   if (!latestResume) {
     return (
-      <div>
+      <div className="w-[200px] h-[200px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <Loader />
       </div>
     );

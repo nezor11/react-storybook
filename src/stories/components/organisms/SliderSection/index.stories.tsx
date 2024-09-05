@@ -38,6 +38,7 @@ export const Default: Story = {
         ],
         company: "Pradera",
         summary: "Diodenoo tiene musho peligro",
+        workDone: [],
         images: [
           {
             src: "https://source.unsplash.com/random/600x400/?web-design",
@@ -60,107 +61,7 @@ export const Default: Story = {
             height: 400,
           },
         ],
-        workType: "",
-      },
-      {
-        year: "2022",
-        title: "Revlon",
-        description: "Quietooor a peich amatomaa la caidita caballo blanco",
-        iconsData: [{ name: "GitBranchIcon", width: "1em", height: "1em" }],
-        company: "Pupita",
-        summary: "La caidita llevame al sircoo",
-        images: [
-          {
-            src: "https://source.unsplash.com/random/600x400/?web-design",
-            width: 600,
-            height: 400,
-          },
-          {
-            src: "https://source.unsplash.com/random/600x400/?web-development",
-            width: 600,
-            height: 400,
-          },
-          {
-            src: "https://source.unsplash.com/random/600x400/?programming",
-            width: 600,
-            height: 400,
-          },
-          {
-            src: "https://source.unsplash.com/random/600x400/?car",
-            width: 600,
-            height: 400,
-          },
-        ],
-        workType: "",
-      },
-      {
-        year: "2019",
-        title: "Vienduet",
-        description: "Por la gloria de mi madre",
-        iconsData: [
-          { name: "CSS3Icon", width: "1em", height: "1em" },
-          { name: "ViteIcon", width: "1em", height: "1em" },
-        ],
-        company: "Pupita",
-        summary: "Está la cosa muy malar",
-        images: [
-          {
-            src: "https://source.unsplash.com/random/600x400/?web-design",
-            width: 600,
-            height: 400,
-          },
-          {
-            src: "https://source.unsplash.com/random/600x400/?web-development",
-            width: 600,
-            height: 400,
-          },
-          {
-            src: "https://source.unsplash.com/random/600x400/?programming",
-            width: 600,
-            height: 400,
-          },
-          {
-            src: "https://source.unsplash.com/random/600x400/?car",
-            width: 600,
-            height: 400,
-          },
-        ],
-        workType: "",
-      },
-      {
-        year: "2023",
-        title: "Tourism of Tenerife",
-        description: "Torpedo al ataquerl hasta luego Lucas",
-        iconsData: [
-          { name: "CSS3Icon", width: "1em", height: "1em" },
-          { name: "ViteIcon", width: "1em", height: "1em" },
-          { name: "GitBranchIcon", width: "1em", height: "1em" },
-        ],
-        company: "Pradera",
-        summary: "Torpedo fistro llevame al sircoo mamaar",
-        images: [
-          {
-            src: "https://source.unsplash.com/random/600x400/?web-design",
-            width: 600,
-            height: 400,
-          },
-          {
-            src: "https://source.unsplash.com/random/600x400/?web-development",
-            width: 600,
-            height: 400,
-          },
-          {
-            src: "https://source.unsplash.com/random/600x400/?programming",
-            width: 600,
-            height: 400,
-          },
-          {
-            src: "https://source.unsplash.com/random/600x400/?car",
-            width: 600,
-            height: 400,
-          },
-        ],
-        workType: "",
+        workType: "Frontend",
       },
     ],
   },
@@ -168,7 +69,7 @@ export const Default: Story = {
 
 export const SourceCode: Story = {
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
     controls: {
       disable: true,
     },
