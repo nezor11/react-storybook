@@ -101,6 +101,21 @@ const useTheme = () => {
   const { darkTheme, toggleTheme } = useContext(
     ThemeContext
   ) as ThemeContextInterface;
+
+  useEffect(() => {
+    try {
+      if (darkTheme) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+    } catch (error) {
+      console.error("Error accessing localStorage in Safari iOS", error);
+    }
+  }, [darkTheme]);
+
   return { darkTheme, toggleTheme };
 };
 
