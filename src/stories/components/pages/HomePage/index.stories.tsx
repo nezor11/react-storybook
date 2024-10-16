@@ -29,7 +29,7 @@ const fetchRandomFaceImage = async () => {
   } catch (error) {
     console.error("Error fetching image from Unsplash:", error.message);
     return {
-      image: "https://via.placeholder.com/300x300",
+      image: "https://placehold.co/300x300",
       alt: "Placeholder image",
       width: 300,
       height: 300,
@@ -55,7 +55,7 @@ export const Default: Story = {
           address: "08025 Barcelona",
         },
         imageDetail: {
-          image: "https://via.placeholder.com/300x300", // Imagen inicial placeholder
+          image: "https://placehold.co/300x300", // Imagen inicial placeholder
           alt: "Placeholder image",
           width: 300,
           height: 300,

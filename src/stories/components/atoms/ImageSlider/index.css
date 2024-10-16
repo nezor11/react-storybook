@@ -1,6 +1,10 @@
 .triple-slider {
-  @apply w-full relative overflow-hidden;
+  @apply w-full relative overflow-hidden py-10 max-w-[740px] mx-auto;
   perspective: 1200px;
+
+  @screen 2xl {
+    @apply max-w-[1710px];
+  }
 }
 .triple-slider .triple-slider-main {
   @apply relative z-[10] shadow-[0px_0px_30px_rgba(0,0,0,0.5)];
@@ -22,6 +26,18 @@
 
   @screen 2xl {
     @apply max-w-[1200px];
+  }
+
+  &.triple-slider-prev {
+    @screen xl {
+      @apply right-1/3;
+    }
+  }
+
+  &.triple-slider-next {
+    @screen xl {
+      @apply left-1/3;
+    }
   }
 }
 .triple-slider .bg-image {

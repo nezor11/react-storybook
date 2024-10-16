@@ -103,7 +103,7 @@ const meta: Meta<typeof BodyCopy> = {
       type: "boolean",
       table: {
         defaultValue: {
-          summary: false,
+          summary: "false",
         },
       },
     },
@@ -114,7 +114,7 @@ const meta: Meta<typeof BodyCopy> = {
       type: "boolean",
       table: {
         defaultValue: {
-          summary: false,
+          summary: "false",
         },
       },
     },

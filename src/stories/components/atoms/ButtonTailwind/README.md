@@ -1,3 +1,25 @@
+/**
+ * ButtonTailwind is a component that renders a button element with Tailwind CSS classes. It is used to trigger actions or events when clicked.
+ *
+ * Props:
+ * - variant: The variant of the button. Options are "solid", "outline", "ghost". Default is "solid".
+ * - size: The size of the button. Options are "sm", "md", "lg". Default is "md".
+ * - colorscheme: The color scheme of the button. Options are "primary". Default is "primary".
+ * - className: Additional CSS classes to be applied to the button.
+ * - disabled: Boolean indicating if the button is disabled. Default is false.
+ * - onClick: Function to be called when the button is clicked.
+ *
+ * Example usage:
+ * <ButtonTailwind
+ *   variant="outline"
+ *   size="lg"
+ *   colorscheme="primary"
+ *   onClick={handleClick}
+ * >
+ *   Click Me
+ * </ButtonTailwind>
+ */
+
 import { cn } from "@/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React, { ComponentProps, forwardRef } from "react";

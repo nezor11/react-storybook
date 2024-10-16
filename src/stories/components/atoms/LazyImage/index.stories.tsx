@@ -89,7 +89,7 @@ export const Default = () => {
         setImageSrc(imgSrc);
       } catch (error) {
         console.error("Error al cargar la imagen de Unsplash:", error.message);
-        setImageSrc("https://placehold.co/600x400"); // Imagen de reemplazo
+        setImageSrc("https://placehold.co/600x400?text=Image"); // Imagen de reemplazo
       }
     };
     loadImage();

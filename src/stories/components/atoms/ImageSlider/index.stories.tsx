@@ -20,19 +20,19 @@ const meta: Meta<typeof ImageSlider> = {
         type: "object",
         images: [
           {
-            src: "https://via.placeholder.com/1200x800",
+            src: "https://placehold.co/1200x800",
             width: 1200,
             height: 800,
             alt: "Image 1",
           },
           {
-            src: "https://via.placeholder.com/1200x800",
+            src: "https://placehold.co/1200x800",
             width: 1200,
             height: 800,
             alt: "Image 2",
           },
           {
-            src: "https://via.placeholder.com/1200x800",
+            src: "https://placehold.co/1200x800",
             width: 1200,
             height: 800,
             alt: "Image 3",
@@ -88,13 +88,13 @@ export const Default = () => {
         // Puedes agregar imágenes por defecto si ocurre un error
         setImages([
           {
-            src: "https://via.placeholder.com/1200x800",
+            src: "https://placehold.co/1200x800",
             width: 1200,
             height: 800,
             alt: "Image 1",
           },
           {
-            src: "https://via.placeholder.com/1200x800",
+            src: "https://placehold.co/1200x800",
             width: 1200,
             height: 800,
             alt: "Image 2",

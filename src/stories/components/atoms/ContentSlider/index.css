@@ -1,0 +1,123 @@
+.intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  .text-header {
+    @screen xl {
+      line-height: 4.5rem;
+    }
+    @screen 2xl {
+      line-height: 7rem;
+    }
+  }
+
+  .rtl-grid {
+    direction: rtl;
+  }
+
+  ul.list-arrows {
+    & li {
+      @apply flex items-center relative pr-[18px];
+
+      &:before {
+        content: "";
+        @apply absolute border-r border-b border-black;
+        width: 6px;
+        height: 6px;
+        top: 50%;
+        left: auto;
+        right: 0;
+        transform: translateY(-50%) rotate(135deg);
+      }
+    }
+  }
+
+  .left {
+    float: left;
+    height: 100%;
+    width: 60%;
+    display: table;
+  }
+
+  .left > div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .slider {
+    float: right;
+    position: relative;
+    width: 40%;
+    height: 100%;
+  }
+
+  .slider li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    transition:
+      clip 0.7s ease-in-out,
+      z-index 0s 0.7s;
+    clip: rect(0, 100vw, 100vh, 100vw);
+    display: table;
+  }
+
+  .center-y {
+    display: table-cell;
+    vertical-align: top;
+    text-align: left;
+    padding-left: 1rem;
+    padding-top: 1rem;
+  }
+
+  li.current {
+    z-index: 1;
+    clip: rect(0, 100vw, 100vh, 0);
+  }
+
+  li.prev {
+    clip: rect(0, 0, 100vh, 0);
+  }
+
+  .slider nav {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+  }
+
+  nav a {
+    display: inline-block;
+    border-radius: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    min-width: 12px;
+    min-height: 12px;
+    background: rgba(244, 63, 94, 0.75);
+    margin: 0 1rem;
+    transition: transform 0.3s;
+  }
+
+  a.current_dot {
+    transform: scale(1.4);
+  }
+
+  @media screen and (max-width: 768px) {
+    .left {
+      width: 100%;
+      height: 30%;
+    }
+    .slider {
+      width: 100%;
+      height: 70%;
+    }
+  }
+}

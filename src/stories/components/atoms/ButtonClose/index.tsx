@@ -1,3 +1,13 @@
+/**
+ * ButtonClose is a component that renders a close button element. It is used to trigger a close action when clicked.
+ *
+ * Props:
+ * - onClick: Function to be called when the button is clicked.
+ *
+ * Example usage:
+ * <ButtonClose onClick={handleClose} />
+ */
+
 import React from "react";
 
 interface ButtonCloseProps {

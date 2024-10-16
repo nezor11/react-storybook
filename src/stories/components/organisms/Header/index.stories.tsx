@@ -45,7 +45,7 @@ const fetchFaceImage = async () => {
     console.error("Error al obtener la imagen de Unsplash:", error.message);
     // Retornamos una imagen por defecto en caso de error
     return {
-      image: "https://via.placeholder.com/300x300",
+      image: "https://placehold.co/300x300",
       alt: "Placeholder image",
       width: 300,
       height: 300,
@@ -55,7 +55,7 @@ const fetchFaceImage = async () => {
 
 export const Default: StoryFn = (args) => {
   const [imageDetail, setImageDetail] = useState({
-    image: "https://via.placeholder.com/300x300", // Valor inicial placeholder
+    image: "https://placehold.co/300x300", // Valor inicial placeholder
     alt: "Alt text",
     width: 300,
     height: 300,

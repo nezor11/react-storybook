@@ -1,0 +1,38 @@
+.meta-data-wrapper {
+  .text-description {
+    img {
+      @apply w-full h-auto;
+    }
+  }
+
+  .link-text {
+    & > a {
+      @apply underline text-primary-800;
+    }
+  }
+}
+
+ul.list-arrows {
+  & li {
+    @apply relative pl-[18px];
+    &:before {
+      content: "";
+      @apply absolute border-r border-b border-black;
+      width: 6px;
+      height: 6px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+  }
+}
+
+.logos-wrapper {
+  & > div {
+    @apply text-3xl;
+
+    svg {
+      @apply mx-2 my-1;
+    }
+  }
+}

@@ -1,3 +1,23 @@
+/**
+ * Link is a component that renders an anchor element. It is used to navigate to different URLs when clicked.
+ *
+ * Props:
+ * - link_text: The text content to be displayed for the link. Default is "Link text".
+ * - href: The URL to which the link points. Default is "https://google.com".
+ * - target: The target attribute specifies where to open the linked document. Default is "_blank".
+ * - rel: The relationship between the current document and the linked document. Default is "noreferrer noopener".
+ * - mods: Additional CSS classes to be applied to the link.
+ *
+ * Example usage:
+ * <Link
+ *   link_text="Go to Google"
+ *   href="https://google.com"
+ *   target="_self"
+ *   rel="noopener"
+ *   mods="custom-class"
+ * />
+ */
+
 import React from "react";
 
 export interface LinkProps {

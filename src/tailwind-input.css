@@ -17,7 +17,10 @@ body {
 }
 
 body.theme-dark.modal-open {
-  --textColor: rgba(0, 0, 0, 0.87);
+  .text,
+  .text-workdone {
+    color: rgba(0, 0, 0, 1);
+  }
 }
 
 .container {
@@ -420,6 +423,12 @@ body.theme-dark.modal-open {
 
 .theme-dark {
   .GitBranchIcon {
+    path {
+      fill: var(--textColor);
+    }
+  }
+
+  .NextJSIcon {
     path {
       fill: var(--textColor);
     }

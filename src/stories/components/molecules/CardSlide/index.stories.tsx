@@ -105,6 +105,27 @@ const fetchImageByTheme = async (theme: string) => {
   };
 };
 
+const fetchCardImage = async () => {
+  try {
+    const response = await fetch(
+      `https://api.unsplash.com/photos/random?query=river&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc`
+    );
+
+    // Verificar si la respuesta es correcta (código de estado 200)
+    if (!response.ok) {
+      throw new Error(`Error de red: ${response.status}`);
+    }
+
+    // Parsear la respuesta solo si es un JSON válido
+    const data = await response.json();
+    return `${data.urls.raw}&w=300&h=350&fit=crop`;
+  } catch (error) {
+    console.error("Error al obtener la imagen de Unsplash:", error);
+    // Devuelve una URL por defecto si ocurre un error
+    return "https://placehold.co/300x350?text=Card+Slide";
+  }
+};
+
 export const Default: Story = {
   args: {
     year: "2021",
@@ -129,31 +150,33 @@ export const Default: Story = {
       link_text: "Watch on YouTube",
       rel: "",
     },
+    images: [
+      {
+        src: "https://placehold.co/800x1200",
+        width: 800,
+        height: 1200,
+        alt: "Placeholder Image",
+      },
+    ],
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    infoUrl: "https://example.com/project-info",
+    cardImageAlt: "Project thumbnail",
+    cardImageWidth: 300,
+    cardImageHeight: 350,
   },
   render: (args) => {
-    const [images, setImages] = useState([
-      {
-        src: "https://via.placeholder.com/1200x800",
-        width: 1200,
-        height: 800,
-      },
-    ]);
+    const [cardImage, setCardImage] = useState("");
 
     useEffect(() => {
-      // Temas que quieres usar para las imágenes
-      const themes = ["web-design", "web-development", "programming", "car"];
-
-      const fetchImages = async () => {
-        const fetchedImages = await Promise.all(
-          themes.map((theme) => fetchImageByTheme(theme))
-        );
-        setImages(fetchedImages);
+      const fetchAndSetCardImage = async () => {
+        const fetchedCardImage = await fetchCardImage();
+        setCardImage(fetchedCardImage); // Actualiza `cardImage` con la URL de Unsplash
       };
 
-      fetchImages();
+      fetchAndSetCardImage();
     }, []);
 
-    return <CardSlide {...args} images={images} />;
+    return <CardSlide {...args} cardImage={cardImage || args.cardImage} />;
   },
 };
 

@@ -1,3 +1,10 @@
+/**
+ * Loader is a component that renders a circular loading spinner. It is used to indicate that a process or action is currently in progress.
+ *
+ * Example usage:
+ * <Loader />
+ */
+
 import React from "react";
 import "./index.css";
 

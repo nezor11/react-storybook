@@ -2,7 +2,8 @@ import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import ButtonClose from "@/stories/components/atoms/ButtonClose";
 import { LinkProps } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
-import { Modal, SanityImageData } from "@/stories/components/molecules/Modal";
+import { SanityImageData } from "@/stories/components/molecules/Modal";
+import { Popup } from "@/stories/components/molecules/Popup";
 import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -142,7 +143,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
       </article>
       {showModal &&
         createPortal(
-          <Modal
+          <Popup
             title={title}
             company={company}
             year={year}
