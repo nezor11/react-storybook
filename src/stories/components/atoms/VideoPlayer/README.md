@@ -1,3 +1,19 @@
+/**
+ * VideoPlayer is a component that renders a video player using the ReactPlayer library. It supports loading state and custom configurations for YouTube videos.
+ *
+ * Props:
+ * - videoUrl: The URL of the video to be played.
+ * - onReady: A callback function to be called when the video is ready to play.
+ * - isPlaying: A boolean indicating whether the video should be playing or paused.
+ *
+ * Example usage:
+ * <VideoPlayer
+ *   videoUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+ *   onReady={() => console.log("Video is ready!")}
+ *   isPlaying={true}
+ * />
+ */
+
 import Loader from "@/stories/components/atoms/Loader";
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
@@ -6,11 +22,13 @@ import "./index.css";
 interface VideoPlayerProps {
   videoUrl: string;
   onReady: () => void;
+  isPlaying: boolean;
 }
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   videoUrl,
   onReady,
+  isPlaying,
 }) => {
   const [loading, setLoading] = useState(true);
 
@@ -30,6 +48,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           url={videoUrl}
           width="100%"
           height="100%"
+          playing={isPlaying}
           config={{
             youtube: {
               playerVars: {

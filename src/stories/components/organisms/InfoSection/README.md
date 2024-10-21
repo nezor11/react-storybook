@@ -1,4 +1,25 @@
 // InfoSection.tsx
+
+/**
+ * InfoSection is a component that displays a section with a title, subtitle, and optional icons and sections.
+ *
+ * Props:
+ * - title: The title text to be displayed in the section. Optional.
+ * - subtitle: The subtitle text to be displayed below the title. Optional.
+ * - sections: An array of InfoItemObject representing the sections to be displayed. Optional.
+ * - icons: An object containing icon properties to be displayed in the icon gallery. Optional.
+ * - type: The type of the section, either "infoSection" or "sliderSection". Optional.
+ *
+ * Example usage:
+ * <InfoSection
+ *   title="About Us"
+ *   subtitle="Learn more about our company"
+ *   sections={[{ title: "Our Mission", content: "To provide the best service." }]}
+ *   icons={{ iconsData: [{ name: "icon1", width: "24", height: "24" }] }}
+ *   type="infoSection"
+ * />
+ */
+
 import { ButtonTailwind } from "@/stories/components/atoms/ButtonTailwind";
 import { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
 import {

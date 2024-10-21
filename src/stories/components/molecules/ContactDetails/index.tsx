@@ -1,19 +1,24 @@
 /**
- * Renders a contact detail component.
+ * ContactDetail is a component that renders contact details such as title, phone, email, and address.
  *
- * @component
- * @example
- * ```tsx
- * const contactDetail = {
- *   title: "Contact",
- *   phone: "123-456-7890",
- *   email: "example@example.com",
- *   address: "123 Main St, City, State"
- * };
+ * Props:
+ * - contactDetail: An object containing the contact details.
+ *   - title: The title of the contact detail.
+ *   - phone: The phone number of the contact detail.
+ *   - email: The email address of the contact detail.
+ *   - address: The physical address of the contact detail.
  *
- * <ContactDetail contactDetail={contactDetail} />
- * ```
+ * Example usage:
+ * <ContactDetail
+ *   contactDetail={{
+ *     title: "John Doe",
+ *     phone: "+1234567890",
+ *     email: "john.doe@example.com",
+ *     address: "123 Main St, Anytown, USA"
+ *   }}
+ * />
  */
+
 import { cn } from "@/utils";
 import React, { ComponentPropsWithRef, forwardRef } from "react";
 import Obfuscate from "react-obfuscate";

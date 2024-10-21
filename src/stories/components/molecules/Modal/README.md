@@ -1,3 +1,37 @@
+/**
+ * Modal is a component that displays a modal dialog with various details such as title, company, year, description, images, work done, work type, video, link, and icons.
+ *
+ * Props:
+ * - onClose: A function to be called when the modal is closed.
+ * - title: The title of the modal.
+ * - company: The name of the company associated with the modal. Default is "Nezor Houze".
+ * - year: The year associated with the modal.
+ * - description: A detailed description of the modal content.
+ * - images: An array of image data objects.
+ * - workDone: An array of work done descriptions.
+ * - workType: The type of work associated with the modal. Default is "Personal".
+ * - videoUrl: The URL of the video to be played in the modal.
+ * - link: An object containing link properties.
+ * - iconsData: An array of icon data objects.
+ * - ButtonCloseComponent: A React component for the close button.
+ *
+ * Example usage:
+ * <Modal
+ *   onClose={() => console.log("Modal closed")}
+ *   title="Project Title"
+ *   company="Company Name"
+ *   year="2021"
+ *   description="This is a detailed description."
+ *   images={[{ src: "https://example.com/image1.jpg", alt: "Image 1" }]}
+ *   workDone={["Task 1", "Task 2"]}
+ *   workType="Development"
+ *   videoUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+ *   link={{ href: "https://example.com", text: "Learn more" }}
+ *   iconsData={[{ name: "icon1", width: "24", height: "24" }]}
+ *   ButtonCloseComponent={({ onClick }) => <button onClick={onClick}>Close</button>}
+ * />
+ */
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
@@ -58,7 +92,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   const nameMapping: { [key: string]: string } = {
     front_end: "Frontend Development",
-    front_end_frameworks: "Deal with Frontend Frameworks",
+    front_end_frameworks: "Frontend Frameworks",
     back_end: "Backend Development",
     back_end_frameworks: "Backend Frameworks",
     full_stack: "Full Stack Development",
@@ -278,7 +312,13 @@ export const Modal: React.FC<ModalProps> = ({
           <SuspenseIconGallery iconsData={iconsData} />
         </div>
 
-        {videoUrl && <VideoPlayer videoUrl={videoUrl} onReady={handleReady} />}
+        {videoUrl && (
+          <VideoPlayer
+            videoUrl={videoUrl}
+            onReady={handleReady}
+            isPlaying={false}
+          />
+        )}
 
         {!videoUrl && images.length > 0 && (
           <ImageSlider

@@ -1,11 +1,19 @@
 /**
- * Renders a subtitle with customizable tag, text, and styles.
+ * SubtitleCopy is a component that renders a subtitle element with customizable tag, text, and styles.
  *
- * @component
- * @example
- * ```tsx
- * <SubtitleCopy subtitle="h2" text="Papaar papaar" mods="text-3xl uppercase" styles={{ color: 'red' }} />
- * ```
+ * Props:
+ * - subtitle: The HTML tag to be used for the subtitle. Default is "h2".
+ * - text: The text content to be displayed for the subtitle. Default is "Papaar papaar".
+ * - mods: Additional CSS classes to be applied to the subtitle. Default is "text-3xl uppercase".
+ * - styles: Additional CSS styles to be applied to the subtitle.
+ *
+ * Example usage:
+ * <SubtitleCopy
+ *   subtitle="h3"
+ *   text="This is a subtitle"
+ *   mods="text-2xl font-bold"
+ *   styles={{ color: "red" }}
+ * />
  */
 
 import React, { CSSProperties } from "react";

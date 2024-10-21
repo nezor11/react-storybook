@@ -1,3 +1,13 @@
+/**
+ * SuspenseIconGallery is a component that wraps the IconGallery component with React.Suspense to handle lazy loading.
+ *
+ * Props:
+ * - All props are passed down to the IconGallery component.
+ *
+ * Example usage:
+ * <SuspenseIconGallery iconsData={[{ name: "icon1", width: "24", height: "24" }]} />
+ */
+
 import React from "react";
 import { IconGallery, IconGalleryProps } from "../IconGallery";
 

@@ -1,25 +1,25 @@
 /**
- * LazyImage is a component that renders an image element with lazy loading functionality. It displays a placeholder image until the actual image is loaded.
+ * LazyImage is a component that renders an image with lazy loading functionality. It displays a placeholder image until the actual image is fully loaded.
  *
  * Props:
- * - placeholderSrc: The source URL of the placeholder image to be displayed while the actual image is loading.
- * - src: The source URL of the actual image to be loaded.
- * - alt: The alt text for the image. Default is an empty string.
- * - width: The width of the image in pixels. Default is undefined.
- * - height: The height of the image in pixels. Default is undefined.
- * - onImageLoad: A callback function to be called when the actual image has finished loading.
- * - style: Additional CSS styles to be applied to the image container.
- * - lazy: Boolean indicating if the image should be lazily loaded. Default is true.
+ * - placeholderSrc: The source URL of the placeholder image.
+ * - src: The source URL of the actual image.
+ * - alt: The alt text for the image.
+ * - width: The width of the image.
+ * - height: The height of the image.
+ * - onImageLoad: Function to be called when the image is fully loaded.
+ * - style: Additional CSS styles to be applied to the image.
+ * - lazy: Boolean indicating if the image should be lazy loaded.
  *
  * Example usage:
  * <LazyImage
- *   placeholderSrc="placeholder.jpg"
- *   src="image.jpg"
- *   alt="Description of the image"
- *   width={300}
- *   height={200}
+ *   placeholderSrc="https://placehold.co/600x400"
+ *   src="https://example.com/image.jpg"
+ *   alt="Example Image"
+ *   width={600}
+ *   height={400}
  *   onImageLoad={handleImageLoad}
- *   style={{ borderRadius: '8px' }}
+ *   style={{ borderRadius: "8px" }}
  *   lazy={true}
  * />
  */

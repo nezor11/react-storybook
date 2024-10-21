@@ -1,3 +1,23 @@
+/**
+ * Footer is a component that displays the footer section of a webpage.
+ *
+ * Props:
+ * - copy_right_text: The text to be displayed in the copyright section. Default is "Sage".
+ * - mods: Additional CSS classes to be applied to the footer. Optional.
+ * - last_updated: The date or string representing the last updated date. Optional.
+ * - my_link: An object containing link properties. Optional.
+ * - contact_details: An object containing contact details such as title, email, and phone. Optional.
+ *
+ * Example usage:
+ * <Footer
+ *   copy_right_text="© 2023 My Company"
+ *   mods="custom-footer"
+ *   last_updated="2023-01-01"
+ *   my_link={{ link_text: "Privacy Policy", href: "/privacy", rel: "noopener noreferrer" }}
+ *   contact_details={{ title: "Contact Us", email: "info@mycompany.com", phone: "+1234567890" }}
+ * />
+ */
+
 import { ButtonTailwind } from "@/stories/components/atoms/ButtonTailwind";
 import { Link, LinkProps } from "@/stories/components/atoms/Link";
 import {

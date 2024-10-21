@@ -1,3 +1,45 @@
+/**
+ * CardSlide is a component that displays a card with various details such as year, title, image, company, summary, description, work type, video, and icons.
+ *
+ * Props:
+ * - year: The year associated with the card.
+ * - title: The title of the card.
+ * - cardImage: The URL of the image to be displayed on the card.
+ * - cardImageAlt: The alt text for the card image.
+ * - cardImageWidth: The width of the card image. Default is 300.
+ * - cardImageHeight: The height of the card image.
+ * - infoUrl: The URL for more information.
+ * - company: The name of the company associated with the card.
+ * - summary: A brief summary of the card content.
+ * - description: A detailed description of the card content.
+ * - workType: The type of work associated with the card.
+ * - videoUrl: The URL of the video to be played on the card.
+ * - link: An object containing link properties.
+ * - iconsData: An array of icon data objects.
+ * - images: An array of image data objects.
+ * - workDone: An array of work done descriptions.
+ *
+ * Example usage:
+ * <CardSlide
+ *   year="2021"
+ *   title="Project Title"
+ *   cardImage="https://example.com/image.jpg"
+ *   cardImageAlt="Image description"
+ *   cardImageWidth={300}
+ *   cardImageHeight={200}
+ *   infoUrl="https://example.com"
+ *   company="Company Name"
+ *   summary="This is a brief summary."
+ *   description="This is a detailed description."
+ *   workType="Development"
+ *   videoUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+ *   link={{ href: "https://example.com", text: "Learn more" }}
+ *   iconsData={[{ name: "icon1", width: "24", height: "24" }]}
+ *   images={[{ src: "https://example.com/image1.jpg", alt: "Image 1" }]}
+ *   workDone={["Task 1", "Task 2"]}
+ * />
+ */
+
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import ButtonClose from "@/stories/components/atoms/ButtonClose";
 import { LinkProps } from "@/stories/components/atoms/Link";

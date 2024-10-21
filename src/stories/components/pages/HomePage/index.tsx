@@ -1,3 +1,19 @@
+/**
+ * HomePage is a component that displays the main content of the homepage, including the header, resume, and footer sections.
+ *
+ * Props:
+ * - dataHeaderObject: An optional array of User objects representing the header data.
+ * - dataResumeObject: An optional array of ResumeObject objects representing the resume data.
+ * - dataFooterObject: An optional FooterProps object representing the footer data.
+ *
+ * Example usage:
+ * <HomePage
+ *   dataHeaderObject={[{ name: "John Doe", jobTitle: "Software Engineer" }]}
+ *   dataResumeObject={[{ title: "Experience", items: [{ title: "Job 1", description: "Description of job 1" }] }]}
+ *   dataFooterObject={{ copy_right_text: "© 2023 My Company" }}
+ * />
+ */
+
 import { Footer, FooterProps } from "@/stories/components/organisms/Footer";
 import { Header, User } from "@/stories/components/organisms/Header";
 import { Resume, ResumeObject } from "@/stories/components/templates/Resume";

@@ -1,3 +1,25 @@
+/**
+ * ImageSlider is a component that renders a slider with multiple images. It uses the Swiper library for the slider functionality.
+ *
+ * Props:
+ * - images: An array of image objects. Each object can have the following properties:
+ *   - src: The source URL of the image.
+ *   - width: The width of the image.
+ *   - height: The height of the image.
+ *   - alt: The alt text for the image.
+ * - className: Additional CSS classes to be applied to the slider container.
+ *
+ * Example usage:
+ * <ImageSlider
+ *   images={[
+ *     { src: "image1.jpg", width: 600, height: 400, alt: "Image 1" },
+ *     { src: "image2.jpg", width: 600, height: 400, alt: "Image 2" },
+ *     { src: "image3.jpg", width: 600, height: 400, alt: "Image 3" },
+ *   ]}
+ *   className="custom-slider"
+ * />
+ */
+
 import createTripleSlider from "@/stories/assets/scripts/triple-slider";
 import React, { useEffect, useRef } from "react";
 import "swiper/css";

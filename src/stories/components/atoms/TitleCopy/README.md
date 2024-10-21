@@ -1,22 +1,28 @@
 /**
- * Renders a title or copy component with customizable styles and variants.
+ * TitleCopy is a component that renders a title or copy element with customizable tag, text, and styles.
  *
- * @component
- * @example
- * ```tsx
- * <TitleCopy text="Hello, World!" align="center" italic underline />
- * ```
+ * Props:
+ * - as: The HTML tag to be used for the title. Default is "h1".
+ * - text: The text content to be displayed for the title. Default is "Rodrigor".
+ * - align: The alignment of the text. Can be "left", "center", or "right". Default is "left".
+ * - italic: Whether the text should be italicized. Default is false.
+ * - underline: Whether the text should be underlined. Default is false.
+ * - mods: Additional CSS classes to be applied to the title.
+ * - styles: Additional CSS styles to be applied to the title.
+ * - children: The child elements to be rendered inside the title.
  *
- * @param {object} props - The component props.
- * @param {string} [props.as="h1"] - The HTML tag to be used for the component.
- * @param {string} [props.text="Rodrigor"] - The text content of the component.
- * @param {string} [props.align="left"] - The alignment of the text. Can be "left", "center", "right", null, or undefined.
- * @param {boolean} [props.italic=false] - Whether the text should be italicized.
- * @param {boolean} [props.underline=false] - Whether the text should be underlined.
- * @param {string} [props.mods="text-xl dark:text-white"] - Additional CSS classes to be applied to the component.
- * @param {object} [props.styles={}] - Additional inline styles to be applied to the component.
- * @param {ReactNode} [props.children] - The child elements of the component.
- * @returns {JSX.Element} The rendered TitleCopy component.
+ * Example usage:
+ * <TitleCopy
+ *   as="h2"
+ *   text="This is a title"
+ *   align="center"
+ *   italic={true}
+ *   underline={true}
+ *   mods="custom-class"
+ *   styles={{ color: "blue" }}
+ * >
+ *   <span>Child element</span>
+ * </TitleCopy>
  */
 
 import { cn } from "@/utils";

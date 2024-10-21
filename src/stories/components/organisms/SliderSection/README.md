@@ -1,3 +1,31 @@
+// SliderSection.tsx
+
+/**
+ * SliderSection is a component that displays a section with a title and a slider containing multiple slides.
+ *
+ * Props:
+ * - slidesData: An array of SlideData objects representing the slides to be displayed in the slider.
+ * - icons: An optional object containing icon properties to be displayed in the icon gallery.
+ * - title: An optional title text to be displayed above the slider.
+ *
+ * Example usage:
+ * <SliderSection
+ *   slidesData={[
+ *     {
+ *       title: "Slide 1",
+ *       description: "This is the first slide",
+ *       images: [{ src: "image1.jpg", width: 800, height: 600 }],
+ *     },
+ *     {
+ *       title: "Slide 2",
+ *       description: "This is the second slide",
+ *       images: [{ src: "image2.jpg", width: 800, height: 600 }],
+ *     },
+ *   ]}
+ *   title="My Slider Section"
+ * />
+ */
+
 import { LinkProps } from "@/stories/components/atoms/Link";
 import { CardSlide } from "@/stories/components/molecules/CardSlide";
 import { IconGalleryProps } from "@/stories/components/molecules/IconGallery";

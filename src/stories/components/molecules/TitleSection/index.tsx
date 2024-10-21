@@ -1,23 +1,23 @@
 /**
- * A component that displays a title section with an optional icon gallery and subtext.
+ * TitleSection is a component that displays a section with a header, text, subtext, and an optional icon gallery.
  *
- * @remarks
- * This component is used to render a title section with an optional icon gallery and subtext.
+ * Props:
+ * - header: The HTML tag to be used for the header. Default is "h3".
+ * - text: The main text to be displayed in the section. Default is "Me cago en tus muelas".
+ * - subtext: Optional subtext to be displayed below the main text.
+ * - mods: Additional CSS classes to be applied to the header. Default is "text-3xl uppercase text-primary-500 font-medium".
+ * - styles: Optional CSS styles to be applied to the header.
+ * - iconsData: An optional array of icon data objects to be displayed in the icon gallery.
  *
- * @example
- * ```tsx
+ * Example usage:
  * <TitleSection
- *   header="Title"
- *   text="This is the main text"
- *   subtext="This is the subtext"
- *   mods="text-3xl uppercase text-primary-500 font-medium"
+ *   header="h2"
+ *   text="Welcome to the Title Section"
+ *   subtext="This is a subtitle"
+ *   mods="text-4xl font-bold"
  *   styles={{ color: "red" }}
- *   iconsData={[{ name: "icon1", width: "24px", height: "24px" }]}
+ *   iconsData={[{ name: "icon1", width: "24", height: "24" }]}
  * />
- * ```
- *
- * @param props - The component props.
- * @returns The rendered TitleSection component.
  */
 
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";

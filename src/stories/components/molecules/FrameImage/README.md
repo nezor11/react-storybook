@@ -1,3 +1,25 @@
+/**
+ * FrameImage is a component that renders an image with an optional mask and additional image details.
+ *
+ * Props:
+ * - image: The URL of the image to be displayed.
+ * - mask: The URL of the mask image to be applied to the main image. Optional.
+ * - alt: The alt text for the image. Optional.
+ * - width: The width of the image. Optional.
+ * - height: The height of the image. Optional.
+ * - imageDetail: Additional properties for the LazyImage component. Optional.
+ *
+ * Example usage:
+ * <FrameImage
+ *   image="https://example.com/image.jpg"
+ *   mask="https://example.com/mask.png"
+ *   alt="Example Image"
+ *   width={150}
+ *   height={150}
+ *   imageDetail={{ placeholderSrc: "https://example.com/placeholder.jpg" }}
+ * />
+ */
+
 import frameImage from "@/assets/images/js-frame-photo-empty.png";
 import {
   LazyImage,

@@ -1,3 +1,38 @@
+/**
+ * Resume is a component that displays a resume with various sections, including info sections and slider sections.
+ *
+ * Props:
+ * - resumeItems: An optional array of InfoSectionObject or SliderSectionObject representing the sections to be displayed in the resume.
+ *
+ * Example usage:
+ * <Resume
+ *   resumeItems={[
+ *     {
+ *       type: "infoSection",
+ *       title: "About Me",
+ *       subtitle: "A brief introduction",
+ *       sections: [{ title: "Background", content: "I am a software engineer." }]
+ *     },
+ *     {
+ *       type: "sliderSection",
+ *       title: "My Projects",
+ *       slidesData: [
+ *         {
+ *           title: "Project 1",
+ *           description: "Description of project 1",
+ *           images: [{ src: "project1.jpg", width: 800, height: 600 }]
+ *         },
+ *         {
+ *           title: "Project 2",
+ *           description: "Description of project 2",
+ *           images: [{ src: "project2.jpg", width: 800, height: 600 }]
+ *         }
+ *       ]
+ *     }
+ *   ]}
+ * />
+ */
+
 import {
   InfoSection,
   InfoSectionObject,

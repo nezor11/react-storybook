@@ -1,5 +1,6 @@
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import { Link, LinkProps } from "@/stories/components/atoms/Link";
+import Play from "@/stories/components/atoms/Play";
 import { SubtitleCopy } from "@/stories/components/atoms/SubtitleCopy";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { VideoPlayer } from "@/stories/components/atoms/VideoPlayer";
@@ -39,6 +40,7 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
 }) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const formatCompanyName = (name: string) => name.replace(/_/g, " ");
 
@@ -91,6 +93,7 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
   }, [videoUrl]);
 
   const handleReady = () => setLoading(false);
+  const handlePlayClick = () => setIsPlaying(true);
 
   const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)?.[2] || "";
 
@@ -153,11 +156,31 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
 
       <div className={`slider ${className || ""}`} ref={sliderRef}>
         {videoUrl ? (
-          <div className="px-4 flex flex-col justify-center content-center h-full">
-            <div>
-              <VideoPlayer videoUrl={videoUrl} onReady={handleReady} />
+          isPlaying ? (
+            <div className="px-4 flex flex-col justify-center content-center h-full">
+              <div>
+                <VideoPlayer
+                  videoUrl={videoUrl}
+                  onReady={handleReady}
+                  isPlaying={true}
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div
+              className="relative flex justify-center items-center cursor-pointer"
+              style={{
+                backgroundImage: `url(${images[0]?.src})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                height: "100%",
+                width: "100%",
+              }}
+              onClick={handlePlayClick}
+            >
+              <Play />
+            </div>
+          )
         ) : (
           <>
             <ul>

@@ -126,6 +126,34 @@ const fetchCardImage = async () => {
   }
 };
 
+const fetchImagesFromUnsplash = async (query: string, count = 3) => {
+  try {
+    const response = await fetch(
+      `https://api.unsplash.com/photos/random?query=${query}&count=${count}&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc`
+    );
+    if (!response.ok) throw new Error("Error al obtener imágenes de Unsplash");
+
+    const data = await response.json();
+    console.log("SRC IMG ------------------------> ", data);
+    return data.map((img: any) => ({
+      alt: img.alt_description || "Unsplash Image",
+      src: `${img.urls.raw}&w=800&h=1200&fit=crop`,
+      width: 1200,
+      height: 800,
+    }));
+  } catch (error) {
+    console.error("Error fetching images:", error);
+    return [
+      {
+        src: "https://placehold.co/800x1200",
+        width: 800,
+        height: 1200,
+        alt: "Placeholder Image",
+      },
+    ];
+  }
+};
+
 export const Default: Story = {
   args: {
     year: "2021",
@@ -139,8 +167,8 @@ export const Default: Story = {
       { name: "GitBranchIcon", width: "1em", height: "1em" },
     ],
     workDone: [
-      "Maecenas sit amet justo sit amet tellus tincidunt efficitur.",
-      "Nullam nec turpis nec justo aliquam suscipit.",
+      "Maecenas sit amet justo sit amet tellus tincidunt efficitur",
+      "Nullam nec turpis nec justo aliquam suscipit",
       "Pellentesque habitant morbi tristique sen",
     ],
     workType: "Frontend",
@@ -150,21 +178,14 @@ export const Default: Story = {
       link_text: "Watch on YouTube",
       rel: "",
     },
-    images: [
-      {
-        src: "https://placehold.co/800x1200",
-        width: 800,
-        height: 1200,
-        alt: "Placeholder Image",
-      },
-    ],
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    images: [], // Inicializa las imágenes vacías
     infoUrl: "https://example.com/project-info",
     cardImageAlt: "Project thumbnail",
     cardImageWidth: 300,
     cardImageHeight: 350,
   },
   render: (args) => {
+    const [images, setImages] = useState([]);
     const [cardImage, setCardImage] = useState("");
 
     useEffect(() => {
@@ -176,7 +197,85 @@ export const Default: Story = {
       fetchAndSetCardImage();
     }, []);
 
-    return <CardSlide {...args} cardImage={cardImage || args.cardImage} />;
+    useEffect(() => {
+      const fetchAndSetImages = async () => {
+        const fetchedImages = await fetchImagesFromUnsplash("nature", 3); // Cambia el query según sea necesario
+        setImages(fetchedImages); // Actualiza el estado con las imágenes
+      };
+
+      fetchAndSetImages();
+    }, []);
+
+    return (
+      <CardSlide
+        {...args}
+        cardImage={cardImage || args.cardImage}
+        images={images.length > 0 ? images : args.images}
+      />
+    );
+  },
+};
+
+export const withVideo: Story = {
+  args: {
+    year: "2021",
+    title: "Fistro quietooor diodenoo",
+    summary: "A gramenawer a peich a gramenawer pecador",
+    description:
+      "<p>Lorem fistrum mamaar no te digo trigo por no llamarte Rodrigor...</p>",
+    iconsData: [
+      { name: "CSS3Icon", width: "1em", height: "1em" },
+      { name: "ViteIcon", width: "1em", height: "1em" },
+      { name: "GitBranchIcon", width: "1em", height: "1em" },
+    ],
+    workDone: [
+      "Maecenas sit amet justo sit amet tellus tincidunt efficitur",
+      "Nullam nec turpis nec justo aliquam suscipit",
+      "Pellentesque habitant morbi tristique sen",
+    ],
+    workType: "Frontend",
+    company: "Company Name",
+    link: {
+      href: "https://www.youtube.com/watch?v=nAEvmGK5KRs",
+      link_text: "Watch on YouTube",
+      rel: "",
+    },
+    images: [], // Inicializa las imágenes vacías
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    infoUrl: "https://example.com/project-info",
+    cardImageAlt: "Project thumbnail",
+    cardImageWidth: 300,
+    cardImageHeight: 350,
+  },
+  render: (args) => {
+    const [cardImage, setCardImage] = useState("");
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+      const fetchAndSetCardImage = async () => {
+        const fetchedCardImage = await fetchCardImage();
+        setCardImage(fetchedCardImage); // Actualiza `cardImage` con la URL de Unsplash
+      };
+
+      fetchAndSetCardImage();
+    }, []);
+
+    useEffect(() => {
+      const fetchAndSetImages = async () => {
+        const fetchedImages = await fetchImagesFromUnsplash("nature", 3); // Cambia el query según sea necesario
+        setImages(fetchedImages); // Actualiza el estado con las imágenes
+      };
+
+      fetchAndSetImages();
+    }, []);
+
+    return (
+      <CardSlide
+        {...args}
+        cardImage={cardImage || args.cardImage}
+        images={images.length > 0 ? images : args.images}
+      />
+    );
   },
 };
 

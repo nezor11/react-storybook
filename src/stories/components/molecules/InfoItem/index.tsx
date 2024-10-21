@@ -1,10 +1,26 @@
 /**
- * Renders the InfoItem component.
- * @param info - The InfoItemTexts object containing the information for the InfoItem.
- * @param subtitleEmpty - Indicates whether the subtitle is empty.
- * @param props - Additional props for the InfoItem component.
- * @param ref - Ref for the InfoItem component.
- * @returns The rendered InfoItem component.
+ * InfoItem is a component that displays information about a job or position, including company, date, job title, and job description.
+ *
+ * Props:
+ * - info: An object containing the following properties:
+ *   - company: The name of the company.
+ *   - infoUrl: An optional URL for more information.
+ *   - date: The date associated with the job or position.
+ *   - jobTitle: The title of the job or position.
+ *   - jobDesc: The description of the job or position.
+ * - subtitleEmpty: A boolean indicating whether the subtitle is empty.
+ *
+ * Example usage:
+ * <InfoItem
+ *   info={{
+ *     company: "Company Name",
+ *     infoUrl: "https://example.com",
+ *     date: "2021-2022",
+ *     jobTitle: "Job Title",
+ *     jobDesc: "Job Description"
+ *   }}
+ *   subtitleEmpty={false}
+ * />
  */
 
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";

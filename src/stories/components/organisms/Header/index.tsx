@@ -1,3 +1,21 @@
+/**
+ * Header is a component that displays the header section of a webpage.
+ *
+ * Props:
+ * - user: An object containing user details such as name, job title, contact details, and image details. Optional.
+ *
+ * Example usage:
+ * <Header
+ *   user={{
+ *     name: "John Doe",
+ *     jobTitle: "Software Engineer",
+ *     contactDetail: { title: "Contact", email: "john.doe@example.com", phone: "+1234567890" },
+ *     imageDetail: { src: "profile.jpg", alt: "Profile Image" },
+ *     iconsData: [{ name: "icon1", width: "24", height: "24" }]
+ *   }}
+ * />
+ */
+
 import { SubtitleCopy } from "@/stories/components/atoms/SubtitleCopy";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import {
