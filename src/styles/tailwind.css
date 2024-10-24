@@ -1170,6 +1170,11 @@ strong {
   line-height: 1.75rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-black {
   font-weight: 900;
 }
@@ -1331,7 +1336,7 @@ body {
   }
 }
 
-body.theme-dark.modal-open {
+body.theme-dark.modal-open .modal-wapper {
   .text,
   .text-workdone {
     color: rgba(0, 0, 0, 1);
@@ -1372,6 +1377,9 @@ body.theme-dark.modal-open {
     }
     .dark\:bg-slate-950 {
       background-color: rgb(2, 6, 23);
+    }
+    .intro ul.list-arrows li::before {
+      color: var(--textColor);
     }
   }
 
@@ -1889,6 +1897,10 @@ body.theme-dark.modal-open {
 
   .lg\:mt-0 {
     margin-top: 0px;
+  }
+
+  .lg\:mb-8 {
+    margin-bottom: 2rem;
   }
 
   .lg\:flex {

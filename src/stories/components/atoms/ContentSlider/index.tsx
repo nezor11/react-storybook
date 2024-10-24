@@ -64,14 +64,14 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
     iot: "Internet of Things",
     cybersecurity: "Cybersecurity",
     servers_hosting: "Servers & Hosting",
-    testing_debugging: "Testing & Debugging",
+    testing_debugging: "Debugging",
     version_control: "Version Control",
-    maintenance_updates: "Maintenance & Updates",
-    performance_optimization: "Performance Optimization",
+    maintenance_updates: "Maintenance",
+    performance_optimization: "Performance",
     responsive_design: "Responsive Design",
     ux_ui_design: "UX/UI Consultancy",
     seo: "SEO Support",
-    analytics_metrics: "Analytics & Metrics",
+    analytics_metrics: "Metrics",
     security: "Security",
   };
 
@@ -114,11 +114,23 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
                 subtitle="h4"
               />
             </div>
-            <TitleCopy text={title} align="left" mods="text-header" />
-            <BodyCopy text={description} tag="div" mods="max-w-screen-xl" />
+            <TitleCopy
+              text={title}
+              align="left"
+              mods="text-header dark:text-white mb-4 lg:mb-8"
+            />
+            <BodyCopy
+              text={description}
+              tag="div"
+              mods="max-w-screen-xl dark:text-white"
+            />
             {link?.href && (
               <div className="mt-4 w-full link-text [&_a]:text-primary-500 [&_a]:underline">
-                <BodyCopy tag="span" text="More info at: " />
+                <BodyCopy
+                  tag="span"
+                  mods="dark:text-white"
+                  text="More info at: "
+                />
                 <Link
                   href={link.href}
                   link_text={domain}
@@ -132,7 +144,7 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
             <BodyCopy
               tag="div"
               text={`${workType} - Project`}
-              mods="col-span-full capitalize text-worktype mt-4"
+              mods="col-span-full capitalize text-worktype dark:text-white mt-4"
               weight="bold"
               align="right"
             />
@@ -141,7 +153,10 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
             <div className="workdone-wrapper mt-2 text-right w-full xl:max-w-3xl xl:ml-auto">
               <ul className="text-workdone mb-2 list-arrows grid md:grid-cols-2 md:grid-rows-8 xl:grid-rows-4 md:grid-flow-col gap-1 justify-items-start rtl-grid">
                 {mappedWorkDone.map((item, index) => (
-                  <li key={index} className="text-sm text-right">
+                  <li
+                    key={index}
+                    className="text-sm text-right dark:text-white"
+                  >
                     {item}
                   </li>
                 ))}
@@ -188,17 +203,19 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
                 <li
                   key={index}
                   style={{ backgroundImage: `url(${image.src})` }}
-                >
-                  <div className="center-y">
-                    <SubtitleCopy
-                      text={`Slider Title ${index + 1}`}
-                      mods="text-xl uppercase text-primary-500 font-medium -mb-4"
-                      subtitle="h4"
-                    />
-                  </div>
-                </li>
+                ></li>
               ))}
             </ul>
+            <div className="center-y">
+              {images.map((_, index) => (
+                <SubtitleCopy
+                  key={index} // <- Añadir key aquí
+                  text={`Slider Title ${index + 1}`}
+                  mods="text-xs uppercase text-primary-500 font-medium -mb-4"
+                  subtitle="h4"
+                />
+              ))}
+            </div>
             <nav>
               {images.map((_, index) => (
                 <a key={index}></a>

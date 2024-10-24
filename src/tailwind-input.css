@@ -16,7 +16,7 @@ body {
   }
 }
 
-body.theme-dark.modal-open {
+body.theme-dark.modal-open .modal-wapper {
   .text,
   .text-workdone {
     color: rgba(0, 0, 0, 1);
@@ -60,6 +60,10 @@ body.theme-dark.modal-open {
 
     .dark\:bg-slate-950 {
       background-color: rgb(2, 6, 23);
+    }
+
+    .intro ul.list-arrows li::before {
+      color: var(--textColor);
     }
   }
 

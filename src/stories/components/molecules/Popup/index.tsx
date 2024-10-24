@@ -97,7 +97,7 @@ export const Popup: React.FC<PopupProps> = ({
     testing_debugging: "Testing & Debugging",
     version_control: "Version Control",
     maintenance_updates: "Maintenance & Updates",
-    performance_optimization: "Performance Optimization",
+    performance_optimization: "Performance",
     responsive_design: "Responsive Design",
     ux_ui_design: "UX/UI Consultancy",
     seo: "SEO Support",
@@ -122,7 +122,7 @@ export const Popup: React.FC<PopupProps> = ({
   );
 
   return (
-    <div className="min-h-screen min-w-screen overflow-hidden modal-content">
+    <div className="min-h-screen min-w-screen overflow-hidden popup-content">
       <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950 overflow-y-auto">
         <ButtonCloseComponent onClick={handleClose} />
         <ContentSlider

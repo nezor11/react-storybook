@@ -69,11 +69,25 @@
   }
 
   .center-y {
-    display: table-cell;
-    vertical-align: top;
-    text-align: left;
-    padding-left: 1rem;
-    padding-top: 1rem;
+    position: absolute;
+    bottom: auto;
+    top: 50%;
+    left: -160px;
+    right: 0;
+    z-index: 10;
+    transform: rotate(-90deg) translateX(100%);
+    display: inline-table;
+    overflow: hidden;
+    width: 300px;
+    height: 20px;
+
+    h4 {
+      display: none;
+
+      &.current {
+        display: block;
+      }
+    }
   }
 
   li.current {
@@ -87,27 +101,26 @@
 
   .slider nav {
     position: absolute;
-    bottom: 5%;
-    left: 0;
+    bottom: 2%;
+    left: -35px;
     right: 0;
-    text-align: center;
     z-index: 10;
+    transform: rotate(-90deg);
+    display: inline-table;
   }
 
   nav a {
     display: inline-block;
     border-radius: 50%;
-    width: 1.2rem;
-    height: 1.2rem;
-    min-width: 12px;
-    min-height: 12px;
+    min-width: 6px;
+    min-height: 6px;
     background: rgba(244, 63, 94, 0.75);
-    margin: 0 1rem;
+    margin: 0 0.2rem;
     transition: transform 0.3s;
   }
 
   a.current_dot {
-    transform: scale(1.4);
+    transform: scale(1.2);
   }
 
   @media screen and (max-width: 768px) {

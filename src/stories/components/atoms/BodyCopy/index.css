@@ -4,4 +4,10 @@
   > div > p + p {
     @apply mt-2;
   }
+
+  &.main-text {
+    > div > p + p {
+      @apply mt-8;
+    }
+  }
 }
