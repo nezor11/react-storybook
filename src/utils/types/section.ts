@@ -81,6 +81,7 @@ export interface SlideDetails {
   type: string;
   workDate: string;
   slideTitle: string;
+  backgroundColor?: string;
   videoUrl?: string;
   _id: string;
   infoUrl?: string;

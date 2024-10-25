@@ -63,7 +63,7 @@ body.theme-dark.modal-open .modal-wapper {
     }
 
     .intro ul.list-arrows li::before {
-      color: var(--textColor);
+      border-color: var(--copy-primary);
     }
   }
 

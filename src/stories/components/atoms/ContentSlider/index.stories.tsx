@@ -130,6 +130,7 @@ export const Video: Story = {
       link_text: "Google",
       rel: "noopener noreferrer",
     },
+    backgroundColor: "#E5FFE5",
     videoUrl: "https://www.youtube.com/watch?v=6v2L2UGZJAM",
     iconsData: [
       { name: "WordpressIcon", width: "1em", height: "1em" },
@@ -140,5 +141,28 @@ export const Video: Story = {
       { name: "PhpIcon", width: "1em", height: "1em" },
       { name: "GitHubIcon", width: "1em", height: "1em" },
     ],
+  },
+  render: (args) => {
+    const [images, setImages] = useState([
+      {
+        src: "https://placehold.co/800x1200",
+        width: 800,
+        height: 1200,
+        alt: "Placeholder Image",
+      },
+    ]);
+
+    useEffect(() => {
+      const loadImages = async () => {
+        const unsplashImages = await fetchImagesFromUnsplash(
+          "web-development",
+          1
+        );
+        setImages(unsplashImages);
+      };
+      loadImages();
+    }, []);
+
+    return <ContentSlider {...args} images={images} />;
   },
 };

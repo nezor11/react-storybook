@@ -183,6 +183,7 @@ export const Default: Story = {
     cardImageAlt: "Project thumbnail",
     cardImageWidth: 300,
     cardImageHeight: 350,
+    backgroundColor: "#f5f5f5",
   },
   render: (args) => {
     const [images, setImages] = useState([]);
@@ -240,8 +241,9 @@ export const withVideo: Story = {
       link_text: "Watch on YouTube",
       rel: "",
     },
-    images: [], // Inicializa las imágenes vacías
+    backgroundColor: "#E558E5",
     videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    images: [], // Inicializa las imágenes vacías
     infoUrl: "https://example.com/project-info",
     cardImageAlt: "Project thumbnail",
     cardImageWidth: 300,

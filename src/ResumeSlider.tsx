@@ -73,6 +73,7 @@ const ResumeSlider: React.FC<Props> = ({ slider }) => {
         description: consolidatedJobDescHtml || "",
         workDone: slide.slideDetails.workDone || [],
         workType: slide.slideDetails.type || "",
+        backgroundColor: slide.slideDetails.backgroundColor || "",
         videoUrl: slide.slideDetails.videoUrl || "",
         images: slide.slideDetails.images || [],
         link: { href: slide.slideDetails.infoUrl || "", text: "More Info" },

@@ -111,6 +111,7 @@ export const SliderSectionStory: React.FC = () => {
             "Responsive layout implementation",
             "Performance optimization",
           ],
+          backgroundColor: "red",
           imageUrl: slide1Image.src, // Imagen obtenida de Unsplash
           cardHeight: slide1Image.height, // Altura dinámica
           images: imagesFetched, // Array de imágenes para el popup
@@ -131,6 +132,7 @@ export const SliderSectionStory: React.FC = () => {
             "Database design",
             "Payment gateway integration",
           ],
+          backgroundColor: "blue",
           imageUrl: slide2Image.src, // Imagen obtenida de Unsplash
           cardHeight: slide2Image.height, // Altura dinámica
           images: imagesFetched, // Array de imágenes para el popup
@@ -151,6 +153,8 @@ export const SliderSectionStory: React.FC = () => {
             "State management implementation",
             "Native module integration",
           ],
+          backgroundColor: "yellow",
+          videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
           imageUrl: slide3Image.src, // Imagen obtenida de Unsplash
           cardHeight: slide3Image.height, // Altura dinámica
           images: imagesFetched, // Array de imágenes para el popup

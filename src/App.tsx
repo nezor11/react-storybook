@@ -67,6 +67,7 @@ const useLatestResume = () => {
                   slideSummary,
                   slideDesc,
                   workDone,
+                  backgroundColor,
                   videoUrl,
                   icons[] {
                     "icon": icons-> {

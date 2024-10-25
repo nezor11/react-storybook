@@ -57,6 +57,7 @@ interface PopupProps {
   videoUrl?: string;
   link?: LinkProps;
   iconsData?: IconData[];
+  backgroundColor?: string;
   ButtonCloseComponent: React.FC<{ onClick: () => void }>;
 }
 
@@ -72,6 +73,7 @@ export const Popup: React.FC<PopupProps> = ({
   link,
   iconsData,
   videoUrl,
+  backgroundColor,
   ButtonCloseComponent,
 }) => {
   const nameMapping: { [key: string]: string } = {
@@ -110,11 +112,7 @@ export const Popup: React.FC<PopupProps> = ({
     [workDone]
   );
 
-  const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)?.[2] || "";
-
   const handleClose = () => onClose();
-
-  const formatCompanyName = (name: string) => name.replace(/_/g, " ");
 
   const randomizedImages = useMemo(
     () => images.sort(() => Math.random() - 0.5),
@@ -123,7 +121,7 @@ export const Popup: React.FC<PopupProps> = ({
 
   return (
     <div className="min-h-screen min-w-screen overflow-hidden popup-content">
-      <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950 overflow-y-auto">
+      <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950 lg:overflow-hidden">
         <ButtonCloseComponent onClick={handleClose} />
         <ContentSlider
           title={title}
@@ -136,6 +134,7 @@ export const Popup: React.FC<PopupProps> = ({
           iconsData={iconsData}
           videoUrl={videoUrl}
           images={randomizedImages}
+          backgroundColor={backgroundColor}
         />
       </div>
     </div>
