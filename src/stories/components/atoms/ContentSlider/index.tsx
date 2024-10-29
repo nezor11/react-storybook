@@ -107,24 +107,24 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
     <section className="intro">
       <div className="left lg:px-4 2xl:px-16">
         <div>
-          <div className="h-full">
+          <div className="content-wrapper">
             <div className="w-full xl:max-w-5xl xl:ml-auto">
               <div className="2xl:-mb-4 flex">
                 <SubtitleCopy
                   text={formatCompanyName(company)}
-                  mods="text-base lg:text-2xl uppercase text-primary-500 font-medium"
+                  mods="text-base uppercase text-primary-500 font-medium"
                   subtitle="h4"
                 />
                 <SubtitleCopy
                   text={year}
-                  mods="text-base lg:text-xl uppercase text-primary-500 font-medium ml-2 lg:!leading-8"
+                  mods="text-base uppercase text-primary-500 font-medium ml-2"
                   subtitle="h4"
                 />
               </div>
               <TitleCopy
                 text={title}
                 align="left"
-                mods="text-header dark:text-white mb-4 lg:mb-8"
+                mods="text-xl lg:text-5xl dark:text-white mb-4 lg:mb-8"
               />
               <BodyCopy
                 text={description}
