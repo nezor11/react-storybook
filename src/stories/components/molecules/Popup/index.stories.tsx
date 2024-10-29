@@ -1,7 +1,7 @@
 import ButtonClose from "@/stories/components/atoms/ButtonClose";
 import { Code } from "@/stories/components/system/Code";
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Popup } from ".";
 
 const meta: Meta<typeof Popup> = {
@@ -92,6 +92,34 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+const fetchImagesFromUnsplash = async (query: string, count = 3) => {
+  try {
+    const response = await fetch(
+      `https://api.unsplash.com/photos/random?query=${query}&count=${count}&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc`
+    );
+    if (!response.ok) throw new Error("Error al obtener imágenes de Unsplash");
+
+    const data = await response.json();
+    console.log("SRC IMG ------------------------> ", data);
+    return data.map((img: any) => ({
+      alt: img.alt_description || "Unsplash Image",
+      src: `${img.urls.raw}&w=800&h=1200&fit=crop`,
+      width: 1200,
+      height: 800,
+    }));
+  } catch (error) {
+    console.error("Error fetching images:", error);
+    return [
+      {
+        src: "https://placehold.co/800x1200",
+        width: 800,
+        height: 1200,
+        alt: "Placeholder Image",
+      },
+    ];
+  }
+};
+
 export const Default: Story = {
   args: {
     title: "Modal Title",
@@ -128,7 +156,21 @@ export const Default: Story = {
     ],
     ButtonCloseComponent: ({ onClick }) => <ButtonClose onClick={onClick} />,
   },
-  render: (args) => <Popup {...args} />,
+  render: (args) => {
+    const [images, setImages] = useState([]);
+    const [cardImage, setCardImage] = useState("");
+
+    useEffect(() => {
+      const fetchAndSetCardImage = async () => {
+        const fetchedImage = await fetchImagesFromUnsplash("nature", 1);
+        setCardImage(fetchedImage[0].src);
+      };
+
+      fetchAndSetCardImage();
+    }, []);
+
+    return <Popup {...args} />;
+  },
 };
 
 export const SourceCode: Story = {

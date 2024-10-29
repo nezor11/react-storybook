@@ -82,7 +82,7 @@ const fetchImagesFromUnsplash = async (query: string, count = 3) => {
   }
 };
 
-export const SliderSectionStory: React.FC = () => {
+export const Default: React.FC = () => {
   const [slidesData, setSlidesData] = useState([]);
 
   useEffect(() => {
@@ -91,6 +91,19 @@ export const SliderSectionStory: React.FC = () => {
       const slide1Image = await fetchCardImage();
       const slide2Image = await fetchCardImage();
       const slide3Image = await fetchCardImage();
+      const slide4Image = await fetchCardImage();
+      const slide5Image = await fetchCardImage();
+      const slide6Image = await fetchCardImage();
+      const slide7Image = await fetchCardImage();
+      const slide8Image = await fetchCardImage();
+      const slide9Image = await fetchCardImage();
+      const slide10Image = await fetchCardImage();
+      const slide11Image = await fetchCardImage();
+      const slide12Image = await fetchCardImage();
+      const slide13Image = await fetchCardImage();
+      const slide14Image = await fetchCardImage();
+      const slide15Image = await fetchCardImage();
+      const slide16Image = await fetchCardImage();
 
       const imagesFetched = await fetchImagesFromUnsplash("nature", 3); // Imágenes para el popup
 
@@ -159,6 +172,276 @@ export const SliderSectionStory: React.FC = () => {
           cardHeight: slide3Image.height, // Altura dinámica
           images: imagesFetched, // Array de imágenes para el popup
           workType: "Mobile",
+        },
+        {
+          year: "2021",
+          title: "AI Chatbot",
+          description: "Development of an AI-powered customer service chatbot",
+          iconsData: [
+            { name: "PythonIcon", width: "1em", height: "1em" },
+            { name: "TensorFlowIcon", width: "1em", height: "1em" },
+          ],
+          company: "ChatBot Inc.",
+          summary: "Intelligent chatbot for customer support",
+          workDone: [
+            "Natural language processing",
+            "Machine learning model training",
+            "Integration with customer service platform",
+          ],
+          backgroundColor: "green",
+          imageUrl: slide4Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide4Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "AI",
+        },
+        {
+          year: "2022",
+          title: "Blockchain Solution",
+          description: "Development of a decentralized blockchain application",
+          iconsData: [
+            { name: "EthereumIcon", width: "1em", height: "1em" },
+            { name: "SolidityIcon", width: "1em", height: "1em" },
+          ],
+          company: "BlockChain Co.",
+          summary: "Secure and transparent blockchain solution",
+          workDone: [
+            "Smart contract development",
+            "Blockchain integration",
+            "Security audits",
+          ],
+          backgroundColor: "purple",
+          imageUrl: slide5Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide5Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "Blockchain",
+        },
+        {
+          year: "2023",
+          title: "E-commerce Platform",
+          description: "Development of a scalable e-commerce platform",
+          iconsData: [
+            { name: "ReactIcon", width: "1em", height: "1em" },
+            { name: "NodeJSIcon", width: "1em", height: "1em" },
+          ],
+          company: "E-Shop Inc.",
+          summary: "A robust and scalable e-commerce solution",
+          workDone: [
+            "Frontend development",
+            "Backend development",
+            "Payment gateway integration",
+          ],
+          backgroundColor: "blue",
+          imageUrl: slide6Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide6Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "E-commerce",
+        },
+        {
+          year: "2024",
+          title: "IoT Home Automation",
+          description: "Development of an IoT-based home automation system",
+          iconsData: [
+            { name: "IoTIcon", width: "1em", height: "1em" },
+            { name: "ArduinoIcon", width: "1em", height: "1em" },
+          ],
+          company: "SmartHome Inc.",
+          summary: "Automated home control and monitoring system",
+          workDone: [
+            "Sensor integration",
+            "Mobile app development",
+            "Cloud connectivity",
+          ],
+          backgroundColor: "orange",
+          imageUrl: slide7Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide7Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "IoT",
+        },
+        {
+          year: "2025",
+          title: "Cybersecurity Solution",
+          description: "Development of a comprehensive cybersecurity solution",
+          iconsData: [
+            { name: "SecurityIcon", width: "1em", height: "1em" },
+            { name: "FirewallIcon", width: "1em", height: "1em" },
+          ],
+          company: "SecureTech",
+          summary: "Advanced cybersecurity measures for enterprises",
+          workDone: [
+            "Threat detection",
+            "Vulnerability assessment",
+            "Incident response",
+          ],
+          backgroundColor: "red",
+          imageUrl: slide8Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide8Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "Cybersecurity",
+        },
+        {
+          year: "2026",
+          title: "AI-Powered Analytics",
+          description: "Development of an AI-powered analytics platform",
+          iconsData: [
+            { name: "AIIcon", width: "1em", height: "1em" },
+            { name: "AnalyticsIcon", width: "1em", height: "1em" },
+          ],
+          company: "DataInsights",
+          summary: "Advanced analytics using AI and machine learning",
+          workDone: [
+            "Data collection",
+            "Model training",
+            "Dashboard development",
+          ],
+          backgroundColor: "purple",
+          imageUrl: slide9Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide9Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "Analytics",
+        },
+        {
+          year: "2027",
+          title: "Blockchain Payment System",
+          description: "Development of a blockchain-based payment system",
+          iconsData: [
+            { name: "BlockchainIcon", width: "1em", height: "1em" },
+            { name: "PaymentIcon", width: "1em", height: "1em" },
+          ],
+          company: "CryptoPay",
+          summary: "Secure and efficient blockchain payment solutions",
+          workDone: [
+            "Smart contract development",
+            "Wallet integration",
+            "Transaction security",
+          ],
+          backgroundColor: "green",
+          imageUrl: slide10Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide10Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "Blockchain",
+        },
+        {
+          year: "2028",
+          title: "Augmented Reality App",
+          description: "Development of an augmented reality mobile application",
+          iconsData: [
+            { name: "ARIcon", width: "1em", height: "1em" },
+            { name: "MobileAppIcon", width: "1em", height: "1em" },
+          ],
+          company: "ARVision",
+          summary: "Immersive augmented reality experiences",
+          workDone: ["3D modeling", "AR integration", "User experience design"],
+          backgroundColor: "yellow",
+          imageUrl: slide11Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide11Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "Augmented Reality",
+        },
+        {
+          year: "2029",
+          title: "AI Chatbot",
+          description: "Development of an AI-powered customer service chatbot",
+          iconsData: [
+            { name: "AIIcon", width: "1em", height: "1em" },
+            { name: "ChatbotIcon", width: "1em", height: "1em" },
+          ],
+          company: "ChatAI",
+          summary: "Intelligent and responsive customer service solutions",
+          workDone: [
+            "Natural language processing",
+            "Machine learning integration",
+            "User interaction design",
+          ],
+          backgroundColor: "orange",
+          imageUrl: slide12Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide12Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "AI",
+        },
+        {
+          year: "2030",
+          title: "Virtual Reality Game",
+          description: "Development of an immersive virtual reality game",
+          iconsData: [
+            { name: "VRIcon", width: "1em", height: "1em" },
+            { name: "GameIcon", width: "1em", height: "1em" },
+          ],
+          company: "VRGames",
+          summary: "Cutting-edge virtual reality gaming experiences",
+          workDone: [
+            "3D game development",
+            "VR integration",
+            "Gameplay design",
+          ],
+          backgroundColor: "pink",
+          imageUrl: slide13Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide13Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "Virtual Reality",
+        },
+        {
+          year: "2031",
+          title: "IoT Smart Home System",
+          description: "Development of an IoT-based smart home system",
+          iconsData: [
+            { name: "IoTIcon", width: "1em", height: "1em" },
+            { name: "SmartHomeIcon", width: "1em", height: "1em" },
+          ],
+          company: "SmartHomeTech",
+          summary: "Innovative and connected smart home solutions",
+          workDone: [
+            "Device integration",
+            "Home automation",
+            "Security system development",
+          ],
+          backgroundColor: "cyan",
+          imageUrl: slide14Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide14Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "IoT",
+        },
+        {
+          year: "2032",
+          title: "Healthcare Management System",
+          description:
+            "Development of a comprehensive healthcare management system",
+          iconsData: [
+            { name: "HealthcareIcon", width: "1em", height: "1em" },
+            { name: "ManagementIcon", width: "1em", height: "1em" },
+          ],
+          company: "HealthTech",
+          summary: "Efficient and secure healthcare management solutions",
+          workDone: [
+            "Patient data management",
+            "Appointment scheduling",
+            "Telemedicine integration",
+          ],
+          backgroundColor: "teal",
+          imageUrl: slide15Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide15Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "Healthcare",
+        },
+        {
+          year: "2033",
+          title: "E-learning Platform",
+          description: "Development of an interactive e-learning platform",
+          iconsData: [
+            { name: "ELearningIcon", width: "1em", height: "1em" },
+            { name: "EducationIcon", width: "1em", height: "1em" },
+          ],
+          company: "EduTech",
+          summary: "Engaging and effective online learning experiences",
+          workDone: [
+            "Course content creation",
+            "Interactive modules",
+            "User progress tracking",
+          ],
+          backgroundColor: "purple",
+          imageUrl: slide16Image.src, // Imagen obtenida de Unsplash
+          cardHeight: slide16Image.height, // Altura dinámica
+          images: imagesFetched, // Array de imágenes para el popup
+          workType: "E-learning",
         },
       ]);
     };
