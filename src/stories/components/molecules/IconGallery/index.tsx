@@ -16,7 +16,8 @@
  * />
  */
 
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import React, { useEffect, useState } from "react";
 
 export interface IconGalleryProps {
@@ -62,12 +63,12 @@ export const IconGallery: React.FC<IconGalleryProps> = ({ iconsData = [] }) => {
 
   return (
     <div className="flex items-center flex-wrap justify-center">
-      {icons.map((Icon, index) => (
+      {icons.map((Icon) => (
         <Icon
-          className={iconsData[index]?.name}
-          key={index}
-          width={iconsData[index]?.width || "1em"}
-          height={iconsData[index]?.height || "1em"}
+          className={iconsData[nanoid()]?.name}
+          key={nanoid()}
+          width={iconsData[nanoid()]?.width || "1em"}
+          height={iconsData[nanoid()]?.height || "1em"}
         />
       ))}
     </div>

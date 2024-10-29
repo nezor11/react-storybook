@@ -9,7 +9,7 @@
  */
 
 import React from "react";
-import { IconGallery, IconGalleryProps } from "../IconGallery";
+import { IconGallery, type IconGalleryProps } from "../IconGallery";
 
 export const SuspenseIconGallery: React.FC<IconGalleryProps> = (props) => {
   return (

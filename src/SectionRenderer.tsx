@@ -1,8 +1,9 @@
+// biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 import HeaderSection from "./HeaderSection";
 import ResumeSection from "./ResumeSection";
 import ResumeSlider from "./ResumeSlider";
-import { Section, Slide } from "./utils/types/section";
+import type { Section, Slide } from "./utils/types/section";
 
 interface Props {
   section?: Section | Slide;

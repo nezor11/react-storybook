@@ -14,11 +14,17 @@
  * />
  */
 
-import { Footer, FooterProps } from "@/stories/components/organisms/Footer";
-import { Header, User } from "@/stories/components/organisms/Header";
-import { Resume, ResumeObject } from "@/stories/components/templates/Resume";
+import {
+  Footer,
+  type FooterProps,
+} from "@/stories/components/organisms/Footer";
+import { Header, type User } from "@/stories/components/organisms/Header";
+import {
+  Resume,
+  type ResumeObject,
+} from "@/stories/components/templates/Resume";
 import { cn } from "@/utils";
-import React, { ComponentPropsWithRef, forwardRef } from "react";
+import React, { type ComponentPropsWithRef, forwardRef } from "react";
 
 interface PageObject extends ResumeObject {
   dataHeaderObject?: User[] | null;

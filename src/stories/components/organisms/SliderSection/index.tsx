@@ -26,11 +26,13 @@
  * />
  */
 
-import { LinkProps } from "@/stories/components/atoms/Link";
+import type { LinkProps } from "@/stories/components/atoms/Link";
 import { CardSlide } from "@/stories/components/molecules/CardSlide";
-import { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
+import type { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
 import { TitleSection } from "@/stories/components/molecules/TitleSection";
 import { cn } from "@/utils";
+import { nanoid } from "nanoid";
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -40,6 +42,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./index.css";
 
 export interface SlideData {
+  backgroundColor?: string;
   alt?: string;
   year?: string;
   title: string;
@@ -130,13 +133,14 @@ export const SliderSection: React.FC<SliderSectionProps> = ({
           }}
         >
           {slidesData.map((slide, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={nanoid()}>
               <CardSlide
                 {...slide}
                 cardImage={slide.imageUrl}
                 cardImageAlt={slide.alt}
                 cardImageHeight={slide.imageDetails?.height}
                 year={slide.year || ""}
+                backgroundColor={slide.backgroundColor || null}
               />
             </SwiperSlide>
           ))}

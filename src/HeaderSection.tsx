@@ -1,11 +1,12 @@
 // HeaderSection.tsx
 import { Header } from "@/stories/components/organisms/Header";
-import {
+import type {
   ContactDetails,
   FrameImageProps,
   ImageDetails,
   Section,
 } from "@/utils/types/section";
+// biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 
 interface Props {
@@ -18,8 +19,8 @@ const HeaderSection: React.FC<Props> = ({ section }) => {
     .map((iconGallery) => iconGallery.iconDetails)
     .map((icon) => ({
       name: icon.name,
-      width: icon.width ? icon.width + "px" : "1em", // Asume "1em" como valor predeterminado si no está especificado
-      height: icon.height ? icon.height + "px" : "1em", // Asume "1em" como valor predeterminado si no está especificado
+      width: icon.width ? `${icon.width}px` : "1em", // Asume "1em" como valor predeterminado si no está especificado
+      height: icon.height ? `${icon.height}px` : "1em", // Asume "1em" como valor predeterminado si no está especificado
     }));
 
   const contactInfo: ContactDetails = section.contactDetails

@@ -2,13 +2,13 @@ import Loader from "@/stories/components/atoms/Loader";
 import MemoizedMoonIcon from "@/stories/components/molecules/IconGallery/Icons/MoonIcon";
 import MemoizedSunIcon from "@/stories/components/molecules/IconGallery/Icons/SunIcon";
 import { Footer } from "@/stories/components/organisms/Footer";
-import { Resume } from "@/utils/types/resume";
+import type { Resume } from "@/utils/types/resume";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { ThemeContext } from "./contexts";
 import SectionRenderer from "./SectionRenderer";
+import { ThemeContext } from "./contexts";
 import { sanityAPI } from "./utils/setup/sanitySetup";
-import { ThemeContextInterface } from "./utils/types/theme";
+import type { ThemeContextInterface } from "./utils/types/theme";
 
 // Hook personalizado para obtener el último resume
 const useLatestResume = () => {
@@ -124,8 +124,8 @@ const useTheme = () => {
 const ResumeContent = ({ latestResume }: { latestResume: Resume }) => {
   return (
     <main key={latestResume._id}>
-      {latestResume.pageBuilder.map((section, index) => (
-        <SectionRenderer key={index} section={section} />
+      {latestResume.pageBuilder.map((section) => (
+        <SectionRenderer key={section._key} section={section} />
       ))}
       {latestResume.pageBuilder[0] && (
         <Footer
@@ -153,7 +153,10 @@ function App() {
     () =>
       latestResume && (
         <Helmet>
-          <title>{`Jorge Martínez Ortiz - Frontend Developer, Designer, Creator, Frontender, Trainer`}</title>
+          <title>
+            Jorge Martínez Ortiz - Frontend Developer, Designer, Creator,
+            Frontender, Trainer
+          </title>
           <meta
             name="description"
             content="Detail-oriented designer, creator, and developer with a passion for usability and frontend. Skilled in content management systems and committed to creating a positive work environment."
@@ -207,6 +210,7 @@ function App() {
       {helmetContent}
       <div className="container py-10 mx-auto px-4 max-w-5xl relative">
         <button
+          type="button"
           onClick={toggleTheme}
           className={`absolute right-3 top-4 ${darkTheme ? "button-dark" : "button-light"}`}
         >

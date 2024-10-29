@@ -1,4 +1,4 @@
-import { Section } from "@/utils/types/section";
+import type { Section } from "@/utils/types/section";
 
 export interface Resume {
   _id: string;

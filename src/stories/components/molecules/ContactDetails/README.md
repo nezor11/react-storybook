@@ -20,7 +20,7 @@
  */
 
 import { cn } from "@/utils";
-import React, { ComponentPropsWithRef, forwardRef } from "react";
+import React, { type ComponentPropsWithRef, forwardRef } from "react";
 import Obfuscate from "react-obfuscate";
 import "./index.css";
 
@@ -55,7 +55,11 @@ export const ContactDetail = forwardRef<HTMLDivElement, ContactDetailProps>(
     const addresUrlEncoded = contactDetail.address.replace(/ /g, "+");
 
     return (
-      <div ref={ref} className={(cn("m-0 p-0"), classContactDetail)} {...props}>
+      <div
+        ref={ref}
+        className={`${cn("m-0 p-0")} ${classContactDetail}`}
+        {...props}
+      >
         <ul>
           {contactDetail.phone && (
             <li className="mb-0 text-gray-400 text-sm">
@@ -72,6 +76,7 @@ export const ContactDetail = forwardRef<HTMLDivElement, ContactDetailProps>(
               <a
                 href={`https://maps.google.com/maps?q=${addresUrlEncoded}`}
                 target="_blank"
+                rel="noreferrer"
               >
                 {contactDetail.address}
               </a>

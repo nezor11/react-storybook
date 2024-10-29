@@ -20,17 +20,18 @@ import { SubtitleCopy } from "@/stories/components/atoms/SubtitleCopy";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import {
   ContactDetail,
-  ContactDetailTexts,
+  type ContactDetailTexts,
 } from "@/stories/components/molecules/ContactDetails";
 import {
   FrameImage,
-  FrameImageProps,
+  type FrameImageProps,
 } from "@/stories/components/molecules/FrameImage";
 
 import {
   IconGallery,
-  IconGalleryProps,
+  type IconGalleryProps,
 } from "@/stories/components/molecules/IconGallery";
+// biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 
 import "./index.css";
@@ -77,11 +78,9 @@ export const Header: React.FC<HeaderProps> = ({ user }) => (
           </>
         )}
         {user?.iconsData && (
-          <>
-            <div className="header__aux-gallery-details">
-              <IconGallery iconsData={user.iconsData} />
-            </div>
-          </>
+          <div className="header__aux-gallery-details">
+            <IconGallery iconsData={user.iconsData} />
+          </div>
         )}
       </div>
     </div>

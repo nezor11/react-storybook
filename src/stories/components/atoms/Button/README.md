@@ -18,6 +18,7 @@
  * />
  */
 
+// biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 import "./index.css";
 

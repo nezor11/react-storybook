@@ -12,6 +12,7 @@
  * If the file is not found, an error message is displayed.
  */
 
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";

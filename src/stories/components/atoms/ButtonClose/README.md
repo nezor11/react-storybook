@@ -8,6 +8,7 @@
  * <ButtonClose onClick={handleClose} />
  */
 
+// biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 
 interface ButtonCloseProps {
@@ -17,7 +18,9 @@ interface ButtonCloseProps {
 const ButtonClose: React.FC<ButtonCloseProps> = ({ onClick }): JSX.Element => {
   return (
     <button
+      type="button"
       onClick={onClick}
+      aria-label="Close"
       className="absolute top-2 right-2 bg-white text-gray-500 dark:text-white hover:text-gray-700 z-50 dark:bg-transparent rounded"
     >
       <svg
@@ -27,6 +30,7 @@ const ButtonClose: React.FC<ButtonCloseProps> = ({ onClick }): JSX.Element => {
         viewBox="0 0 24 24"
         stroke="currentColor"
       >
+        <title>Close</title>
         <path
           strokeLinecap="round"
           strokeLinejoin="round"

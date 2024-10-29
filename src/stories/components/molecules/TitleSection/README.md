@@ -21,8 +21,11 @@
  */
 
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
-import React, { CSSProperties } from "react";
-import { IconGallery, IconGalleryProps } from "../IconGallery";
+import DOMPurify from "dompurify";
+import type { CSSProperties } from "react";
+// biome-ignore lint/style/useImportType: <explanation>
+import React from "react";
+import { IconGallery, type IconGalleryProps } from "../IconGallery";
 import "./index.css";
 
 /**
@@ -48,15 +51,7 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
 }: TitleSectionProps) => {
   const Header = header as keyof JSX.IntrinsicElements;
 
-  /**
-   * Sanitizes HTML by creating an object with a "__html" property.
-   *
-   * @param html - The HTML string to sanitize.
-   * @returns An object with a "__html" property containing the sanitized HTML.
-   */
-  const sanitizeHTML = (html: string): { __html: string } => {
-    return { __html: html };
-  };
+  const sanitizedText = DOMPurify.sanitize(text);
 
   return (
     <div>
@@ -69,9 +64,10 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
         <Header
           className={`info-section__text ${mods}`}
           style={styles}
-          dangerouslySetInnerHTML={sanitizeHTML(text)}
           {...props}
-        />
+        >
+          {sanitizedText}
+        </Header>
       </div>
       {subtext !== "" && (
         <BodyCopy tag="p" size="sm" mods="mt-4 lg:mt-0" italic text={subtext} />

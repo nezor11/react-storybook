@@ -32,15 +32,17 @@
  * />
  */
 
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import { ImageSlider } from "@/stories/components/atoms/ImageSlider";
-import { Link, LinkProps } from "@/stories/components/atoms/Link";
+import { Link, type LinkProps } from "@/stories/components/atoms/Link";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { VideoPlayer } from "@/stories/components/atoms/VideoPlayer";
-import { IconData } from "@/stories/components/molecules/CardSlide";
+import type { IconData } from "@/stories/components/molecules/CardSlide";
 import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
+import { nanoid } from "nanoid";
 
 import "./index.css";
 
@@ -143,22 +145,26 @@ export const Modal: React.FC<ModalProps> = ({
     if (!isLgScreen) {
       const observer = new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => {
+          for (const entry of entries) {
             const element = entry.target as HTMLElement;
             if (entry.isIntersecting && !highlightedElements.has(element)) {
               element.classList.add("highlighted");
               setHighlightedElements((prev) => new Set(prev).add(element));
             }
-          });
+          }
         },
         { threshold: 0.5 }
       );
 
       const elements = document.querySelectorAll(".absolute-element");
-      elements.forEach((element) => observer.observe(element));
+      for (const element of Array.from(elements)) {
+        observer.observe(element);
+      }
 
       return () => {
-        elements.forEach((element) => observer.unobserve(element));
+        for (const element of Array.from(elements)) {
+          observer.unobserve(element);
+        }
       };
     }
   }, [isLgScreen, highlightedElements]);
@@ -190,6 +196,19 @@ export const Modal: React.FC<ModalProps> = ({
   };
 
   useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (dragging && dragItemRef.current) {
+        dragItemRef.current.style.position = "absolute";
+        dragItemRef.current.style.left = `${e.clientX - dragOffset.current.x}px`;
+        dragItemRef.current.style.top = `${e.clientY - dragOffset.current.y}px`;
+      }
+    };
+
+    const handleMouseUp = () => {
+      setDragging(false);
+      dragItemRef.current = null;
+    };
+
     if (dragging) {
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
@@ -278,8 +297,8 @@ export const Modal: React.FC<ModalProps> = ({
           >
             <TitleCopy text="What I did" mods="text-xl" />
             <ul className="col-span-full text-workdone mt-4 mb-2 list-arrows">
-              {mappedWorkDone.map((item, index) => (
-                <li key={index} className="text-sm">
+              {mappedWorkDone.map((item) => (
+                <li key={nanoid()} className="text-sm">
                   {item}
                 </li>
               ))}

@@ -1,7 +1,8 @@
 import { Resume } from "@/stories/components/templates/Resume";
-import { Section } from "@/utils/types/section";
+import type { Section } from "@/utils/types/section";
 import blocksToHtml from "@sanity/block-content-to-html";
 import imageUrlBuilder from "@sanity/image-url";
+// biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 
 interface Props {
@@ -12,10 +13,14 @@ interface Props {
 const projectId = "6zr8au58";
 const dataset = "production";
 
-// Función para construir la URL de la imagen desde el objeto de imagen de Sanity
+// Function to build the image URL from the Sanity image object
 const builder = imageUrlBuilder({ projectId, dataset });
 
-const urlFor = (source: any) => builder.image(source);
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+const urlFor = (source: any) => {
+  // Use the appropriate type
+  return builder.image(source);
+};
 
 // Exporta la función mapInfoSection aquí
 export const mapInfoSection = (section: Section) => {
@@ -64,10 +69,9 @@ export const mapInfoSection = (section: Section) => {
         dateText = startYear.toString();
       }
 
-      const imageUrl =
-        imageDetails && imageDetails.url
-          ? urlFor(imageDetails).width(800).height(600).url()
-          : null;
+      const imageUrl = imageDetails?.url
+        ? urlFor(imageDetails).width(800).height(600).url()
+        : null;
 
       const consolidatedJobDescHtml = blocksToHtml({
         blocks: jobDesc,

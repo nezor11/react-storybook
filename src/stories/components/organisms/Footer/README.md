@@ -19,11 +19,12 @@
  */
 
 import { ButtonTailwind } from "@/stories/components/atoms/ButtonTailwind";
-import { Link, LinkProps } from "@/stories/components/atoms/Link";
+import { Link, type LinkProps } from "@/stories/components/atoms/Link";
 import {
   ContactDetail,
-  ContactDetailTexts,
+  type ContactDetailTexts,
 } from "@/stories/components/molecules/ContactDetails";
+// biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 
 export interface FooterProps {
@@ -62,24 +63,20 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer {...props}>
       <div className="flex items-center pb-6">
-        <div className="grow border-b border-gray-600"></div>
+        <div className="grow border-b border-gray-600" />
       </div>
       {contact_details && (
-        <>
-          <div className="contact-wrapper mt-0 mb-6">
-            <ContactDetail contactDetail={contact_details} />{" "}
-          </div>
-        </>
+        <div className="contact-wrapper mt-0 mb-6">
+          <ContactDetail contactDetail={contact_details} />{" "}
+        </div>
       )}
       <div className="flex flex-col lg:flex-row lg:items-start justify-between">
         <div className="flex flex-row lg:flex-col items-center lg:items-start justify-between">
           <div>
             {last_updated && (
-              <>
-                <p className="text-sm">
-                  <em className="text-gray-600">Last updated: {lastUpdated}</em>
-                </p>
-              </>
+              <p className="text-sm">
+                <em className="text-gray-600">Last updated: {lastUpdated}</em>
+              </p>
             )}
             <p className="text-sm text-gray-600">
               &copy; {currentYear} {copy_right_text}

@@ -21,14 +21,14 @@
  */
 
 import { ButtonTailwind } from "@/stories/components/atoms/ButtonTailwind";
-import { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
+import type { IconGalleryProps } from "@/stories/components/molecules/IconGallery";
 import {
   InfoItem,
-  InfoItemObject,
+  type InfoItemObject,
 } from "@/stories/components/molecules/InfoItem";
 import { TitleSection } from "@/stories/components/molecules/TitleSection";
 import { cn } from "@/utils";
-import React, { ComponentPropsWithRef, forwardRef, useState } from "react";
+import React, { type ComponentPropsWithRef, forwardRef, useState } from "react";
 
 export interface InfoSectionObject {
   title?: string;
@@ -36,6 +36,7 @@ export interface InfoSectionObject {
   sections?: InfoItemObject[];
   icons?: IconGalleryProps;
   type?: "infoSection" | "sliderSection";
+  key?: string;
 }
 
 type InfoSectionProps = ComponentPropsWithRef<"div"> & InfoSectionObject;
@@ -47,7 +48,7 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
 
     let iconsData: { name: string; width: string; height: string }[] = [];
 
-    if (icons && icons.iconsData) {
+    if (icons?.iconsData) {
       iconsData = icons.iconsData;
     }
 
@@ -75,9 +76,9 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
             {sections && (
               <>
                 <div className="col-span-5 lg:col-span-3">
-                  {sections.slice(0, itemsToShow).map((section, index) => (
+                  {sections.slice(0, itemsToShow).map((section) => (
                     <InfoItem
-                      key={index}
+                      key={section?.info?.key}
                       info={section.info}
                       subtitleEmpty={subtitleText === ""}
                     />
@@ -110,11 +111,11 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
                   iconsData={iconsData}
                 />
               </div>
-              <div className="col-span-5 lg:col-span-3"></div>
+              <div className="col-span-5 lg:col-span-3" />
             </div>
-            {sections.map((section, index) => (
+            {sections.map((section) => (
               <InfoItem
-                key={index}
+                key={section?.info?.key}
                 info={section.info}
                 subtitleEmpty={subtitleText === ""}
               />

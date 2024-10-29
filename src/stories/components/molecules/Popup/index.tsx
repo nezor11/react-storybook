@@ -33,8 +33,9 @@
  */
 
 import { ContentSlider } from "@/stories/components/atoms/ContentSlider";
-import { LinkProps } from "@/stories/components/atoms/Link";
-import { IconData } from "@/stories/components/molecules/CardSlide";
+import type { LinkProps } from "@/stories/components/atoms/Link";
+import type { IconData } from "@/stories/components/molecules/CardSlide";
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useMemo } from "react";
 import "./index.css";
 

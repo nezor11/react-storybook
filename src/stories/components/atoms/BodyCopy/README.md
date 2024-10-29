@@ -28,10 +28,12 @@
 import { cn } from "@/utils";
 import { cva } from "class-variance-authority";
 import DOMPurify from "dompurify";
-import React, { CSSProperties } from "react";
+import type { CSSProperties } from "react";
+// biome-ignore lint/style/useImportType: <explanation>
+import React from "react";
 import ReactHtmlParser, {
   convertNodeToElement,
-  Transform,
+  type Transform,
 } from "react-html-parser";
 import "./index.css";
 

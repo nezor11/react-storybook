@@ -23,8 +23,9 @@
 import frameImage from "@/assets/images/js-frame-photo-empty.png";
 import {
   LazyImage,
-  LazyImageProps,
+  type LazyImageProps,
 } from "@/stories/components/atoms/LazyImage";
+// biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 import styled from "styled-components";
 

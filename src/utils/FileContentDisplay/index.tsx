@@ -1,4 +1,5 @@
 // FileContentDisplay.tsx
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useEffect, useState } from "react";
 
 interface FileContentDisplayProps {

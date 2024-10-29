@@ -65,9 +65,15 @@ export interface Section {
     width?: number;
     height?: number;
   } | null;
+  sliderDetails?: {
+    name: string;
+    slides: InfoSlide[];
+  } | null;
 }
 
 export interface SlideDetails {
+  rel?: string;
+  linkText?: string;
   slideImage?: {
     src: string;
     width: number;
