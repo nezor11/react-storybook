@@ -1,6 +1,6 @@
+import path from "node:path";
 // Replace your-framework with the framework you are using (e.g., react-webpack5, vue3-vite)
 import type { StorybookConfig } from "@storybook/react-vite";
-import path from "path";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 const config: StorybookConfig = {

@@ -2012,10 +2012,6 @@ body.theme-dark.modal-open .modal-wapper {
 }
 
 @media (min-width: 1536px) {
-  .\32xl\:-mb-4 {
-    margin-bottom: -1rem;
-  }
-
   .\32xl\:w-\[1200px\] {
     width: 1200px;
   }

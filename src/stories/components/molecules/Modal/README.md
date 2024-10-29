@@ -113,7 +113,7 @@ export const Modal: React.FC<ModalProps> = ({
     testing_debugging: "Testing & Debugging",
     version_control: "Version Control",
     maintenance_updates: "Maintenance & Updates",
-    performance_optimization: "Performance Optimization",
+    performance_optimization: "Performance",
     responsive_design: "Responsive Design",
     ux_ui_design: "UX/UI Consultancy",
     seo: "SEO Support",

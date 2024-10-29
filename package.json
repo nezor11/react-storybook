@@ -42,13 +42,16 @@
     "watch:storybook": "storybook dev -p 6006",
     "watch:tailwind": "npx tailwindcss -i ./src/tailwind-input.css -o ./src/styles/tailwind.css --watch",
     "build-storybook": "storybook build",
-    "init-msw": "msw init public/"
+    "init-msw": "msw init public/",
+    "lint": "biome lint",
+    "format": "biome format"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
     "@babel/preset-env": "^7.24.0",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@biomejs/biome": "^1.9.4",
     "@chromatic-com/storybook": "^2.0.2",
     "@sanity/client": "^6.13.3",
     "@storybook/addon-docs": "^8.3.5",
@@ -79,6 +82,7 @@
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.17",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "biome": "^0.3.3",
     "class-variance-authority": "^0.7.0",
     "concurrently": "^8.2.2",
     "dompurify": "^3.0.8",

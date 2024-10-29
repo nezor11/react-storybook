@@ -23,6 +23,7 @@ interface ContentSliderProps {
   link?: LinkProps;
   iconsData?: IconData[];
   className?: string;
+  backgroundColor?: string;
 }
 
 export const ContentSlider: React.FC<ContentSliderProps> = ({
@@ -37,6 +38,7 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
   iconsData,
   videoUrl,
   className,
+  backgroundColor,
 }) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState(true);
@@ -64,14 +66,14 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
     iot: "Internet of Things",
     cybersecurity: "Cybersecurity",
     servers_hosting: "Servers & Hosting",
-    testing_debugging: "Testing & Debugging",
+    testing_debugging: "Debugging",
     version_control: "Version Control",
-    maintenance_updates: "Maintenance & Updates",
-    performance_optimization: "Performance Optimization",
+    maintenance_updates: "Maintenance",
+    performance_optimization: "Performance",
     responsive_design: "Responsive Design",
     ux_ui_design: "UX/UI Consultancy",
     seo: "SEO Support",
-    analytics_metrics: "Analytics & Metrics",
+    analytics_metrics: "Metrics",
     security: "Security",
   };
 
@@ -97,67 +99,92 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
 
   const domain = link?.href?.match(/https?:\/\/(www\.)?([^\/]+)/)?.[2] || "";
 
+  const dynamicBackgroundColor =
+    backgroundColor ||
+    (videoUrl ? "#000" : images.length > 0 ? "#fff" : "#f5f5f5");
+
   return (
     <section className="intro">
-      <div className="left p-4 2xl:px-16">
+      <div className="left lg:px-4 2xl:px-16">
         <div>
-          <div className="w-full xl:max-w-5xl xl:ml-auto">
-            <div className="2xl:-mb-4 flex">
-              <SubtitleCopy
-                text={formatCompanyName(company)}
-                mods="text-base lg:text-2xl uppercase text-primary-500 font-medium"
-                subtitle="h4"
-              />
-              <SubtitleCopy
-                text={year}
-                mods="text-base lg:text-xl uppercase text-primary-500 font-medium ml-2 !leading-8"
-                subtitle="h4"
-              />
-            </div>
-            <TitleCopy text={title} align="left" mods="text-header" />
-            <BodyCopy text={description} tag="div" mods="max-w-screen-xl" />
-            {link?.href && (
-              <div className="mt-4 w-full link-text [&_a]:text-primary-500 [&_a]:underline">
-                <BodyCopy tag="span" text="More info at: " />
-                <Link
-                  href={link.href}
-                  link_text={domain}
-                  target="_blank"
-                  rel="noreferrer noopener"
+          <div className="content-wrapper">
+            <div className="w-full xl:max-w-5xl xl:ml-auto">
+              <div className="flex">
+                <SubtitleCopy
+                  text={formatCompanyName(company)}
+                  mods="text-base uppercase text-primary-500 font-medium"
+                  subtitle="h4"
+                />
+                <SubtitleCopy
+                  text={year}
+                  mods="text-base uppercase text-primary-500 font-medium ml-2"
+                  subtitle="h4"
                 />
               </div>
-            )}
-          </div>
-          {workType && (
-            <BodyCopy
-              tag="div"
-              text={`${workType} - Project`}
-              mods="col-span-full capitalize text-worktype mt-4"
-              weight="bold"
-              align="right"
-            />
-          )}
-          {mappedWorkDone.length > 0 && (
-            <div className="workdone-wrapper mt-2 text-right w-full xl:max-w-3xl xl:ml-auto">
-              <ul className="text-workdone mb-2 list-arrows grid md:grid-cols-2 md:grid-rows-8 xl:grid-rows-4 md:grid-flow-col gap-1 justify-items-start rtl-grid">
-                {mappedWorkDone.map((item, index) => (
-                  <li key={index} className="text-sm text-right">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <TitleCopy
+                text={title}
+                align="left"
+                mods="text-xl lg:text-5xl dark:text-white mb-4 lg:mb-8"
+              />
+              <BodyCopy
+                text={description}
+                tag="div"
+                mods="max-w-screen-xl dark:text-white"
+              />
+              {link?.href && (
+                <div className="mt-4 w-full link-text [&_a]:text-primary-500 [&_a]:underline">
+                  <BodyCopy
+                    tag="span"
+                    mods="dark:text-white"
+                    text="More info at: "
+                  />
+                  <Link
+                    href={link.href}
+                    link_text={domain}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  />
+                </div>
+              )}
             </div>
-          )}
-          <div className="logos-wrapper w-full xl:max-w-5xl xl:ml-auto mt-8 mb-8 lg:mb-4 text-3xl [&_svg]:mx-1">
-            <SuspenseIconGallery iconsData={iconsData} />
+            {workType && (
+              <BodyCopy
+                tag="div"
+                text={`${workType} - Project`}
+                mods="col-span-full capitalize text-worktype dark:text-white mt-4"
+                weight="bold"
+                align="right"
+              />
+            )}
+            {mappedWorkDone.length > 0 && (
+              <div className="workdone-wrapper mt-2 text-right w-full xl:max-w-3xl xl:ml-auto">
+                <ul className="text-workdone mb-2 list-arrows grid md:grid-cols-2 md:grid-rows-8 xl:grid-rows-4 md:grid-flow-col gap-1 justify-items-start rtl-grid">
+                  {mappedWorkDone.map((item, index) => (
+                    <li
+                      key={index}
+                      className="text-sm text-right dark:text-white"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div className="logos-wrapper w-full xl:max-w-5xl xl:ml-auto mt-8 mb-8 lg:mb-4 text-3xl [&_svg]:mx-1">
+              <SuspenseIconGallery iconsData={iconsData} />
+            </div>
           </div>
         </div>
       </div>
 
-      <div className={`slider ${className || ""}`} ref={sliderRef}>
+      <div
+        className={`slider ${className || ""}`}
+        ref={sliderRef}
+        style={{ backgroundColor: dynamicBackgroundColor }}
+      >
         {videoUrl ? (
           isPlaying ? (
-            <div className="px-4 flex flex-col justify-center content-center h-full">
+            <div className="flex flex-col justify-center content-center h-full">
               <div>
                 <VideoPlayer
                   videoUrl={videoUrl}
@@ -188,18 +215,20 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
                 <li
                   key={index}
                   style={{ backgroundImage: `url(${image.src})` }}
-                >
-                  <div className="center-y">
-                    <SubtitleCopy
-                      text={`Slider Title ${index + 1}`}
-                      mods="text-xl uppercase text-primary-500 font-medium -mb-4"
-                      subtitle="h4"
-                    />
-                  </div>
-                </li>
+                ></li>
               ))}
             </ul>
-            <nav>
+            <div className="center-y">
+              {images.map((_, index) => (
+                <SubtitleCopy
+                  key={index} // <- Añadir key aquí
+                  text={`${_.alt}`}
+                  mods="text-xs uppercase text-primary-500 font-medium -mb-4"
+                  subtitle="h4"
+                />
+              ))}
+            </div>
+            <nav className={`${images.length === 1 ? "invisible" : ""}`}>
               {images.map((_, index) => (
                 <a key={index}></a>
               ))}

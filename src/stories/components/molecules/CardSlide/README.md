@@ -74,6 +74,7 @@ interface CardSlideProps {
   iconsData?: IconData[];
   images?: SanityImageData[];
   workDone?: string[];
+  backgroundColor?: string;
 }
 
 const getRandomColor = () => {
@@ -98,6 +99,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
   images,
   workDone,
   videoUrl,
+  backgroundColor,
 }) => {
   const getRandomHeight = () => {
     const heights = [200, 250, 300, 350];
@@ -196,6 +198,7 @@ export const CardSlide: React.FC<CardSlideProps> = ({
             link={link}
             iconsData={iconsData}
             videoUrl={videoUrl}
+            backgroundColor={backgroundColor}
             onClose={closeModal}
             ButtonCloseComponent={ButtonClose}
           />,

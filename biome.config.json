@@ -1,0 +1,20 @@
+{
+    "files": [
+        "src/**/*.js",
+        "src/**/*.ts"
+    ],
+    "lint": {
+        "rules": {
+            "no-unused-vars": "error",
+            "quotes": [
+                "error",
+                "single"
+            ]
+        }
+    },
+    "format": {
+        "printWidth": 80,
+        "singleQuote": true,
+        "trailingComma": "all"
+    }
+}
