@@ -1175,11 +1175,6 @@ strong {
   line-height: 1rem;
 }
 
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
 .font-black {
   font-weight: 900;
 }
@@ -1983,18 +1978,14 @@ body.theme-dark.modal-open .modal-wapper {
     line-height: 2.25rem;
   }
 
-  .lg\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
   .lg\:text-5xl {
     font-size: 3rem;
     line-height: 1;
   }
 
-  .lg\:\!leading-8 {
-    line-height: 2rem !important;
+  .lg\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -2032,16 +2023,6 @@ body.theme-dark.modal-open .modal-wapper {
   .\32xl\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
-  }
-
-  .\32xl\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .\32xl\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
   }
 }
 

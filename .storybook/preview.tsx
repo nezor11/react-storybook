@@ -1,6 +1,14 @@
 // preview.tsx
 import { Preview } from "@storybook/react";
+import React from "react";
+import { useDarkMode } from "storybook-dark-mode";
 import "../src/styles/tailwind.css";
+
+const withDarkMode = (StoryFn) => {
+  const darkMode = useDarkMode();
+  document.documentElement.classList.toggle("dark", darkMode);
+  return <StoryFn />;
+};
 
 const MY_VIEWPORTS = {
   FHDTV: {
@@ -54,6 +62,7 @@ const MY_VIEWPORTS = {
 };
 
 const preview: Preview = {
+  decorators: [withDarkMode],
   parameters: {
     controls: {
       matchers: {
@@ -84,7 +93,7 @@ const preview: Preview = {
     },
   },
 
-  tags: ["autodocs", "autodocs"]
+  tags: ["autodocs", "autodocs"],
 };
 
 export default preview;

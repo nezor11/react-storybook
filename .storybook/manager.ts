@@ -1,5 +1,5 @@
 import { addons } from "@storybook/manager-api";
-import { create } from "@storybook/theming";
+import { create, themes } from "@storybook/theming";
 
 addons.setConfig({
   theme: create({
@@ -17,4 +17,5 @@ addons.setConfig({
   sidebar: {
     showRoots: false,
   },
+  darkTheme: themes.dark,
 });

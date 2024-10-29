@@ -109,7 +109,7 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
         <div>
           <div className="content-wrapper">
             <div className="w-full xl:max-w-5xl xl:ml-auto">
-              <div className="2xl:-mb-4 flex">
+              <div className="flex">
                 <SubtitleCopy
                   text={formatCompanyName(company)}
                   mods="text-base uppercase text-primary-500 font-medium"
