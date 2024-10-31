@@ -76,9 +76,9 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
             {sections && (
               <>
                 <div className="col-span-5 lg:col-span-3">
-                  {sections.slice(0, itemsToShow).map((section) => (
+                  {sections.slice(0, itemsToShow).map((section, index) => (
                     <InfoItem
-                      key={section?.info?.key}
+                      key={section?.info?.key ?? index}
                       info={section.info}
                       subtitleEmpty={subtitleText === ""}
                     />
@@ -113,9 +113,9 @@ export const InfoSection = forwardRef<HTMLElement, InfoSectionProps>(
               </div>
               <div className="col-span-5 lg:col-span-3" />
             </div>
-            {sections.map((section) => (
+            {sections.map((section, index) => (
               <InfoItem
-                key={section?.info?.key}
+                key={section?.info?.key ?? index}
                 info={section.info}
                 subtitleEmpty={subtitleText === ""}
               />

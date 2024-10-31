@@ -1,34 +1,27 @@
 // ThemeContext.tsx
-
-// biome-ignore lint/style/useImportType: <explanation>
-import React, { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
 import type { ThemeContextInterface } from "../utils/types/theme";
 
-export const ThemeContext = createContext<ThemeContextInterface | null>(null);
+const ThemeContext = createContext<ThemeContextInterface | null>(null);
+
+export { ThemeContext };
+
+// biome-ignore lint/style/useImportType: <explanation>
+import React, { startTransition, useEffect, useState } from "react";
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const isLocalStorageAvailable = () => {
-    try {
-      localStorage.setItem("test", "test");
-      localStorage.removeItem("test");
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
-
   const [darkTheme, setDarkTheme] = useState<boolean>(() => {
-    const savedTheme = isLocalStorageAvailable()
-      ? localStorage.getItem("theme")
-      : null;
-    if (savedTheme) {
-      return savedTheme === "dark";
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme) {
+      return currentTheme === "dark";
     }
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
   const toggleTheme = () => {
-    setDarkTheme((prev) => !prev);
+    startTransition(() => {
+      setDarkTheme((curr) => !curr);
+    });
   };
 
   useEffect(() => {
@@ -40,20 +33,12 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     mediaQuery.addEventListener("change", handleChange);
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-    };
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   useEffect(() => {
-    if (isLocalStorageAvailable()) {
-      localStorage.setItem("theme", darkTheme ? "dark" : "light");
-    }
-    if (darkTheme) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.body.className = darkTheme ? "theme-dark" : "theme-light";
+    localStorage.setItem("theme", darkTheme ? "dark" : "light");
   }, [darkTheme]);
   return (
     <ThemeContext.Provider value={{ darkTheme, toggleTheme, setDarkTheme }}>
