@@ -21,8 +21,8 @@
  */
 
 import { cn } from "@/utils";
-import { cva, VariantProps } from "class-variance-authority";
-import React, { ComponentProps, forwardRef } from "react";
+import { type VariantProps, cva } from "class-variance-authority";
+import React, { type ComponentProps, forwardRef } from "react";
 
 const buttonStyles = cva(
   [

@@ -49,7 +49,6 @@ export const IconGallery: React.FC<IconGalleryProps> = ({ iconsData = [] }) => {
         }));
       }
 
-      // Importar dinámicamente los íconos seleccionados
       const importedIcons = iconsToShow.map(({ name }) => {
         const Icon = React.lazy(() => import(`./Icons/${name}.tsx`));
         return Icon;

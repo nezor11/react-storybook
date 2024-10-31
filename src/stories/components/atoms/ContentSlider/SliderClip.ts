@@ -44,8 +44,12 @@ class SliderClip {
       });
     });
 
-    this.el.addEventListener("mouseenter", () => (this.autoPlay = false));
-    this.el.addEventListener("mouseleave", () => (this.autoPlay = true));
+    this.el.addEventListener("mouseenter", () => {
+      this.autoPlay = false;
+    });
+    this.el.addEventListener("mouseleave", () => {
+      this.autoPlay = true;
+    });
 
     const interval = setInterval(() => {
       if (this.autoPlay) {
@@ -61,13 +65,21 @@ class SliderClip {
     if (index < 0 || index >= this.Slides.length) return;
 
     // Limpia todas las clases "current" y "prev"
-    this.Nav.forEach((dot) => dot.classList.remove("current_dot"));
-    this.Title.forEach((title) => title.classList.remove("current"));
-    this.Slides.forEach((slide) => slide.classList.remove("prev", "current"));
+    for (const dot of this.Nav) {
+      dot.classList.remove("current_dot");
+    }
+    for (const title of this.Title) {
+      title.classList.remove("current");
+    }
+    for (const slide of this.Slides) {
+      slide.classList.remove("prev", "current");
+    }
 
     // Establece los elementos anteriores como "prev"
     const prevElements = this.IndexElements.filter((i) => i < index);
-    prevElements.forEach((i) => this.Slides[i].classList.add("prev"));
+    for (const i of prevElements) {
+      this.Slides[i].classList.add("prev");
+    }
 
     // Aplica las clases "current" a los elementos correspondientes
     this.Slides[index].classList.add("current");

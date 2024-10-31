@@ -616,6 +616,18 @@ strong {
   }
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -1402,6 +1414,9 @@ body.theme-dark.modal-open .modal-wapper {
     .dark\:bg-slate-950 {
       background-color: rgb(2, 6, 23);
     }
+    .intro ul.list-arrows li::before {
+      border-color: var(--copy-primary);
+    }
   }
 }
 
@@ -1758,6 +1773,7 @@ body.theme-dark.modal-open .modal-wapper {
   font-display: swap;
 }
 
+.dark,
 .theme-dark {
   .GitBranchIcon {
     path {
@@ -1864,6 +1880,11 @@ body.theme-dark.modal-open .modal-wapper {
   .md\:grid-rows-8 {
     grid-template-rows: repeat(8, minmax(0, 1fr));
   }
+
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1960,17 +1981,8 @@ body.theme-dark.modal-open .modal-wapper {
     justify-content: center;
   }
 
-  .lg\:overflow-hidden {
-    overflow: hidden;
-  }
-
   .lg\:p-0 {
     padding: 0px;
-  }
-
-  .lg\:px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 
   .lg\:text-3xl {

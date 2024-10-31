@@ -101,12 +101,14 @@ const fetchImagesFromUnsplash = async (query: string, count = 3) => {
 
     const data = await response.json();
     console.log("SRC IMG ------------------------> ", data);
-    return data.map((img: any) => ({
-      alt: img.alt_description || "Unsplash Image",
-      src: `${img.urls.raw}&w=800&h=1200&fit=crop`,
-      width: 1200,
-      height: 800,
-    }));
+    return data.map(
+      (img: { alt_description: string; urls: { raw: string } }) => ({
+        alt: img.alt_description || "Unsplash Image",
+        src: `${img.urls.raw}&w=1200&h=800&fit=crop`,
+        width: 800,
+        height: 1200,
+      })
+    );
   } catch (error) {
     console.error("Error fetching images:", error);
     return [
@@ -150,26 +152,27 @@ export const Default: Story = {
       },
     ],
     workDone: [
-      "Maecenas sit amet justo sit amet tellus tincidunt efficitur.",
-      "Nullam nec turpis nec justo aliquam suscipit.",
+      "Maecenas sit amet justo sit amet tellus tincidunt efficitur",
+      "Nullam nec turpis nec justo aliquam suscipit",
       "Pellentesque habitant morbi tristique sen",
     ],
+    backgroundColor: "yellow",
     ButtonCloseComponent: ({ onClick }) => <ButtonClose onClick={onClick} />,
   },
   render: (args) => {
     const [images, setImages] = useState([]);
-    const [cardImage, setCardImage] = useState("");
 
     useEffect(() => {
       const fetchAndSetCardImage = async () => {
-        const fetchedImage = await fetchImagesFromUnsplash("nature", 1);
-        setCardImage(fetchedImage[0].src);
+        const fetchedImages = await fetchImagesFromUnsplash("nature", 2);
+        console.log("Fetched Images:", fetchedImages);
+        setImages(fetchedImages);
       };
 
       fetchAndSetCardImage();
     }, []);
 
-    return <Popup {...args} />;
+    return <Popup {...args} images={images} />;
   },
 };
 

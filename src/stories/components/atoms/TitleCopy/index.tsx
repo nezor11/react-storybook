@@ -1,33 +1,8 @@
-/**
- * TitleCopy is a component that renders a title or copy element with customizable tag, text, and styles.
- *
- * Props:
- * - as: The HTML tag to be used for the title. Default is "h1".
- * - text: The text content to be displayed for the title. Default is "Rodrigor".
- * - align: The alignment of the text. Can be "left", "center", or "right". Default is "left".
- * - italic: Whether the text should be italicized. Default is false.
- * - underline: Whether the text should be underlined. Default is false.
- * - mods: Additional CSS classes to be applied to the title.
- * - styles: Additional CSS styles to be applied to the title.
- * - children: The child elements to be rendered inside the title.
- *
- * Example usage:
- * <TitleCopy
- *   as="h2"
- *   text="This is a title"
- *   align="center"
- *   italic={true}
- *   underline={true}
- *   mods="custom-class"
- *   styles={{ color: "blue" }}
- * >
- *   <span>Child element</span>
- * </TitleCopy>
- */
-
 import { cn } from "@/utils";
 import { cva } from "class-variance-authority";
-import React, { CSSProperties, ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
+// biome-ignore lint/style/useImportType: <explanation>
+import React from "react";
 import "./index.css";
 
 const textStyles = cva("text", {
@@ -52,7 +27,9 @@ const textStyles = cva("text", {
 type AllowedTagValues = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 interface TitleCopyProps {
   /** The as property is optional and can be either an AllowedTagValues ("h1", "h2", "h3", "h4", "h5", "h6").  */
-  as?: AllowedTagValues | React.ComponentType<any>;
+  as?:
+    | AllowedTagValues
+    | React.ComponentType<React.HTMLAttributes<HTMLElement>>;
   /** The text property is optional and can be a string.  */
   text?: string;
   /** The align property is optional and can be either "left", "center", "right", null, or undefined.  */
@@ -66,7 +43,7 @@ interface TitleCopyProps {
   /** The styles property is optional and can be a CSSProperties object. */
   styles?: CSSProperties;
   /** The children property is optional and can be a ReactNode. */
-  children?: ReactNode; // Admitir elementos hijos
+  children?: ReactNode;
 }
 
 /** Renders a title or copy component with customizable styles and variants. */
@@ -81,9 +58,6 @@ export const TitleCopy: React.FC<TitleCopyProps> = ({
   children,
   ...props
 }: TitleCopyProps) => {
-  const titleContent = children || (
-    <span dangerouslySetInnerHTML={{ __html: text }} />
-  );
   return (
     <Tag
       className={cn(
@@ -97,7 +71,7 @@ export const TitleCopy: React.FC<TitleCopyProps> = ({
       style={styles}
       {...props}
     >
-      {titleContent}
+      {children || text}
     </Tag>
   );
 };

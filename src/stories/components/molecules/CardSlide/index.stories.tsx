@@ -99,7 +99,7 @@ const fetchImageByTheme = async (theme: string) => {
   );
   const data = await response.json();
   return {
-    src: `${data.urls.raw}&w=1200&h=800&fit=crop`,
+    src: `${data.urls.raw}&w=800&h=1200&fit=crop`,
     width: 1200,
     height: 800,
   };
@@ -108,7 +108,7 @@ const fetchImageByTheme = async (theme: string) => {
 const fetchCardImage = async () => {
   try {
     const response = await fetch(
-      `https://api.unsplash.com/photos/random?query=river&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc`
+      "https://api.unsplash.com/photos/random?query=river&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc"
     );
 
     // Verificar si la respuesta es correcta (código de estado 200)
@@ -135,12 +135,14 @@ const fetchImagesFromUnsplash = async (query: string, count = 3) => {
 
     const data = await response.json();
     console.log("SRC IMG ------------------------> ", data);
-    return data.map((img: any) => ({
-      alt: img.alt_description || "Unsplash Image",
-      src: `${img.urls.raw}&w=800&h=1200&fit=crop`,
-      width: 1200,
-      height: 800,
-    }));
+    return data.map(
+      (img: { alt_description: string; urls: { raw: string } }) => ({
+        alt: img.alt_description || "Unsplash Image",
+        src: `${img.urls.raw}&w=800&h=1200&fit=crop`,
+        width: 1200,
+        height: 800,
+      })
+    );
   } catch (error) {
     console.error("Error fetching images:", error);
     return [

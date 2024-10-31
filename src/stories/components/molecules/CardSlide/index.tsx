@@ -32,6 +32,7 @@ export interface CardSlideProps {
   workDone?: string[];
   videoUrl?: string;
   backgroundColor?: string;
+  infoUrl?: string;
 }
 
 export const CardSlide: React.FC<CardSlideProps> = ({

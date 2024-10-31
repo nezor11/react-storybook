@@ -1,15 +1,17 @@
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
-import { Link, LinkProps } from "@/stories/components/atoms/Link";
+import { Link, type LinkProps } from "@/stories/components/atoms/Link";
 import Play from "@/stories/components/atoms/Play";
 import { SubtitleCopy } from "@/stories/components/atoms/SubtitleCopy";
 import { TitleCopy } from "@/stories/components/atoms/TitleCopy";
 import { VideoPlayer } from "@/stories/components/atoms/VideoPlayer";
-import { IconData } from "@/stories/components/molecules/CardSlide";
-import { SanityImageData } from "@/stories/components/molecules/Modal";
+import type { IconData } from "@/stories/components/molecules/CardSlide";
+import type { SanityImageData } from "@/stories/components/molecules/Modal";
 import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
+import { nanoid } from "nanoid";
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import SliderClip from "./SliderClip";
 import "./index.css";
+import SliderClip from "./SliderClip";
 
 interface ContentSliderProps {
   title: string;
@@ -88,9 +90,9 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
         if (sliderRef.current) {
           new SliderClip(sliderRef.current);
         }
-      }, 100); // Pequeño retardo para asegurar que el DOM esté listo
+      }, 100);
 
-      return () => clearTimeout(timer); // Limpiar el temporizador
+      return () => clearTimeout(timer);
     }
   }, [videoUrl]);
 
@@ -103,9 +105,12 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
     backgroundColor ||
     (videoUrl ? "#000" : images.length > 0 ? "#fff" : "#f5f5f5");
 
+  // Log para verificar si las imágenes están pasando correctamente
+  console.log("Imágenes recibidas en ContentSlider:", images);
+
   return (
     <section className="intro">
-      <div className="left lg:px-4 2xl:px-16">
+      <div className="left md:px-8 2xl:px-16">
         <div>
           <div className="content-wrapper">
             <div className="w-full xl:max-w-5xl xl:ml-auto">
@@ -161,7 +166,7 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
                 <ul className="text-workdone mb-2 list-arrows grid md:grid-cols-2 md:grid-rows-8 xl:grid-rows-4 md:grid-flow-col gap-1 justify-items-start rtl-grid">
                   {mappedWorkDone.map((item, index) => (
                     <li
-                      key={index}
+                      key={nanoid()}
                       className="text-sm text-right dark:text-white"
                     >
                       {item}
@@ -204,25 +209,34 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
                 width: "100%",
               }}
               onClick={handlePlayClick}
+              onKeyUp={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  handlePlayClick();
+                }
+              }}
+              // biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
+              tabIndex={0}
             >
               <Play />
             </div>
           )
         ) : (
           <>
-            <ul>
-              {images.map((image, index) => (
+            <ul className="slider-images">
+              {images.map((image) => (
                 <li
-                  key={index}
-                  style={{ backgroundImage: `url(${image.src})` }}
-                ></li>
+                  key={nanoid()}
+                  style={{
+                    backgroundImage: `url(${image.src})`,
+                  }}
+                />
               ))}
             </ul>
             <div className="center-y">
-              {images.map((_, index) => (
+              {images.map((imageProperties) => (
                 <SubtitleCopy
-                  key={index} // <- Añadir key aquí
-                  text={`${_.alt}`}
+                  key={nanoid()}
+                  text={`${imageProperties.alt}`}
                   mods="text-xs uppercase text-primary-500 font-medium -mb-4"
                   subtitle="h4"
                 />
@@ -230,7 +244,13 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
             </div>
             <nav className={`${images.length === 1 ? "invisible" : ""}`}>
               {images.map((_, index) => (
-                <a key={index}></a>
+                <a
+                  key={nanoid()}
+                  href={`#slide-${index + 1}`}
+                  aria-label={`Slide ${index + 1}`}
+                >
+                  <span className="sr-only">{`Slide ${index + 1}`}</span>
+                </a>
               ))}
             </nav>
           </>

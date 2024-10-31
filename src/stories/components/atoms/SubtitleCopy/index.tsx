@@ -15,8 +15,9 @@
  *   styles={{ color: "red" }}
  * />
  */
-
-import React, { CSSProperties } from "react";
+import type { CSSProperties } from "react";
+// biome-ignore lint/style/useImportType: <explanation>
+import React from "react";
 import "./index.css";
 
 type AllowedTagValues = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -43,11 +44,8 @@ export const SubtitleCopy: React.FC<SubtitleCopyProps> = ({
   const SubTitle = subtitle as keyof JSX.IntrinsicElements;
 
   return (
-    <SubTitle
-      className={`text ${mods}`}
-      style={styles}
-      dangerouslySetInnerHTML={{ __html: text }}
-      {...props}
-    />
+    <SubTitle className={`text ${mods}`} style={styles} {...props}>
+      {text}
+    </SubTitle>
   );
 };

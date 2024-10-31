@@ -75,7 +75,7 @@
     left: -160px;
     right: 0;
     z-index: 10;
-    transform: rotate(-90deg) translateX(100%);
+    transform: rotate(-90deg) translateX(50%);
     display: inline-table;
     overflow: hidden;
     width: 300px;

@@ -15,6 +15,7 @@
  */
 
 import Loader from "@/stories/components/atoms/Loader";
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import "./index.css";

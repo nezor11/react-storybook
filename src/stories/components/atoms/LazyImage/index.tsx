@@ -24,7 +24,9 @@
  * />
  */
 
-import React, { CSSProperties, useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
+// biome-ignore lint/style/useImportType: <explanation>
+import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
 
 export interface LazyImageProps {

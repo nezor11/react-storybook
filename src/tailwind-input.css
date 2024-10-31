@@ -95,6 +95,10 @@ body.theme-dark.modal-open .modal-wapper {
     .dark\:bg-slate-950 {
       background-color: rgb(2, 6, 23);
     }
+
+    .intro ul.list-arrows li::before {
+      border-color: var(--copy-primary);
+    }
   }
 }
 
@@ -425,6 +429,7 @@ body.theme-dark.modal-open .modal-wapper {
   }
 }
 
+.dark,
 .theme-dark {
   .GitBranchIcon {
     path {

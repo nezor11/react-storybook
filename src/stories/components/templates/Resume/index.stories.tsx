@@ -56,7 +56,7 @@ const fetchImagesFromUnsplash = async (query: string, count = 3) => {
     return data.map(
       (img: { alt_description: string; urls: { raw: string } }) => ({
         alt: img.alt_description || "Unsplash Image",
-        src: `${img.urls.raw}&w=1200&h=800&fit=crop`,
+        src: `${img.urls.raw}&w=800&h=1200&fit=crop`,
         width: 1200,
         height: 800,
       })
@@ -65,9 +65,9 @@ const fetchImagesFromUnsplash = async (query: string, count = 3) => {
     console.error("Error fetching images:", error);
     return [
       {
-        src: "https://placehold.co/1200x800",
-        width: 1200,
-        height: 800,
+        src: "https://placehold.co/800x1200",
+        width: 800,
+        height: 1200,
         alt: "Placeholder Image",
       },
     ];

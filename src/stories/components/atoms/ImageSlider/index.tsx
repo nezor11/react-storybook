@@ -21,6 +21,8 @@
  */
 
 import createTripleSlider from "@/stories/assets/scripts/triple-slider";
+import { nanoid } from "nanoid";
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useEffect, useRef } from "react";
 import "swiper/css";
 import "swiper/css/controller";
@@ -53,7 +55,7 @@ export const ImageSlider: React.FC<ImageSliderProps> = ({
       <div className="swiper">
         <div className="swiper-wrapper">
           {images.map((image, index) => (
-            <div key={index} className="swiper-slide">
+            <div key={nanoid()} className="swiper-slide">
               <img
                 className="bg-image"
                 src={image.src}

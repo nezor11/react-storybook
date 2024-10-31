@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+// biome-ignore lint/style/useImportType: <explanation>
 import React, { useEffect, useState } from "react";
 import { SliderSection } from ".";
 
@@ -33,7 +34,7 @@ const fetchCardImage = async () => {
 
   try {
     const response = await fetch(
-      `https://api.unsplash.com/photos/random?query=river&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc`
+      "https://api.unsplash.com/photos/random?query=river&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc"
     );
 
     if (!response.ok) {
@@ -63,19 +64,21 @@ const fetchImagesFromUnsplash = async (query: string, count = 3) => {
     if (!response.ok) throw new Error("Error al obtener imágenes de Unsplash");
 
     const data = await response.json();
-    return data.map((img: any) => ({
-      alt: img.alt_description || "Unsplash Image",
-      src: `${img.urls.raw}&w=1200&h=800&fit=crop`, // Dimensiones específicas para las imágenes del popup
-      width: 1200,
-      height: 800,
-    }));
+    return data.map(
+      (img: { alt_description: string; urls: { raw: string } }) => ({
+        alt: img.alt_description || "Unsplash Image",
+        src: `${img.urls.raw}&w=800&h=1200&fit=crop`,
+        width: 800,
+        height: 1200,
+      })
+    );
   } catch (error) {
     console.error("Error fetching images:", error);
     return [
       {
-        src: "https://placehold.co/1200x800",
-        width: 1200,
-        height: 800,
+        src: "https://placehold.co/800x1200",
+        width: 800,
+        height: 1200,
         alt: "Placeholder Image",
       },
     ];

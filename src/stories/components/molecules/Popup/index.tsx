@@ -120,9 +120,11 @@ export const Popup: React.FC<PopupProps> = ({
     [images]
   );
 
+  console.log("Imágenes recibidas en Popup:", randomizedImages);
+
   return (
-    <div className="min-h-screen min-w-screen overflow-hidden popup-content">
-      <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950 lg:overflow-hidden">
+    <div className="min-h-screen min-w-screen popup-content">
+      <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950">
         <ButtonCloseComponent onClick={handleClose} />
         <ContentSlider
           title={title}
