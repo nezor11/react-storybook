@@ -1,5 +1,4 @@
 import Swiper from "swiper";
-// eslint-disable-next-line
 
 export default function createTripleSlider(el) {
   // main swiper el
@@ -35,7 +34,7 @@ export default function createTripleSlider(el) {
     parallax: true,
   };
 
-  let tripleMainSwiper;
+  let tripleMainSwiper = null;
 
   // init prev swiper
   const triplePrevSwiper = new Swiper(swiperPrevEl, {

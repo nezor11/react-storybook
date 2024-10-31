@@ -1,3 +1,28 @@
+/**
+ * App.tsx
+ *
+ * This is the main application component. It fetches the latest resume data from the Sanity API
+ * and renders the application with the appropriate theme context.
+ *
+ * The application uses the following components:
+ * - Loader: A loading spinner component.
+ * - MemoizedMoonIcon: A memoized moon icon component.
+ * - MemoizedSunIcon: A memoized sun icon component.
+ * - Footer: The footer component of the application.
+ * - SectionRenderer: A component that renders different sections of the resume.
+ *
+ * The application also uses the following hooks and context:
+ * - useContext: To access the ThemeContext.
+ * - useEffect: To perform side effects such as fetching data.
+ * - useMemo: To memoize values.
+ * - useState: To manage state.
+ *
+ * The ThemeContext provides the current theme (dark or light) and a function to toggle the theme.
+ * The latest resume data is fetched from the Sanity API and stored in the state.
+ *
+ * The Helmet and HelmetProvider components are used for managing changes to the document head.
+ */
+
 import Loader from "@/stories/components/atoms/Loader";
 import MemoizedMoonIcon from "@/stories/components/molecules/IconGallery/Icons/MoonIcon";
 import MemoizedSunIcon from "@/stories/components/molecules/IconGallery/Icons/SunIcon";
@@ -10,7 +35,6 @@ import { ThemeContext } from "./contexts";
 import { sanityAPI } from "./utils/setup/sanitySetup";
 import type { ThemeContextInterface } from "./utils/types/theme";
 
-// Hook personalizado para obtener el último resume
 const useLatestResume = () => {
   const [latestResume, setLatestResume] = useState<Resume | null>(null);
 
@@ -97,30 +121,22 @@ const useLatestResume = () => {
   return latestResume;
 };
 
-// Hook personalizado para el manejo del tema
 const useTheme = () => {
   const { darkTheme, toggleTheme } = useContext(
     ThemeContext
   ) as ThemeContextInterface;
 
   useEffect(() => {
-    try {
-      if (darkTheme) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
-    } catch (error) {
-      console.error("Error accessing localStorage in Safari iOS", error);
+    if (darkTheme) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
   }, [darkTheme]);
 
   return { darkTheme, toggleTheme };
 };
 
-// Componente para los elementos cargados desde el JSON
 const ResumeContent = ({ latestResume }: { latestResume: Resume }) => {
   return (
     <main key={latestResume._id}>

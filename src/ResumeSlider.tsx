@@ -1,3 +1,23 @@
+/**
+ * This file contains the ResumeSlider component and related utility functions.
+ *
+ * The ResumeSlider component is responsible for rendering a slider section of a resume.
+ * It uses data from the Sanity CMS to dynamically generate the content.
+ *
+ * The utility functions in this file include:
+ * - urlFor: A function to build the image URL from the Sanity image object.
+ * - mapSliderSection: A function to map the slider data to the expected structure.
+ *
+ * Props:
+ * - slider: An object of type Section that contains the data for the resume slider section.
+ *
+ * Example usage:
+ *
+ * <ResumeSlider slider={sliderData} />
+ *
+ * Where `sliderData` is an object containing the necessary data for the resume slider section.
+ */
+
 import type { SlideData } from "@/stories/components/organisms/SliderSection";
 import type { SliderSectionObject } from "@/stories/components/templates/Resume";
 import { Resume } from "@/stories/components/templates/Resume";
@@ -96,7 +116,6 @@ const mapSliderSection = (slider: Section): SliderSectionObject => {
   };
 };
 
-// Componente `ResumeSlider` que renderiza `Resume` con `SliderSectionObject`
 const ResumeSlider: React.FC<{ slider: Section }> = ({ slider }) => {
   const formattedSliderData: SliderSectionObject = mapSliderSection(slider);
 

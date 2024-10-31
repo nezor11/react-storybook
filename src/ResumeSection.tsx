@@ -1,3 +1,23 @@
+/**
+ * This file contains the ResumeSection component and related utility functions.
+ *
+ * The ResumeSection component is responsible for rendering a section of a resume.
+ * It uses data from the Sanity CMS to dynamically generate the content.
+ *
+ * The utility functions in this file include:
+ * - urlFor: A function to build the image URL from the Sanity image object.
+ * - mapInfoSection: A function to map the section data to the expected structure.
+ *
+ * Props:
+ * - section: An object of type Section that contains the data for the resume section.
+ *
+ * Example usage:
+ *
+ * <ResumeSection section={sectionData} />
+ *
+ * Where `sectionData` is an object containing the necessary data for the resume section.
+ */
+
 import { Resume } from "@/stories/components/templates/Resume";
 import type { Section } from "@/utils/types/section";
 import blocksToHtml from "@sanity/block-content-to-html";
@@ -18,11 +38,9 @@ const builder = imageUrlBuilder({ projectId, dataset });
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const urlFor = (source: any) => {
-  // Use the appropriate type
   return builder.image(source);
 };
 
-// Exporta la función mapInfoSection aquí
 export const mapInfoSection = (section: Section) => {
   const { titleSection, subtitleSection, sections, iconTitleDetails } = section;
 
