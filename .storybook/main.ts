@@ -1,6 +1,5 @@
-import path from "node:path";
-// Replace your-framework with the framework you are using (e.g., react-webpack5, vue3-vite)
 import type { StorybookConfig } from "@storybook/react-vite";
+import path from "node:path";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 const config: StorybookConfig = {
@@ -23,19 +22,44 @@ const config: StorybookConfig = {
     reactDocgen: "react-docgen-typescript",
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      // 👇 Default prop filter, which excludes props from node_modules
+      // Filtra props que provengan de node_modules
       propFilter: (prop) =>
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
   docs: {},
   viteFinal: async (config) => {
-    config.plugins?.push(
-      /** @see https://github.com/aleclarson/vite-tsconfig-paths */
+    config.plugins = config.plugins || [];
+    config.plugins.push(
       tsconfigPaths({
         projects: [path.resolve(path.dirname(__dirname), "tsconfig.json")],
       })
     );
+
+    // Configuramos el alias para "msw/browser" apuntándolo al archivo correcto en msw
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "msw/browser": path.resolve(
+        __dirname,
+        "../node_modules/msw/lib/index.js"
+      ),
+    };
+
+    // Excluimos "vue" de la optimización de dependencias
+    config.optimizeDeps = config.optimizeDeps || {};
+    config.optimizeDeps.exclude = [
+      ...(config.optimizeDeps.exclude || []),
+      "vue",
+    ];
+
+    // Marcamos "vue" como externo en Rollup
+    config.build = config.build || {};
+    config.build.rollupOptions = config.build.rollupOptions || {};
+    config.build.rollupOptions.external = [
+      ...((config.build.rollupOptions.external as string[]) || []),
+      "vue",
+    ] as const;
 
     return config;
   },

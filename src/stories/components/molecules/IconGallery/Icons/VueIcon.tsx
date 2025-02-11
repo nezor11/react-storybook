@@ -1,8 +1,9 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
+import type { FC } from "react";
 import React, { forwardRef, memo } from "react";
 
-const VueIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const VueIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "VueIcon", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
@@ -15,7 +16,7 @@ const VueIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name ? <title id={name}>{name}</title> : null}
+      <title id={name}>{name}</title>
       <path
         d="M75.63 0 61.44 24.58 47.25 0H0l61.44 106.42L122.88 0H75.63z"
         style={{
@@ -32,6 +33,6 @@ const VueIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedVueIcon: React.FC<IconProps> = memo(VueIcon);
+const MemoizedVueIcon: FC<IconProps> = memo(VueIcon);
 
 export default MemoizedVueIcon;
