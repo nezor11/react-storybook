@@ -35,7 +35,7 @@
 import { ContentSlider } from "@/stories/components/atoms/ContentSlider";
 import type { LinkProps } from "@/stories/components/atoms/Link";
 import type { IconData } from "@/stories/components/molecules/CardSlide";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React, { useMemo } from "react";
 import "./index.css";
 
@@ -59,10 +59,10 @@ interface PopupProps {
   link?: LinkProps;
   iconsData?: IconData[];
   backgroundColor?: string;
-  ButtonCloseComponent: React.FC<{ onClick: () => void }>;
+  ButtonCloseComponent: FC<{ onClick: () => void }>;
 }
 
-export const Popup: React.FC<PopupProps> = ({
+export const Popup: FC<PopupProps> = ({
   onClose,
   title,
   company = "Nezor Houze",
@@ -124,7 +124,7 @@ export const Popup: React.FC<PopupProps> = ({
 
   return (
     <div className="min-h-screen min-w-screen popup-content">
-      <div className="fixed top-0 left-0 right-0 bottom-0 p-6 lg:p-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950">
+      <div className="fixed top-0 left-0 right-0 bottom-0 lg:flex lg:items-center lg:justify-center modal-wrapper z-50 bg-white dark:bg-slate-950">
         <ButtonCloseComponent onClick={handleClose} />
         <ContentSlider
           title={title}

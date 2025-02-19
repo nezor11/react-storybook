@@ -22,7 +22,7 @@
 
 import createTripleSlider from "@/stories/assets/scripts/triple-slider";
 import { nanoid } from "nanoid";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React, { useEffect, useRef } from "react";
 import "swiper/css";
 import "swiper/css/controller";
@@ -38,10 +38,7 @@ interface ImageSliderProps {
   className?: string;
 }
 
-export const ImageSlider: React.FC<ImageSliderProps> = ({
-  images,
-  className,
-}) => {
+export const ImageSlider: FC<ImageSliderProps> = ({ images, className }) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

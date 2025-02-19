@@ -1,8 +1,8 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
 import React, { forwardRef, memo } from "react";
 
-const MySQLIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const MySQLIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "MySQL", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
@@ -15,7 +15,7 @@ const MySQLIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name ? <title id={name}>{name}</title> : null}
+      <title id={name}>{name}</title>
       <path fill="none" d="M-18.458 6.58h191.151v132.49H-18.458V6.58z" />
       <path
         fill="#5d87a1"
@@ -37,6 +37,6 @@ const MySQLIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedMySQLIcon: React.FC<IconProps> = memo(MySQLIcon);
+const MemoizedMySQLIcon = memo(MySQLIcon);
 
 export default MemoizedMySQLIcon;

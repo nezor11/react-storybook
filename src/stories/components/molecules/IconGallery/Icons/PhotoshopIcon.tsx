@@ -1,20 +1,21 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import React, { forwardRef, memo } from "react";
 
-const PhotoshopIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const PhotoshopIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Photoshop", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : "1em"}
       height={height ? height : "1em"}
       viewBox="0 -0.5 48 48"
       ref={ref}
-      aria-labelledby={name ? "title" : undefined}
+      aria-labelledby={name}
       aria-describedby={desc ? "desc" : undefined}
       {...props}
     >
-      {desc && <desc id="desc">{desc}</desc>}
-      {name && <title id="title">{name}</title>}
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path
         fill="#2861D3"
         fillRule="evenodd"
@@ -24,6 +25,6 @@ const PhotoshopIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedPhotoshopIcon: React.FC<IconProps> = memo(PhotoshopIcon);
+const MemoizedPhotoshopIcon = memo(PhotoshopIcon);
 
 export default MemoizedPhotoshopIcon;

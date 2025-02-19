@@ -1,8 +1,9 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import React, { forwardRef, memo } from "react";
 
-const BehanceIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const BehanceIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Behance", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : "1em"}
@@ -13,8 +14,8 @@ const BehanceIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       aria-describedby={desc ? "desc" : undefined}
       {...props}
     >
-      {desc && <desc id="desc">{desc}</desc>}
-      {name && <title id="title">{name}</title>}
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path
         fill="#1769FF"
         fillRule="evenodd"
@@ -24,6 +25,6 @@ const BehanceIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedBehanceIcon: React.FC<IconProps> = memo(BehanceIcon);
+const MemoizedBehanceIcon = memo(BehanceIcon);
 
 export default MemoizedBehanceIcon;

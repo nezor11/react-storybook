@@ -22,7 +22,8 @@ import { Resume } from "@/stories/components/templates/Resume";
 import type { Section } from "@/utils/types/section";
 import blocksToHtml from "@sanity/block-content-to-html";
 import imageUrlBuilder from "@sanity/image-url";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { FC } from "react";
 import React from "react";
 
 interface Props {
@@ -36,8 +37,7 @@ const dataset = "production";
 // Function to build the image URL from the Sanity image object
 const builder = imageUrlBuilder({ projectId, dataset });
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-const urlFor = (source: any) => {
+const urlFor = (source: SanityImageSource) => {
   return builder.image(source);
 };
 
@@ -113,7 +113,7 @@ export const mapInfoSection = (section: Section) => {
   };
 };
 
-const ResumeSection: React.FC<Props> = ({ section }) => {
+const ResumeSection: FC<Props> = ({ section }) => {
   return (
     <Resume
       key={section._key}

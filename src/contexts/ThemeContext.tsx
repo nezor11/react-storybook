@@ -1,15 +1,18 @@
 // ThemeContext.tsx
-import { createContext } from "react";
+import type { ReactNode } from "react";
+import React, {
+  createContext,
+  startTransition,
+  useEffect,
+  useState,
+} from "react";
 import type { ThemeContextInterface } from "../utils/types/theme";
 
 const ThemeContext = createContext<ThemeContextInterface | null>(null);
 
 export { ThemeContext };
 
-// biome-ignore lint/style/useImportType: <explanation>
-import React, { startTransition, useEffect, useState } from "react";
-
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [darkTheme, setDarkTheme] = useState<boolean>(() => {
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme) {

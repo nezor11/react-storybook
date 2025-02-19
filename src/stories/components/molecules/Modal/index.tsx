@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 /**
  * Modal is a component that displays a modal dialog with various details such as title, company, year, description, images, work done, work type, video, link, and icons.
  *
@@ -32,9 +33,6 @@
  * />
  */
 
-// biome-ignore lint/style/useImportType: <explanation>
-import React, { useEffect, useMemo, useRef, useState } from "react";
-
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import { ImageSlider } from "@/stories/components/atoms/ImageSlider";
 import { Link, type LinkProps } from "@/stories/components/atoms/Link";
@@ -43,7 +41,8 @@ import { VideoPlayer } from "@/stories/components/atoms/VideoPlayer";
 import type { IconData } from "@/stories/components/molecules/CardSlide";
 import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
 import { nanoid } from "nanoid";
-
+import type { FC } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./index.css";
 
 export interface SanityImageData {
@@ -65,10 +64,10 @@ interface ModalProps {
   videoUrl?: string;
   link?: LinkProps;
   iconsData?: IconData[];
-  ButtonCloseComponent: React.FC<{ onClick: () => void }>; // Propiedad para pasar el componente del botón de cierre
+  ButtonCloseComponent: FC<{ onClick: () => void }>;
 }
 
-export const Modal: React.FC<ModalProps> = ({
+export const Modal: FC<ModalProps> = ({
   onClose,
   title,
   company = "Nezor Houze",

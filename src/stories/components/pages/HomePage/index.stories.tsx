@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 const fetchRandomFaceImage = async () => {
   try {
     const response = await fetch(
-      `https://api.unsplash.com/photos/random?query=face&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc`
+      "https://api.unsplash.com/photos/random?query=face&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc"
     );
     const data = await response.json();
     return {

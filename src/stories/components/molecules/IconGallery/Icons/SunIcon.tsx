@@ -1,8 +1,8 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
 import React, { forwardRef, memo } from "react";
 
-const SunIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const SunIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Sun", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
@@ -17,7 +17,7 @@ const SunIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name ? <title id={name}>{name}</title> : null}
+      <title id={name}>{name}</title>
       <path
         fill="#1C274C"
         fillRule="evenodd"
@@ -28,6 +28,6 @@ const SunIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedSunIcon: React.FC<IconProps> = memo(SunIcon);
+const MemoizedSunIcon = memo(SunIcon);
 
 export default MemoizedSunIcon;

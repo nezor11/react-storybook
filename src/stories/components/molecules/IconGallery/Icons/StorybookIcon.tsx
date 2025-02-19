@@ -1,8 +1,8 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
 import React, { forwardRef, memo } from "react";
 
-const StorybookIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const StorybookIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Storybook", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -16,7 +16,7 @@ const StorybookIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name ? <title id={name}>{name}</title> : null}
+      <title id={name}>{name}</title>
       <defs>
         <path
           id="d"
@@ -36,6 +36,6 @@ const StorybookIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedStorybookIcon: React.FC<IconProps> = memo(StorybookIcon);
+const MemoizedStorybookIcon = memo(StorybookIcon);
 
 export default MemoizedStorybookIcon;

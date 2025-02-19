@@ -1,35 +1,7 @@
-/**
- * BodyCopy is a component that renders a text element. It is used to display text in a page or section.
- *
- * Props:
- * - tag: The HTML tag to be used for the text element. Default is "div".
- * - text: The text content to be displayed. Default is an empty string.
- * - size: The size of the text element. Options are "sm", "base", "lg", "xl", "2xl", "3xl". Default is "base".
- * - weight: The weight of the text element. Options are "thin", "normal", "medium", "semibold", "bold", "black". Default is "normal".
- * - align: The alignment of the text element. Options are "left", "center", "right". Default is "left".
- * - emphasis: The emphasis of the text element. Options are "none", "low", "high". Default is "none".
- * - italic: Boolean indicating if the text should be italicized. Default is false.
- * - underline: Boolean indicating if the text should be underlined. Default is false.
- * - mods: Additional CSS classes to be applied to the text element.
- *
- * Example usage:
- * <BodyCopy
- *   tag="p"
- *   text="This is a paragraph."
- *   size="lg"
- *   weight="bold"
- *   align="center"
- *   emphasis="high"
- *   italic={true}
- *   underline={true}
- *   mods="custom-class"
- * />
- */
 import { cn } from "@/utils";
 import { cva } from "class-variance-authority";
 import DOMPurify from "dompurify";
-import type { CSSProperties } from "react";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { CSSProperties, FC, ReactNode } from "react";
 import React from "react";
 import ReactHtmlParser, {
   convertNodeToElement,
@@ -110,7 +82,7 @@ interface BodyCopyProps {
 }
 
 /** Renders a body copy component with customizable styles and variants. */
-export const BodyCopy: React.FC<BodyCopyProps> = ({
+export const BodyCopy: FC<BodyCopyProps> = ({
   tag = "div",
   text = "Lorem fistrum ahorarr de la pradera no te digo trigo por no llamarte Rodrigor",
   mods = "text-base dark:text-white",
@@ -149,10 +121,13 @@ export const BodyCopy: React.FC<BodyCopyProps> = ({
       align,
     })
   );
-
   return (
     <Tag className={classes} style={styles} {...props}>
-      {ReactHtmlParser(sanitizedHTML, { transform: addTargetBlank })}
+      {
+        ReactHtmlParser(sanitizedHTML, {
+          transform: addTargetBlank,
+        }) as ReactNode
+      }
     </Tag>
   );
 };

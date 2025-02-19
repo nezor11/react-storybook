@@ -29,8 +29,9 @@ export const IconGallery: React.FC<IconGalleryProps> = ({ iconsData = [] }) => {
 
   useEffect(() => {
     const loadIcons = async () => {
-      // @ts-ignore
-      const iconModules = await import.meta.globEager("./Icons/*.tsx");
+      const iconModules = await import.meta.glob("./Icons/*.tsx", {
+        eager: true,
+      });
       const availableIconNames = Object.keys(iconModules).map((path) => {
         return path.split("/").pop()?.split(".")[0] || "";
       });

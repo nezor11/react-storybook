@@ -6,14 +6,13 @@ import type {
   ImageDetails,
   Section,
 } from "@/utils/types/section";
-// biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 
 interface Props {
   section: Section;
 }
 
-const HeaderSection: React.FC<Props> = ({ section }) => {
+const HeaderSection = ({ section }: Props) => {
   // Transformamos los íconos a la estructura esperada
   const iconsData = section.icons
     .map((iconGallery) => iconGallery.iconDetails)

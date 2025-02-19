@@ -1,8 +1,8 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
 import React, { forwardRef, memo } from "react";
 
-const NuxtIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const NuxtIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Nuxt", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : "1em"}
@@ -15,11 +15,7 @@ const NuxtIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name === undefined ? (
-        <title id={name}>{"file_type_nuxt"}</title>
-      ) : name ? (
-        <title id={name}>{name}</title>
-      ) : null}
+      <title id={name}>{name}</title>
       <path
         d="M10.648 25.734a1.465 1.465 0 0 1-.157-.942H3.847l9.869-17.375 4.159 7.41 1.308-.976-4.107-7.384A1.752 1.752 0 0 0 13.7 5.56a1.531 1.531 0 0 0-1.343.924l-10 17.593a1.729 1.729 0 0 0-.087 1.656 1.526 1.526 0 0 0 1.456.706H12.1a1.523 1.523 0 0 1-1.456-.7Z"
         style={{
@@ -42,6 +38,6 @@ const NuxtIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedNuxtIcon: React.FC<IconProps> = memo(NuxtIcon);
+const MemoizedNuxtIcon = memo(NuxtIcon);
 
 export default MemoizedNuxtIcon;

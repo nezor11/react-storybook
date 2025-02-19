@@ -1,4 +1,4 @@
-// biome-ignore lint/style/useImportType: <explanation>
+import type { ReactNode } from "react";
 import React, {
   createContext,
   startTransition,
@@ -9,7 +9,7 @@ import type { ThemeContextInterface } from "../utils/types/theme";
 
 export const ThemeContext = createContext<ThemeContextInterface | null>(null);
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [darkTheme, setDarkTheme] = useState<boolean>(() => {
     // Inicializa el tema desde localStorage o según la preferencia del sistema
     const savedTheme = localStorage.getItem("theme");

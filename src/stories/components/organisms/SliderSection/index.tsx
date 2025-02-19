@@ -32,8 +32,7 @@ import type { IconGalleryProps } from "@/stories/components/molecules/IconGaller
 import { TitleSection } from "@/stories/components/molecules/TitleSection";
 import { cn } from "@/utils";
 import { nanoid } from "nanoid";
-// biome-ignore lint/style/useImportType: <explanation>
-import React, { useState } from "react";
+import React, { useState, type FC } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -68,7 +67,7 @@ export interface SliderSectionProps {
   title?: string;
 }
 
-export const SliderSection: React.FC<SliderSectionProps> = ({
+export const SliderSection: FC<SliderSectionProps> = ({
   slidesData,
   icons,
   title,

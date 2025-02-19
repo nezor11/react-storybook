@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import React, { useEffect, useState } from "react";
 import { ContentSlider } from ".";
 
@@ -32,6 +32,13 @@ const meta: Meta<typeof ContentSlider> = {
 export default meta;
 type Story = StoryObj<typeof ContentSlider>;
 
+interface UnsplashImage {
+  alt_description: string;
+  urls: {
+    raw: string;
+  };
+}
+
 // Función para obtener imágenes de Unsplash
 const fetchImagesFromUnsplash = async (query: string, count = 3) => {
   try {
@@ -42,7 +49,7 @@ const fetchImagesFromUnsplash = async (query: string, count = 3) => {
 
     const data = await response.json();
     console.log("SRC IMG ------------------------> ", data);
-    return data.map((img: any) => ({
+    return data.map((img: UnsplashImage) => ({
       alt: img.alt_description || "Unsplash Image",
       src: `${img.urls.raw}&w=800&h=1200&fit=crop`,
       width: 1200,
@@ -67,7 +74,7 @@ export const Default: Story = {
     company: "Company",
     year: "2021",
     description:
-      "During my time at Ondho, I played a key role in the complete development of the Naturisthar website from the very beginning. This project was centered around creating a digital presence that embodies the brand's commitment to natural and holistic beauty. My work involved designing an intuitive and aesthetically pleasing site layout, integrating features that showcase the brand’s offerings, and ensuring smooth performance. I also maintained a consistent, nature-inspired design throughout the site.",
+      "During my time at Ondho, I played a key role in the complete development of the Naturisthar website from the very beginning. This project was centered around creating a digital presence that embodies the brand's commitment to natural and holistic beauty. My work involved designing an intuitive and aesthetically pleasing site layout, integrating features that showcase the brand's offerings, and ensuring smooth performance. I also maintained a consistent, nature-inspired design throughout the site.",
     workDone: [
       "Maecenas sit amet justo sit amet tellus tincidunt efficitur.",
       "Nullam nec turpis nec justo aliquam suscipit.",
@@ -119,7 +126,7 @@ export const Video: Story = {
     company: "Company",
     year: "2021",
     description:
-      "During my time at Ondho, I played a key role in the complete development of the Naturisthar website from the very beginning. This project was centered around creating a digital presence that embodies the brand's commitment to natural and holistic beauty. My work involved designing an intuitive and aesthetically pleasing site layout, integrating features that showcase the brand’s offerings, and ensuring smooth performance. I also maintained a consistent, nature-inspired design throughout the site.",
+      "During my time at Ondho, I played a key role in the complete development of the Naturisthar website from the very beginning. This project was centered around creating a digital presence that embodies the brand's commitment to natural and holistic beauty. My work involved designing an intuitive and aesthetically pleasing site layout, integrating features that showcase the brand's offerings, and ensuring smooth performance. I also maintained a consistent, nature-inspired design throughout the site.",
     workDone: [
       "Maecenas sit amet justo sit amet tellus tincidunt efficitur.",
       "Nullam nec turpis nec justo aliquam suscipit.",

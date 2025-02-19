@@ -1,6 +1,6 @@
 // index.stories.ts
 import { Code } from "@/stories/components/system/Code";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { BodyCopy } from ".";
 

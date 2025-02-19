@@ -24,8 +24,7 @@
  * />
  */
 
-import type { CSSProperties } from "react";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { CSSProperties, FC } from "react";
 import React, { useEffect, useRef, useState } from "react";
 import "./index.css";
 
@@ -37,10 +36,10 @@ export interface LazyImageProps {
   height?: number;
   onImageLoad?: () => void;
   style?: CSSProperties;
-  lazy?: boolean; // Nuevo prop para controlar el lazy loading
+  lazy?: boolean;
 }
 
-export const LazyImage: React.FC<LazyImageProps> = ({
+export const LazyImage: FC<LazyImageProps> = ({
   placeholderSrc,
   src,
   alt,
@@ -58,7 +57,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
     img.onload = () => {
       setLoaded(true);
       if (imageRef.current) {
-        imageRef.current.src = src; // Actualizar el src manualmente
+        imageRef.current.src = src;
         onImageLoad?.();
       }
     };
@@ -78,7 +77,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    display: loaded ? "none" : "block", // Ocultar placeholder cuando la imagen está cargada
+    display: loaded ? "none" : "block",
     ...style,
   };
 
@@ -86,7 +85,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    display: loaded ? "block" : "none", // Mostrar imagen solo cuando está cargada
+    display: loaded ? "block" : "none",
     ...style,
   };
 
@@ -102,7 +101,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
         />
         <img
           ref={imageRef}
-          src={placeholderSrc} // Inicialmente usa el placeholder
+          src={placeholderSrc}
           alt={alt}
           style={imageStyles}
           loading="eager"

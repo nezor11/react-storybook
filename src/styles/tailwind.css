@@ -1775,12 +1775,12 @@ body.theme-dark.modal-open .modal-wapper {
 
 .dark,
 .theme-dark {
-  .GitBranchIcon {
+  .GitBranch {
     path {
       fill: var(--textColor);
     }
   }
-  .NextJSIcon {
+  .NextJS {
     path {
       fill: var(--textColor);
     }
@@ -1885,6 +1885,11 @@ body.theme-dark.modal-open .modal-wapper {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1988,11 +1993,6 @@ body.theme-dark.modal-open .modal-wapper {
   .lg\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
-  }
-
-  .lg\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
   }
 
   .lg\:text-xl {

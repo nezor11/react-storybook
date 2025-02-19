@@ -26,14 +26,12 @@ import {
   FrameImage,
   type FrameImageProps,
 } from "@/stories/components/molecules/FrameImage";
-
 import {
   IconGallery,
   type IconGalleryProps,
 } from "@/stories/components/molecules/IconGallery";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React from "react";
-
 import "./index.css";
 
 export interface User extends IconGalleryProps {
@@ -47,7 +45,7 @@ export interface HeaderProps {
   user: User | null;
 }
 
-export const Header: React.FC<HeaderProps> = ({ user }) => (
+export const Header: FC<HeaderProps> = ({ user }) => (
   <header className="flex place-content-between lg:mb-16">
     <div className="header__main flex flex-col items-start justify-center basis-2/3 lg:basis-3/4">
       {user ? (

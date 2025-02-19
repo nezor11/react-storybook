@@ -1,5 +1,5 @@
 import { Code } from "@/stories/components/system/Code";
-import { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 import React from "react";
 import Play from ".";
 

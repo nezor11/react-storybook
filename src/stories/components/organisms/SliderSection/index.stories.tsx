@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React, { useEffect, useState } from "react";
 import { SliderSection } from ".";
 
@@ -85,7 +85,7 @@ const fetchImagesFromUnsplash = async (query: string, count = 3) => {
   }
 };
 
-export const Default: React.FC = () => {
+export const Default: FC = () => {
   const [slidesData, setSlidesData] = useState([]);
 
   useEffect(() => {

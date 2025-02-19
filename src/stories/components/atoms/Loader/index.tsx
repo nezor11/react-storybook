@@ -5,11 +5,11 @@
  * <Loader />
  */
 
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React from "react";
 import "./index.css";
 
-const Loader: React.FC = () => {
+const Loader: FC = () => {
   return (
     <div className="loader">
       <svg className="circular-loader" viewBox="25 25 50 50">

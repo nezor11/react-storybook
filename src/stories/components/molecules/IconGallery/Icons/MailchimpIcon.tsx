@@ -1,8 +1,8 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
 import React, { forwardRef, memo } from "react";
 
-const MailchimpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const MailchimpIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Mailchimp", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
@@ -16,7 +16,7 @@ const MailchimpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name ? <title id={name}>{name}</title> : null}
+      <title id={name}>{name}</title>
       <path
         fill="#FDDD4C"
         d="M16 2C8.278 2 2 8.278 2 16s6.278 14 14 14 14-6.278 14-14S23.722 2 16 2Z"
@@ -35,6 +35,6 @@ const MailchimpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedMailchimpIcon: React.FC<IconProps> = memo(MailchimpIcon);
+const MemoizedMailchimpIcon = memo(MailchimpIcon);
 
 export default MemoizedMailchimpIcon;

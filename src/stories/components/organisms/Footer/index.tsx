@@ -24,7 +24,7 @@ import {
   ContactDetail,
   type ContactDetailTexts,
 } from "@/stories/components/molecules/ContactDetails";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React from "react";
 
 export interface FooterProps {
@@ -35,7 +35,7 @@ export interface FooterProps {
   contact_details?: ContactDetailTexts;
 }
 
-export const Footer: React.FC<FooterProps> = ({
+export const Footer: FC<FooterProps> = ({
   copy_right_text = "Sage",
   my_link = { link_text: "", href: "", rel: "" },
   contact_details = { title: "", email: "", phone: "" },

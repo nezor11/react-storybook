@@ -1,4 +1,4 @@
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React from "react";
 import HeaderSection from "./HeaderSection";
 import ResumeSection from "./ResumeSection";
@@ -9,7 +9,7 @@ interface Props {
   section?: Section | Slide;
 }
 
-const SectionRenderer: React.FC<Props> = ({ section }) => {
+const SectionRenderer: FC<Props> = ({ section }) => {
   switch (section._type) {
     case "header":
       return <HeaderSection section={section} />;

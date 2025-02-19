@@ -25,7 +25,7 @@ import {
   LazyImage,
   type LazyImageProps,
 } from "@/stories/components/atoms/LazyImage";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React from "react";
 import styled from "styled-components";
 
@@ -55,7 +55,7 @@ export type FrameImageProps = {
   imageDetail?: LazyImageProps;
 };
 
-export const FrameImage: React.FC<FrameImageProps> = ({
+export const FrameImage: FC<FrameImageProps> = ({
   image: imageURL,
   mask: maskURL,
 }: FrameImageProps) => {

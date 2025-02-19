@@ -15,8 +15,7 @@
  *   styles={{ color: "red" }}
  * />
  */
-import type { CSSProperties } from "react";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { CSSProperties, FC } from "react";
 import React from "react";
 import "./index.css";
 
@@ -34,7 +33,7 @@ interface SubtitleCopyProps {
 }
 
 /** Renders a subtitle with customizable tag, text, and styles. */
-export const SubtitleCopy: React.FC<SubtitleCopyProps> = ({
+export const SubtitleCopy: FC<SubtitleCopyProps> = ({
   subtitle = "h2",
   text = "Papaar papaar",
   mods = "text-3xl uppercase",

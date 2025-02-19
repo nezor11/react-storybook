@@ -8,7 +8,7 @@ import type { IconData } from "@/stories/components/molecules/CardSlide";
 import type { SanityImageData } from "@/stories/components/molecules/Modal";
 import { SuspenseIconGallery } from "@/stories/components/molecules/SuspenseIconGallery";
 import { nanoid } from "nanoid";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./index.css";
 import SliderClip from "./SliderClip";
@@ -28,7 +28,7 @@ interface ContentSliderProps {
   backgroundColor?: string;
 }
 
-export const ContentSlider: React.FC<ContentSliderProps> = ({
+export const ContentSlider: FC<ContentSliderProps> = ({
   title,
   company = "Nezor Houze",
   year,
@@ -109,7 +109,7 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
   console.log("Imágenes recibidas en ContentSlider:", images);
 
   return (
-    <section className="intro">
+    <section className="intro p-6 lg:p-0">
       <div className="left md:px-8 2xl:px-16">
         <div>
           <div className="content-wrapper">
@@ -129,7 +129,7 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
               <TitleCopy
                 text={title}
                 align="left"
-                mods="text-xl lg:text-5xl dark:text-white mb-4 lg:mb-8"
+                mods="text-xl md:text-5xl dark:text-white mb-4 lg:mb-8"
               />
               <BodyCopy
                 text={description}
@@ -199,14 +199,13 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
               </div>
             </div>
           ) : (
-            <div
-              className="relative flex justify-center items-center cursor-pointer"
+            <button
+              type="button"
+              className="relative flex justify-center items-center cursor-pointer w-full h-full"
               style={{
                 backgroundImage: `url(${images[0]?.src})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                height: "100%",
-                width: "100%",
               }}
               onClick={handlePlayClick}
               onKeyUp={(e) => {
@@ -214,11 +213,9 @@ export const ContentSlider: React.FC<ContentSliderProps> = ({
                   handlePlayClick();
                 }
               }}
-              // biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
-              tabIndex={0}
             >
               <Play />
-            </div>
+            </button>
           )
         ) : (
           <>

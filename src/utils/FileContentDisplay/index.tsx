@@ -1,14 +1,12 @@
 // FileContentDisplay.tsx
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React, { useEffect, useState } from "react";
 
 interface FileContentDisplayProps {
   fileName?: string;
 }
 
-const FileContentDisplay: React.FC<FileContentDisplayProps> = ({
-  fileName,
-}) => {
+const FileContentDisplay: FC<FileContentDisplayProps> = ({ fileName }) => {
   const [fileContent, setFileContent] = useState<string | null>(null);
 
   useEffect(() => {

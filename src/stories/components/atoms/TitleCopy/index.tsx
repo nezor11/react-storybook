@@ -1,7 +1,12 @@
 import { cn } from "@/utils";
 import { cva } from "class-variance-authority";
-import type { CSSProperties, ReactNode } from "react";
-// biome-ignore lint/style/useImportType: <explanation>
+import type {
+  CSSProperties,
+  ComponentType,
+  FC,
+  HTMLAttributes,
+  ReactNode,
+} from "react";
 import React from "react";
 import "./index.css";
 
@@ -26,10 +31,8 @@ const textStyles = cva("text", {
 
 type AllowedTagValues = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 interface TitleCopyProps {
-  /** The as property is optional and can be either an AllowedTagValues ("h1", "h2", "h3", "h4", "h5", "h6").  */
-  as?:
-    | AllowedTagValues
-    | React.ComponentType<React.HTMLAttributes<HTMLElement>>;
+  /** The as property is optional and can be either an AllowedTagValues ("h1", "h2", "h3", "h4", "h5", "h6") or a React ComponentType<HTMLAttributes<HTMLElement>>.  */
+  as?: AllowedTagValues | ComponentType<HTMLAttributes<HTMLElement>>;
   /** The text property is optional and can be a string.  */
   text?: string;
   /** The align property is optional and can be either "left", "center", "right", null, or undefined.  */
@@ -47,7 +50,7 @@ interface TitleCopyProps {
 }
 
 /** Renders a title or copy component with customizable styles and variants. */
-export const TitleCopy: React.FC<TitleCopyProps> = ({
+export const TitleCopy: FC<TitleCopyProps> = ({
   as: Tag = "h1",
   text = "Rodrigor",
   align = "left",

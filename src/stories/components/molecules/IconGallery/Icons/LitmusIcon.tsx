@@ -1,8 +1,9 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import React, { forwardRef, memo } from "react";
 
-const LitmusIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const LitmusIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Litmus", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : "1em"}
@@ -10,12 +11,12 @@ const LitmusIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       preserveAspectRatio="xMidYMid"
       viewBox="0 0 256 256"
       ref={ref}
-      aria-labelledby={name ? "title" : undefined}
+      aria-labelledby={name}
       aria-describedby={desc ? "desc" : undefined}
       {...props}
     >
-      {desc && <desc id="desc">{desc}</desc>}
-      {name && <title id="title">{name}</title>}
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path
         fill="#6A7A55"
         d="M0 127.94c0 12.487 1.799 24.552 5.133 35.961l70.62-23.131a53.012 53.012 0 0 1 .465-25.778L5.095 92.109A127.964 127.964 0 0 0 0 127.94"
@@ -60,6 +61,6 @@ const LitmusIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedLitmusIcon: React.FC<IconProps> = memo(LitmusIcon);
+const MemoizedLitmusIcon = memo(LitmusIcon);
 
 export default MemoizedLitmusIcon;

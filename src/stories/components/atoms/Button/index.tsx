@@ -18,7 +18,7 @@
  * />
  */
 
-// biome-ignore lint/style/useImportType: <explanation>
+import type { CSSProperties } from "react";
 import React from "react";
 import "./index.css";
 
@@ -46,7 +46,7 @@ export const Button = ({
 
   const buttonClasses = [buttonClass, sizeClass, mode, buttonClass.trim()];
 
-  const buttonStyle: React.CSSProperties = {
+  const buttonStyle: CSSProperties = {
     backgroundColor: backgroundColor || undefined,
     borderRadius: radius ? `${radius}px` : undefined,
   };

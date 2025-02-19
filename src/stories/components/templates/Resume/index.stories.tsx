@@ -1,6 +1,5 @@
 import { Code } from "@/stories/components/system/Code";
 import type { Meta, StoryObj } from "@storybook/react";
-// biome-ignore lint/style/useImportType: <explanation>
 import React, { useEffect, useState } from "react";
 import { Resume } from ".";
 
@@ -74,7 +73,7 @@ const fetchImagesFromUnsplash = async (query: string, count = 3) => {
   }
 };
 
-export const Default: React.FC = () => {
+export const Default = () => {
   const [slidesData, setSlidesData] = useState([]);
 
   useEffect(() => {

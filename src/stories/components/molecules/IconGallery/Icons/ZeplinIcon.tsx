@@ -1,20 +1,21 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import React, { forwardRef, memo } from "react";
 
-const ZeplinIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const ZeplinIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Zeplin", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : "1em"}
       height={height ? height : "1em"}
       viewBox="0 0 2406.8 1923.8"
       ref={ref}
-      aria-labelledby={name ? "title" : undefined}
+      aria-labelledby={name}
       aria-describedby={desc ? "desc" : undefined}
       {...props}
     >
-      {desc && <desc id="desc">{desc}</desc>}
-      {name && <title id="title">{name}</title>}
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path
         fill="#fdbd39"
         d="m371 1326.4-125.9 46-6.7 374.5 435.8-159.2c-149.6-50.1-258.7-138.4-303.2-261.3"
@@ -47,6 +48,6 @@ const ZeplinIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedZeplinIcon: React.FC<IconProps> = memo(ZeplinIcon);
+const MemoizedZeplinIcon = memo(ZeplinIcon);
 
 export default MemoizedZeplinIcon;

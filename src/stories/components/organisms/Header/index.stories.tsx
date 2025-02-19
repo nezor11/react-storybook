@@ -1,5 +1,5 @@
 import { Code } from "@/stories/components/system/Code";
-import { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import React, { useEffect, useState } from "react";
 import { Header } from ".";
 
@@ -32,7 +32,7 @@ export default meta;
 const fetchFaceImage = async () => {
   try {
     const response = await fetch(
-      `https://api.unsplash.com/photos/random?query=face&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc`
+      "https://api.unsplash.com/photos/random?query=face&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc"
     );
     const data = await response.json();
     return {

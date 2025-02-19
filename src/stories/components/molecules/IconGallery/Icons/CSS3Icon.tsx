@@ -1,8 +1,9 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import React, { forwardRef, memo } from "react";
 
-const CSS3Icon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const CSS3Icon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "CSS3", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : "1em"}
@@ -10,12 +11,12 @@ const CSS3Icon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       preserveAspectRatio="xMinYMin meet"
       viewBox="0 0 512 512"
       ref={ref}
-      aria-labelledby={name ? "title" : undefined}
+      aria-labelledby={name}
       aria-describedby={desc ? "desc" : undefined}
       {...props}
     >
-      {desc && <desc id="desc">{desc}</desc>}
-      {name && <title id="title">{name}</title>}
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path fill="#264de4" d="M72 460 30 0h451l-41 460-184 52" />
       <path fill="#2965f1" d="M256 37v435l149-41 35-394" />
       <path
@@ -30,6 +31,6 @@ const CSS3Icon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedCSS3Icon: React.FC<IconProps> = memo(CSS3Icon);
+const MemoizedCSS3Icon = memo(CSS3Icon);
 
 export default MemoizedCSS3Icon;

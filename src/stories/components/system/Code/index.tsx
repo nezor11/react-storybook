@@ -1,27 +1,13 @@
-/**
- * Code is a component that fetches and displays the content of a README.md file from a specified directory.
- *
- * Props:
- * - directoryPath: A string representing the path to the directory where the README.md file is located.
- *
- * Example usage:
- * <Code directoryPath="/path/to/directory/" />
- *
- * The component uses the useEffect hook to fetch the content of the README.md file when the component mounts or when the directoryPath prop changes.
- * If the file is found, its content is displayed using the SyntaxHighlighter component from the react-syntax-highlighter library.
- * If the file is not found, an error message is displayed.
- */
-
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React, { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 interface CodeProps {
-  directoryPath: string; // Ruta del directorio donde se encuentra el archivo de la historia
+  directoryPath: string;
 }
 
-export const Code: React.FC<CodeProps> = ({ directoryPath }) => {
+export const Code: FC<CodeProps> = ({ directoryPath }) => {
   const [markdownContent, setMarkdownContent] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
@@ -51,7 +37,7 @@ export const Code: React.FC<CodeProps> = ({ directoryPath }) => {
 
   return (
     <div className="px-[6.5px]">
-      <SyntaxHighlighter language="tsx" style={vscDarkPlus}>
+      <SyntaxHighlighter language="tsx" style={vscDarkPlus} showLineNumbers >
         {markdownContent}
       </SyntaxHighlighter>
     </div>

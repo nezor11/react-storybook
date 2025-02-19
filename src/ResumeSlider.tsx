@@ -24,7 +24,8 @@ import { Resume } from "@/stories/components/templates/Resume";
 import type { Section } from "@/utils/types/section";
 import blocksToHtml from "@sanity/block-content-to-html";
 import imageUrlBuilder from "@sanity/image-url";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { FC } from "react";
 import React from "react";
 
 // Configuración del cliente de Sanity
@@ -33,7 +34,7 @@ const dataset = "production";
 
 const builder = imageUrlBuilder({ projectId, dataset });
 
-const urlFor = (source: unknown) => {
+const urlFor = (source: SanityImageSource) => {
   return builder.image(source);
 };
 
@@ -116,7 +117,7 @@ const mapSliderSection = (slider: Section): SliderSectionObject => {
   };
 };
 
-const ResumeSlider: React.FC<{ slider: Section }> = ({ slider }) => {
+const ResumeSlider: FC<{ slider: Section }> = ({ slider }) => {
   const formattedSliderData: SliderSectionObject = mapSliderSection(slider);
 
   return <Resume resumeItems={[formattedSliderData]} />;

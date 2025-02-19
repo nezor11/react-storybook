@@ -58,7 +58,7 @@ const meta: Meta<typeof TitleCopy> = {
       description:
         "The italic property is optional and can be a boolean. By default, it is set to false.",
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: "false" },
       },
     },
     underline: {
@@ -67,7 +67,7 @@ const meta: Meta<typeof TitleCopy> = {
       description:
         "The underline property is optional and can be a boolean. By default, it is set to false.",
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: "false" },
       },
     },
   },

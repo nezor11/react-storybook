@@ -15,7 +15,7 @@
  */
 
 import Loader from "@/stories/components/atoms/Loader";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import "./index.css";
@@ -26,7 +26,7 @@ interface VideoPlayerProps {
   isPlaying: boolean;
 }
 
-export const VideoPlayer: React.FC<VideoPlayerProps> = ({
+export const VideoPlayer: FC<VideoPlayerProps> = ({
   videoUrl,
   onReady,
   isPlaying,

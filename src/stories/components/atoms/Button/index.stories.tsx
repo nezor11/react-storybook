@@ -1,5 +1,5 @@
 import { Code } from "@/stories/components/system/Code";
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { Button } from ".";
 
@@ -21,7 +21,7 @@ const meta: Meta<typeof Button> = {
       description:
         "The primary property is optional and can be a boolean. By default, it is set to false.",
       table: {
-        defaultValue: { summary: true },
+        defaultValue: { summary: "false" },
       },
     },
     backgroundColor: {
@@ -51,7 +51,7 @@ const meta: Meta<typeof Button> = {
       description: "The border radius of the button.",
       type: "number",
       table: {
-        defaultValue: { summary: 0 },
+        defaultValue: { summary: "0" },
       },
     },
   },

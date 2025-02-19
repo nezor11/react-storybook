@@ -8,14 +8,14 @@
  * <ButtonClose onClick={handleClose} />
  */
 
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React from "react";
 
 interface ButtonCloseProps {
   onClick: () => void;
 }
 
-const ButtonClose: React.FC<ButtonCloseProps> = ({ onClick }): JSX.Element => {
+const ButtonClose: FC<ButtonCloseProps> = ({ onClick }): JSX.Element => {
   return (
     <button
       type="button"

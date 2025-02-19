@@ -22,8 +22,7 @@
 
 import { BodyCopy } from "@/stories/components/atoms/BodyCopy";
 import DOMPurify from "dompurify";
-import type { CSSProperties } from "react";
-// biome-ignore lint/style/useImportType: <explanation>
+import type { CSSProperties, FC } from "react";
 import React from "react";
 import { IconGallery, type IconGalleryProps } from "../IconGallery";
 import "./index.css";
@@ -40,7 +39,7 @@ export interface TitleSectionProps extends Omit<IconGalleryProps, "iconsData"> {
   iconsData?: { name: string; width: string; height: string }[];
 }
 
-export const TitleSection: React.FC<TitleSectionProps> = ({
+export const TitleSection: FC<TitleSectionProps> = ({
   header = "h3",
   text = "Me cago en tus muelas",
   subtext = "",

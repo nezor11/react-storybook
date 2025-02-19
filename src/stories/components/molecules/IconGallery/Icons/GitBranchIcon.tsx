@@ -1,8 +1,9 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
+import type { FC } from "react";
 import React, { forwardRef, memo } from "react";
 
-const GitBranchIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const GitBranchIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "GitBranch", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -16,7 +17,7 @@ const GitBranchIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name ? <title id={name}>{name}</title> : null}
+      <title id={name}>{name}</title>
       <path
         fill="#000"
         fillRule="evenodd"
@@ -27,6 +28,6 @@ const GitBranchIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedGitBranchIcon: React.FC<IconProps> = memo(GitBranchIcon);
+const MemoizedGitBranchIcon: FC<IconProps> = memo(GitBranchIcon);
 
 export default MemoizedGitBranchIcon;

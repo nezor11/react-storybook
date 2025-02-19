@@ -1,8 +1,8 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
 import React, { forwardRef, memo } from "react";
 
-const ViteIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const ViteIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Vite", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : "1em"}
@@ -14,7 +14,7 @@ const ViteIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name ? <title id={name}>{name}</title> : null}
+      <title id={name}>{name}</title>
       <defs>
         <linearGradient
           id="a"
@@ -54,6 +54,6 @@ const ViteIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedViteIcon: React.FC<IconProps> = memo(ViteIcon);
+const MemoizedViteIcon = memo(ViteIcon);
 
 export default MemoizedViteIcon;

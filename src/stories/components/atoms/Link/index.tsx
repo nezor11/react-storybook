@@ -18,7 +18,7 @@
  * />
  */
 
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React from "react";
 
 export interface LinkProps {
@@ -35,7 +35,7 @@ export interface LinkProps {
 }
 
 /** Renders a link component with customizable styles and variants. */
-export const Link: React.FC<LinkProps> = ({
+export const Link: FC<LinkProps> = ({
   link_text = "Link text",
   href = "https://google.com",
   target = "_blank",

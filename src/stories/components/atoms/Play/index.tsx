@@ -5,10 +5,10 @@
  * <Play />
  */
 
-// biome-ignore lint/style/useImportType: <explanation>
+import type { FC } from "react";
 import React from "react";
 
-const Play: React.FC = () => {
+const Play: FC = () => {
   return (
     <div className="play">
       <svg

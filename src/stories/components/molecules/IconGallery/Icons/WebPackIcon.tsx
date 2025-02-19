@@ -1,8 +1,9 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import React, { forwardRef, memo } from "react";
 
-const WebPackIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const WebPackIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "WebPack", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width ? width : "1em"}
@@ -10,12 +11,12 @@ const WebPackIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       preserveAspectRatio="xMidYMid"
       viewBox="-17 0 290 290"
       ref={ref}
-      aria-labelledby={name ? "title" : undefined}
+      aria-labelledby={name}
       aria-describedby={desc ? "desc" : undefined}
       {...props}
     >
-      {desc && <desc id="desc">{desc}</desc>}
-      {name && <title id="title">{name}</title>}
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path
         fill="#FFF"
         d="m128 .048 128 72.405V217.31l-128 72.405L0 217.31V72.453z"
@@ -32,6 +33,6 @@ const WebPackIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedWebPackIcon: React.FC<IconProps> = memo(WebPackIcon);
+const MemoizedWebPackIcon = memo(WebPackIcon);
 
 export default MemoizedWebPackIcon;

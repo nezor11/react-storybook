@@ -1,8 +1,8 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
 import React, { forwardRef, memo } from "react";
 
-const CsharpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const CsharpIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "Csharp", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
@@ -16,7 +16,7 @@ const CsharpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name ? <title id={name}>{name}</title> : null}
+      <title id={name}>{name}</title>
       <path
         fill="#7F3A86"
         d="M27.695 23c.188-.338.305-.72.305-1.061V10.06c0-.342-.117-.723-.305-1.061L16 16l11.695 7Z"
@@ -43,6 +43,6 @@ const CsharpIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedCsharpIcon: React.FC<IconProps> = memo(CsharpIcon);
+const MemoizedCsharpIcon = memo(CsharpIcon);
 
 export default MemoizedCsharpIcon;

@@ -1,5 +1,5 @@
 import { Code } from "@/stories/components/system/Code";
-import { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/react";
 import React, { useEffect, useState } from "react";
 import { LazyImage } from ".";
 
@@ -67,16 +67,15 @@ export default meta;
 // Función para buscar una imagen de montaña utilizando el endpoint correcto de búsqueda
 const fetchMountainImage = async () => {
   const response = await fetch(
-    `https://api.unsplash.com/search/photos?query=mountain&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc&per_page=1`
+    "https://api.unsplash.com/search/photos?query=mountain&client_id=KsxUA5_AC79dw6VmBdoRAU6BUCf61iH6MKV4QLej6Wc&per_page=1"
   );
   const data = await response.json();
 
-  // Verifica si hay resultados y retorna la URL regular
-  if (data.results && data.results.length > 0) {
-    return data.results[0].urls.regular; // Retorna la URL de la imagen
-  } else {
+  if (!data.results?.length) {
     throw new Error("No se encontró ninguna imagen de montaña.");
   }
+
+  return data.results[0].urls.regular;
 };
 
 export const Default = () => {

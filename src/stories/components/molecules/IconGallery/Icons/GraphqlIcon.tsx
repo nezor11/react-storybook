@@ -1,8 +1,8 @@
-import { IconProps } from "@/utils/types/icons";
+import type { IconProps } from "@/utils/types/icons";
 import React, { forwardRef, memo } from "react";
 
-const GraphqlIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
-  ({ name, desc, width, height, ...props }, ref) => (
+const GraphqlIcon = forwardRef<SVGSVGElement, IconProps>(
+  ({ name = "GraphQL", desc, width, height, ...props }, ref) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
@@ -15,7 +15,7 @@ const GraphqlIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
       {...props}
     >
       {desc ? <desc id={desc}>{desc}</desc> : null}
-      {name ? <title id={name}>{name}</title> : null}
+      <title id={name}>{name}</title>
       <path
         d="M-.43 12.534h22.901v1.187H-.43z"
         style={{
@@ -80,6 +80,6 @@ const GraphqlIcon: React.FC<IconProps> = forwardRef<SVGSVGElement, IconProps>(
   )
 );
 
-const MemoizedGraphqlIcon: React.FC<IconProps> = memo(GraphqlIcon);
+const MemoizedGraphqlIcon = memo(GraphqlIcon);
 
 export default MemoizedGraphqlIcon;
