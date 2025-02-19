@@ -1,4 +1,5 @@
 import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import React, { forwardRef, memo } from "react";
 
 const MailchimpIcon = forwardRef<SVGSVGElement, IconProps>(
@@ -15,8 +16,8 @@ const MailchimpIcon = forwardRef<SVGSVGElement, IconProps>(
       aria-describedby={desc}
       {...props}
     >
-      {desc ? <desc id={desc}>{desc}</desc> : null}
-      <title id={name}>{name}</title>
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path
         fill="#FDDD4C"
         d="M16 2C8.278 2 2 8.278 2 16s6.278 14 14 14 14-6.278 14-14S23.722 2 16 2Z"

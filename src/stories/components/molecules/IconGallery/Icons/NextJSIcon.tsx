@@ -13,6 +13,7 @@ const NextJSIcon = forwardRef<SVGSVGElement, IconProps>(
       ref={ref}
       aria-labelledby={name}
       aria-describedby={desc ? "desc" : undefined}
+      className={name}
       {...props}
     >
       {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}

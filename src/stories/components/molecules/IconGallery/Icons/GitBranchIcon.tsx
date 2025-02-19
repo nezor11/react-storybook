@@ -1,4 +1,5 @@
 import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import type { FC } from "react";
 import React, { forwardRef, memo } from "react";
 
@@ -14,12 +15,12 @@ const GitBranchIcon = forwardRef<SVGSVGElement, IconProps>(
       ref={ref}
       aria-labelledby={name}
       aria-describedby={desc}
+      className={name}
       {...props}
     >
-      {desc ? <desc id={desc}>{desc}</desc> : null}
-      <title id={name}>{name}</title>
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path
-        fill="#000"
         fillRule="evenodd"
         d="M6 5a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm2 2.83a3.001 3.001 0 1 0-2 0v8.34a3.001 3.001 0 1 0 2.105.04A3.001 3.001 0 0 1 11 14h2a6 6 0 0 0 6-6v-.17a3.001 3.001 0 1 0-2 0V8a4 4 0 0 1-4 4h-2a4.978 4.978 0 0 0-3 1V7.83ZM18 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 19a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"
         clipRule="evenodd"

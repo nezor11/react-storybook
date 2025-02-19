@@ -1,4 +1,5 @@
 import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import type { FC } from "react";
 import React, { forwardRef, memo } from "react";
 
@@ -15,8 +16,8 @@ const VueIcon = forwardRef<SVGSVGElement, IconProps>(
       aria-describedby={desc}
       {...props}
     >
-      {desc ? <desc id={desc}>{desc}</desc> : null}
-      <title id={name}>{name}</title>
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path
         d="M75.63 0 61.44 24.58 47.25 0H0l61.44 106.42L122.88 0H75.63z"
         style={{

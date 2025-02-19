@@ -1,4 +1,5 @@
 import type { IconProps } from "@/utils/types/icons";
+import { nanoid } from "nanoid";
 import React, { forwardRef, memo } from "react";
 
 const MySQLIcon = forwardRef<SVGSVGElement, IconProps>(
@@ -14,8 +15,8 @@ const MySQLIcon = forwardRef<SVGSVGElement, IconProps>(
       aria-describedby={desc}
       {...props}
     >
-      {desc ? <desc id={desc}>{desc}</desc> : null}
-      <title id={name}>{name}</title>
+      {desc && <desc id={`desc-${nanoid()}`}>{desc}</desc>}
+      <title id={`${name}-${nanoid()}`}>{name}</title>
       <path fill="none" d="M-18.458 6.58h191.151v132.49H-18.458V6.58z" />
       <path
         fill="#5d87a1"
