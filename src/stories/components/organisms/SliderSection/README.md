@@ -94,7 +94,11 @@ export const SliderSection: FC<SliderSectionProps> = ({
               header="h3"
               text={title}
               mods="text-2xl lg:text-3xl uppercase text-primary-500 font-medium"
-              iconsData={icons?.iconsData}
+              iconsData={icons?.iconsData?.map((icon) => ({
+                ...icon,
+                width: icon.width || "1em",
+                height: icon.height || "1em",
+              }))}
             />
           </div>
         </div>
@@ -128,6 +132,7 @@ export const SliderSection: FC<SliderSectionProps> = ({
             },
           })}
           breakpoints={{
+            0: { spaceBetween: 8 },
             769: { slidesOffsetBefore: 300, centeredSlides: true },
           }}
         >

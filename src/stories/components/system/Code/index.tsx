@@ -37,7 +37,7 @@ export const Code: FC<CodeProps> = ({ directoryPath }) => {
 
   return (
     <div className="px-[6.5px]">
-      <SyntaxHighlighter language="tsx" style={vscDarkPlus} showLineNumbers >
+      <SyntaxHighlighter language="tsx" style={vscDarkPlus} showLineNumbers>
         {markdownContent}
       </SyntaxHighlighter>
     </div>

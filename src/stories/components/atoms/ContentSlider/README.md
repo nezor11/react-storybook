@@ -109,7 +109,7 @@ export const ContentSlider: FC<ContentSliderProps> = ({
   console.log("Imágenes recibidas en ContentSlider:", images);
 
   return (
-    <section className="intro p-6 lg:p-0">
+    <section className="intro overflow-y-scroll p-6 lg:p-0">
       <div className="left md:px-8 2xl:px-16">
         <div>
           <div className="content-wrapper">
@@ -195,6 +195,7 @@ export const ContentSlider: FC<ContentSliderProps> = ({
                   videoUrl={videoUrl}
                   onReady={handleReady}
                   isPlaying={true}
+                  onEnded={() => setIsPlaying(false)} // Aquí se reinicia el estado
                 />
               </div>
             </div>

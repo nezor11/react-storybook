@@ -5,12 +5,14 @@
  * - videoUrl: The URL of the video to be played.
  * - onReady: A callback function to be called when the video is ready to play.
  * - isPlaying: A boolean indicating whether the video should be playing or paused.
+ * - onEnded?: A callback function to be called when the video ends.
  *
  * Example usage:
  * <VideoPlayer
  *   videoUrl="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
  *   onReady={() => console.log("Video is ready!")}
  *   isPlaying={true}
+ *   onEnded={() => console.log("Video ended!")}
  * />
  */
 
@@ -24,12 +26,14 @@ interface VideoPlayerProps {
   videoUrl: string;
   onReady: () => void;
   isPlaying: boolean;
+  onEnded?: () => void;
 }
 
 export const VideoPlayer: FC<VideoPlayerProps> = ({
   videoUrl,
   onReady,
   isPlaying,
+  onEnded,
 }) => {
   const [loading, setLoading] = useState(true);
 
@@ -50,6 +54,7 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({
           width="100%"
           height="100%"
           playing={isPlaying}
+          onEnded={onEnded}
           config={{
             youtube: {
               playerVars: {
