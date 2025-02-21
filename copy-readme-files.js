@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { promisify } from "util";
+import fs from "node:fs";
+import path from "node:path";
+import { promisify } from "node:util";
 
 const copyFile = promisify(fs.copyFile);
 const readdir = promisify(fs.readdir);
